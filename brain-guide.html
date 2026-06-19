@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en" data-scribe-recorder-ready="true" class="brand-refresh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Your Business Brain — JDesigns Strategist LLC</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #2ec27e;
+      --green-dim: rgba(46,194,126,.15);
+      --green-faint: rgba(46,194,126,.07);
+      --green-glow: #0d3320;
+      --red: #ef4444;
+      --bg: #07100a;
+      --card: #0d1a10;
+      --border: rgba(30,50,37,0.6);
+      --border-green: rgba(46,194,126,.2);
+      --text: #ffffff;
+      --muted: #8aab96;
+      --faint: #1e3225;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px; line-height: 1.65;
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes shimmerGreen {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+    @keyframes shimmerGreen {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.85); }
+    }
+
+    .fu  { animation: fadeUp .65s ease both; }
+    .fu1 { animation-delay: .1s; }
+    .fu2 { animation-delay: .2s; }
+    .fu3 { animation-delay: .35s; }
+    .fu4 { animation-delay: .5s; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      height: 64px; display: flex;
+      align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      background: rgba(7,16,10,.92);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+
+    .nav-mark {
+      width: 34px; height: 34px; border-radius: 9px;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .88rem; font-weight: 900; color: #07100a;
+      letter-spacing: -.02em; flex-shrink: 0;
+    }
+
+    .nav-wordmark { font-size: .88rem; font-weight: 700; color: var(--text); }
+    .nav-wordmark span { color: var(--green); }
+
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: .82rem; font-weight: 500; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--green) !important; color: #07100a !important;
+      padding: .4rem 1rem; border-radius: 7px;
+      font-weight: 700 !important; transition: opacity .2s !important;
+    }
+    .nav-cta:hover { opacity: .88 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 5rem 1.5rem 4.5rem;
+      overflow: hidden;
+    }
+
+    .hero-orb {
+      position: absolute; top: -20%; left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 650px;
+      background: radial-gradient(ellipse, rgba(46,194,126,.2) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-orb-2 {
+      position: absolute; bottom: -5%; right: 5%;
+      width: 450px; height: 350px;
+      background: radial-gradient(ellipse, rgba(46,194,126,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--green-faint);
+      border: 1px solid var(--border-green);
+      border-radius: 100px; padding: .35rem 1.1rem;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 2rem;
+    }
+
+    .badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s ease infinite;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6.5vw, 5rem);
+      font-weight: 900; line-height: 1.07;
+      letter-spacing: -.04em;
+      max-width: 880px; margin-bottom: 1.5rem;
+    }
+
+    .text-green {
+      background: linear-gradient(135deg, var(--green) 0%, #c084fc 45%, var(--green) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmerGreen 4s linear infinite;
+    }
+
+    .text-green {
+      background: linear-gradient(135deg, #2ec27e 0%, #6edba8 45%, #2ec27e 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmerGreen 4s linear infinite;
+    }
+
+    .hero-sub {
+      font-size: clamp(.97rem, 2vw, 1.2rem);
+      color: var(--muted); max-width: 580px;
+      line-height: 1.8; margin-bottom: 2.5rem;
+    }
+
+    .hero-price {
+      display: inline-flex; align-items: center; gap: .7rem;
+      background: var(--green-faint); border: 1px solid var(--border-green);
+      border-radius: 10px; padding: .65rem 1.5rem;
+      font-size: 1rem; font-weight: 700; color: var(--green);
+    }
+    .hero-price .price-sep { color: var(--faint); font-weight: 400; }
+
+    /* ── LAYOUT ── */
+    .section { padding: 5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .divider { height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
+
+    .eyebrow {
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--green); margin-bottom: .75rem;
+    }
+    .eyebrow.gold  { color: var(--green); }
+    .eyebrow.green { color: var(--green); }
+
+    h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; letter-spacing: -.025em;
+      line-height: 1.15; margin-bottom: .9rem;
+    }
+
+    .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.75; max-width: 580px; }
+
+    /* ── PROBLEM ── */
+    .problem-wrap {
+      background: linear-gradient(180deg, var(--bg) 0%, rgba(7,16,10,.6) 100%);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+
+    .problem-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+
+    .problem-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px; padding: 2rem;
+      position: relative; overflow: hidden;
+      transition: border-color .3s, transform .2s;
+    }
+    .problem-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(46,194,126,.45), transparent);
+    }
+    .problem-card:hover { border-color: var(--border-green); transform: translateY(-3px); }
+
+    .problem-icon { font-size: 1.9rem; display: block; margin-bottom: 1rem; }
+    .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .55rem; }
+    .problem-card > p { font-size: .87rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+
+    .problem-quote {
+      padding: .75rem 1rem;
+      background: rgba(46,194,126,.08);
+      border-left: 2px solid rgba(46,194,126,.4);
+      border-radius: 0 8px 8px 0;
+      font-size: .8rem; color: var(--muted); font-style: italic; line-height: 1.6;
+    }
+
+    /* ── STATS ROW ── */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1.25rem; margin-top: 3rem;
+    }
+    .stat-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem; text-align: center;
+    }
+    .stat-big {
+      font-size: 2.2rem; font-weight: 900;
+      letter-spacing: -.03em; color: var(--green);
+      line-height: 1; margin-bottom: .35rem;
+    }
+    .stat-desc { font-size: .8rem; color: var(--muted); line-height: 1.4; }
+
+    /* ── FILE CARDS ── */
+    .file-cards {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+
+    .file-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px; padding: 1.75rem;
+      position: relative; overflow: hidden;
+      transition: transform .2s, border-color .2s;
+    }
+    .file-card:hover { transform: translateY(-4px); }
+
+    .file-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+
+    .file-card.purple { border-color: rgba(46,194,126,.25); }
+    .file-card.purple:hover { border-color: rgba(46,194,126,.55); }
+    .file-card.purple::before { background: linear-gradient(90deg, var(--green), var(--green)); }
+
+    .file-card.gold { border-color: rgba(46,194,126,.25); }
+    .file-card.gold:hover { border-color: rgba(46,194,126,.55); }
+    .file-card.gold::before { background: linear-gradient(90deg, #1a7a4e, var(--green)); }
+
+    .file-card.green { border-color: rgba(46,194,126,.25); }
+    .file-card.green:hover { border-color: rgba(46,194,126,.55); }
+    .file-card.green::before { background: linear-gradient(90deg, #1a7a4e, var(--green)); }
+
+    .file-header { display: flex; align-items: center; gap: .75rem; margin-bottom: .6rem; }
+    .file-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .file-name { font-family: 'Courier New', monospace; font-size: .75rem; font-weight: 600; margin-bottom: .15rem; }
+    .file-card.purple .file-name { color: var(--green); }
+    .file-card.gold   .file-name { color: var(--green); }
+    .file-card.green  .file-name { color: var(--green); }
+
+    .file-label { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .file-divider { height: 1px; background: var(--border); margin: 1.25rem 0; }
+    .file-desc { font-size: .88rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+
+    .file-list { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+    .file-list li {
+      display: flex; align-items: flex-start; gap: .6rem;
+      font-size: .84rem; color: var(--muted); line-height: 1.5;
+    }
+    .file-list li::before { content: '→'; font-size: .75rem; margin-top: .15rem; flex-shrink: 0; }
+    .file-card.purple .file-list li::before { color: var(--green); }
+    .file-card.gold   .file-list li::before { color: var(--green); }
+    .file-card.green  .file-list li::before { color: var(--green); }
+
+    /* ── STEPS ── */
+    .steps-wrap {
+      background: linear-gradient(180deg, rgba(7,16,10,.5) 0%, var(--bg) 100%);
+      border-top: 1px solid var(--border);
+    }
+
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+
+    .step-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.75rem;
+      transition: border-color .3s, transform .2s;
+    }
+    .step-card:hover { border-color: var(--border-green); transform: translateY(-3px); }
+
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--green-dim); border: 1px solid rgba(46,194,126,.35);
+      color: var(--green); font-size: .9rem; font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .step-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+    .step-card p { font-size: .86rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── BEFORE / AFTER ── */
+    .compare-grid {
+      display: grid; grid-template-columns: 1fr 60px 1fr;
+      align-items: start; margin-top: 2.5rem;
+    }
+
+    .compare-col {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem;
+    }
+    .compare-col.before { border-color: rgba(239,68,68,.2); }
+    .compare-col.after  { border-color: rgba(46,194,126,.2); }
+
+    .compare-col.before::before {
+      content: ''; display: block; height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(239,68,68,.5), transparent);
+      border-radius: 2px; margin-bottom: 1.5rem;
+    }
+    .compare-col.after::before {
+      content: ''; display: block; height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(46,194,126,.5), transparent);
+      border-radius: 2px; margin-bottom: 1.5rem;
+    }
+
+    .compare-label {
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1.25rem;
+    }
+    .before .compare-label { color: var(--red); }
+    .after  .compare-label { color: var(--green); }
+
+    .compare-items { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .compare-items li {
+      display: flex; align-items: flex-start; gap: .7rem;
+      font-size: .9rem; color: var(--muted); line-height: 1.55;
+    }
+    .ci-icon {
+      flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; margin-top: 1px;
+    }
+    .before .ci-icon { background: rgba(239,68,68,.12); color: var(--red); }
+    .after  .ci-icon { background: rgba(46,194,126,.12); color: var(--green); }
+
+    .compare-divider {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: var(--faint); padding-top: 4.5rem;
+    }
+
+    /* ── COMMAND PACK TEASER ── */
+    .teaser-wrap {
+      background: linear-gradient(180deg, rgba(7,16,10,.4) 0%, var(--bg) 100%);
+      border-top: 1px solid var(--border);
+    }
+
+    .pill-grid { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 2.5rem; }
+
+    .cmd-pill {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--green-faint); border: 1px solid var(--border-green);
+      border-radius: 8px; padding: .55rem 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: .85rem; font-weight: 600; color: var(--green);
+      transition: background .2s, border-color .2s;
+    }
+    .cmd-pill:hover { background: var(--green-dim); border-color: rgba(46,194,126,.4); }
+
+    .pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); opacity: .6; flex-shrink: 0; }
+    .pill-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: .73rem; color: var(--muted); font-weight: 400; }
+
+    .next-card {
+      background: var(--card); border: 1px solid var(--border-green);
+      border-radius: 16px; padding: 2rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    }
+    .next-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .4rem; }
+    .next-card p { font-size: .87rem; color: var(--muted); max-width: 500px; line-height: 1.65; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-weight: 700; font-size: .97rem; border-radius: 10px;
+      text-decoration: none; padding: .85rem 2rem;
+      transition: all .2s; letter-spacing: -.01em;
+    }
+    .btn-green { background: var(--green); color: #07100a; }
+    .btn-green:hover {
+      opacity: .9; transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(46,194,126,.3);
+    }
+    .btn-outline-small {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--green-faint); border: 1px solid var(--border-green);
+      color: var(--green); text-decoration: none;
+      padding: .65rem 1.4rem; border-radius: 8px;
+      font-size: .88rem; font-weight: 600; white-space: nowrap;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-outline-small:hover { background: var(--green-dim); border-color: rgba(46,194,126,.5); }
+
+    /* ── CTA ── */
+    .cta-section { border-top: 1px solid var(--border); text-align: center; }
+
+    .cta-card {
+      background: var(--card); border: 1px solid var(--border-green);
+      border-radius: 24px; padding: 4rem 2.5rem;
+      max-width: 640px; margin: 0 auto;
+      position: relative; overflow: hidden;
+    }
+    .cta-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--green), var(--green));
+    }
+    .cta-card::after {
+      content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+      width: 420px; height: 260px;
+      background: radial-gradient(ellipse, rgba(46,194,126,.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-eyebrow {
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 1rem; position: relative; z-index: 1;
+    }
+
+    .cta-card h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 900; letter-spacing: -.025em;
+      line-height: 1.15; margin-bottom: .75rem; position: relative; z-index: 1;
+    }
+    .cta-price { color: var(--green); }
+
+    .cta-sub {
+      font-size: .97rem; color: var(--muted);
+      line-height: 1.75; max-width: 480px;
+      margin: 0 auto 2rem; position: relative; z-index: 1;
+    }
+
+    .cta-btn-wrap { position: relative; z-index: 1; margin-bottom: .75rem; }
+
+    .cta-help {
+      font-size: .83rem; color: var(--faint);
+      position: relative; z-index: 1;
+    }
+    .cta-help a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    .cta-help a:hover { color: var(--text); }
+
+    .cta-checks {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 1.25rem;
+      margin-top: 1.75rem; padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+      position: relative; z-index: 1;
+    }
+    .check-item { display: flex; align-items: center; gap: .45rem; font-size: .78rem; color: var(--muted); }
+    .check-item span:first-child { color: var(--green); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 3rem 1.5rem; max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+    }
+    .footer-brand { display: flex; align-items: center; gap: .6rem; margin-bottom: .6rem; }
+    .footer-mark {
+      width: 30px; height: 30px; border-radius: 8px; background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 900; color: #07100a;
+    }
+    .footer-name { font-weight: 700; font-size: .88rem; color: var(--text); }
+    .footer-tagline { font-size: .8rem; color: var(--muted); font-style: italic; margin-bottom: .45rem; }
+    .footer-copy { font-size: .75rem; color: var(--faint); }
+    .footer-links { display: flex; flex-direction: column; gap: .5rem; text-align: right; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: .85rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--green); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links li:not(:last-child) { display: none; }
+
+      .problem-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .file-cards { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+
+      .compare-grid { grid-template-columns: 1fr; }
+      .compare-divider { display: none; }
+      .compare-col.before { border-radius: 14px; margin-bottom: 1rem; }
+
+      .next-card { flex-direction: column; text-align: center; }
+      .pill-sub { display: none; }
+
+      footer { flex-direction: column; }
+      .footer-links { text-align: left; }
+      .cta-card { padding: 2.75rem 1.5rem; }
+    }
+
+    /* ── PEEK INSIDE ── */
+    .peek-tabs {
+      display: flex; gap: .6rem; margin-bottom: 1.5rem; flex-wrap: wrap;
+    }
+    .peek-tab {
+      padding: .45rem 1.1rem; border-radius: 8px; cursor: pointer;
+      font-size: .82rem; font-weight: 700; border: 1px solid var(--border);
+      background: var(--card); color: var(--muted); transition: all .2s;
+      font-family: 'Courier New', monospace;
+    }
+    .peek-tab.active.purple { background: var(--purple-dim); border-color: var(--border-purple); color: var(--purple-light); }
+    .peek-tab.active.gold   { background: var(--gold-faint); border-color: var(--border-gold); color: var(--gold); }
+    .peek-tab.active.green  { background: var(--green-dim); border-color: rgba(16,185,129,.3); color: var(--green); }
+    .peek-panel { display: none; }
+    .peek-panel.active { display: block; }
+    .peek-file {
+      background: #060610; border: 1px solid rgba(255,255,255,.09);
+      border-radius: 14px; overflow: hidden;
+    }
+    .peek-file-bar {
+      display: flex; align-items: center; gap: .5rem; padding: .75rem 1.1rem;
+      background: rgba(255,255,255,.03); border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .pf-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .pf-dot.r { background: #ff5f56; } .pf-dot.y { background: #ffbd2e; } .pf-dot.g { background: #27c93f; }
+    .peek-file-name { margin-left: auto; font-size: .7rem; font-family: 'Courier New', monospace; color: var(--faint); }
+    .peek-file-body {
+      padding: 1.5rem 1.75rem; font-family: 'Courier New', monospace;
+      font-size: .82rem; line-height: 2; color: #9090b8;
+    }
+    .pf-comment { color: var(--faint); }
+    .pf-key { color: var(--purple-light); }
+    .pf-key.gold { color: var(--gold); }
+    .pf-key.green { color: var(--green); }
+    .pf-val { color: #c0c0e8; }
+    .pf-section { color: var(--text); font-weight: 700; }
+    .pf-fade { opacity: .45; }
+    .peek-caption {
+      margin-top: 1.25rem; font-size: .88rem; color: var(--muted);
+      line-height: 1.7; padding: 1rem 1.25rem;
+      background: var(--card); border-radius: 10px;
+      border-left: 3px solid var(--purple-light);
+    }
+    .peek-caption.gold  { border-left-color: var(--gold); }
+    .peek-caption.green { border-left-color: var(--green); }
+
+    /* ── POSSIBILITIES ── */
+    .poss-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+    .poss-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px; padding: 2rem; position: relative; overflow: hidden;
+      transition: transform .2s, border-color .3s;
+    }
+    .poss-card:hover { transform: translateY(-4px); }
+    .poss-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--purple), var(--gold)); }
+    .poss-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .poss-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+    .poss-card p { font-size: .87rem; color: var(--muted); line-height: 1.65; }
+    .poss-card ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; margin-top: .75rem; }
+    .poss-card ul li { font-size: .84rem; color: var(--muted); display: flex; gap: .6rem; }
+    .poss-card ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; font-size: .75rem; margin-top: .2rem; }
+
+    @media (max-width: 768px) {
+      .poss-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 500px) {
+      .hero h1 { font-size: 2.2rem; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .section { padding: 3.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-brand" href="#hero">
+    <div class="nav-mark">JD</div>
+    <div class="nav-wordmark"><span>JDesigns</span> Strategist LLC</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#solution">The Files</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#cta" class="nav-cta">Get the Workshop — $95</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-orb-2"></div>
+  <div class="hero-badge fu"><div class="badge-dot"></div>Foundation Workshop &nbsp;·&nbsp; $95 One-Time</div>
+  <h1 class="fu fu1">
+    Claude Forgets Everything<br>
+    You Tell It. <span class="text-green">Fix That Once.</span>
+  </h1>
+  <p class="hero-sub fu fu2">
+    Every time you open Claude, it starts from scratch — re-explaining your services, your prices,
+    your clients, your voice, before you can get anything done.
+    This workshop ends that. Three files. Claude learns your business once and never forgets.
+  </p>
+  <div class="hero-price fu fu3">
+    <span>Build Your Business Brain</span>
+    <span class="price-sep">·</span>
+    <span>$95 one-time</span>
+  </div>
+</section>
+
+<!-- ── PROBLEM ── -->
+<div class="problem-wrap">
+  <section class="section" id="problem">
+    <div class="eyebrow">Why This Exists</div>
+    <h2>You're re-teaching Claude your business<br>every single time you open it.</h2>
+    <p class="section-sub">Claude is powerful — but out of the box, it remembers nothing between sessions. Every conversation starts at zero. Here's what that actually costs you.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <span class="problem-icon">🔄</span>
+        <h3>It Starts Fresh Every Session</h3>
+        <p>Yesterday's context is completely gone. Your packages, client names, pricing, and rules — erased. You spend the first 10 minutes re-explaining who you are before you can do anything useful.</p>
+        <div class="problem-quote">"Okay so I run a social media management business, my premium tier is $1,200 a month, I work with wellness brands, and my policy is..."</div>
+      </div>
+
+      <div class="problem-card">
+        <span class="problem-icon">🧠</span>
+        <h3>Your Best Prompts Live in Your Head</h3>
+        <p>You finally found the right way to ask Claude to draft a proposal — and then it disappeared. You re-write that prompt from memory every time, hoping to get back to something that worked once.</p>
+        <div class="problem-quote">"I know I had a good way to phrase this last week — let me try to remember exactly how I worded it..."</div>
+      </div>
+
+      <div class="problem-card">
+        <span class="problem-icon">❌</span>
+        <h3>Claude Doesn't Know Your Prices</h3>
+        <p>When you ask Claude to draft a proposal or reply to a lead, it guesses at your pricing and gets it wrong. You catch errors and correct them every time before sending anything to a real client.</p>
+        <div class="problem-quote">"This looks fine but it got the pricing wrong again. And it doesn't really sound like me."</div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-big">10+</div>
+        <div class="stat-desc">Minutes wasted re-explaining your business every session</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-big">3</div>
+        <div class="stat-desc">Files that fix this permanently — built once, works forever</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-big">0</div>
+        <div class="stat-desc">Coding or tech skills required to build them</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-big">∞</div>
+        <div class="stat-desc">Sessions where Claude already knows your full business</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ── SOLUTION ── -->
+<section class="section" id="solution" style="text-align:center;">
+  <div class="eyebrow gold">The Solution</div>
+  <h2>Three files. Everything Claude needs to know about you.</h2>
+  <p class="section-sub" style="margin: 0 auto 2.5rem;">The Business Brain Workshop walks you through building three files that live in your project folder. Once they're built, Claude reads them at the start of every session — no re-explaining, no setup, no guessing.</p>
+
+  <div class="file-cards" style="text-align:left;">
+
+    <div class="file-card purple">
+      <div class="file-header">
+        <span class="file-icon">📋</span>
+        <div>
+          <div class="file-name">CLAUDE.md</div>
+          <div class="file-label">Your Rules &amp; Voice</div>
+        </div>
+      </div>
+      <p class="file-desc">Claude's instruction manual for working with you. It sets the rules of engagement — how you communicate, what you will and won't do, and how Claude should behave in every interaction.</p>
+      <div class="file-divider"></div>
+      <ul class="file-list">
+        <li>Your tone and writing style — how you sound, what to avoid</li>
+        <li>Your professional limits — what you don't do or discount</li>
+        <li>How you like to work — process and preferences</li>
+        <li>What Claude should never say or assume about your clients</li>
+        <li>Your communication rules and response style</li>
+      </ul>
+    </div>
+
+    <div class="file-card gold">
+      <div class="file-header">
+        <span class="file-icon">🧠</span>
+        <div>
+          <div class="file-name">my-business-brain.md</div>
+          <div class="file-label">Your Business</div>
+        </div>
+      </div>
+      <p class="file-desc">Where your business actually lives. Everything Claude needs to represent you accurately — your offers, prices, clients, and current focus. This is the file that makes the difference between generic and genuinely useful.</p>
+      <div class="file-divider"></div>
+      <ul class="file-list">
+        <li>Your services and packages with exact pricing</li>
+        <li>Active clients and what you're doing for them right now</li>
+        <li>Your ideal client profile and the problems you solve</li>
+        <li>Current offers, promotions, or availability windows</li>
+        <li>Business context — where you are and what you're focused on</li>
+      </ul>
+    </div>
+
+    <div class="file-card green">
+      <div class="file-header">
+        <span class="file-icon">✨</span>
+        <div>
+          <div class="file-name">my-prompts.md</div>
+          <div class="file-label">Your Best Prompts</div>
+        </div>
+      </div>
+      <p class="file-desc">Your most-used prompts — written once, saved forever. Stop recreating from memory. This file stores your best requests so you paste and run instead of starting from scratch every week.</p>
+      <div class="file-divider"></div>
+      <ul class="file-list">
+        <li>Your client proposal prompt — in your exact offer format</li>
+        <li>Your reply-to-inquiry prompt — your voice, your call to action</li>
+        <li>Your content writing prompts — the ones that sound like you</li>
+        <li>Prompts for your most common tasks, pre-loaded and ready</li>
+        <li>Any custom requests you've refined and want to keep forever</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PEEK INSIDE ── -->
+<section class="section" id="peek-inside">
+  <div class="eyebrow purple">Peek Inside</div>
+  <h2>See exactly what you're building.</h2>
+  <p class="section-sub">These are real examples of what your three files look like once they're built. This is the actual content Claude reads before every session.</p>
+
+  <div class="peek-tabs" style="margin-top:2rem;">
+    <button class="peek-tab active purple" onclick="switchTab('claude')">📋 CLAUDE.md</button>
+    <button class="peek-tab gold"          onclick="switchTab('brain')" >🧠 my-business-brain.md</button>
+    <button class="peek-tab green"         onclick="switchTab('prompts')">✨ my-prompts.md</button>
+  </div>
+
+  <div id="tab-claude" class="peek-panel active">
+    <div class="peek-file">
+      <div class="peek-file-bar">
+        <span class="pf-dot r"></span><span class="pf-dot y"></span><span class="pf-dot g"></span>
+        <span class="peek-file-name">CLAUDE.md</span>
+      </div>
+      <div class="peek-file-body">
+        <span class="pf-comment"># Rules &amp; Voice — How to Work With Me</span><br><br>
+        <span class="pf-section">## Tone</span><br>
+        <span class="pf-val">Direct and warm — not corporate. Short sentences.</span><br>
+        <span class="pf-val">No filler phrases, no over-explaining. Sound like me.</span><br><br>
+        <span class="pf-section">## What I Do Not Do</span><br>
+        <span class="pf-val">- I do not offer discounts. Full price or no deal.</span><br>
+        <span class="pf-val">- I do not provide free strategy calls. That is a paid service.</span><br>
+        <span class="pf-val">- I do not do rush delivery unless explicitly charged for it.</span><br><br>
+        <span class="pf-section">## My Communication Rules</span><br>
+        <span class="pf-val">- Always draft first. I approve before anything is sent.</span><br>
+        <span class="pf-val">- One question at a time — never send a list to a client.</span><br>
+        <span class="pf-val">- Never promise a specific result or timeline without my approval.</span><br><br>
+        <span class="pf-fade">...</span>
+      </div>
+    </div>
+    <div class="peek-caption">Claude reads this every session. It knows your boundaries, your voice, and your rules — before you type a single word.</div>
+  </div>
+
+  <div id="tab-brain" class="peek-panel">
+    <div class="peek-file">
+      <div class="peek-file-bar">
+        <span class="pf-dot r"></span><span class="pf-dot y"></span><span class="pf-dot g"></span>
+        <span class="peek-file-name">my-business-brain.md</span>
+      </div>
+      <div class="peek-file-body">
+        <span class="pf-comment"># My Business Brain</span><br><br>
+        <span class="pf-section">## What I Do</span><br>
+        <span class="pf-val">Social media strategy &amp; Meta Ads for service businesses.</span><br>
+        <span class="pf-val">Fiverr-based + direct clients. Solo operation.</span><br><br>
+        <span class="pf-section">## Services &amp; Prices</span><br>
+        <span class="pf-key gold">Strategy Package:</span><span class="pf-val"> $450 — content pillars, calendar, posting plan</span><br>
+        <span class="pf-key gold">Meta Ads Setup:</span><span class="pf-val"> $750 — account setup, campaign, 30-day launch</span><br>
+        <span class="pf-key gold">Growth Retainer:</span><span class="pf-val"> $1,495/mo — full management, ads + content</span><br><br>
+        <span class="pf-section">## Active Clients</span><br>
+        <span class="pf-val">- Sarah / wellness brand — Month 2 content retainer</span><br>
+        <span class="pf-val">- Marcus / consulting firm — Meta ads setup, due Jun 20</span><br><br>
+        <span class="pf-fade">...</span>
+      </div>
+    </div>
+    <div class="peek-caption gold">Exact pricing. Real clients. Current focus. Claude references this file every time it drafts a proposal or replies to a lead — no more guessing at your numbers.</div>
+  </div>
+
+  <div id="tab-prompts" class="peek-panel">
+    <div class="peek-file">
+      <div class="peek-file-bar">
+        <span class="pf-dot r"></span><span class="pf-dot y"></span><span class="pf-dot g"></span>
+        <span class="peek-file-name">my-prompts.md</span>
+      </div>
+      <div class="peek-file-body">
+        <span class="pf-comment"># My Best Prompts — Saved &amp; Ready</span><br><br>
+        <span class="pf-section">## Proposal Reply</span><br>
+        <span class="pf-val">Draft a proposal reply for [CLIENT NAME] interested in [SERVICE].</span><br>
+        <span class="pf-val">Use my exact pricing. Match my tone. End with one clear next step.</span><br><br>
+        <span class="pf-section">## Content Caption</span><br>
+        <span class="pf-val">Write 5 Instagram captions for [TOPIC] in my voice.</span><br>
+        <span class="pf-val">Hook first. Short. End with a question or soft CTA.</span><br><br>
+        <span class="pf-section">## Follow-Up After No Reply</span><br>
+        <span class="pf-val">Draft a warm 2-sentence follow-up for [LEAD NAME] who went quiet</span><br>
+        <span class="pf-val">after I sent the proposal on [DATE]. No pressure. Just checking in.</span><br><br>
+        <span class="pf-fade">...</span>
+      </div>
+    </div>
+    <div class="peek-caption green">Your best prompts live here. No recreating from memory. Paste the prompt, fill in the brackets, run it — and get the same quality output every single time.</div>
+  </div>
+</section>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.peek-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.peek-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  const colors = { claude: 'purple', brain: 'gold', prompts: 'green' };
+  const idx    = { claude: 0, brain: 1, prompts: 2 };
+  document.querySelectorAll('.peek-tab')[idx[name]].classList.add('active', colors[name]);
+}
+</script>
+
+<!-- ── POSSIBILITIES ── -->
+<section class="section" id="possibilities">
+  <div class="eyebrow gold">After You Build It</div>
+  <h2>This changes how you work with Claude — permanently.</h2>
+  <p class="section-sub">Once your Brain is built, every Claude session starts with full context already loaded. Here's what that actually unlocks.</p>
+
+  <div class="poss-grid">
+    <div class="poss-card">
+      <span class="poss-icon">⚡</span>
+      <h3>Instant Proposals — In Your Voice</h3>
+      <p>Ask Claude to draft a proposal for a new lead and it already knows your exact packages, prices, and how you sound. First draft is ready in seconds — not 20 minutes.</p>
+      <ul>
+        <li>Correct pricing every time</li>
+        <li>Tone that actually sounds like you</li>
+        <li>Ready to copy-paste and send</li>
+      </ul>
+    </div>
+
+    <div class="poss-card">
+      <span class="poss-icon">🗂️</span>
+      <h3>Client Management Without the Chaos</h3>
+      <p>Claude knows who your active clients are, what you're doing for them, and what's still outstanding. Ask "what do I still owe Sarah this week?" and it can tell you.</p>
+      <ul>
+        <li>No more mental tracking of every order</li>
+        <li>Client follow-ups drafted automatically</li>
+        <li>Nothing falls through the cracks</li>
+      </ul>
+    </div>
+
+    <div class="poss-card">
+      <span class="poss-icon">🚀</span>
+      <h3>The Foundation for Everything Else</h3>
+      <p>Your Brain files are what make advanced Claude workflows possible. Every slash command, every automation, every shortcut — they all pull from these three files to know who you are and what you do.</p>
+      <ul>
+        <li>Plug in the Command Pack immediately after</li>
+        <li>Build custom workflows on top</li>
+        <li>Grows with your business over time</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<div class="steps-wrap">
+  <section class="section" id="how-it-works">
+    <div class="eyebrow">How the Workshop Works</div>
+    <h2>Four steps. Your brain is built.</h2>
+    <p class="section-sub">You don't need to know what to write. The workshop walks you through it. Claude asks the questions, you answer in plain language, and by the end you have three files that actually work.</p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Answer Questions</h3>
+        <p>Claude walks you through a structured set of questions about your business — services, prices, clients, voice, rules, preferences. You answer in plain language. No templates, no guessing what to include.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Build the Files</h3>
+        <p>Based on your answers, Claude drafts all three files — CLAUDE.md, my-business-brain.md, and my-prompts.md — organized into the right structure so everything works immediately.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Review &amp; Refine</h3>
+        <p>Read through the drafts and adjust anything that doesn't sound like you. Add what's missing, remove what doesn't apply. This step is what makes the files genuinely yours — take it seriously.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h3>Test It Live</h3>
+        <p>Ask Claude about your business. "What's my premium package? What do I charge for a discovery call? How would you reply to this inquiry?" Claude already knows — watch it work in real time.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ── BEFORE / AFTER ── -->
+<section class="section" id="before-after">
+  <div class="eyebrow">What Changes</div>
+  <h2>The difference is immediate.</h2>
+  <p class="section-sub">Once your Brain is built, your relationship with Claude changes completely. You stop being the person who explains and start being the person who directs.</p>
+
+  <div class="compare-grid">
+    <div class="compare-col before">
+      <div class="compare-label">Before</div>
+      <ul class="compare-items">
+        <li>
+          <span class="ci-icon">✕</span>
+          <span>Every session starts with re-explaining your business from scratch. Name, niche, services, packages, prices — all of it, again, before you can do anything useful.</span>
+        </li>
+        <li>
+          <span class="ci-icon">✕</span>
+          <span>Claude's replies don't sound like you. Too formal, too casual, or generically "professional" — you spend time editing them back into your voice before you can send anything.</span>
+        </li>
+        <li>
+          <span class="ci-icon">✕</span>
+          <span>You write the same prompts from memory every single week, hoping to recreate something that worked before. Half the time you can't remember exactly how you phrased it.</span>
+        </li>
+        <li>
+          <span class="ci-icon">✕</span>
+          <span>Claude guesses at your pricing and gets it wrong. You have to catch it and correct it every time before sending anything to a real client or lead.</span>
+        </li>
+        <li>
+          <span class="ci-icon">✕</span>
+          <span>Claude has no idea what you don't do. It recommends things outside your scope, suggests discounts you'd never offer, and proposes things that don't fit your model at all.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="compare-divider">→</div>
+
+    <div class="compare-col after">
+      <div class="compare-label">After</div>
+      <ul class="compare-items">
+        <li>
+          <span class="ci-icon">✓</span>
+          <span>Claude opens with full context loaded. It knows your business, your offers, your clients, and your rules. You go straight to the actual work — every single session.</span>
+        </li>
+        <li>
+          <span class="ci-icon">✓</span>
+          <span>Replies come out in your voice because Claude has read how you write, what words you use, and what tone you aim for. Less editing. More sending.</span>
+        </li>
+        <li>
+          <span class="ci-icon">✓</span>
+          <span>Your best prompts are pre-loaded and ready. You paste and run — no recreating from memory, no starting from scratch on tasks you do every week.</span>
+        </li>
+        <li>
+          <span class="ci-icon">✓</span>
+          <span>Pricing is accurate because it's in the file. Claude references your exact packages and rates in every draft — no corrections before sending to real clients.</span>
+        </li>
+        <li>
+          <span class="ci-icon">✓</span>
+          <span>Claude knows your boundaries. It stays in scope, respects your rules, and doesn't suggest things that don't fit how you work. It actually represents you — accurately.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMAND PACK TEASER ── -->
+<div class="teaser-wrap">
+  <section class="section" id="command-pack">
+    <div class="eyebrow gold">What's Next</div>
+    <h2>Once your Brain is built, these commands unlock.</h2>
+    <p class="section-sub">The Business Brain is the foundation. The Command Pack is what you build on top — 6 slash commands that run your business from the terminal. They only work once Claude knows your business. That's why the Brain comes first.</p>
+
+    <div class="pill-grid">
+      <div class="cmd-pill"><span class="pill-dot"></span>/daily-priorities<span class="pill-sub">— morning action board</span></div>
+      <div class="cmd-pill"><span class="pill-dot"></span>/capture-message<span class="pill-sub">— classify any incoming message</span></div>
+      <div class="cmd-pill"><span class="pill-dot"></span>/client-update<span class="pill-sub">— log and reply to clients</span></div>
+      <div class="cmd-pill"><span class="pill-dot"></span>/onboard-client<span class="pill-sub">— set up new client folders</span></div>
+      <div class="cmd-pill"><span class="pill-dot"></span>/save-session<span class="pill-sub">— end-of-day memory update</span></div>
+      <div class="cmd-pill"><span class="pill-dot"></span>/route-offer<span class="pill-sub">— match leads to the right offer</span></div>
+    </div>
+
+    <div class="next-card">
+      <div>
+        <h3>Business Brain Command Pack — Free</h3>
+        <p>Six slash commands that plug directly into your Brain files. Type one command and Claude handles the classification, drafting, logging, and next steps. This is what the Brain is built for.</p>
+      </div>
+      <a href="command-pack.html" class="btn-outline-small">View the Command Pack →</a>
+    </div>
+  </section>
+</div>
+
+<!-- ── CTA ── -->
+<section class="section cta-section" id="cta">
+  <div class="cta-card">
+    <p class="cta-eyebrow">Ready to Build</p>
+    <h2>Build Your Business Brain Today<br><span class="cta-price">— $95</span></h2>
+    <p class="cta-sub">
+      One workshop. Three files. Claude learns your business once and never forgets.
+      This is the prerequisite for everything else — and the last time you'll ever
+      explain your business to Claude from scratch.
+    </p>
+    <div class="cta-btn-wrap">
+      <a href="https://www.paypal.com/ncp/payment/6KXCALEQXLJK2" class="btn btn-green" target="_blank" rel="noopener">Get the Workshop for $95 →</a>
+    </div>
+    <p class="cta-help">Questions before you buy? <a href="https://fiverr.com/jazz96designs" target="_blank">Message Jasmine on Fiverr →</a></p>
+    <div class="cta-checks">
+      <div class="check-item"><span>✓</span><span>Works with Claude Code</span></div>
+      <div class="check-item"><span>✓</span><span>No tech skills required</span></div>
+      <div class="check-item"><span>✓</span><span>For service-based businesses</span></div>
+      <div class="check-item"><span>✓</span><span>Made by a real business owner</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div>
+    <div class="footer-brand">
+      <div class="footer-mark">JD</div>
+      <div class="footer-name">JDesigns Strategist LLC</div>
+    </div>
+    <div class="footer-tagline">Simple Systems for Real Life &amp; Business</div>
+    <div class="footer-copy">Made by Jasmine &nbsp;·&nbsp; © 2025 JDesigns Strategist LLC</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://jdesigns.info/" target="_blank">jdesigns.info</a>
+    <a href="https://fiverr.com/jazz96designs" target="_blank">fiverr.com/jazz96designs</a>
+    <a href="command-pack.html">Command Pack — Free</a>
+    <a href="#cta">Get the Workshop</a>
+  </div>
+</footer>
+
+</body></html>

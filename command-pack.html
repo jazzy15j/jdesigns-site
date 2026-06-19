@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en" data-scribe-recorder-ready="true" class="brand-refresh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Brain Command Pack — JDesigns Strategist LLC</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #2ec27e;
+      --green-dim: rgba(46,194,126,.15);
+      --green-faint: rgba(46,194,126,.07);
+      --green-glow: #0d3320;
+      --red: #ef4444;
+      --bg: #07100a;
+      --card: #0d1a10;
+      --border: rgba(30,50,37,0.6);
+      --border-green: rgba(46,194,126,.2);
+      --text: #ffffff;
+      --muted: #8aab96;
+      --faint: #1e3225;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.85); }
+    }
+
+    .fu  { animation: fadeUp .65s ease both; }
+    .fu1 { animation-delay: .1s; }
+    .fu2 { animation-delay: .2s; }
+    .fu3 { animation-delay: .3s; }
+    .fu4 { animation-delay: .45s; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      background: rgba(7,16,10,.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: .6rem;
+      text-decoration: none;
+    }
+
+    .nav-mark {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .88rem; font-weight: 900; color: #07100a;
+      letter-spacing: -.02em; flex-shrink: 0;
+    }
+
+    .nav-wordmark { font-size: .88rem; font-weight: 700; color: var(--text); }
+    .nav-wordmark span { color: var(--green); }
+
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: .82rem; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--green) !important;
+      color: #07100a !important;
+      padding: .4rem 1rem; border-radius: 7px;
+      font-weight: 700 !important;
+      transition: opacity .2s !important;
+    }
+    .nav-cta:hover { opacity: .88 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 5rem 1.5rem 4.5rem;
+      overflow: hidden;
+    }
+
+    .orb-1 {
+      position: absolute; top: -15%; left: 50%;
+      transform: translateX(-50%);
+      width: 950px; height: 600px;
+      background: radial-gradient(ellipse, rgba(46,194,126,.13) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .orb-2 {
+      position: absolute; bottom: -5%; left: 10%;
+      width: 500px; height: 400px;
+      background: radial-gradient(ellipse, rgba(46,194,126,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--green-faint);
+      border: 1px solid var(--border-green);
+      border-radius: 100px; padding: .35rem 1.1rem;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 2rem;
+    }
+
+    .badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s ease infinite;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -.04em;
+      max-width: 920px; margin-bottom: 1.5rem;
+    }
+
+    .text-green {
+      background: linear-gradient(135deg, #2ec27e 0%, #6edba8 45%, #2ec27e 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+
+    .hero-sub {
+      font-size: clamp(.97rem, 2vw, 1.2rem);
+      color: var(--muted); max-width: 560px;
+      line-height: 1.8; margin-bottom: 2.5rem;
+    }
+
+    .cmd-pills {
+      display: flex; flex-wrap: wrap; gap: .55rem;
+      justify-content: center; margin-bottom: 2.5rem;
+      max-width: 720px;
+    }
+
+    .cmd-pill {
+      font-family: 'Courier New', monospace;
+      font-size: .8rem; font-weight: 700;
+      color: var(--green); background: var(--green-faint);
+      border: 1px solid var(--border-green);
+      border-radius: 100px; padding: .38rem 1rem;
+      transition: background .2s, border-color .2s, transform .15s;
+    }
+    .cmd-pill:hover {
+      background: var(--green-dim);
+      border-color: rgba(46,194,126,.4);
+      transform: translateY(-2px);
+    }
+
+    .hero-ctas {
+      display: flex; gap: .9rem; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-weight: 700; font-size: .95rem;
+      border-radius: 10px; text-decoration: none;
+      padding: .85rem 1.9rem; transition: all .2s;
+      letter-spacing: -.01em;
+    }
+    .btn-green { background: var(--green); color: #07100a; }
+    .btn-green:hover {
+      opacity: .9; transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(46,194,126,.3);
+    }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,.2); transform: translateY(-2px); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: flex; border-radius: 16px;
+      border: 1px solid var(--border); overflow: hidden;
+      background: var(--card); max-width: 720px; width: 100%;
+    }
+    .stat-item {
+      flex: 1; padding: 1.25rem 1rem;
+      text-align: center; border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 1.9rem; font-weight: 900;
+      letter-spacing: -.03em; color: var(--green);
+      line-height: 1; margin-bottom: .3rem;
+    }
+    .stat-label { font-size: .7rem; color: var(--muted); font-weight: 500; line-height: 1.35; }
+
+    /* ── LAYOUT ── */
+    .section { padding: 5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .divider { height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
+
+    .eyebrow {
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--green); margin-bottom: .75rem;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; letter-spacing: -.025em;
+      line-height: 1.15; margin-bottom: .9rem;
+    }
+
+    .section-sub {
+      color: var(--muted); font-size: 1.05rem;
+      line-height: 1.75; max-width: 580px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { text-align: center; }
+    .how-section .section-sub { margin: 0 auto 3rem; }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center; margin-top: 3rem;
+    }
+
+    .flow-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.25rem 1.75rem;
+      text-align: center;
+      transition: border-color .3s, transform .2s;
+    }
+    .flow-card:hover { border-color: var(--border-green); transform: translateY(-4px); }
+
+    .flow-icon { font-size: 2.5rem; display: block; margin-bottom: .9rem; }
+
+    .flow-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--green-dim); border: 1px solid var(--border-green);
+      color: var(--green); font-size: .78rem; font-weight: 800;
+      margin-bottom: .9rem;
+    }
+
+    .flow-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+    .flow-card p { font-size: .87rem; color: var(--muted); line-height: 1.65; }
+
+    .flow-arrow {
+      font-size: 1.4rem; color: var(--green);
+      padding: 0 1.25rem; opacity: .45;
+    }
+
+    /* ── COMMANDS GRID ── */
+    .commands-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+
+    .cmd-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px; padding: 1.75rem;
+      position: relative; overflow: hidden;
+      transition: border-color .3s, transform .2s, box-shadow .3s;
+    }
+    .cmd-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+      opacity: 0; transition: opacity .3s;
+    }
+    .cmd-card:hover {
+      border-color: rgba(46,194,126,.3);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.4);
+    }
+    .cmd-card:hover::after { opacity: 1; }
+
+    .cmd-header { display: flex; align-items: flex-start; gap: .9rem; margin-bottom: 1rem; }
+    .cmd-emoji { font-size: 2rem; line-height: 1; flex-shrink: 0; }
+
+    .cmd-name {
+      font-family: 'Courier New', monospace;
+      font-size: .97rem; font-weight: 700;
+      color: var(--green); margin-bottom: .2rem;
+    }
+    .cmd-tagline { font-size: .82rem; color: var(--text); font-weight: 600; }
+    .cmd-desc { font-size: .87rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.1rem; }
+
+    .cmd-result {
+      background: rgba(46,194,126,.06);
+      border: 1px solid rgba(46,194,126,.15);
+      border-radius: 10px; padding: .85rem 1rem;
+      font-size: .8rem; color: rgba(46,194,126,.88); line-height: 1.6;
+    }
+    .cmd-result-label {
+      font-size: .63rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--green); opacity: .65; margin-bottom: .35rem;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative; margin-top: 3rem; padding-left: 3rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 10px; top: 14px; bottom: 14px; width: 2px;
+      background: linear-gradient(180deg, var(--green) 0%, rgba(46,194,126,.08) 100%);
+    }
+    .tl-entry {
+      position: relative; margin-bottom: 2rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem 1.75rem;
+      transition: border-color .3s;
+    }
+    .tl-entry:hover { border-color: rgba(46,194,126,.25); }
+    .tl-dot {
+      position: absolute; left: -3rem; top: 1.4rem;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tl-dot-inner { width: 9px; height: 9px; border-radius: 50%; background: var(--green); }
+    .tl-time {
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--faint); margin-bottom: .2rem;
+    }
+    .tl-cmd {
+      font-family: 'Courier New', monospace;
+      font-size: 1rem; font-weight: 700;
+      color: var(--green); margin-bottom: .3rem;
+    }
+    .tl-desc { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── BEFORE / AFTER ── */
+    .bva-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .bva-col { background: var(--card); border-radius: 18px; padding: 2rem; }
+    .bva-col.before { border: 1px solid rgba(239,68,68,.2); }
+    .bva-col.after  { border: 1px solid rgba(46,194,126,.25); }
+
+    .bva-label {
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.25rem;
+    }
+    .before .bva-label { color: var(--red); }
+    .after  .bva-label { color: var(--green); }
+
+    .bva-items { list-style: none; display: flex; flex-direction: column; gap: .85rem; }
+    .bva-items li {
+      display: flex; align-items: flex-start; gap: .7rem;
+      font-size: .9rem; color: var(--muted); line-height: 1.55;
+    }
+    .bva-icon {
+      width: 20px; height: 20px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; flex-shrink: 0; margin-top: 1px;
+    }
+    .before .bva-icon { background: rgba(239,68,68,.12); color: var(--red); }
+    .after  .bva-icon { background: rgba(46,194,126,.12); color: var(--green); }
+
+    /* ── JASMINE NOTE ── */
+    .jasmine-card {
+      background: var(--card);
+      border: 1px solid var(--border-green);
+      border-radius: 22px; padding: 3rem 2.75rem;
+      position: relative; overflow: hidden;
+    }
+    .jasmine-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--green), var(--green));
+    }
+    .jasmine-quote {
+      font-size: 1.15rem; font-weight: 400;
+      line-height: 1.8; color: var(--text);
+      margin-bottom: 1.75rem; font-style: italic;
+      max-width: 700px;
+    }
+    .jasmine-quote em { font-style: normal; color: var(--green); font-weight: 600; }
+
+    .jasmine-sig { display: flex; align-items: center; gap: 1rem; }
+    .jasmine-mark {
+      width: 46px; height: 46px; border-radius: 12px;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem; font-weight: 900; color: #07100a; flex-shrink: 0;
+    }
+    .jasmine-name { font-weight: 700; font-size: .97rem; color: var(--text); margin-bottom: .1rem; }
+    .jasmine-title { font-size: .82rem; color: var(--muted); }
+
+    /* ── REQUIREMENTS ── */
+    .req-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+    .req-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.75rem;
+      transition: border-color .3s, transform .2s;
+    }
+    .req-card:hover { border-color: var(--border-green); transform: translateY(-3px); }
+    .req-icon { font-size: 1.75rem; margin-bottom: .9rem; display: block; }
+    .req-card h3 { font-size: .97rem; font-weight: 700; margin-bottom: .45rem; }
+    .req-card p { font-size: .85rem; color: var(--muted); line-height: 1.65; }
+    .req-card a { color: var(--green); text-decoration: none; }
+    .req-card a:hover { text-decoration: underline; }
+
+    /* ── TERMINAL ── */
+    .terminal {
+      background: #040e08;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem;
+    }
+    .terminal-bar {
+      display: flex; align-items: center; gap: .5rem;
+      padding: .75rem 1rem;
+      background: rgba(255,255,255,.04);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .t-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .t-dot.r { background: #ff5f56; }
+    .t-dot.y { background: #ffbd2e; }
+    .t-dot.g { background: #27c93f; }
+    .terminal-title { margin-left: auto; font-size: .7rem; color: var(--faint); }
+
+    .terminal-body {
+      padding: 1.5rem; font-family: 'Courier New', monospace;
+      font-size: .85rem; line-height: 1.9; color: #9090b8; overflow-x: auto;
+    }
+    .t-comment { color: var(--faint); }
+    .t-gold { color: var(--green); font-weight: 600; }
+    .t-prompt { color: var(--faint); }
+
+    .os-label {
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: .6rem;
+    }
+
+    /* ── CTA ── */
+    .cta-card {
+      background: var(--card);
+      border: 1px solid rgba(46,194,126,.25);
+      border-radius: 24px; padding: 4.5rem 3rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+    }
+    .cta-card::after {
+      content: '';
+      position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 350px;
+      background: radial-gradient(ellipse, rgba(46,194,126,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-card h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      margin-bottom: 1rem; position: relative; z-index: 1;
+    }
+    .cta-card p {
+      color: var(--muted); font-size: 1.05rem;
+      max-width: 520px; margin: 0 auto 2rem;
+      line-height: 1.75; position: relative; z-index: 1;
+    }
+    .cta-btns {
+      display: flex; gap: 1rem; justify-content: center;
+      flex-wrap: wrap; position: relative; z-index: 1;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 3rem 1.5rem; max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+    }
+    .footer-brand { display: flex; align-items: center; gap: .6rem; margin-bottom: .6rem; }
+    .footer-mark {
+      width: 30px; height: 30px; border-radius: 8px;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 900; color: #07100a;
+    }
+    .footer-name { font-weight: 700; font-size: .88rem; color: var(--text); }
+    .footer-tagline { font-size: .8rem; color: var(--muted); font-style: italic; margin-bottom: .45rem; }
+    .footer-copy { font-size: .75rem; color: var(--faint); }
+
+    .footer-links { display: flex; flex-direction: column; gap: .5rem; text-align: right; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: .85rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--green); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+
+      .flow { grid-template-columns: 1fr; gap: 1rem; }
+      .flow-arrow { transform: rotate(90deg); text-align: center; padding: 0; }
+
+      .commands-grid { grid-template-columns: 1fr; }
+      .bva-grid { grid-template-columns: 1fr; }
+      .req-grid { grid-template-columns: 1fr; }
+
+      .timeline { padding-left: 2.25rem; }
+      .tl-dot { left: -2.25rem; }
+
+      .cta-card { padding: 3rem 1.5rem; }
+      footer { flex-direction: column; }
+      .footer-links { text-align: left; }
+    }
+
+    @media (max-width: 500px) {
+      .hero h1 { font-size: 2.3rem; }
+      .stats-bar { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-item:last-child { border-bottom: none; }
+      .section { padding: 3.5rem 1.25rem; }
+      .jasmine-card { padding: 2rem 1.5rem; }
+    }
+
+    /* ── SAMPLE OUTPUT ── */
+    .sample-wrap {
+      background: linear-gradient(180deg, rgba(15,15,26,.5) 0%, var(--bg) 100%);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .sample-tabs {
+      display: flex; gap: .6rem; margin-bottom: 1.5rem; flex-wrap: wrap;
+    }
+    .sample-tab {
+      padding: .45rem 1.1rem; border-radius: 8px; cursor: pointer;
+      font-size: .82rem; font-weight: 700; border: 1px solid var(--border);
+      background: var(--card); color: var(--muted); transition: all .2s;
+      font-family: 'Courier New', monospace;
+    }
+    .sample-tab.active { background: var(--gold-dim); border-color: var(--border-gold); color: var(--gold); }
+    .sample-panel { display: none; }
+    .sample-panel.active { display: block; }
+
+    .chat-window {
+      background: #060610; border: 1px solid rgba(255,255,255,.09);
+      border-radius: 14px; overflow: hidden;
+    }
+    .chat-bar {
+      display: flex; align-items: center; gap: .5rem; padding: .75rem 1.1rem;
+      background: rgba(255,255,255,.03); border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .c-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .c-dot.r { background: #ff5f56; } .c-dot.y { background: #ffbd2e; } .c-dot.g { background: #27c93f; }
+    .chat-title { margin-left: auto; font-size: .7rem; font-family: 'Courier New', monospace; color: var(--faint); }
+
+    .chat-body { padding: 1.5rem 1.75rem; display: flex; flex-direction: column; gap: 1rem; }
+
+    .chat-msg { display: flex; gap: .85rem; align-items: flex-start; }
+    .chat-avatar {
+      width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 800;
+    }
+    .chat-avatar.you { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--border-gold); }
+    .chat-avatar.ai { background: var(--purple-dim); color: var(--purple-light); border: 1px solid rgba(124,58,237,.3); }
+
+    .chat-bubble { flex: 1; }
+    .chat-sender { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); margin-bottom: .35rem; }
+    .chat-text { font-size: .87rem; line-height: 1.7; color: #c0c0e0; }
+    .chat-text strong { color: var(--text); }
+    .chat-text .gold { color: var(--gold); }
+    .chat-text .green { color: var(--green); }
+    .chat-text .red { color: var(--red); }
+    .chat-text .muted { color: var(--muted); }
+    .chat-input-row {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .9rem 1.25rem; background: rgba(255,255,255,.02);
+      border-top: 1px solid rgba(255,255,255,.06);
+      font-family: 'Courier New', monospace; font-size: .85rem; color: var(--faint);
+    }
+    .chat-prompt-icon { color: var(--gold); }
+
+    .sample-caption {
+      margin-top: 1.25rem; font-size: .88rem; color: var(--muted);
+      line-height: 1.7; padding: 1rem 1.25rem;
+      background: var(--card); border-radius: 10px;
+      border-left: 3px solid var(--gold);
+    }
+
+    /* ── POSSIBILITIES ── */
+    .poss-grid-2 {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+    .poss-card-2 {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px; padding: 2rem; position: relative; overflow: hidden;
+      transition: transform .2s, border-color .3s;
+    }
+    .poss-card-2:hover { transform: translateY(-4px); border-color: var(--border-gold); }
+    .poss-card-2::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); }
+    .poss-icon-2 { font-size: 2rem; margin-bottom: .9rem; display: block; }
+    .poss-card-2 h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+    .poss-card-2 p { font-size: .87rem; color: var(--muted); line-height: 1.65; }
+
+    @media (max-width: 768px) {
+      .poss-grid-2 { grid-template-columns: 1fr; }
+      .sample-tabs { gap: .4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-brand" href="#hero">
+    <div class="nav-mark">JD</div>
+    <div class="nav-wordmark"><span>JDesigns</span> Strategist LLC</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#commands">Commands</a></li>
+    <li><a href="#your-day">Your Day</a></li>
+    <li><a href="#get-it">Get It — $47</a></li>
+    <li><a href="brain-guide.html" class="nav-cta">Build Your Brain →</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="orb-1"></div>
+  <div class="orb-2"></div>
+  <div class="hero-badge fu"><div class="badge-dot"></div>Business Brain Command Pack — $47</div>
+  <h1 class="fu fu1">6 Commands.<br><span class="text-green">Your Whole Business Runs.</span></h1>
+  <p class="hero-sub fu fu2">
+    Type one slash command. Claude reads your business files, drafts your replies,
+    classifies your messages, logs your clients — and tells you exactly what to do next.
+    No prompts. No setup. Just results.
+  </p>
+  <div class="cmd-pills fu fu3">
+    <span class="cmd-pill">/daily-priorities</span>
+    <span class="cmd-pill">/capture-message</span>
+    <span class="cmd-pill">/client-update</span>
+    <span class="cmd-pill">/onboard-client</span>
+    <span class="cmd-pill">/save-session</span>
+    <span class="cmd-pill">/route-offer</span>
+  </div>
+  <div class="hero-ctas fu fu4">
+    <a class="btn btn-green" href="#get-it">Get the Command Pack — $47</a>
+    <a class="btn btn-outline" href="#commands">See All 6 Commands</a>
+  </div>
+  <div class="stats-bar fu fu4">
+    <div class="stat-item">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Built-In<br>Commands</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">60s</div>
+      <div class="stat-label">To Install<br>&amp; Start</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Coding<br>Required</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Hours Saved<br>Per Week</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="section how-section" id="how-it-works">
+  <div class="eyebrow">How It Works</div>
+  <h2>Simple as 1, 2, 3.</h2>
+  <p class="section-sub">No complicated setup. No prompts to write. Open Claude Code, type a command, and it already knows your entire business.</p>
+  <div class="flow">
+    <div class="flow-card">
+      <span class="flow-icon">⌨️</span>
+      <div class="flow-num">1</div>
+      <h3>Type One Command</h3>
+      <p>Open Claude in your business folder and type any slash command. That's all you do.</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-card">
+      <span class="flow-icon">🧠</span>
+      <div class="flow-num">2</div>
+      <h3>Claude Reads Your Brain</h3>
+      <p>Claude loads your business files automatically — your services, prices, voice, and clients. It already knows you.</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-card">
+      <span class="flow-icon">✅</span>
+      <div class="flow-num">3</div>
+      <h3>Get It Done</h3>
+      <p>Replies drafted. Messages classified. Clients logged. Priorities sorted. All in seconds — all in your voice.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── 6 COMMANDS ── -->
+<section class="section" id="commands">
+  <div class="eyebrow">The 6 Commands</div>
+  <h2>One command for every part of your day.</h2>
+  <p class="section-sub">Each command handles a specific business moment. Paste your info in — get exactly what you need out.</p>
+
+  <div class="commands-grid">
+
+    <div class="cmd-card">
+      <div class="cmd-header">
+        <div class="cmd-emoji">🌅</div>
+        <div>
+          <div class="cmd-name">/daily-priorities</div>
+          <div class="cmd-tagline">Run first thing every morning</div>
+        </div>
+      </div>
+      <p class="cmd-desc">Reads all your client and lead files and builds you a ranked action board — no thinking required. You know exactly who to call, what to send, and what to do first.</p>
+      <div class="cmd-result">
+        <div class="cmd-result-label">What you get</div>
+        Today's top priorities ranked · Active clients by urgency · Warm leads to follow up · Your #1 money move for the day
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-header">
+        <div class="cmd-emoji">📩</div>
+        <div>
+          <div class="cmd-name">/capture-message</div>
+          <div class="cmd-tagline">When any message comes in</div>
+        </div>
+      </div>
+      <p class="cmd-desc">Paste any message — DM, email, inquiry, complaint, vague "hey do you do X?" text. Claude classifies it, flags what matters, and drafts your reply in your voice. Done in 30 seconds.</p>
+      <div class="cmd-result">
+        <div class="cmd-result-label">What you get</div>
+        Message type identified · Risk flags raised · Draft reply in your voice · Exact next step stated
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-header">
+        <div class="cmd-emoji">📋</div>
+        <div>
+          <div class="cmd-name">/client-update</div>
+          <div class="cmd-tagline">After any client call or interaction</div>
+        </div>
+      </div>
+      <p class="cmd-desc">Just got off a client call? Paste your rough notes. Claude turns them into a clean log, catches anything risky you might have missed, and drafts your follow-up message automatically.</p>
+      <div class="cmd-result">
+        <div class="cmd-result-label">What you get</div>
+        Structured log entry · Scope changes flagged · Blockers caught · Follow-up message ready to send
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-header">
+        <div class="cmd-emoji">🎉</div>
+        <div>
+          <div class="cmd-name">/onboard-client</div>
+          <div class="cmd-tagline">The moment a new client signs</div>
+        </div>
+      </div>
+      <p class="cmd-desc">New client? Don't build the folder yourself. Paste their order or contract details and Claude sets up the entire client structure — folder, welcome doc, checklist, missing info flagged.</p>
+      <div class="cmd-result">
+        <div class="cmd-result-label">What you get</div>
+        Client folder created · Welcome file populated · Kickoff checklist generated · Missing info highlighted
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-header">
+        <div class="cmd-emoji">💾</div>
+        <div>
+          <div class="cmd-name">/save-session</div>
+          <div class="cmd-tagline">Before you close your laptop</div>
+        </div>
+      </div>
+      <p class="cmd-desc">Run at the end of every work session. Claude reviews everything that happened today and updates your memory files — so tomorrow, it picks up exactly where you left off. Nothing falls through the cracks.</p>
+      <div class="cmd-result">
+        <div class="cmd-result-label">What you get</div>
+        Session summary logged · Memory files updated · Full context saved · Tomorrow starts where today ended
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-header">
+        <div class="cmd-emoji">💡</div>
+        <div>
+          <div class="cmd-name">/route-offer</div>
+          <div class="cmd-tagline">When a lead describes their situation</div>
+        </div>
+      </div>
+      <p class="cmd-desc">A lead tells you what they need. You're not sure which package fits or what to quote. Paste their message — Claude reads your services, picks the right offer, and drafts the pitch. Ready to send.</p>
+      <div class="cmd-result">
+        <div class="cmd-result-label">What you get</div>
+        Best-fit package selected · Exact price included · Compelling pitch drafted · Copy and send
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SAMPLE OUTPUT ── -->
+<div class="sample-wrap">
+  <section class="section" id="sample-output">
+    <div class="eyebrow">See It In Action</div>
+    <h2>This is what you actually get.</h2>
+    <p class="section-sub">Real sample output from three commands — so you know exactly what lands in your inbox every time you run one.</p>
+
+    <div class="sample-tabs" style="margin-top:2rem;">
+      <button class="sample-tab active" onclick="switchSample('priorities')">/daily-priorities</button>
+      <button class="sample-tab"        onclick="switchSample('capture')"  >/capture-message</button>
+      <button class="sample-tab"        onclick="switchSample('update')"   >/client-update</button>
+    </div>
+
+    <div id="s-priorities" class="sample-panel active">
+      <div class="chat-window">
+        <div class="chat-bar">
+          <span class="c-dot r"></span><span class="c-dot y"></span><span class="c-dot g"></span>
+          <span class="chat-title">Claude Code — /daily-priorities</span>
+        </div>
+        <div class="chat-body">
+          <div class="chat-msg">
+            <div class="chat-avatar you">Y</div>
+            <div class="chat-bubble">
+              <div class="chat-sender">You</div>
+              <div class="chat-text"><span class="gold">/daily-priorities</span></div>
+            </div>
+          </div>
+          <div class="chat-msg">
+            <div class="chat-avatar ai">AI</div>
+            <div class="chat-bubble">
+              <div class="chat-sender">Claude</div>
+              <div class="chat-text">
+                <strong>Today's Action Board — June 17</strong><br><br>
+                <span class="green">🔥 DO NOW</span><br>
+                <strong>1. Marcus — Meta Ads Setup due Jun 20</strong> · Campaign is live but pixel not verified. Confirm conversion event before billing.<br>
+                <strong>2. Sarah — Content Package</strong> · Story set outstanding. Client DM'd this morning asking for update.<br><br>
+                <span class="gold">📨 FOLLOW UP</span><br>
+                <strong>3. Jordan (warm lead)</strong> · Proposal sent Jun 15. No reply. 2-day window → send a short check-in today.<br>
+                <strong>4. Amanda / referral</strong> · Said "I'll circle back next week." It's been 10 days. Worth a nudge.<br><br>
+                <span class="muted">💡 MONEY MOVE: Sarah's retainer Month 2 starts Jul 1. Confirm renewal in today's reply — don't wait.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-row">
+          <span class="chat-prompt-icon">›</span> Type a follow-up or run your next command...
+        </div>
+      </div>
+      <div class="sample-caption">Claude reads every client file and lead note to build this — ranked by urgency and revenue impact. You get this in about 15 seconds, before you've touched your inbox.</div>
+    </div>
+
+    <div id="s-capture" class="sample-panel">
+      <div class="chat-window">
+        <div class="chat-bar">
+          <span class="c-dot r"></span><span class="c-dot y"></span><span class="c-dot g"></span>
+          <span class="chat-title">Claude Code — /capture-message</span>
+        </div>
+        <div class="chat-body">
+          <div class="chat-msg">
+            <div class="chat-avatar you">Y</div>
+            <div class="chat-bubble">
+              <div class="chat-sender">You</div>
+              <div class="chat-text"><span class="gold">/capture-message</span> "Hey! I found you through Instagram. Do you do social media for restaurants? We have 3 locations and want to grow our following."</div>
+            </div>
+          </div>
+          <div class="chat-msg">
+            <div class="chat-avatar ai">AI</div>
+            <div class="chat-bubble">
+              <div class="chat-sender">Claude</div>
+              <div class="chat-text">
+                <strong>Message Classification</strong><br>
+                Type: <span class="green">Warm inbound lead</span> · Category: Social media management inquiry<br>
+                Budget mentioned: <span class="red">No</span> · Scope: Multi-location (3) · Source: Instagram<br><br>
+                <strong>Flags:</strong> Multi-location may push this into Growth Retainer territory ($1,495/mo). Confirm scope before quoting.<br><br>
+                <strong>Draft Reply:</strong><br>
+                <span class="muted">Hey! Yes, absolutely — social media for restaurants is exactly what I do. Three locations is actually a great setup for the kind of strategy I build. Before I send you info on what I offer, quick question: are you looking for content creation, ads, or both?</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-row">
+          <span class="chat-prompt-icon">›</span> Approve, edit, or ask for a different angle...
+        </div>
+      </div>
+      <div class="sample-caption">Any message, any platform. Claude classifies it, flags what matters, and drafts your reply in your voice — ready to review and send in under 30 seconds.</div>
+    </div>
+
+    <div id="s-update" class="sample-panel">
+      <div class="chat-window">
+        <div class="chat-bar">
+          <span class="c-dot r"></span><span class="c-dot y"></span><span class="c-dot g"></span>
+          <span class="chat-title">Claude Code — /client-update</span>
+        </div>
+        <div class="chat-body">
+          <div class="chat-msg">
+            <div class="chat-avatar you">Y</div>
+            <div class="chat-bubble">
+              <div class="chat-sender">You</div>
+              <div class="chat-text"><span class="gold">/client-update</span> Marcus called — wants to add a retargeting campaign to the package. Said he has a $500/mo budget. I said I'd look into it. Also pushed his check-in call to next Thursday.</div>
+            </div>
+          </div>
+          <div class="chat-msg">
+            <div class="chat-avatar ai">AI</div>
+            <div class="chat-bubble">
+              <div class="chat-sender">Claude</div>
+              <div class="chat-text">
+                <strong>Client Log Updated — Marcus</strong><br>
+                Date: Jun 17 · Type: Call<br><br>
+                <span class="red">⚠️ Scope Flag:</span> Retargeting campaign is outside current package scope. Do not begin work until you've confirmed additional payment and updated the agreement.<br><br>
+                <strong>Check-in moved:</strong> Next Thursday — calendar reminder suggested.<br><br>
+                <strong>Draft Follow-Up:</strong><br>
+                <span class="muted">Marcus — thanks for the call. I'll put together a quick scope note on the retargeting piece and what that would look like at your $500/mo budget. I'll send that over by Friday, and we'll go from there at our Thursday check-in.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-row">
+          <span class="chat-prompt-icon">›</span> Send the reply or ask Claude to adjust tone...
+        </div>
+      </div>
+      <div class="sample-caption">Paste your rough notes from any call or client interaction. Claude logs it, flags scope risk, and drafts the follow-up message — professionally worded and ready to send.</div>
+    </div>
+  </section>
+</div>
+
+<script>
+function switchSample(name) {
+  document.querySelectorAll('.sample-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.sample-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('s-' + name).classList.add('active');
+  const idx = { priorities: 0, capture: 1, update: 2 };
+  document.querySelectorAll('.sample-tab')[idx[name]].classList.add('active');
+}
+</script>
+
+<!-- ── POSSIBILITIES ── -->
+<section class="section" id="possibilities">
+  <div class="eyebrow">What This Unlocks</div>
+  <h2>The possibilities once you're running on commands.</h2>
+  <p class="section-sub">Once your Brain is built and your commands are installed, the way you work changes. Here's what becomes possible.</p>
+
+  <div class="poss-grid-2">
+    <div class="poss-card-2">
+      <span class="poss-icon-2">⏱️</span>
+      <h3>Your Admin Time Drops to Under an Hour a Day</h3>
+      <p>The work that used to take half your day — classifying messages, writing follow-ups, logging client notes, figuring out what to do first — gets handled by one command each. You stay in control, but stop doing it manually.</p>
+    </div>
+    <div class="poss-card-2">
+      <span class="poss-icon-2">💬</span>
+      <h3>Every Client Reply Goes Out Faster</h3>
+      <p>No more staring at an inbox trying to figure out how to word something. Paste the message, run the command, get a draft that sounds like you with the right context already pulled in. Review and send.</p>
+    </div>
+    <div class="poss-card-2">
+      <span class="poss-icon-2">💰</span>
+      <h3>Leads Stop Falling Through</h3>
+      <p>When a lead comes in and you're busy, you used to let it sit. Now you run /capture-message in 30 seconds, get a draft reply, and send it before the moment passes. That's revenue you used to lose.</p>
+    </div>
+    <div class="poss-card-2">
+      <span class="poss-icon-2">🧠</span>
+      <h3>Claude Picks Up Where You Left Off — Every Day</h3>
+      <p>/save-session at the end of every day means tomorrow starts with full context. Your active clients, your open leads, what's due, what's waiting on who — all loaded before you type a single thing.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── YOUR DAY ── -->
+<section class="section" id="your-day">
+  <div class="eyebrow">Your Day</div>
+  <h2>See what a real day looks like.</h2>
+  <p class="section-sub">From morning priorities to end-of-day wrap-up — the Command Pack is there at every moment.</p>
+
+  <div class="timeline">
+
+    <div class="tl-entry">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-time">9:00 AM</div>
+      <div class="tl-cmd">/daily-priorities</div>
+      <div class="tl-desc">Before you touch your inbox, you run one command. In 30 seconds you have a ranked list — who needs attention today, which leads are warm, and the single thing you should do before noon. No more guessing where to start.</div>
+    </div>
+
+    <div class="tl-entry">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-time">10:30 AM</div>
+      <div class="tl-cmd">/capture-message</div>
+      <div class="tl-desc">A new DM hits your inbox — "hey do you do brand strategy?" You paste it in. Claude classifies it as a warm lead, notes they didn't mention a budget, and drafts a conversational reply that sounds exactly like you. You review, tweak one sentence, and send.</div>
+    </div>
+
+    <div class="tl-entry">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-time">2:00 PM</div>
+      <div class="tl-cmd">/client-update</div>
+      <div class="tl-desc">You just got off a client call. Your notes are a mess — "moved deadline, new request, something about adding Instagram." Paste them in. Claude structures it cleanly, flags the new request as a potential scope add, and drafts a professional follow-up.</div>
+    </div>
+
+    <div class="tl-entry">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-time">4:00 PM</div>
+      <div class="tl-cmd">/onboard-client</div>
+      <div class="tl-desc">A new order just hit your inbox. You paste the confirmation. Claude creates her folder, populates what it knows, flags that you're still missing her brand colors and website URL, and generates your full kickoff checklist. Done in under a minute.</div>
+    </div>
+
+    <div class="tl-entry">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-time">5:30 PM</div>
+      <div class="tl-cmd">/save-session</div>
+      <div class="tl-desc">Before you close your laptop, one last command. Claude reviews the entire session and updates your memory files with everything that happened today. Tomorrow morning, when you run /daily-priorities, it picks up right where you left off.</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── BEFORE / AFTER ── -->
+<section class="section" id="before-after">
+  <div class="eyebrow">The Difference</div>
+  <h2>What changes when you run one command.</h2>
+  <p class="section-sub">Most service providers lose 1–2 hours a day to tasks that feel productive but aren't. Here's what actually changes.</p>
+
+  <div class="bva-grid">
+    <div class="bva-col before">
+      <div class="bva-label">Without Command Pack</div>
+      <ul class="bva-items">
+        <li><div class="bva-icon">✕</div><span>Open Claude, explain your business from scratch — services, prices, voice, rules. Again. Every single time.</span></li>
+        <li><div class="bva-icon">✕</div><span>Client emails take 20 minutes to write when they should take 2. You're starting from a blank page.</span></li>
+        <li><div class="bva-icon">✕</div><span>A message sits in your inbox for days because you're not sure what to do with it or how to respond.</span></li>
+        <li><div class="bva-icon">✕</div><span>New client signed — now you spend an hour building the folder, writing the welcome email, chasing down info.</span></li>
+        <li><div class="bva-icon">✕</div><span>End of day, you close your laptop with no record of what happened. Tomorrow you start fresh with zero context.</span></li>
+      </ul>
+    </div>
+    <div class="bva-col after">
+      <div class="bva-label">With Command Pack</div>
+      <ul class="bva-items">
+        <li><div class="bva-icon">✓</div><span>One command. Claude already knows your business, your prices, your voice, your clients. You go straight to the actual work.</span></li>
+        <li><div class="bva-icon">✓</div><span>Draft replies appear in your tone with the right context already pulled in. Review and send — 2 minutes, not 20.</span></li>
+        <li><div class="bva-icon">✓</div><span>Every message is classified and responded to fast. Nothing sits. Nothing gets missed. Nothing falls through.</span></li>
+        <li><div class="bva-icon">✓</div><span>New client onboarded in under a minute. Folder built, welcome drafted, checklist ready — Claude handles it all.</span></li>
+        <li><div class="bva-icon">✓</div><span>/save-session updates everything automatically. Tomorrow, Claude picks up exactly where you left off.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FROM JASMINE ── -->
+<section class="section">
+  <div class="jasmine-card">
+    <p class="jasmine-quote">
+      "I built these commands because I was tired of explaining my own business to Claude every single day.
+      I run a real consulting practice — <em>JDesigns Strategist LLC</em> — and I needed Claude to actually
+      know me and work with me. Once I built my Brain files and wired up these commands, everything changed.
+      I now run my entire client operation from these 6 commands. I priced them at $47 because every service provider
+      deserves this kind of leverage — and it's the lowest I can go and still make them worth your time."
+    </p>
+    <div class="jasmine-sig">
+      <div class="jasmine-mark">J</div>
+      <div>
+        <div class="jasmine-name">Jasmine</div>
+        <div class="jasmine-title">JDesigns Strategist LLC &nbsp;·&nbsp; Simple Systems for Real Life &amp; Business</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── REQUIREMENTS ── -->
+<section class="section" id="what-you-need" style="text-align:center;">
+  <div class="eyebrow">Before You Install</div>
+  <h2>What you need to get started.</h2>
+  <p class="section-sub" style="margin: 0 auto 2.5rem;">Three things. If you don't have your Business Brain files yet, start there first — then come back and install this.</p>
+  <div class="req-grid">
+    <div class="req-card">
+      <span class="req-icon">🧠</span>
+      <h3>Your Business Brain Files</h3>
+      <p>You need your CLAUDE.md, my-business-brain.md, and my-prompts.md already set up. These are what teach Claude about you. No Brain files = no context. <a href="brain-guide.html">Build your Brain first →</a></p>
+    </div>
+    <div class="req-card">
+      <span class="req-icon">⚡</span>
+      <h3>Claude Code (Free)</h3>
+      <p>The Command Pack runs inside Claude Code — Anthropic's free CLI. No coding needed. Download at <a href="https://claude.ai/code" target="_blank">claude.ai/code</a> and open it in your business folder to get started.</p>
+    </div>
+    <div class="req-card">
+      <span class="req-icon">📁</span>
+      <h3>A clients/ Folder (Optional)</h3>
+      <p>Commands like /onboard-client and /client-update work best with a clients/ folder. Claude creates and manages client files there automatically — and will create the folder if it doesn't exist yet.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── GET IT ── -->
+<section class="section" id="get-it">
+  <div class="eyebrow">Get the Command Pack</div>
+  <h2>$47 one-time. Up and running in 60 seconds.</h2>
+  <p class="section-sub">Purchase below, download the files, drop them into your business brain folder, and open Claude Code. That's it — your first command is ready to run.</p>
+
+  <div style="margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+
+    <div class="terminal" style="border-color: rgba(46,194,126,.25);">
+      <div class="terminal-bar" style="background: rgba(46,194,126,.06); border-color: rgba(46,194,126,.15);">
+        <span style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--green);">Step 1 — Purchase</span>
+      </div>
+      <div class="terminal-body" style="color:var(--muted); font-family:inherit; font-size:.9rem; line-height:1.8;">
+        Click the button below to get the Command Pack for $47. You'll receive instant access to download all 6 command files.<br><br>
+        <a href="https://www.paypal.com/ncp/payment/SGPW3VUW4DAG2" class="btn btn-green" style="display:inline-flex; font-size:.88rem; padding:.75rem 1.5rem; text-decoration:none;" target="_blank" rel="noopener">Get the Command Pack — $47 →</a>
+      </div>
+    </div>
+
+    <div class="terminal" style="border-color: rgba(46,194,126,.1);">
+      <div class="terminal-bar">
+        <span style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);">Step 2 — Install (Mac / Linux)</span>
+      </div>
+      <div class="terminal-body">
+        <span class="t-comment"># Navigate to your business brain folder</span><br>
+        <span class="t-prompt">$ </span><span class="t-gold">cd</span> ~/my-business-brain<br><br>
+        <span class="t-comment"># Run the install script</span><br>
+        <span class="t-prompt">$ </span><span class="t-gold">curl</span> -fsSL https://raw.githubusercontent.com/jazzy15j/business-brain-command-pack/main/install.sh | <span class="t-gold">bash</span>
+      </div>
+    </div>
+
+    <div class="terminal" style="border-color: rgba(46,194,126,.1);">
+      <div class="terminal-bar">
+        <span style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);">Step 2 — Install (Windows PowerShell)</span>
+      </div>
+      <div class="terminal-body">
+        <span class="t-comment"># Navigate to your business brain folder</span><br>
+        <span class="t-prompt">PS&gt; </span><span class="t-gold">cd</span> C:\Users\You\my-business-brain<br><br>
+        <span class="t-comment"># Run the install script</span><br>
+        <span class="t-prompt">PS&gt; </span><span class="t-gold">iwr</span> -useb https://raw.githubusercontent.com/jazzy15j/business-brain-command-pack/main/install.ps1 | <span class="t-gold">iex</span>
+      </div>
+    </div>
+
+    <div class="terminal" style="border-color: rgba(46,194,126,.1);">
+      <div class="terminal-bar">
+        <span style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);">Step 3 — Run your first command</span>
+      </div>
+      <div class="terminal-body">
+        <span class="t-prompt">$ </span><span class="t-gold">claude</span><br><br>
+        <span class="t-comment"># Claude already knows your business</span><br>
+        <span class="t-prompt">&gt; </span><span class="t-gold">/daily-priorities</span><br><br>
+        <span style="color:#9090b8;">Reading your brain files...<br>Here's exactly what to do today:</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="margin-top:1.5rem; font-size:.85rem; color:var(--muted); text-align:center;">Need your Business Brain files first? <a href="brain-guide.html" style="color:var(--green);">Build them here →</a></p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── CTA ── -->
+<section class="section" style="padding-top:3rem; padding-bottom:3rem;">
+  <div class="cta-card">
+    <div class="eyebrow">Ready?</div>
+    <h2>Run your business<br><span class="text-green">from one command.</span></h2>
+    <p>$47 one-time. Runs in 60 seconds. Built for service-based business owners — not developers. If you haven't built your Business Brain yet, start there first. Then come back and these 6 commands are ready to go.</p>
+    <div class="cta-btns">
+      <a class="btn btn-green" href="#get-it">Get the Command Pack — $47</a>
+      <a class="btn btn-outline" href="brain-guide.html">Build Your Business Brain First →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div>
+    <div class="footer-brand">
+      <div class="footer-mark">JD</div>
+      <div class="footer-name">JDesigns Strategist LLC</div>
+    </div>
+    <div class="footer-tagline">Simple Systems for Real Life &amp; Business</div>
+    <div class="footer-copy">Made by Jasmine &nbsp;·&nbsp; © 2025 JDesigns Strategist LLC</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://jdesigns.info/" target="_blank">jdesigns.info</a>
+    <a href="https://fiverr.com/jazz96designs" target="_blank">fiverr.com/jazz96designs</a>
+    <a href="brain-guide.html">Build Your Business Brain</a>
+    <a href="#get-it">Get the Command Pack</a>
+  </div>
+</footer>
+
+</body></html>

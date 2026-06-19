@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JDesigns Strategist — Jasmine</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #07100a;
+      --card: #0d1a10;
+      --border: rgba(30,50,37,0.7);
+      --border-green: rgba(46,194,126,.22);
+      --green: #2ec27e;
+      --green-dim: rgba(46,194,126,.1);
+      --text: #ffffff;
+      --muted: #8aab96;
+      --faint: #1e3225;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 52px 20px 72px;
+    }
+
+    /* ── Profile ── */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .avatar {
+      width: 78px; height: 78px;
+      border-radius: 50%;
+      border: 2px solid var(--border-green);
+      object-fit: cover;
+      margin-bottom: 14px;
+    }
+
+    .avatar-placeholder {
+      width: 78px; height: 78px;
+      border-radius: 50%;
+      border: 2px solid var(--border-green);
+      background: var(--card);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+      font-size: 1.6rem; font-weight: 900; color: var(--green);
+    }
+
+    .profile-name {
+      font-size: 1.15rem; font-weight: 700;
+      letter-spacing: -.01em; margin-bottom: 4px;
+    }
+
+    .profile-handle {
+      font-size: .8rem; color: var(--green);
+      letter-spacing: .03em; margin-bottom: 10px;
+    }
+
+    .profile-bio {
+      font-size: .88rem; color: var(--muted);
+      line-height: 1.65; max-width: 360px;
+    }
+
+    /* ── Socials ── */
+    .socials {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 36px;
+    }
+
+    .social-pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 14px; border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: .78rem; font-weight: 600; color: var(--muted);
+      text-decoration: none;
+      transition: border-color .15s, color .15s, background .15s;
+    }
+    .social-pill:hover { border-color: var(--green); color: var(--text); background: var(--green-dim); }
+    .social-pill svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    .social-pill-cta {
+      background: var(--green); color: #07100a;
+      border-color: var(--green); font-weight: 700;
+    }
+    .social-pill-cta:hover { opacity: .88; color: #07100a; background: var(--green); }
+
+    /* ── Section Label ── */
+    .section-label {
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 10px;
+      padding-left: 2px;
+    }
+
+    /* ── Link Cards ── */
+    .link-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+
+    .link-card {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 16px 18px;
+      text-decoration: none; color: var(--text);
+      transition: border-color .15s, transform .12s, box-shadow .15s;
+    }
+    .link-card:hover {
+      border-color: var(--border-green);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(46,194,126,.08);
+    }
+
+    .link-card-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 10px; background: var(--green-dim);
+      border: 1px solid var(--border-green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .link-card-body { flex: 1; min-width: 0; }
+    .link-card-title { font-size: .92rem; font-weight: 700; line-height: 1.3; margin-bottom: 2px; }
+    .link-card-desc { font-size: .78rem; color: var(--muted); line-height: 1.4; }
+
+    .link-card-right {
+      display: flex; flex-direction: column;
+      align-items: flex-end; gap: 5px; flex-shrink: 0;
+    }
+
+    .price-badge {
+      font-size: .7rem; font-weight: 800;
+      letter-spacing: .04em; padding: 3px 9px;
+      border-radius: 999px;
+    }
+    .price-free {
+      background: transparent;
+      border: 1px solid var(--green);
+      color: var(--green);
+    }
+    .price-paid {
+      background: var(--green);
+      color: #07100a;
+    }
+
+    .arrow {
+      color: var(--muted); font-size: .8rem;
+      transition: color .15s, transform .15s;
+    }
+    .link-card:hover .arrow { color: var(--green); transform: translateX(3px); }
+
+    /* ── Featured card (Work with me) ── */
+    .link-card-featured {
+      border-color: var(--border-green);
+      background: linear-gradient(135deg, var(--card) 0%, rgba(13,51,32,.5) 100%);
+    }
+
+    /* ── Email section ── */
+    .email-section {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 22px 20px;
+      text-align: center; margin-bottom: 32px;
+    }
+    .email-section h3 {
+      font-size: .95rem; font-weight: 700; margin-bottom: 6px;
+    }
+    .email-section p {
+      font-size: .8rem; color: var(--muted); margin-bottom: 16px; line-height: 1.5;
+    }
+    .email-form { display: flex; gap: 8px; }
+    .email-form input {
+      flex: 1; padding: 10px 14px; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--bg);
+      color: var(--text); font-size: .85rem;
+      font-family: inherit; outline: none;
+      transition: border-color .15s;
+    }
+    .email-form input::placeholder { color: var(--muted); }
+    .email-form input:focus { border-color: var(--green); }
+    .email-form button {
+      padding: 10px 18px; border-radius: 999px;
+      background: var(--green); color: #07100a;
+      font-size: .8rem; font-weight: 700;
+      font-family: inherit; border: none; cursor: pointer;
+      white-space: nowrap; transition: opacity .15s;
+    }
+    .email-form button:hover { opacity: .88; }
+    .email-success { display: none; font-size: .85rem; color: var(--green); margin-top: 12px; }
+    .email-note { font-size: .72rem; color: var(--faint); margin-top: 10px; }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      text-align: center;
+    }
+    .footer-name { font-size: .8rem; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
+    .footer-copy { font-size: .72rem; color: var(--faint); }
+
+    @media (max-width: 420px) {
+      .page { padding: 36px 16px 56px; }
+      .email-form { flex-direction: column; }
+      .email-form input, .email-form button { border-radius: 10px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Profile -->
+  <div class="profile">
+    <img class="avatar" src="assets/jasmineheadshot.png" alt="Jasmine" onerror="this.style.display='none'; document.querySelector('.avatar-placeholder').style.display='flex';">
+    <div class="avatar-placeholder" style="display:none;">J</div>
+    <div class="profile-name">Jasmine</div>
+    <div class="profile-handle">@jdesigns.info</div>
+    <p class="profile-bio">Meta Business help, Claude AI tools, and simple systems for service providers. Start with the free checklist or browse below.</p>
+  </div>
+
+  <!-- Socials -->
+  <div class="socials">
+    <a href="https://instagram.com/jdesigns.info" class="social-pill" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      Instagram
+    </a>
+    <a href="https://facebook.com/jdesigns.info" class="social-pill" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
+        <path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/>
+      </svg>
+      Facebook
+    </a>
+    <a href="https://www.fiverr.com/jazz96designs" class="social-pill social-pill-cta" target="_blank" rel="noopener">
+      Work with me →
+    </a>
+  </div>
+
+  <!-- Meta Help -->
+  <div class="section-label">Meta Business Help</div>
+  <div class="link-stack">
+
+    <a href="meta-checklist.html" class="link-card">
+      <div class="link-card-icon">🆘</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Meta Business Access Emergency Checklist</div>
+        <div class="link-card-desc">Locked out or confused? Start here — free.</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-free">Free</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+    <a href="meta-vault.html" class="link-card">
+      <div class="link-card-icon">🔐</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Meta Business Fix-It Vault</div>
+        <div class="link-card-desc">Full troubleshooting system — scripts, checklists, next steps.</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-paid">$97</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+    <a href="https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues" class="link-card" target="_blank" rel="noopener">
+      <div class="link-card-icon">👩‍💻</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Meta Ecosystem Review — Done With You</div>
+        <div class="link-card-desc">Complex situation? Jasmine reviews your setup personally.</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-paid">$595</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Claude AI Tools -->
+  <div class="section-label">Claude AI Tools</div>
+  <div class="link-stack">
+
+    <a href="brain-guide.html" class="link-card">
+      <div class="link-card-icon">🧠</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Build Your Business Brain</div>
+        <div class="link-card-desc">Teach Claude your business once. It never forgets again.</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-paid">$95</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+    <a href="command-pack.html" class="link-card">
+      <div class="link-card-icon">⚡</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Business Brain Command Pack</div>
+        <div class="link-card-desc">6 slash commands that run your entire business from Claude.</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-paid">$47</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Free Checklist Email Opt-in -->
+  <div class="email-section" id="checklist-optin">
+    <h3>Get the free Meta checklist</h3>
+    <p>Enter your email and get instant access — plus occasional Meta tips.</p>
+    <form class="email-form" id="checklist-form" onsubmit="handleSubmit(event)">
+      <input type="email" id="checklist-email" placeholder="your@email.com" required>
+      <button type="submit">Send it</button>
+    </form>
+    <div class="email-success" id="checklist-success">
+      Done — <a href="https://canva.link/4f76owjsk84ho9s" style="color:var(--green);" target="_blank" rel="noopener">open the checklist →</a>
+    </div>
+    <p class="email-note">No spam. Unsubscribe anytime.</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-name">JDesigns Strategist LLC</div>
+    <div class="footer-copy">Made by Jasmine &nbsp;·&nbsp; © 2025</div>
+  </div>
+
+</div>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('checklist-form').style.display = 'none';
+    document.getElementById('checklist-success').style.display = 'block';
+  }
+</script>
+</body>
+</html>

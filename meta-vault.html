@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta Business Fix-It Vault — $97 — JDesigns Strategist LLC</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #2ec27e;
+      --green-dim: rgba(46,194,126,.15);
+      --green-faint: rgba(46,194,126,.07);
+      --green-glow: #0d3320;
+      --bg: #07100a;
+      --card: #0d1a10;
+      --border: rgba(30,50,37,0.6);
+      --border-green: rgba(46,194,126,.2);
+      --text: #ffffff;
+      --muted: #8aab96;
+      --faint: #1e3225;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px; line-height: 1.65;
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.85); }
+    }
+
+    .fu  { animation: fadeUp .65s ease both; }
+    .fu1 { animation-delay: .1s; }
+    .fu2 { animation-delay: .2s; }
+    .fu3 { animation-delay: .3s; }
+    .fu4 { animation-delay: .45s; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      background: rgba(7,16,10,.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+    .nav-mark {
+      width: 34px; height: 34px; border-radius: 9px;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .88rem; font-weight: 900; color: #07100a;
+      letter-spacing: -.02em; flex-shrink: 0;
+    }
+    .nav-wordmark { font-size: .88rem; font-weight: 700; color: var(--text); }
+    .nav-wordmark span { color: var(--green); }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .82rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--green) !important; color: #07100a !important;
+      padding: .4rem 1rem; border-radius: 7px; font-weight: 700 !important;
+      transition: opacity .2s !important;
+    }
+    .nav-cta:hover { opacity: .88 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 90vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 5rem 1.5rem 4.5rem;
+      overflow: hidden;
+    }
+    .orb-1 {
+      position: absolute; top: -15%; left: 50%;
+      transform: translateX(-50%);
+      width: 950px; height: 600px;
+      background: radial-gradient(ellipse, rgba(46,194,126,.13) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .orb-2 {
+      position: absolute; bottom: -5%; right: 5%;
+      width: 400px; height: 300px;
+      background: radial-gradient(ellipse, rgba(46,194,126,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--green-faint); border: 1px solid var(--border-green);
+      border-radius: 100px; padding: .35rem 1.1rem;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 2rem;
+    }
+    .badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green); animation: pulse 2s ease infinite;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4.8rem);
+      font-weight: 900; line-height: 1.07;
+      letter-spacing: -.04em;
+      max-width: 900px; margin-bottom: 1.5rem;
+    }
+    .text-green {
+      background: linear-gradient(135deg, #2ec27e 0%, #6edba8 45%, #2ec27e 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; animation: shimmer 4s linear infinite;
+    }
+    .hero-sub {
+      font-size: clamp(.97rem, 2vw, 1.15rem);
+      color: var(--muted); max-width: 580px;
+      line-height: 1.8; margin-bottom: 2.5rem;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-weight: 700; font-size: .95rem;
+      border-radius: 10px; text-decoration: none;
+      padding: .85rem 1.9rem; transition: all .2s;
+      letter-spacing: -.01em;
+    }
+    .btn-green { background: var(--green); color: #07100a; }
+    .btn-green:hover {
+      opacity: .9; transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(46,194,126,.3);
+    }
+    .btn-ghost {
+      background: transparent; color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { color: var(--text); border-color: rgba(46,194,126,.35); }
+    .hero-ctas { display: flex; gap: .9rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.5rem; }
+    .hero-note { font-size: .8rem; color: var(--muted); }
+
+    /* ── PRICE HERO WIDGET ── */
+    .price-widget {
+      display: inline-flex; align-items: center; gap: 1.25rem;
+      background: var(--card); border: 1px solid var(--border-green);
+      border-radius: 14px; padding: 1rem 1.75rem;
+      margin-bottom: 2rem;
+    }
+    .price-num { font-size: 2.2rem; font-weight: 900; color: var(--green); letter-spacing: -.05em; }
+    .price-detail { text-align: left; }
+    .price-label { font-size: .78rem; font-weight: 700; color: var(--text); }
+    .price-sub { font-size: .75rem; color: var(--muted); }
+
+    /* ── SECTIONS ── */
+    .section { max-width: 900px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .eyebrow {
+      font-size: .72rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 1rem;
+    }
+    .section h2 {
+      font-size: clamp(1.75rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -.03em; margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.8; max-width: 620px; margin-bottom: 2rem; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ── WHO IT'S FOR ── */
+    .for-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+    .for-col {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem;
+    }
+    .for-col.yes { border-color: rgba(46,194,126,.2); }
+    .for-col.no  { border-color: rgba(239,68,68,.15); }
+    .for-col-label {
+      font-size: .72rem; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .for-col.yes .for-col-label { color: var(--green); }
+    .for-col.no  .for-col-label { color: #ef4444; }
+    .for-item { display: flex; align-items: flex-start; gap: .6rem; margin-bottom: .65rem; font-size: .88rem; line-height: 1.55; }
+    .for-icon { flex-shrink: 0; margin-top: 1px; font-size: .9rem; }
+
+    /* ── WHAT'S INSIDE ── */
+    .vault-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .vault-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem; position: relative; overflow: hidden;
+    }
+    .vault-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--green); opacity: .4;
+    }
+    .vault-icon { font-size: 1.4rem; margin-bottom: .7rem; }
+    .vault-card h3 { font-size: .97rem; font-weight: 700; margin-bottom: .4rem; }
+    .vault-card p { font-size: .85rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── WHAT IT DOES NOT INCLUDE ── */
+    .disclaimer-box {
+      background: rgba(239,68,68,.04); border: 1px solid rgba(239,68,68,.15);
+      border-radius: 14px; padding: 1.75rem; margin-top: 2rem;
+    }
+    .disclaimer-box h3 { font-size: .88rem; font-weight: 700; color: #ef4444; margin-bottom: 1rem; letter-spacing: .04em; text-transform: uppercase; }
+    .disclaimer-item { display: flex; align-items: flex-start; gap: .6rem; margin-bottom: .55rem; font-size: .88rem; color: var(--muted); }
+    .disclaimer-item:last-child { margin-bottom: 0; }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--card) 0%, rgba(13,51,32,.6) 100%);
+      border: 1px solid var(--border-green);
+      border-radius: 20px; text-align: center;
+      padding: 4rem 2rem; margin: 0 1.5rem;
+    }
+    .cta-section h2 { font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; }
+    .cta-section p { color: var(--muted); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .cta-price { font-size: 3rem; font-weight: 900; color: var(--green); letter-spacing: -.06em; margin-bottom: .25rem; }
+    .cta-price-note { font-size: .82rem; color: var(--muted); margin-bottom: 2rem; }
+
+    /* ── UPSELL ── */
+    .upsell-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem;
+      display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap;
+    }
+    .upsell-text { flex: 1; min-width: 240px; }
+    .upsell-text h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: .6rem; }
+    .upsell-text p { color: var(--muted); font-size: .93rem; line-height: 1.75; }
+    .upsell-cta { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: .75rem; justify-content: center; }
+    .upsell-price { font-size: 1.6rem; font-weight: 900; color: var(--green); letter-spacing: -.04em; }
+
+    /* ── FOOTER ── */
+    footer {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--border);
+      margin-top: 5rem;
+    }
+    .footer-brand { display: flex; align-items: center; gap: .6rem; margin-bottom: .3rem; }
+    .footer-mark {
+      width: 30px; height: 30px; border-radius: 8px;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .78rem; font-weight: 900; color: #07100a;
+    }
+    .footer-name { font-weight: 700; font-size: .88rem; color: var(--text); }
+    .footer-tagline { font-size: .8rem; color: var(--muted); font-style: italic; margin-bottom: .45rem; }
+    .footer-copy { font-size: .75rem; color: var(--faint); }
+    .footer-links { display: flex; flex-direction: column; gap: .5rem; text-align: right; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: .85rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--green); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .for-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; }
+      .footer-links { text-align: left; }
+      .upsell-cta { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-mark">JD</div>
+    <div class="nav-wordmark">JDesigns <span>Strategist</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#whats-inside">What's Inside</a></li>
+    <li><a href="#who-its-for">Who It's For</a></li>
+    <li><a href="#get-it">Get the Vault</a></li>
+    <li><a href="meta-checklist.html">Free Checklist First</a></li>
+    <li><a href="#get-it" class="nav-cta">Get the Vault — $97 →</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="orb-1"></div>
+  <div class="orb-2"></div>
+
+  <div class="hero-badge fu fu1">
+    <div class="badge-dot"></div>
+    Meta Business Fix-It Vault — $97 One-Time
+  </div>
+
+  <h1 class="fu fu2">
+    Stop guessing.<br><span class="text-green">Fix your Meta</span><br>the right way.
+  </h1>
+
+  <p class="hero-sub fu fu3">
+    A complete self-serve troubleshooting vault for business owners dealing with Meta Business problems. Organized steps, scripts, checklists, and support message templates — no waiting, no booking, no back-and-forth.
+  </p>
+
+  <div class="hero-ctas fu fu4">
+    <a href="#get-it" class="btn btn-green">Get the Vault — $97 →</a>
+    <a href="#whats-inside" class="btn btn-ghost">See what's inside</a>
+  </div>
+  <p class="hero-note fu fu4">One-time purchase. Instant access. No subscription.</p>
+</section>
+
+<hr class="divider">
+
+<!-- ── PROBLEM ── -->
+<section class="section" id="problem">
+  <div class="eyebrow">The real problem</div>
+  <h2>Meta gives you errors. No explanation. No path forward.</h2>
+  <p class="section-sub">
+    You've tried Googling. You've tried the Help Center. You've waited on Meta support. You're still stuck — and the business is sitting still while you wait.
+  </p>
+  <p class="section-sub" style="margin-bottom: 0;">
+    The Vault gives you the organized system to work through it yourself: what to check, what to gather, what to say, and what to do next — at your own pace.
+  </p>
+</section>
+
+<hr class="divider">
+
+<!-- ── WHO IT'S FOR ── -->
+<section class="section" id="who-its-for">
+  <div class="eyebrow">Who It's For</div>
+  <h2>The right fit — and the wrong one.</h2>
+  <p class="section-sub">The Vault is a self-serve resource. It's powerful if you match the right profile. It's not the right fit for every situation.</p>
+
+  <div class="for-grid">
+    <div class="for-col yes">
+      <div class="for-col-label">✓ Right for you if…</div>
+      <div class="for-item"><div class="for-icon">✓</div>You have a common Meta issue — restricted ad account, broken Business Portfolio, access or connection problem</div>
+      <div class="for-item"><div class="for-icon">✓</div>You need structure, scripts, and organized next steps — not guesswork</div>
+      <div class="for-item"><div class="for-icon">✓</div>You want to understand what may be broken before contacting Meta support</div>
+      <div class="for-item"><div class="for-icon">✓</div>You need to prepare a stronger, clearer Meta support message</div>
+      <div class="for-item"><div class="for-icon">✓</div>You went through the free checklist and need to go deeper</div>
+      <div class="for-item"><div class="for-icon">✓</div>Budget is tight and you need something you can work through yourself</div>
+    </div>
+    <div class="for-col no">
+      <div class="for-col-label">✗ Not right for you if…</div>
+      <div class="for-item"><div class="for-icon">✗</div>You've had multiple failed appeals and your situation involves a hacked or permanently disabled account</div>
+      <div class="for-item"><div class="for-icon">✗</div>You need someone to personally review your account and give you a custom action plan</div>
+      <div class="for-item"><div class="for-icon">✗</div>Your Business Portfolio has multiple broken assets that need a full ecosystem review</div>
+      <div class="for-item"><div class="for-icon">✗</div>You need a guarantee or someone to contact Meta on your behalf</div>
+      <div class="for-item"><div class="for-icon" style="color:var(--muted);">→</div><span style="color:var(--muted);">In those cases, see the <a href="https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues" style="color:var(--green);" target="_blank" rel="noopener">Meta Ecosystem Review ($595)</a> instead.</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── WHAT'S INSIDE ── -->
+<section class="section" id="whats-inside">
+  <div class="eyebrow">What's Inside</div>
+  <h2>Everything in one organized place.</h2>
+  <p class="section-sub">The Vault is built around the most common Meta Business problems — organized so you know exactly where to start and what to do next.</p>
+
+  <div class="vault-grid">
+    <div class="vault-card">
+      <div class="vault-icon">🔍</div>
+      <h3>Issue Identification System</h3>
+      <p>Stop guessing what's wrong. Work through the structured identification flow to name the exact problem — before you start trying to fix anything.</p>
+    </div>
+    <div class="vault-card">
+      <div class="vault-icon">📋</div>
+      <h3>Troubleshooting Checklists</h3>
+      <p>Step-by-step checklists for the most common scenarios: Business Portfolio issues, Page access, Instagram connection, ad account restrictions, and admin problems.</p>
+    </div>
+    <div class="vault-card">
+      <div class="vault-icon">📸</div>
+      <h3>Screenshot & Evidence Guide</h3>
+      <p>Exactly what to capture, where to find it, and how to organize it before you contact Meta support — so your case is clear and complete from the start.</p>
+    </div>
+    <div class="vault-card">
+      <div class="vault-icon">✉️</div>
+      <h3>Support Message Scripts</h3>
+      <p>Copy-paste templates for common Meta support situations. Clear, organized, and written to communicate the issue without triggering canned responses.</p>
+    </div>
+    <div class="vault-card">
+      <div class="vault-icon">⚠️</div>
+      <h3>Mistakes to Avoid</h3>
+      <p>The most common things people do that make Meta issues worse — and how to avoid them so you don't slow down your own case.</p>
+    </div>
+    <div class="vault-card">
+      <div class="vault-icon">📍</div>
+      <h3>Next-Step Action Plans</h3>
+      <p>After you've identified the issue and gathered your screenshots — here's what to do next, in order, depending on your situation.</p>
+    </div>
+  </div>
+
+  <div class="disclaimer-box">
+    <h3>What this does not include</h3>
+    <div class="disclaimer-item"><span>✗</span>Done-for-you troubleshooting or custom diagnosis</div>
+    <div class="disclaimer-item"><span>✗</span>Access to Jasmine or any 1:1 support</div>
+    <div class="disclaimer-item"><span>✗</span>Meta support escalation or account recovery on your behalf</div>
+    <div class="disclaimer-item"><span>✗</span>Guarantees — Meta makes all final decisions on restrictions, appeals, and access</div>
+    <p style="margin-top: 1rem; font-size: .82rem; color: var(--faint);">
+      This resource helps you organize your issue, collect the right information, and prepare stronger Meta support messages. It does not guarantee Meta will remove restrictions, restore access, recover a hacked account, or approve an account. Meta makes all final decisions.
+    </p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── GET IT ── -->
+<section style="padding: 5rem 1.5rem;" id="get-it">
+  <div class="cta-section">
+    <div class="cta-price">$97</div>
+    <div class="cta-price-note">One-time. Instant access. No subscription.</div>
+    <h2>Get the Meta Business Fix-It Vault</h2>
+    <p>Stop spinning in circles. Get the organized system, scripts, and checklists to work through your Meta issue yourself — at your own pace, right now.</p>
+    <a href="https://www.paypal.com/ncp/payment/YKQGGWGA7CTAW" class="btn btn-green" target="_blank" rel="noopener">Get the Vault — $97 →</a>
+    <p style="margin-top:.75rem; font-size:.78rem; color:var(--muted);">Secure checkout. Instant access after payment.</p>
+    <p style="margin-top: 1.25rem; font-size: .78rem; color: var(--muted);">Secure checkout via Gumroad. Download instantly after purchase.</p>
+  </div>
+</section>
+
+<!-- ── UPSELL / STEPS ── -->
+<section class="section" id="next-step">
+  <div class="eyebrow">Not sure where to start?</div>
+  <h2>Try the free checklist first.</h2>
+  <p class="section-sub">If you're not sure what's wrong yet, start with the free Meta Business Access Emergency Checklist. It's 5 sections, free, and helps you identify the problem before you spend anything.</p>
+
+  <div class="upsell-box">
+    <div class="upsell-text">
+      <h3>Meta Business Access Emergency Checklist</h3>
+      <p>Identify your issue, gather the right screenshots, and get a copy-paste Meta support message — in one free resource. The fastest first step before anything else.</p>
+      <p style="margin-top: .75rem; font-size: .85rem; color: var(--muted);">No email required. Instant access at meta911.lovable.app.</p>
+    </div>
+    <div class="upsell-cta">
+      <div class="upsell-price" style="color: var(--green);">Free</div>
+      <a href="meta-checklist.html" class="btn btn-ghost">Get the Checklist →</a>
+    </div>
+  </div>
+
+  <div style="margin-top: 1.5rem; padding: 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 14px;">
+    <p style="font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .5rem;">
+      <strong style="color: var(--text);">Need more than a self-serve resource?</strong> If your situation involves multiple failed appeals, a hacked account, or a complex Business Portfolio that needs personal review — that's the <a href="https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues" style="color:var(--green);" target="_blank" rel="noopener">Meta Ecosystem Review ($595)</a>. Jasmine reviews your situation and gives you a written action plan, scripts, and checklist — no call required.
+    </p>
+    <p style="font-size: .78rem; color: var(--faint);">
+      | Fix-It Vault Access ($195) — Vault access + limited Fiverr guidance &nbsp;·&nbsp; Meta Access Review ($345) — Written next-step plan based on your issue details &nbsp;·&nbsp; Meta Ecosystem Review ($595) — Full review, scripts, checklist, action plan
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand">
+      <div class="footer-mark">JD</div>
+      <div class="footer-name">JDesigns Strategist LLC</div>
+    </div>
+    <div class="footer-tagline">Simple Systems for Real Life &amp; Business</div>
+    <div class="footer-copy">Made by Jasmine &nbsp;·&nbsp; © 2025 JDesigns Strategist LLC</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://jdesigns.info/" target="_blank">jdesigns.info</a>
+    <a href="https://fiverr.com/jazz96designs" target="_blank">fiverr.com/jazz96designs</a>
+    <a href="meta-checklist.html">Free Meta Checklist</a>
+    <a href="index.html">Business Brain Command Pack</a>
+    <a href="brain-guide.html">Build Your Business Brain</a>
+  </div>
+</footer>
+
+</body>
+</html>
