@@ -340,7 +340,7 @@
     <a href="#get-it" class="btn btn-green">Get the Free Checklist →</a>
     <a href="#whats-inside" class="btn btn-ghost">See what's inside</a>
   </div>
-  <p class="hero-note fu fu4">100% free. No email required. Instant access.</p>
+  <p class="hero-note fu fu4">100% free. Enter your email for instant access.</p>
 </section>
 
 <hr class="divider">
@@ -500,13 +500,36 @@
 <!-- ── GET IT ── -->
 <section style="padding: 5rem 1.5rem;" id="get-it">
   <div class="cta-section">
-    <div class="free-badge">Free — No Email Required</div>
-    <h2>Get the Emergency Checklist + Free Tools</h2>
-    <p>The checklist walks you through every section. The Meta911 tools help you decode what you find. Together they give you a complete first-step system — all free.</p>
-    <a href="https://meta911.lovable.app" class="btn btn-green" target="_blank" rel="noopener">Go to Meta911 — Free →</a>
-    <p style="margin-top: 1.25rem; font-size: .8rem; color: var(--muted);">meta911.lovable.app &nbsp;·&nbsp; Free Meta tools + emergency checklist by Jasmine at JDesigns</p>
+    <div class="free-badge">Free — Instant Access</div>
+    <h2>Get the Free Meta Business Access Emergency Checklist</h2>
+    <p>Enter your email and get instant access to the checklist so you can start reviewing your Meta access today.</p>
+
+    <form id="checklist-form" onsubmit="handleChecklistSubmit(event)" style="max-width:460px;margin:0 auto 1rem;">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+        <input type="email" id="checklist-email" placeholder="your@email.com" required
+          style="flex:1;min-width:200px;padding:12px 18px;border-radius:999px;border:1px solid var(--border-green);background:var(--bg);color:var(--text);font-size:.95rem;font-family:inherit;outline:none;">
+        <button type="submit" class="btn btn-green" style="border:none;cursor:pointer;white-space:nowrap;">
+          Send me the checklist
+        </button>
+      </div>
+    </form>
+
+    <div id="checklist-success" style="display:none;margin-top:.5rem;">
+      <p style="margin-bottom:1rem;color:var(--green);font-size:1rem;">Your checklist is ready — click below to open it.</p>
+      <a href="https://canva.link/4f76owjsk84ho9s" class="btn btn-green" target="_blank" rel="noopener noreferrer">Open the Checklist →</a>
+    </div>
+
+    <p style="margin-top: 1rem; font-size: .8rem; color: var(--muted);">You may also receive occasional Meta setup and ads tips. Unsubscribe anytime.</p>
   </div>
 </section>
+
+<script>
+  function handleChecklistSubmit(e) {
+    e.preventDefault();
+    document.getElementById('checklist-form').style.display = 'none';
+    document.getElementById('checklist-success').style.display = 'block';
+  }
+</script>
 
 <!-- ── UPSELL ── -->
 <section class="section" id="next-step">
