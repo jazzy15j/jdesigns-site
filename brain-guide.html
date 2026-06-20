@@ -7,6 +7,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+--font-serif: Georgia, 'Times New Roman', serif;
       --green: #2ec27e;
       --green-dim: rgba(46,194,126,.15);
       --green-faint: rgba(46,194,126,.07);
@@ -74,7 +75,7 @@
       letter-spacing: -.02em; flex-shrink: 0;
     }
 
-    .nav-wordmark { font-size: .88rem; font-weight: 700; color: var(--text); }
+    .nav-wordmark { font-family: Georgia, serif; font-size: .88rem; font-weight: 400; letter-spacing: .08em; color: var(--text); }
     .nav-wordmark span { color: var(--green); }
 
     .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
@@ -133,7 +134,8 @@
 
     .hero h1 {
       font-size: clamp(2.4rem, 6.5vw, 5rem);
-      font-weight: 900; line-height: 1.07;
+      font-family: var(--font-serif);
+      font-weight: 400; line-height: 1.07;
       letter-spacing: -.04em;
       max-width: 880px; margin-bottom: 1.5rem;
     }
@@ -181,8 +183,11 @@
     .eyebrow.green { color: var(--green); }
 
     h2 {
+      font-family: var(--font-serif);
+      font-weight: 400;
       font-size: clamp(1.7rem, 3.5vw, 2.6rem);
-      font-weight: 800; letter-spacing: -.025em;
+      font-family: var(--font-serif);
+      font-weight: 400; letter-spacing: -.025em;
       line-height: 1.15; margin-bottom: .9rem;
     }
 
@@ -444,8 +449,12 @@
     }
 
     .cta-card h2 {
+      font-family: var(--font-serif);
+      font-weight: 400;
       font-size: clamp(1.5rem, 3vw, 2.2rem);
-      font-weight: 900; letter-spacing: -.025em;
+      font-family: var(--font-serif);
+      
+      font-weight: 400; letter-spacing: -.025em;
       line-height: 1.15; margin-bottom: .75rem; position: relative; z-index: 1;
     }
     .cta-price { color: var(--green); }
