@@ -37,70 +37,79 @@
       padding: 52px 20px 72px;
     }
 
+    /* ── Wordmark ── */
+    .wordmark {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wordmark span { color: var(--muted); }
+
     /* ── Profile ── */
     .profile {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      text-align: center;
-      margin-bottom: 28px;
+      gap: 18px;
+      margin-bottom: 18px;
     }
-
     .avatar {
-      width: 78px; height: 78px;
+      width: 68px; height: 68px;
       border-radius: 50%;
       border: 2px solid var(--border-green);
       object-fit: cover;
-      margin-bottom: 14px;
+      flex-shrink: 0;
     }
-
-    .avatar-placeholder {
-      width: 78px; height: 78px;
-      border-radius: 50%;
-      border: 2px solid var(--border-green);
-      background: var(--card);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 14px;
-      font-size: 1.6rem; font-weight: 900; color: var(--green);
+    .profile-text h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      color: var(--text);
     }
-
-    .profile-name {
-      font-size: 1.15rem; font-weight: 700;
-      letter-spacing: -.01em; margin-bottom: 4px;
-    }
-
     .profile-handle {
-      font-size: .8rem; color: var(--green);
-      letter-spacing: .03em; margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--green);
+      margin-top: 3px;
+      letter-spacing: 0.02em;
     }
-
-    .profile-bio {
-      font-size: .88rem; color: var(--muted);
-      line-height: 1.65; max-width: 360px;
+    .tagline {
+      font-size: 14.5px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+      max-width: 480px;
     }
 
     /* ── Socials ── */
     .socials {
       display: flex; gap: 8px; flex-wrap: wrap;
-      justify-content: center; margin-bottom: 36px;
+      align-items: center; margin-bottom: 44px;
     }
-
     .social-pill {
-      display: inline-flex; align-items: center; gap: 5px;
-      padding: 6px 14px; border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px; border-radius: 999px;
       border: 1px solid var(--border);
-      font-size: .78rem; font-weight: 600; color: var(--muted);
+      font-size: 13px; font-weight: 500; color: var(--muted);
       text-decoration: none;
-      transition: border-color .15s, color .15s, background .15s;
+      transition: border-color .15s, background .15s, color .15s;
     }
-    .social-pill:hover { border-color: var(--green); color: var(--text); background: var(--green-dim); }
-    .social-pill svg { width: 13px; height: 13px; flex-shrink: 0; }
-
+    .social-pill:hover { border-color: var(--green); background: var(--green-dim); color: var(--text); }
+    .social-pill svg { width: 15px; height: 15px; }
     .social-pill-cta {
-      background: var(--green); color: #07100a;
-      border-color: var(--green); font-weight: 700;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; border-radius: 999px;
+      background: var(--text); color: var(--bg);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background .15s, transform .12s;
     }
-    .social-pill-cta:hover { opacity: .88; color: #07100a; background: var(--green); }
+    .social-pill-cta:hover { background: var(--green); color: var(--bg); transform: translateY(-1px); }
 
     /* ── Section Label ── */
     .section-label {
@@ -225,18 +234,23 @@
 <body>
 <div class="page">
 
+  <!-- Wordmark -->
+  <div class="wordmark">✦ <span>JDesigns Strategist</span></div>
+
   <!-- Profile -->
   <div class="profile">
-    <img class="avatar" src="assets/jasmineheadshot.png" alt="Jasmine" onerror="this.style.display='none'; document.querySelector('.avatar-placeholder').style.display='flex';">
-    <div class="avatar-placeholder" style="display:none;">J</div>
-    <div class="profile-name">Jasmine</div>
-    <div class="profile-handle">@jdesigns.info</div>
-    <p class="profile-bio">Meta Business help, Claude AI tools, and simple systems for service providers. Start with the free checklist or browse below.</p>
+    <img class="avatar" src="assets/jasmineheadshot.png" alt="Jasmine Stock" />
+    <div class="profile-text">
+      <h1>Jasmine Stock</h1>
+      <div class="profile-handle">@jdesigns.info</div>
+    </div>
   </div>
+
+  <p class="tagline">Stuck inside Meta? Start with the free access checklist, then upgrade to the Fix-It Vault if you need the deeper step-by-step path.</p>
 
   <!-- Socials -->
   <div class="socials">
-    <a href="https://instagram.com/jdesigns.info" class="social-pill" target="_blank" rel="noopener">
+    <a href="https://instagram.com/jdesigns.info" class="social-pill" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
         <circle cx="12" cy="12" r="4"/>
@@ -244,14 +258,14 @@
       </svg>
       Instagram
     </a>
-    <a href="https://facebook.com/jdesigns.info" class="social-pill" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
+    <a href="https://facebook.com/jdesigns.info" class="social-pill" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="currentColor">
         <path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/>
       </svg>
       Facebook
     </a>
-    <a href="https://www.fiverr.com/jazz96designs" class="social-pill social-pill-cta" target="_blank" rel="noopener">
-      Work with me →
+    <a href="https://www.fiverr.com/jazz96designs" class="social-pill-cta" target="_blank" rel="noopener noreferrer">
+      Work with me on Fiverr →
     </a>
   </div>
 
