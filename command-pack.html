@@ -70,16 +70,18 @@
       text-decoration: none;
     }
 
-    .nav-mark {
-      width: 34px; height: 34px;
-      border-radius: 9px;
-      background: var(--green);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .88rem; font-weight: 900; color: #07100a;
-      letter-spacing: -.02em; flex-shrink: 0;
+    .nav-wordmark {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: .775rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: .65rem;
     }
-
-    .nav-wordmark { font-family: Georgia, serif; font-size: .88rem; font-weight: 400; letter-spacing: .08em; color: var(--text); }
+    .nav-wordmark .wm-star { color: var(--green); font-size: .9rem; }
     .nav-wordmark span { color: var(--green); }
 
     .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
@@ -519,12 +521,6 @@
       border-top: 1px solid var(--border);
     }
     .footer-brand { display: flex; align-items: center; gap: .6rem; margin-bottom: .6rem; }
-    .footer-mark {
-      width: 30px; height: 30px; border-radius: 8px;
-      background: var(--green);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .8rem; font-weight: 900; color: #07100a;
-    }
     .footer-name { font-weight: 700; font-size: .88rem; color: var(--text); }
     .footer-tagline { font-size: .8rem; color: var(--muted); font-style: italic; margin-bottom: .45rem; }
     .footer-copy { font-size: .75rem; color: var(--faint); }
@@ -653,8 +649,7 @@
 <!-- ── NAV ── -->
 <nav>
   <a class="nav-brand" href="#hero">
-    <div class="nav-mark">JD</div>
-    <div class="nav-wordmark"><span>JDesigns</span> Strategist LLC</div>
+    <div class="nav-wordmark"><span class="wm-star">✦</span> JDesigns Strategist</div>
   </a>
   <ul class="nav-links">
     <li><a href="#commands">Commands</a></li>
@@ -1148,42 +1143,11 @@ function switchSample(name) {
 
     <div class="terminal" style="border-color: rgba(46,194,126,.25);">
       <div class="terminal-bar" style="background: rgba(46,194,126,.06); border-color: rgba(46,194,126,.15);">
-        <span style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--green);">Step 1 — Purchase on Gumroad</span>
+        <span style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--green);">Step 1 — Purchase</span>
       </div>
       <div class="terminal-body" style="color:var(--muted); font-family:inherit; font-size:.9rem; line-height:1.8;">
-        Click below to purchase. Gumroad will send you a download link instantly after payment — no account required.<br><br>
-        <a href="https://jdesignsinfo.gumroad.com/l/commandpack" class="btn btn-green" style="display:inline-flex; font-size:.88rem; padding:.75rem 1.5rem; text-decoration:none;" target="_blank" rel="noopener">Get the Command Pack — $47 →</a>
-      </div>
-    </div>
-
-    <div class="terminal" style="border-color: rgba(46,194,126,.1);">
-      <div class="terminal-bar">
-        <span style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);">Step 2 — Install (2 minutes, any OS)</span>
-      </div>
-      <div class="terminal-body" style="color:var(--muted); font-family:inherit; font-size:.9rem; line-height:1.8;">
-        1. Download the zip from your Gumroad receipt email<br>
-        2. Unzip it — you'll see 6 <span class="t-gold">.md</span> files<br>
-        3. Move all 6 files into your <span class="t-gold">.claude/commands/</span> folder inside your business brain folder<br><br>
-        <span class="t-comment"># Your folder structure should look like this:</span><br>
-        <span class="t-gold">my-business-brain/</span><br>
-        &nbsp;&nbsp;<span class="t-gold">.claude/</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-gold">commands/</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c4dccb;">daily-priorities.md</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c4dccb;">capture-message.md</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c4dccb;">client-update.md</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c4dccb;">... and 3 more</span>
-      </div>
-    </div>
-
-    <div class="terminal" style="border-color: rgba(46,194,126,.1);">
-      <div class="terminal-bar">
-        <span style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);">Step 3 — Run your first command</span>
-      </div>
-      <div class="terminal-body">
-        <span class="t-prompt">$ </span><span class="t-gold">claude</span><br><br>
-        <span class="t-comment"># Claude already knows your business</span><br>
-        <span class="t-prompt">&gt; </span><span class="t-gold">/daily-priorities</span><br><br>
-        <span style="color:#9090b8;">Reading your brain files...<br>Here's exactly what to do today:</span>
+        Click below to get the Command Pack for $47. You'll receive instant access to download all 6 command files.<br><br>
+        <a href="https://www.paypal.com/ncp/payment/SGPW3VUW4DAG2" class="btn btn-green" style="display:inline-flex; font-size:.88rem; padding:.75rem 1.5rem; text-decoration:none;" target="_blank" rel="noopener">Get the Command Pack — $47 →</a>
       </div>
     </div>
 
@@ -1211,7 +1175,7 @@ function switchSample(name) {
 <footer>
   <div>
     <div class="footer-brand">
-      <div class="footer-mark">JD</div>
+      <div class="nav-wordmark" style="justify-content:center;margin-bottom:.5rem;"><span class="wm-star">✦</span> JDesigns Strategist</div>
       <div class="footer-name">JDesigns Strategist LLC</div>
     </div>
     <div class="footer-tagline">Simple Systems for Real Life &amp; Business</div>
