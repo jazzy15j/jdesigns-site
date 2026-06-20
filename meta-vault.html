@@ -60,14 +60,18 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
-    .nav-mark {
-      width: 34px; height: 34px; border-radius: 9px;
-      background: var(--green);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .88rem; font-weight: 900; color: #07100a;
-      letter-spacing: -.02em; flex-shrink: 0;
+    .nav-wordmark {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: .775rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: .65rem;
     }
-    .nav-wordmark { font-family: Georgia, serif; font-size: .88rem; font-weight: 400; letter-spacing: .08em; color: var(--text); }
+    .nav-wordmark .wm-star { color: var(--green); font-size: .9rem; }
     .nav-wordmark span { color: var(--green); }
     .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: .82rem; font-weight: 500; transition: color .2s; }
@@ -257,12 +261,6 @@
       margin-top: 5rem;
     }
     .footer-brand { display: flex; align-items: center; gap: .6rem; margin-bottom: .3rem; }
-    .footer-mark {
-      width: 30px; height: 30px; border-radius: 8px;
-      background: var(--green);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .78rem; font-weight: 900; color: #07100a;
-    }
     .footer-name { font-weight: 700; font-size: .88rem; color: var(--text); }
     .footer-tagline { font-size: .8rem; color: var(--muted); font-style: italic; margin-bottom: .45rem; }
     .footer-copy { font-size: .75rem; color: var(--faint); }
@@ -284,8 +282,7 @@
 
 <nav>
   <a href="index.html" class="nav-brand">
-    <div class="nav-mark">JD</div>
-    <div class="nav-wordmark">JDesigns <span>Strategist</span></div>
+    <div class="nav-wordmark"><span class="wm-star">✦</span> JDesigns Strategist</div>
   </a>
   <ul class="nav-links">
     <li><a href="#whats-inside">What's Inside</a></li>
@@ -359,7 +356,7 @@
       <div class="for-item"><div class="for-icon">✗</div>You need someone to personally review your account and give you a custom action plan</div>
       <div class="for-item"><div class="for-icon">✗</div>Your Business Portfolio has multiple broken assets that need a full ecosystem review</div>
       <div class="for-item"><div class="for-icon">✗</div>You need a guarantee or someone to contact Meta on your behalf</div>
-      <div class="for-item"><div class="for-icon" style="color:var(--muted);">→</div><span style="color:var(--muted);">In those cases, see the <a href="https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues" style="color:var(--green);" target="_blank" rel="noopener">Meta Ecosystem Review ($595)</a> instead.</span></div>
+      <div class="for-item"><div class="for-icon" style="color:var(--muted);">→</div><span style="color:var(--muted);">In those cases, see the <a href="https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues" style="color:var(--green);" target="_blank" rel="noopener">Meta Ecosystem Review</a> instead.</span></div>
     </div>
   </div>
 </section>
@@ -452,10 +449,10 @@
 
   <div style="margin-top: 1.5rem; padding: 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 14px;">
     <p style="font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .5rem;">
-      <strong style="color: var(--text);">Need more than a self-serve resource?</strong> If your situation involves multiple failed appeals, a hacked account, or a complex Business Portfolio that needs personal review — that's the <a href="https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues" style="color:var(--green);" target="_blank" rel="noopener">Meta Ecosystem Review ($595)</a>. Jasmine reviews your situation and gives you a written action plan, scripts, and checklist — no call required.
+      <strong style="color: var(--text);">Need more than a self-serve resource?</strong> If your situation involves multiple failed appeals, a hacked account, or a complex Business Portfolio that needs personal review — that's the <a href="https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues" style="color:var(--green);" target="_blank" rel="noopener">Meta Ecosystem Review</a>. Jasmine reviews your situation and gives you a written action plan, scripts, and checklist — no call required.
     </p>
     <p style="font-size: .78rem; color: var(--faint);">
-      | Fix-It Vault Access ($195) — Vault access + limited Fiverr guidance &nbsp;·&nbsp; Meta Access Review ($345) — Written next-step plan based on your issue details &nbsp;·&nbsp; Meta Ecosystem Review ($595) — Full review, scripts, checklist, action plan
+      | Fix-It Vault Access ($195) — Vault access + limited Fiverr guidance &nbsp;·&nbsp; Meta Access Review ($345) — Written next-step plan based on your issue details &nbsp;·&nbsp; Meta Ecosystem Review — Full review, scripts, checklist, action plan
     </p>
   </div>
 </section>
@@ -463,7 +460,7 @@
 <footer>
   <div>
     <div class="footer-brand">
-      <div class="footer-mark">JD</div>
+      <div class="nav-wordmark" style="justify-content:center;margin-bottom:.5rem;"><span class="wm-star">✦</span> JDesigns Strategist</div>
       <div class="footer-name">JDesigns Strategist LLC</div>
     </div>
     <div class="footer-tagline">Simple Systems for Real Life &amp; Business</div>
