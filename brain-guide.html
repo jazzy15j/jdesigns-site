@@ -67,15 +67,18 @@
 
     .nav-brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
 
-    .nav-mark {
-      width: 34px; height: 34px; border-radius: 9px;
-      background: var(--green);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .88rem; font-weight: 900; color: #07100a;
-      letter-spacing: -.02em; flex-shrink: 0;
+    .nav-wordmark {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: .775rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: .65rem;
     }
-
-    .nav-wordmark { font-family: Georgia, serif; font-size: .88rem; font-weight: 400; letter-spacing: .08em; color: var(--text); }
+    .nav-wordmark .wm-star { color: var(--green); font-size: .9rem; }
     .nav-wordmark span { color: var(--green); }
 
     .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
@@ -492,11 +495,6 @@
       border-top: 1px solid var(--border);
     }
     .footer-brand { display: flex; align-items: center; gap: .6rem; margin-bottom: .6rem; }
-    .footer-mark {
-      width: 30px; height: 30px; border-radius: 8px; background: var(--green);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .8rem; font-weight: 900; color: #07100a;
-    }
     .footer-name { font-weight: 700; font-size: .88rem; color: var(--text); }
     .footer-tagline { font-size: .8rem; color: var(--muted); font-style: italic; margin-bottom: .45rem; }
     .footer-copy { font-size: .75rem; color: var(--faint); }
@@ -608,8 +606,7 @@
 <!-- ── NAV ── -->
 <nav>
   <a class="nav-brand" href="#hero">
-    <div class="nav-mark">JD</div>
-    <div class="nav-wordmark"><span>JDesigns</span> Strategist LLC</div>
+    <div class="nav-wordmark"><span class="wm-star">✦</span> JDesigns Strategist</div>
   </a>
   <ul class="nav-links">
     <li><a href="#problem">The Problem</a></li>
@@ -1048,7 +1045,7 @@ function switchTab(name) {
 <footer>
   <div>
     <div class="footer-brand">
-      <div class="footer-mark">JD</div>
+      <div class="nav-wordmark" style="justify-content:center;margin-bottom:.5rem;"><span class="wm-star">✦</span> JDesigns Strategist</div>
       <div class="footer-name">JDesigns Strategist LLC</div>
     </div>
     <div class="footer-tagline">Simple Systems for Real Life &amp; Business</div>
