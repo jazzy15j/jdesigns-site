@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meta Business Suite vs. Business Manager vs. Business Portfolio | JDesigns Strategist</title>
+  <meta name="description" content="Meta has three different tools with three different jobs and they're constantly confused. Here's exactly what each one is, what it does, and which one you actually need." />
+  <meta property="og:title" content="Meta Business Suite vs. Business Manager vs. Business Portfolio — What's the Difference?" />
+  <meta property="og:description" content="Meta has three different tools with three different jobs and they're constantly confused. Here's exactly what each one is, what it does, and which one you actually need." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       #1a7a4e;
+      --border-muted: #102b18;
+      --accent:       #2ec27e;
+      --accent-dim:   #0d3320;
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --radius:       14px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 52px 24px 88px;
+    }
+
+    .wordmark {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wordmark span { color: var(--muted); }
+    .wordmark a:hover { color: var(--text); }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .meta-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border-muted);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+    .meta-date { font-size: 12px; color: var(--muted); }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .article-intro {
+      font-size: 15.5px;
+      color: var(--sage);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border-muted);
+    }
+
+    .article-body h2 {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--text);
+      margin: 40px 0 12px;
+      line-height: 1.3;
+    }
+    .article-body h3 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 32px 0 10px;
+    }
+    .article-body p {
+      font-size: 15px;
+      color: var(--sage);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    .article-body strong { color: var(--text); font-weight: 600; }
+
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      color: var(--sage);
+      line-height: 1.65;
+    }
+    .callout strong { color: var(--text); }
+
+    .callout-warning {
+      background: rgba(180, 50, 30, 0.08);
+      border: 1px solid rgba(220, 80, 60, 0.25);
+      border-left: 3px solid #e05a3a;
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      color: var(--sage);
+      line-height: 1.65;
+    }
+    .callout-warning strong { color: #f0a090; }
+
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-body { flex: 1; }
+    .step-body strong {
+      display: block;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .step-body p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* ── Comparison Table ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .compare-table th {
+      text-align: left;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-table td {
+      padding: 12px 14px;
+      color: var(--sage);
+      border-bottom: 1px solid var(--border-muted);
+      line-height: 1.5;
+      vertical-align: top;
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:first-child { color: var(--text); font-weight: 500; }
+
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .cta-block h3 {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .cta-block p {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, transform 0.12s;
+      cursor: pointer;
+      border: none;
+    }
+    .cta-btn:hover { background: var(--accent); transform: translateY(-1px); }
+    .cta-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, border-color 0.15s, transform 0.12s;
+      cursor: pointer;
+    }
+    .cta-btn-outline:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+    .disclaimer {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+
+    .related-section { margin-top: 56px; }
+    .related-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .related-list { display: flex; flex-direction: column; gap: 8px; }
+    .related-card {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: border-color 0.15s;
+    }
+    .related-card:hover { border-color: var(--border); }
+    .related-title { font-size: 14px; color: var(--sage); line-height: 1.4; }
+    .related-arrow { color: var(--muted); flex-shrink: 0; }
+    .related-card:hover .related-arrow { color: var(--accent); }
+
+    .footer {
+      border-top: 1px solid var(--border-muted);
+      padding-top: 28px;
+      margin-top: 52px;
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer a { color: var(--accent); }
+    .footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="wordmark">
+    <a href="/">✦ JDesigns Strategist</a>
+    <span>/</span>
+    <a href="/help">Meta Help</a>
+    <span>/ Setup &amp; Structure</span>
+  </div>
+
+  <div class="article-meta">
+    <span class="meta-tag">Setup &amp; Structure</span>
+    <span class="meta-date">Updated June 2026</span>
+  </div>
+
+  <h1>Meta Business Suite vs. Business Manager vs. Business Portfolio — What's the Difference?</h1>
+
+  <p class="article-intro">Meta has renamed and reorganized its business tools multiple times, and the current UI still uses all three names in different places. If you've ever opened one dashboard trying to find something that was definitely somewhere else, this guide is for you. Here's exactly what each tool is, what it does, and which one you actually need to understand.</p>
+
+  <div class="article-body">
+
+    <h2>Why this is so confusing</h2>
+
+    <p>Meta has a long history of renaming things without fully retiring the old names. "Business Manager" became "Business Portfolio" — but Meta still calls it Business Manager in support articles, some UI menus, and plenty of third-party tutorials. Meanwhile, "Business Suite" sounds like it should be the main thing, but it's actually just the front-facing content dashboard.</p>
+
+    <p>The result: three names that sound like variations of the same thing, each pointing to a different tool, none of them clearly labeled when you're inside the platform trying to figure out what you're looking at.</p>
+
+    <div class="callout">
+      <strong>The short version:</strong> Business Suite is what you see day to day. Business Portfolio is the structure that actually owns your assets. Business Manager is just the old name for Business Portfolio — they're the same thing.
+    </div>
+
+    <h2>The three tools, explained clearly</h2>
+
+    <h3>Meta Business Suite</h3>
+
+    <p><strong>What it is:</strong> The dashboard you land on at business.facebook.com. It's the "front desk" of your Meta presence — designed for day-to-day content management.</p>
+
+    <p>From Business Suite you can schedule and publish posts, respond to messages and comments across Facebook and Instagram, check basic page insights, and get a high-level ad spend overview. It's built for business owners who want to manage their social presence without going deep into settings.</p>
+
+    <p>What it is <em>not</em>: a place to manage your ad account structure, pixel, or who has access to your assets. Those things live elsewhere.</p>
+
+    <h3>Business Manager</h3>
+
+    <p><strong>What it is:</strong> The old name for what is now called Business Portfolio. Meta rebranded it, but "Business Manager" still appears in support articles, help documentation, third-party guides, and even some corners of the Meta UI.</p>
+
+    <div class="callout">
+      <strong>If you see "Business Manager" anywhere — in an article, in a menu, in a tutorial — it means the same thing as Business Portfolio.</strong> Meta did not replace the tool; it renamed it. The functionality is the same.
+    </div>
+
+    <h3>Business Portfolio</h3>
+
+    <p><strong>What it is:</strong> The container that holds all of your business assets on Meta. This is the most important structure to understand, and it's the one most business owners know the least about.</p>
+
+    <p>Your Business Portfolio is what you set up at business.facebook.com. It's the thing that <em>owns</em> your Facebook Page, your Instagram account, your ad account, your pixel, and the people and partners who have access to them. Everything important lives inside it.</p>
+
+    <p>If someone else built your Meta setup — an agency, a contractor, a freelancer — there's a real chance your assets live inside <em>their</em> Business Portfolio, not yours. That's a problem worth knowing about.</p>
+
+    <h2>A visual analogy: think of it like a building</h2>
+
+    <p>The easiest way to keep these straight is to picture a building:</p>
+
+    <p><strong>Business Portfolio = the building itself.</strong> It's the legal structure that owns everything inside. Whoever holds the Portfolio controls the assets.</p>
+
+    <p><strong>Business Suite = the front door and reception area.</strong> It's what most people walk into when they visit. Nice, functional, good for everyday tasks — but it doesn't show you the whole building.</p>
+
+    <p><strong>Your Facebook Page, ad account, Instagram account, pixel = the offices inside the building.</strong> Each one is a separate room. They all belong to whoever owns the building (the Portfolio).</p>
+
+    <p>Most business owners spend all their time in the reception area (Business Suite) without ever realizing the building they're in might not be theirs.</p>
+
+    <h2>The three tools side by side</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>What it is</th>
+          <th>What you do there</th>
+          <th>Who needs it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Meta Business Suite</td>
+          <td>The content dashboard at business.facebook.com</td>
+          <td>Post content, manage inbox, check insights, view ad spend overview</td>
+          <td>Anyone actively managing their Facebook or Instagram presence</td>
+        </tr>
+        <tr>
+          <td>Business Manager</td>
+          <td>Old name for Business Portfolio — same tool</td>
+          <td>Same as Business Portfolio</td>
+          <td>This name still appears in old guides and Meta support; it's not a separate thing</td>
+        </tr>
+        <tr>
+          <td>Business Portfolio</td>
+          <td>The container that owns your Meta business assets</td>
+          <td>Manage pages, ad accounts, pixels, people, and partner access</td>
+          <td>Every business owner running ads or working with an agency — this is the one that matters most</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>What lives inside a Business Portfolio</h2>
+
+    <p>Understanding your Business Portfolio means understanding what it holds. Here's what can live inside one:</p>
+
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Facebook Pages</strong>
+          <p>Your business's Facebook presence. The Page is an asset — it belongs to whatever Portfolio owns it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Instagram accounts</strong>
+          <p>Your Instagram business account, connected to the Portfolio and often linked to your Facebook Page.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Ad accounts</strong>
+          <p>Where your campaigns live and where Meta charges your card. The ad account — and all its historical data — belongs to the Portfolio that owns it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Pixels</strong>
+          <p>The tracking code on your website. Your pixel builds your audience data and conversion history — it lives in the Portfolio too.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>People</strong>
+          <p>Employees or team members with access to your Portfolio and its assets. Each person has a role and permission level.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <strong>Partners</strong>
+          <p>Agencies or contractors granted access to specific assets. Partner access is the correct way to give an outside party access to your accounts — without handing them ownership of anything.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>How to know which tool you're actually in</h2>
+
+    <p>The URL is the fastest tell:</p>
+
+    <p><strong>business.facebook.com</strong> — you're in Business Suite or Business Portfolio settings, depending on where you navigate. The left sidebar switches between them. If you see "Settings" and options like Ad Accounts, Pages, People, and Partners, you're in Business Portfolio settings. If you see Posts, Inbox, and Insights, you're in Business Suite.</p>
+
+    <p><strong>adsmanager.facebook.com</strong> — you're in Ads Manager. This is where you build and monitor individual campaigns. It's separate from both Business Suite and the Portfolio settings.</p>
+
+    <p><strong>The mobile app (Meta Business Suite app)</strong> — you're in the mobile version of Business Suite. Asset management and Portfolio settings are not fully available here.</p>
+
+    <h2>The most common confusion</h2>
+
+    <p>The support question that comes up constantly: <strong>"I can see my page but I can't find my ad account."</strong></p>
+
+    <p>Almost always, this means the person is looking inside Business Suite — the front desk — for something that's buried inside the Business Portfolio settings. Ad accounts don't surface prominently in Business Suite. You find them by going to business.facebook.com → Settings (gear icon or left nav) → Ad Accounts.</p>
+
+    <div class="callout-warning">
+      <strong>If you can't find your ad account at all:</strong> it may be owned by a different Business Portfolio — one that belongs to an agency or a contractor who set up your ads. You may have been given partial access to the ad account without it being in your own Portfolio. This is worth investigating.
+    </div>
+
+    <p>The other version of this confusion: someone is trying to add a partner or change access permissions, but they're doing it inside Business Suite instead of Business Portfolio settings. People and partner management only lives in the Portfolio settings — not in Business Suite.</p>
+
+    <h2>The most important thing to understand</h2>
+
+    <p>Your Business Portfolio is what owns your assets. Not your personal Facebook profile. Not the agency. Not Business Suite. The Portfolio.</p>
+
+    <p>If you don't have your own Business Portfolio — or if you have one but your assets were never actually added to it — then the assets you think you own might belong to someone else's structure. You could lose access to your ad account history, your pixel audiences, and your Facebook Page without warning if the relationship with that party goes sideways.</p>
+
+    <p>This is the setup question that matters most, and it's one most business owners never think to ask until it's too late.</p>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Not sure how your Meta structure is actually set up?</h3>
+    <p>I do a full Meta Ecosystem Review — I map out your Business Portfolio, ad accounts, pages, pixel, and partner access, and give you a written breakdown of exactly what you own, what you don't, and what needs to be fixed.</p>
+    <div class="cta-row">
+      <a href="https://www.fiverr.com/jazz96designs/review-and-guide-your-meta-business-access-setup-issues" class="cta-btn" target="_blank" rel="noopener">Get a Meta Ecosystem Review →</a>
+      <a href="/help" class="cta-btn-outline">← More Free Guides</a>
+    </div>
+    <p class="disclaimer">Meta Ecosystem Review starts at $595. I review your full Meta setup and give you a written action plan — I don't log in to your accounts or contact Meta on your behalf.</p>
+  </div>
+
+  <div class="related-section">
+    <div class="related-label">Related Guides</div>
+    <div class="related-list">
+      <a href="/help/who-owns-my-meta-ad-account.html" class="related-card">
+        <span class="related-title">Who Actually Owns Your Meta Ad Account?</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help/who-gets-what-access-meta-business-suite.html" class="related-card">
+        <span class="related-title">Who Gets What Access in Meta Business Suite?</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help/instagram-wont-connect-meta-business-suite.html" class="related-card">
+        <span class="related-title">Why Your Instagram Won't Connect to Meta Business Suite</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help" class="related-card">
+        <span class="related-title">View All Meta Help Guides →</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 JDesigns Strategist LLC</span>
+    <a href="/help">← Back to Meta Help</a>
+  </footer>
+
+</div>
+</body>
+</html>

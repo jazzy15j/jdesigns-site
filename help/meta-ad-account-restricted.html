@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Meta Ad Account Is Restricted — What Do I Do? | JDesigns Strategist</title>
+  <meta name="description" content="Meta restricted your ad account. Here's how to find out what triggered it, whether to appeal, and how to write an appeal that doesn't get auto-rejected." />
+  <meta property="og:title" content="My Meta Ad Account Is Restricted — What Do I Do?" />
+  <meta property="og:description" content="Meta restricted your ad account. Here's how to find out what triggered it, whether to appeal, and how to write an appeal that doesn't get auto-rejected." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       #1a7a4e;
+      --border-muted: #102b18;
+      --accent:       #2ec27e;
+      --accent-dim:   #0d3320;
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --radius:       14px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 52px 24px 88px;
+    }
+
+    .wordmark {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wordmark span { color: var(--muted); }
+    .wordmark a:hover { color: var(--text); }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .meta-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border-muted);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+    .meta-date { font-size: 12px; color: var(--muted); }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .article-intro {
+      font-size: 15.5px;
+      color: var(--sage);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border-muted);
+    }
+
+    .article-body h2 {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--text);
+      margin: 40px 0 12px;
+      line-height: 1.3;
+    }
+    .article-body h3 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 32px 0 10px;
+    }
+    .article-body p {
+      font-size: 15px;
+      color: var(--sage);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    .article-body strong { color: var(--text); font-weight: 600; }
+
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      color: var(--sage);
+      line-height: 1.65;
+    }
+    .callout strong { color: var(--text); }
+
+    .callout-warning {
+      background: rgba(180, 50, 30, 0.08);
+      border: 1px solid rgba(220, 80, 60, 0.25);
+      border-left: 3px solid #e05a3a;
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      color: var(--sage);
+      line-height: 1.65;
+    }
+    .callout-warning strong { color: #f0a090; }
+
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-body { flex: 1; }
+    .step-body strong {
+      display: block;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .step-body p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* ── Decision Box ── */
+    .decision-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 24px 20px;
+      margin: 24px 0;
+    }
+    .decision-box-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .decision-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-muted);
+    }
+    .decision-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .decision-condition {
+      font-size: 13.5px;
+      color: var(--sage);
+      flex: 1;
+      line-height: 1.5;
+    }
+    .decision-action {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      flex-shrink: 0;
+      text-align: right;
+      max-width: 180px;
+      line-height: 1.4;
+    }
+    .decision-action.caution { color: #f0c070; }
+    .decision-action.stop { color: #f0a090; }
+
+    .trigger-list {
+      list-style: none;
+      margin: 16px 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .trigger-list li {
+      font-size: 14.5px;
+      color: var(--sage);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .trigger-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .cta-block h3 {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .cta-block p {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, transform 0.12s;
+      cursor: pointer;
+      border: none;
+    }
+    .cta-btn:hover { background: var(--accent); transform: translateY(-1px); }
+    .cta-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, border-color 0.15s, transform 0.12s;
+      cursor: pointer;
+    }
+    .cta-btn-outline:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+    .disclaimer {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+
+    .related-section { margin-top: 56px; }
+    .related-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .related-list { display: flex; flex-direction: column; gap: 8px; }
+    .related-card {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: border-color 0.15s;
+    }
+    .related-card:hover { border-color: var(--border); }
+    .related-title { font-size: 14px; color: var(--sage); line-height: 1.4; }
+    .related-arrow { color: var(--muted); flex-shrink: 0; }
+    .related-card:hover .related-arrow { color: var(--accent); }
+
+    .footer {
+      border-top: 1px solid var(--border-muted);
+      padding-top: 28px;
+      margin-top: 52px;
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer a { color: var(--accent); }
+    .footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="wordmark">
+    <a href="/">✦ JDesigns Strategist</a>
+    <span>/</span>
+    <a href="/help">Meta Help</a>
+    <span>/ Ad Account Restrictions</span>
+  </div>
+
+  <div class="article-meta">
+    <span class="meta-tag">Restrictions &amp; Verification</span>
+    <span class="meta-date">Updated June 2026</span>
+  </div>
+
+  <h1>My Meta Ad Account Is Restricted — What Do I Do?</h1>
+
+  <p class="article-intro">A restricted Meta ad account doesn't always mean it's over — but how you respond in the next few hours matters. This guide walks you through what a restriction actually means, what likely triggered it, whether an appeal is worth filing, and how to write one that doesn't get auto-rejected.</p>
+
+  <div class="article-body">
+
+    <h2>Restricted vs. disabled — they're not the same thing</h2>
+
+    <p>Before you do anything, it's important to understand what type of action Meta took on your account. These two terms get used interchangeably, but they mean very different things.</p>
+
+    <p><strong>Restricted</strong> means your account still exists but is limited in some way — you may be blocked from running new ads, creating new campaigns, or certain ad types may be unavailable. The account is not gone. This is often a temporary flag while Meta reviews activity.</p>
+
+    <p><strong>Disabled</strong> means the account has been fully shut off. You cannot run ads, access creative, or view reporting. This is a more serious action and typically requires an appeal to reverse — though Meta makes the final call on whether or not access is restored.</p>
+
+    <div class="callout">
+      <strong>Check Account Quality first.</strong> Go to <strong>business.facebook.com/accountquality</strong> and look at your ad account status. The notice there will tell you exactly what action was taken and what policy it's tied to. Don't assume the severity — read what Meta actually says.
+    </div>
+
+    <h2>What commonly triggers a restriction</h2>
+
+    <p>Restrictions can happen to any account, including ones that haven't intentionally done anything wrong. These are the most common causes:</p>
+
+    <ul class="trigger-list">
+      <li>Policy violation in your ad creative, copy, or landing page — even if unintentional</li>
+      <li>Unusual account activity or a sudden spike in spending</li>
+      <li>Business verification not completed or recently expired</li>
+      <li>Payment method flagged, declined, or recently changed</li>
+      <li>New account running high-budget campaigns too quickly</li>
+      <li>System flag for circumvention behaviors — including VPN use, multiple ad accounts, or activity that looks like you're trying to work around a previous restriction</li>
+      <li>Promoting a restricted category (credit, housing, employment, social issues) without a Special Ad Category set</li>
+      <li>Landing page that Meta's system can't properly crawl or that violates their page quality policies</li>
+    </ul>
+
+    <div class="callout-warning">
+      <strong>Important:</strong> Meta's automated systems flag accounts based on signals, patterns, and comparisons to policy — not always with human review at the point of restriction. A restriction does not guarantee a violation occurred. It means their system flagged something worth reviewing. Whether access is restored is Meta's decision, not something anyone outside of Meta can promise or guarantee.
+    </div>
+
+    <h2>Step 1 — Find the actual reason before you do anything else</h2>
+
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Go to Account Quality</strong>
+          <p>Navigate to business.facebook.com/accountquality. This is the only place with the actual restriction notice — not Ads Manager, not notifications.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Read the specific notice Meta provided</strong>
+          <p>Look for the policy name or violation listed. Meta usually names the policy. Write it down — you'll need it if you appeal.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Find the ad or creative that triggered it, if listed</strong>
+          <p>Meta sometimes shows the specific ad or campaign flagged. If they do, review it carefully against the policy they cited before proceeding.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Step 2 — Decide whether to appeal</h2>
+
+    <p>Not every restriction should be appealed immediately. Your situation determines the right move.</p>
+
+    <div class="decision-box">
+      <div class="decision-box-label">Should I appeal?</div>
+      <div class="decision-row">
+        <div class="decision-condition">You know exactly what triggered it and it was a genuine policy violation</div>
+        <div class="decision-action caution">Fix it first, then appeal</div>
+      </div>
+      <div class="decision-row">
+        <div class="decision-condition">You reviewed everything and genuinely don't see a violation</div>
+        <div class="decision-action">Appeal with documentation</div>
+      </div>
+      <div class="decision-row">
+        <div class="decision-condition">This is your first restriction ever</div>
+        <div class="decision-action">Appeal — worth it</div>
+      </div>
+      <div class="decision-row">
+        <div class="decision-condition">You've been restricted multiple times before</div>
+        <div class="decision-action caution">Approach with care — re-read policies first</div>
+      </div>
+      <div class="decision-row">
+        <div class="decision-condition">You're running ads in a Special Ad Category (housing, credit, employment, social issues) without the category set</div>
+        <div class="decision-action stop">Fix the campaign first — appealing without fixing usually fails</div>
+      </div>
+    </div>
+
+    <p>If you violated a policy — even unintentionally — appealing before fixing the issue typically results in a denial. Meta's reviewers look at whether the problem still exists. Correct the ad, the landing page, or whatever was flagged before you file anything.</p>
+
+    <h2>Step 3 — How to write an appeal that doesn't get auto-rejected</h2>
+
+    <p>Most failed appeals aren't rejected because of what they said — they're rejected because of how they said it, or because they said too much. Keep it short, factual, and professional.</p>
+
+    <h3>What to include</h3>
+
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>One brief paragraph — that's it</strong>
+          <p>State your business name, what you do, and who you serve. Keep it to two or three sentences.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Acknowledge Meta's concern without admitting guilt if you're unsure</strong>
+          <p>Something like: "I reviewed my account and the policy listed and want to ensure my ads are fully compliant." You don't have to confess to something you didn't do.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>State any changes you've made</strong>
+          <p>If you updated an ad, removed a creative, or fixed a landing page before appealing, mention it briefly. This shows good faith.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>What to avoid</h3>
+
+    <div class="callout-warning">
+      <strong>Do not write an angry, emotional, or threatening appeal.</strong> Phrases like "this is unfair," "I've been a loyal customer," "I'll leave your platform," or anything that sounds like a complaint will not help your case. Meta's review system is not a customer service department — it responds to compliance, not emotion. Keep the tone neutral and factual.
+    </div>
+
+    <p>Also avoid: submitting multiple appeals back to back, tagging Meta's social accounts, or asking for escalation before you've received a response. All of those behaviors can slow your review or trigger further scrutiny.</p>
+
+    <h2>What "under review" means — and how long it takes</h2>
+
+    <p>After submitting an appeal, your account status will typically show as "Under Review" in Account Quality. This means a human reviewer (or a human-assisted process) has been queued to evaluate your case.</p>
+
+    <p>Timelines vary significantly. Some reviews resolve in 24 to 48 hours. Others take one to two weeks, particularly if the account has a complex history or if there's high appeal volume on Meta's end. There is no way to speed this up from the outside — following up before a response is received does not help and may restart the review clock.</p>
+
+    <div class="callout">
+      <strong>One appeal at a time.</strong> Submit once, then wait for a response before taking any further action. The system logs every appeal submission — multiple rapid submissions are flagged and can result in a faster denial or a permanent lock on appeals.
+    </div>
+
+    <h2>If the appeal is denied</h2>
+
+    <p>A denied appeal is not always final, but your options narrow. Here's what you can try, in order:</p>
+
+    <p><strong>Request another review.</strong> Some accounts get one additional review request after a denial. If Account Quality shows this option, use it — but only after re-reading the policy cited and confirming everything in your account is clean.</p>
+
+    <p><strong>Contact Meta Business Support directly.</strong> If you have access to live chat or business support through your Meta account (this varies by account age and spend level), you can open a support case. Having documentation of your business — website, registered business name, what you advertise — can help a support agent understand the context.</p>
+
+    <p><strong>Starting a new account — with major caveats.</strong> As a last resort, some advertisers choose to build a new, clean ad account. This should only be done if the original account is fully, permanently disabled with no review path remaining. Starting a new account while an existing account is under restriction or appeal can be flagged as circumvention — which is itself a policy violation and can result in the new account being banned as well. Do not do this while any appeal is still pending.</p>
+
+    <div class="callout-warning">
+      <strong>Warning: mass-appealing fast is a red flag.</strong> Submitting multiple appeals in quick succession — or appealing, then immediately creating a new account, then appealing again — is one of the clearest signals to Meta's automated systems that an account is trying to circumvent enforcement. This behavior can escalate a reversible restriction into a permanent disable. Slow down. One action at a time, with full documentation.
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Not sure what triggered your restriction — or how to respond?</h3>
+    <p>I do a full Meta Ecosystem Review where I go through your account structure, the notice Meta issued, your ad history, and your landing pages to give you a written analysis and action plan. You get a clear picture of what likely happened and a script for your appeal — if one is worth filing.</p>
+    <div class="cta-row">
+      <a href="https://www.fiverr.com/jazz96designs/review-and-guide-your-meta-business-access-setup-issues" class="cta-btn" target="_blank" rel="noopener">Get a Meta Ecosystem Review →</a>
+      <a href="/help" class="cta-btn-outline">← More Free Guides</a>
+    </div>
+    <p class="disclaimer">Meta Ecosystem Review starts at $595. I review your account and provide a written action plan — I don't log in to your accounts or contact Meta on your behalf. Whether Meta restores access is their decision; I give you the clearest possible path to making your case.</p>
+  </div>
+
+  <div class="related-section">
+    <div class="related-label">Related Guides</div>
+    <div class="related-list">
+      <a href="/help/who-owns-my-meta-ad-account" class="related-card">
+        <span class="related-title">Who Actually Owns Your Meta Ad Account?</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help/who-gets-what-access-meta-business-suite" class="related-card">
+        <span class="related-title">Who Gets What Access in Meta Business Suite?</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help/instagram-wont-connect-meta-business-suite" class="related-card">
+        <span class="related-title">Why Your Instagram Won't Connect to Meta Business Suite</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help" class="related-card">
+        <span class="related-title">View All Meta Help Guides →</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 JDesigns Strategist LLC</span>
+    <a href="/help">← Back to Meta Help</a>
+  </footer>
+
+</div>
+</body>
+</html>

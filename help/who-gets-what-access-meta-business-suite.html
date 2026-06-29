@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who Gets What Access in Meta Business Suite | JDesigns Strategist</title>
+  <meta name="description" content="Employee, Admin, and Partner — Meta's three access levels explained. What each role can actually do, and the most common mistake businesses make when giving access." />
+  <meta property="og:title" content="Who Gets What Access in Meta Business Suite" />
+  <meta property="og:description" content="Employee, Admin, and Partner — Meta's three access levels explained. What each role can actually do, and the most common mistake businesses make when giving access." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       #1a7a4e;
+      --border-muted: #102b18;
+      --accent:       #2ec27e;
+      --accent-dim:   #0d3320;
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --radius:       14px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 52px 24px 88px;
+    }
+
+    /* ── Nav ── */
+    .wordmark {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wordmark span { color: var(--muted); }
+    .wordmark a:hover { color: var(--text); }
+
+    /* ── Article Header ── */
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .meta-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border-muted);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+    .meta-date {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .article-intro {
+      font-size: 15.5px;
+      color: var(--sage);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border-muted);
+    }
+
+    /* ── Article Body ── */
+    .article-body h2 {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--text);
+      margin: 40px 0 12px;
+      line-height: 1.3;
+    }
+    .article-body h3 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 32px 0 10px;
+    }
+    .article-body p {
+      font-size: 15px;
+      color: var(--sage);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    .article-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── Callout Box ── */
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      color: var(--sage);
+      line-height: 1.65;
+    }
+    .callout strong { color: var(--text); }
+
+    /* ── Step List ── */
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-body { flex: 1; }
+    .step-body strong {
+      display: block;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .step-body p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* ── Compare Table ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13.5px;
+    }
+    .compare-table th {
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-table td {
+      padding: 12px 14px;
+      color: var(--sage);
+      border-bottom: 1px solid var(--border-muted);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:first-child {
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .compare-table tbody tr:hover td { background: var(--surface); }
+
+    /* ── Decision Box ── */
+    .decision-box {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin: 28px 0;
+    }
+    .decision-box .decision-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .decision-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+      align-items: flex-start;
+    }
+    .decision-row:last-child { margin-bottom: 0; }
+    .decision-if {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      min-width: 130px;
+      flex-shrink: 0;
+    }
+    .decision-then {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── CTA Block ── */
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .cta-block h3 {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .cta-block p {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, transform 0.12s;
+      cursor: pointer;
+      border: none;
+    }
+    .cta-btn:hover { background: var(--accent); transform: translateY(-1px); }
+    .cta-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, border-color 0.15s, transform 0.12s;
+      cursor: pointer;
+    }
+    .cta-btn-outline:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+    .disclaimer {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+
+    /* ── Related Articles ── */
+    .related-section { margin-top: 56px; }
+    .related-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .related-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .related-card {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: border-color 0.15s;
+    }
+    .related-card:hover { border-color: var(--border); }
+    .related-title {
+      font-size: 14px;
+      color: var(--sage);
+      line-height: 1.4;
+    }
+    .related-arrow { color: var(--muted); flex-shrink: 0; }
+    .related-card:hover .related-arrow { color: var(--accent); }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid var(--border-muted);
+      padding-top: 28px;
+      margin-top: 52px;
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer a { color: var(--accent); }
+    .footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="wordmark">
+    <a href="/">✦ JDesigns Strategist</a>
+    <span>/</span>
+    <a href="/help">Meta Help</a>
+    <span>/ Access Roles</span>
+  </div>
+
+  <!-- Article Header -->
+  <div class="article-meta">
+    <span class="meta-tag">Account Access</span>
+    <span class="meta-date">Updated June 2026</span>
+  </div>
+
+  <h1>Who Gets What Access in Meta Business Suite</h1>
+
+  <p class="article-intro">Every Meta Business Suite account has three types of access: Employee, Admin, and Partner. Most businesses either give everyone Admin access "to be safe" or hand agencies the wrong role entirely. Both mistakes create security risks — and sometimes lock you out of your own account. Here's exactly what each role does and who should get which one.</p>
+
+  <div class="article-body">
+
+    <h2>Why this matters more than you think</h2>
+
+    <p>Meta's access system isn't just an organizational preference — it directly affects your account's security, ad performance, and what happens if something goes wrong. When the wrong person has Admin access, they can remove you, change payment methods, disable your ad account, or lock you out entirely. When agencies are added incorrectly, it creates ownership disputes that are difficult to resolve.</p>
+
+    <p>The most common support requests I receive are from business owners who can't access their own accounts because a former employee or contractor still holds Admin access — or because an agency was set up as an Admin instead of a Partner and then went dark.</p>
+
+    <h2>The three roles explained</h2>
+
+    <h3>Employee</h3>
+
+    <p>An Employee can work inside your Business Portfolio, but only on the specific assets they've been explicitly assigned. They can't see anything they haven't been given access to, they can't add or remove other people, and they can't change any account-level settings.</p>
+
+    <p>This is the correct role for most people on your team. A social media manager running ads should be an Employee assigned to the specific ad account and page they need — nothing more.</p>
+
+    <h3>Admin</h3>
+
+    <p>An Admin has full, unrestricted control over your entire Business Portfolio. They can add and remove people (including other Admins), change payment methods, access every asset in the portfolio, and modify any setting. There is no action an Admin cannot take.</p>
+
+    <p>This is the role that gets misused most. Many businesses make multiple people Admins when they only need access to one page or one ad account. That's a security problem — if any of those accounts is compromised, the attacker has full portfolio control.</p>
+
+    <div class="callout">
+      <strong>Rule of thumb:</strong> Your Business Portfolio should have as few Admins as possible — ideally just you, plus one trusted backup in case you lose access. Everyone else should be an Employee assigned only to what they need.
+    </div>
+
+    <h3>Partner</h3>
+
+    <p>A Partner is an external business — an agency, a contractor, or a freelancer — that accesses your portfolio through their own Business Portfolio, not through a personal login. You add them by entering their <strong>Business Portfolio ID</strong>, not by inviting an email address.</p>
+
+    <p>This is the correct way to give an agency access to your account. When an agency is added as a Partner, they work inside their own Meta environment. If you stop working with them, you can remove the Partner connection cleanly without affecting your own account structure.</p>
+
+    <p>When an agency is added as an Admin via personal email instead, removing them becomes complicated — and if the relationship ends badly, you may be in a situation where they still technically control your portfolio.</p>
+
+    <h2>Role comparison at a glance</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Can do</th>
+          <th>Cannot do</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Employee</td>
+          <td>Work on assigned assets (pages, ad accounts, catalogs)</td>
+          <td>Add/remove people, change settings, access unassigned assets</td>
+        </tr>
+        <tr>
+          <td>Admin</td>
+          <td>Everything — full portfolio control, people management, billing</td>
+          <td>Nothing is restricted</td>
+        </tr>
+        <tr>
+          <td>Partner</td>
+          <td>Access assigned assets through their own Business Portfolio</td>
+          <td>Add/remove people, change portfolio-level settings, access unassigned assets</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>The most common mistakes</h2>
+
+    <h3>Making everyone an Admin "just in case"</h3>
+
+    <p>This is the most common mistake by far. A business owner sets up the account, then adds their VA, their social media manager, and their designer as Admins so they "don't have to deal with permissions issues." Now four people have full portfolio control. If any one of those accounts gets hacked, your entire Meta presence is at risk.</p>
+
+    <h3>Adding agencies as Admins instead of Partners</h3>
+
+    <p>Agencies should never be Admins. When you add an agency to your Business Portfolio, ask them for their <strong>Business Portfolio ID</strong> and add them as a Partner. If an agency asks you to add them as an Admin via their personal email, that's a red flag — a professional agency has its own Business Portfolio and knows how the Partner system works.</p>
+
+    <h3>Giving full portfolio access when only page access is needed</h3>
+
+    <p>If someone needs to post on your Facebook Page, they don't need access to your ad account. If someone manages your Instagram, they don't need access to your Facebook Page. Meta lets you assign Employees to specific assets — use that instead of granting broad portfolio access by default.</p>
+
+    <h2>Quick rule: who gets which role</h2>
+
+    <div class="decision-box">
+      <div class="decision-label">Role Assignment Guide</div>
+      <div class="decision-row">
+        <div class="decision-if">You (the owner)</div>
+        <div class="decision-then">Admin. You should always be an Admin on your own portfolio.</div>
+      </div>
+      <div class="decision-row">
+        <div class="decision-if">Trusted backup</div>
+        <div class="decision-then">Admin. One person you trust completely, in case you lose access.</div>
+      </div>
+      <div class="decision-row">
+        <div class="decision-if">Employee or VA</div>
+        <div class="decision-then">Employee role, assigned only to the specific page or ad account they need.</div>
+      </div>
+      <div class="decision-row">
+        <div class="decision-if">Contractor</div>
+        <div class="decision-then">Employee role if working directly in your portfolio. Partner if they have their own agency account.</div>
+      </div>
+      <div class="decision-row">
+        <div class="decision-if">Agency</div>
+        <div class="decision-then">Partner — added via their Business Portfolio ID. Never Admin.</div>
+      </div>
+    </div>
+
+    <h2>How to check who currently has access</h2>
+
+    <p>If you're not sure who has what access to your portfolio right now, here's how to check:</p>
+
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Open Meta Business Suite</strong>
+          <p>Go to business.facebook.com and make sure you're logged in to the correct account.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Go to Settings → People</strong>
+          <p>In the left sidebar, click Settings. Then click People under the Users section. This shows everyone who has access to your Business Portfolio and their role.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Check Partners separately</strong>
+          <p>Back in Settings, click Partners. This shows any external businesses connected to your portfolio. Former agencies you've stopped working with may still appear here.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Review and clean up</strong>
+          <p>Remove anyone who shouldn't have access. For Admins who should be Employees, click their name, edit their role, and reassign them to specific assets only.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Don't recognize someone in your People list?</strong> Remove them immediately and change your Facebook password. Unknown users with Admin access is one of the first signs of a compromised account.
+    </div>
+
+    <h2>If your access setup is already a mess</h2>
+
+    <p>Some access situations are straightforward to clean up. Others — like when a former agency is still listed as Admin and won't respond, or when your account got restructured by someone else and you don't have the right role anymore — require a full review of your portfolio structure before you start changing things.</p>
+
+    <p>Moving the wrong person without understanding the full picture can make things worse. This is the kind of thing I look at in a <strong>Meta Access Review</strong> — I go through your entire portfolio structure, identify who has what and whether it's correct, and give you a prioritized written plan to clean it up safely.</p>
+
+  </div><!-- /.article-body -->
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Not sure if your access setup is safe?</h3>
+    <p>I'll review your full Business Portfolio structure — who has what role, whether any Partners are lingering from old agencies, and exactly what to change and in what order.</p>
+    <div class="cta-row">
+      <a href="https://www.fiverr.com/jazz96designs/review-and-guide-your-meta-business-access-setup-issues" class="cta-btn" target="_blank" rel="noopener">Get a Meta Access Review →</a>
+      <a href="/help" class="cta-btn-outline">← More Free Guides</a>
+    </div>
+    <p class="disclaimer">Meta Access Review starts at $345. I review your setup and give you a written action plan — I don't log in to your account or contact Meta on your behalf.</p>
+  </div>
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <div class="related-label">Related Guides</div>
+    <div class="related-list">
+      <a href="/help/who-owns-my-meta-ad-account" class="related-card">
+        <span class="related-title">Who Actually Owns Your Meta Ad Account?</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help/instagram-wont-connect-meta-business-suite" class="related-card">
+        <span class="related-title">Why Your Instagram Won't Connect to Meta Business Suite</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help" class="related-card">
+        <span class="related-title">View All Meta Help Guides →</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 JDesigns Strategist LLC</span>
+    <a href="/help">← Back to Meta Help</a>
+  </footer>
+
+</div>
+</body>
+</html>
