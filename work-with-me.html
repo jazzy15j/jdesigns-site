@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work With JDesigns Strategist — Meta Setup, Ads & Strategy</title>
+  <meta name="description" content="Work with Jasmine at JDesigns Strategist for Meta account clarity, Facebook and Instagram ads setup, and monthly strategy support."/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       rgba(30,50,37,0.7);
+      --border-green: rgba(46,194,126,.22);
+      --green:        #2ec27e;
+      --green-dim:    rgba(46,194,126,.08);
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --radius:       14px;
+      --font-serif:   Georgia, 'Times New Roman', serif;
+      --font-sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,16,10,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      color: var(--green);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 5px 12px;
+      border-radius: 999px;
+      transition: color .15s, background .15s;
+    }
+
+    .nav-link:hover { color: var(--text); background: var(--surface); }
+    .nav-link.active { color: var(--green); }
+
+    .nav-cta {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #07100a;
+      background: var(--green);
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: opacity .15s;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover { opacity: .85; }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 88px;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .profile-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--green);
+      flex-shrink: 0;
+    }
+
+    .profile-name {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .profile-handle {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .hero { margin-bottom: 44px; }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.65rem, 5vw, 2.15rem);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: 0;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--sage);
+      line-height: 1.7;
+      margin-bottom: 26px;
+      max-width: 580px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      transition: opacity .15s, transform .12s, border-color .15s, color .15s, background .15s;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #07100a;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      opacity: .88;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-green);
+      color: var(--muted);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--green);
+      color: var(--text);
+      background: var(--green-dim);
+    }
+
+    .section-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+      padding-left: 2px;
+    }
+
+    .link-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 44px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: border-color .15s, transform .12s, box-shadow .15s;
+    }
+
+    .link-card:hover {
+      border-color: var(--border-green);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(46,194,126,.07);
+    }
+
+    .link-card-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: var(--green-dim);
+      border: 1px solid var(--border-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+    }
+
+    .link-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .link-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+
+    .link-card-desc {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .link-card-meta {
+      font-size: 11px;
+      color: var(--green);
+      margin-top: 4px;
+    }
+
+    .link-card-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .price-badge {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #07100a;
+      white-space: nowrap;
+    }
+
+    .price-outline {
+      background: transparent;
+      border: 1px solid var(--green);
+      color: var(--green);
+    }
+
+    .arrow {
+      color: var(--muted);
+      font-size: 14px;
+      transition: color .15s, transform .15s;
+    }
+
+    .link-card:hover .arrow {
+      color: var(--green);
+      transform: translateX(3px);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    .help-block {
+      background: var(--surface);
+      border: 1px solid var(--border-green);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .help-block h2,
+    .help-block h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .help-block p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .note-block {
+      background: rgba(46,194,126,.06);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 44px;
+    }
+
+    .note-block h3 {
+      font-size: 12px;
+      color: var(--green);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .note-block p {
+      font-size: 13px;
+      color: var(--sage);
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .note-block p:last-child { margin-bottom: 0; }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-left,
+    .footer-link {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-link:hover { color: var(--green); }
+
+    @media (max-width: 580px) {
+      .nav-link { display: none; }
+      .link-card { align-items: flex-start; }
+      .link-card-right { align-items: flex-end; }
+    }
+
+    @media (max-width: 420px) {
+      .page { padding: 40px 16px 64px; }
+      .hero h1 { font-size: 1.5rem; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .link-card { padding: 16px; }
+      .link-card-icon { width: 40px; height: 40px; }
+      .footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">✦ JDesigns Strategist</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Resources</a>
+        <a href="work-with-me.html" class="nav-link active">Work With Me</a>
+        <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="profile-header">
+      <img src="assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
+      <div>
+        <div class="profile-name">Jasmine</div>
+        <div class="profile-handle">@jdesigns.info</div>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-eyebrow">Direct Help</div>
+      <h1>Need help with a messy Meta setup or ad launch?</h1>
+      <p class="hero-sub">If your Facebook Page, Instagram, Business Portfolio, ad account, pixel, or campaign setup feels unclear, I can help you understand what is happening and choose the cleanest next step.</p>
+      <div class="hero-ctas">
+        <a href="https://jdesigns.fillout.com/areweamatch" class="btn-primary">Start with the match form →</a>
+        <a href="#offers" class="btn-secondary">View options</a>
+      </div>
+    </section>
+
+    <div class="section-label" id="offers">Ways to work together</div>
+    <div class="link-stack">
+      <a href="https://jdesigns.fillout.com/areweamatch" class="link-card">
+        <div class="link-card-icon">01</div>
+        <div class="link-card-body">
+          <div class="link-card-title">Meta Account Clarity Review</div>
+          <div class="link-card-desc">For access issues, disabled assets, Business Portfolio confusion, Page or Instagram connection problems, and unclear account structure.</div>
+          <div class="link-card-meta">Written review, support scripts, checklist, and next-step plan</div>
+        </div>
+        <div class="link-card-right">
+          <div class="price-badge">$800</div>
+          <div class="arrow">→</div>
+        </div>
+      </a>
+
+      <a href="https://jdesigns.fillout.com/areweamatch" class="link-card">
+        <div class="link-card-icon">02</div>
+        <div class="link-card-body">
+          <div class="link-card-title">Meta Ads Launch Setup</div>
+          <div class="link-card-desc">For businesses with a clean enough Meta foundation, proven offer, working destination, and ad budget ready for a real launch.</div>
+          <div class="link-card-meta">Campaign structure, ad copy, creative direction, and launch plan</div>
+        </div>
+        <div class="link-card-right">
+          <div class="price-badge">$895</div>
+          <div class="arrow">→</div>
+        </div>
+      </a>
+
+      <a href="https://jdesigns.fillout.com/areweamatch" class="link-card">
+        <div class="link-card-icon">03</div>
+        <div class="link-card-body">
+          <div class="link-card-title">Monthly Strategy Support</div>
+          <div class="link-card-desc">For active businesses that need ongoing direction across Meta ads, content strategy, creative testing, and next-step planning.</div>
+          <div class="link-card-meta">Best for clients ready for consistent strategic support</div>
+        </div>
+        <div class="link-card-right">
+          <div class="price-badge">$1,495+</div>
+          <div class="arrow">→</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="section-label">Not sure yet?</div>
+    <div class="link-stack">
+      <a href="meta-checklist.html" class="link-card">
+        <div class="link-card-icon">✓</div>
+        <div class="link-card-body">
+          <div class="link-card-title">Start with the free Meta checklist</div>
+          <div class="link-card-desc">Use this if you are locked out, missing access, or unsure what screenshots you need before asking for help.</div>
+          <div class="link-card-meta">Good first step for vague or early-stage Meta confusion</div>
+        </div>
+        <div class="link-card-right">
+          <div class="price-badge price-outline">Free</div>
+          <div class="arrow">→</div>
+        </div>
+      </a>
+
+      <a href="meta-vault.html" class="link-card">
+        <div class="link-card-icon">↗</div>
+        <div class="link-card-body">
+          <div class="link-card-title">Use the Meta Business Fix-It Vault</div>
+          <div class="link-card-desc">A self-guided resource for business owners who need structure before paying for direct review or setup help.</div>
+          <div class="link-card-meta">No custom troubleshooting or direct access to Jasmine included</div>
+        </div>
+        <div class="link-card-right">
+          <div class="price-badge">$97</div>
+          <div class="arrow">→</div>
+        </div>
+      </a>
+    </div>
+
+    <hr class="divider">
+
+    <div class="note-block">
+      <h3>Good fit</h3>
+      <p>You have a real offer, a website or booking path, and you want strategic direction before spending more time or money.</p>
+      <p>You want a clear plan for what to fix, what to launch, and what to ignore.</p>
+    </div>
+
+    <div class="note-block">
+      <h3>Important boundaries</h3>
+      <p>JDesigns does not guarantee Meta approvals, account reinstatement, ad results, sales, leads, ROI, or platform outcomes.</p>
+      <p>For Meta access and restriction work, you receive review, scripts, checklists, and next-step guidance. Meta controls final decisions.</p>
+    </div>
+
+    <div class="help-block">
+      <h2>Ready for direct help?</h2>
+      <p>Start with the match form. Share what is going on, include screenshots if relevant, and I will route you to the right next step.</p>
+      <a href="https://jdesigns.fillout.com/areweamatch" class="btn-primary">Open the match form →</a>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-left">✦ JDesigns Strategist LLC</div>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Resources</a>
+        <a href="https://www.fiverr.com/jazz96designs" class="footer-link" target="_blank" rel="noopener">Fiverr</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

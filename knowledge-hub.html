@@ -441,11 +441,14 @@ const link = container.append('g').selectAll('line').data(linkData).join('line')
   .attr('stroke-dasharray', d => d.cross ? '4,6' : null);
 
 // ── NODES ────────────────────────────────────────────────────────
+// Track drag so we don't navigate when the user just moved a node
+let _dragged = false;
+
 const node = container.append('g').selectAll('g').data(nodes).join('g')
   .style('cursor', d => resolveUrl(d) ? 'pointer' : 'default')
   .call(d3.drag()
-    .on('start', (e,d) => { if(!e.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
-    .on('drag',  (e,d) => { d.fx=e.x; d.fy=e.y; })
+    .on('start', (e,d) => { _dragged = false; if(!e.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+    .on('drag',  (e,d) => { _dragged = true; d.fx=e.x; d.fy=e.y; })
     .on('end',   (e,d) => { if(!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null; })
   );
 
@@ -537,8 +540,18 @@ node
     tt.classList.remove('show');
   })
   .on('click', (e, d) => {
+    if (_dragged) { _dragged = false; return; }
     const dest = resolveUrl(d);
-    if (dest) window.open(dest, '_blank');
+    if (!dest) return;
+    // Use anchor click — more reliable than window.open across browsers
+    const a = document.createElement('a');
+    a.href = dest;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => document.body.removeChild(a), 0);
   });
 
 // ── TICK ─────────────────────────────────────────────────────────

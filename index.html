@@ -3,20 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JDesigns Strategist — Digital Resources for Small Business</title>
+  <title>JDesigns Strategist — Meta Ads, Instagram Strategy & AI Tools for Small Business</title>
+  <meta name="description" content="Free guides on Meta ads, account restrictions, Instagram strategy, and AI tools. Written by Jasmine, Meta Ads Strategist at JDesigns Strategist LLC. No email required."/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #07100a;
-      --card: #0d1a10;
-      --border: rgba(30,50,37,0.7);
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       rgba(30,50,37,0.7);
       --border-green: rgba(46,194,126,.22);
-      --green: #2ec27e;
-      --green-dim: rgba(46,194,126,.1);
-      --text: #ffffff;
-      --muted: #8aab96;
-      --faint: #1e3225;
+      --green:        #2ec27e;
+      --green-dim:    rgba(46,194,126,.08);
+      --green-glow:   rgba(46,194,126,.06);
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --faint:        #1e3225;
+      --radius:       14px;
+      --font-serif:   Georgia, 'Times New Roman', serif;
+      --font-sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -24,17 +30,75 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: var(--font-sans);
       font-size: 15px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
     }
 
-    .page {
-      max-width: 520px;
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,16,10,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 720px;
       margin: 0 auto;
-      padding: 48px 20px 72px;
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-link {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 5px 12px;
+      border-radius: 999px;
+      transition: color .15s, background .15s;
+    }
+    .nav-link:hover { color: var(--text); background: var(--surface); }
+    .nav-link.active { color: var(--green); }
+    .nav-cta {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #07100a;
+      background: var(--green);
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: opacity .15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* ── Page ── */
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 88px;
     }
 
     /* ── Profile Header ── */
@@ -42,341 +106,577 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
     }
     .profile-avatar {
-      width: 56px;
-      height: 56px;
+      width: 52px; height: 52px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--green);
       flex-shrink: 0;
     }
-    .profile-name {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.2;
-    }
-    .profile-handle {
-      font-size: 12.5px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    /* ── Wordmark ── */
-    .wordmark {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 0.775rem;
-      font-weight: 700;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 44px;
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-    .wordmark span { color: var(--muted); }
+    .profile-name { font-size: 15px; font-weight: 700; line-height: 1.2; }
+    .profile-handle { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
 
     /* ── Hero ── */
-    .hero {
-      margin-bottom: 48px;
+    .hero { margin-bottom: 52px; }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
     }
     .hero h1 {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(1.5rem, 5vw, 1.9rem);
+      font-family: var(--font-serif);
+      font-size: clamp(1.65rem, 5vw, 2.15rem);
       font-weight: 400;
-      line-height: 1.3;
+      line-height: 1.25;
       color: var(--text);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       letter-spacing: -0.01em;
     }
     .hero-sub {
-      font-size: 0.9rem;
-      color: var(--muted);
+      font-size: 15px;
+      color: var(--sage);
       line-height: 1.7;
       margin-bottom: 28px;
-      max-width: 460px;
+      max-width: 560px;
     }
-    .hero-ctas {
+    .hero-meta {
       display: flex;
-      gap: 10px;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
       flex-wrap: wrap;
     }
+    .hero-stat {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .hero-stat-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+    .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+
     .btn-primary {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       padding: 11px 22px;
       border-radius: 999px;
       background: var(--green);
       color: #07100a;
-      font-size: 0.85rem;
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.03em;
-      text-decoration: none;
       transition: opacity .15s, transform .12s;
     }
     .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
     .btn-secondary {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       padding: 11px 22px;
       border-radius: 999px;
       background: transparent;
       border: 1px solid var(--border-green);
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 13px;
       font-weight: 600;
-      text-decoration: none;
       transition: border-color .15s, color .15s, background .15s;
     }
     .btn-secondary:hover { border-color: var(--green); color: var(--text); background: var(--green-dim); }
 
     /* ── Section Label ── */
     .section-label {
-      font-size: .68rem; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase;
-      color: var(--green); margin-bottom: 12px;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
       padding-left: 2px;
     }
 
-    /* ── Section header ── */
-    .section-header {
-      margin-bottom: 16px;
+    /* ── Category Pills ── */
+    .category-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
     }
-    .section-header h2 {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 1.15rem;
+    .cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      transition: border-color .15s, color .15s, background .15s;
+    }
+    .cat-pill:hover { border-color: var(--green); color: var(--text); background: var(--green-dim); }
+    .cat-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── Blog Grid ── */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .blog-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color .15s, transform .12s, box-shadow .15s;
+    }
+    .blog-card:hover {
+      border-color: var(--border-green);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(46,194,126,.07);
+    }
+    .blog-card-tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    .blog-card-title {
+      font-family: var(--font-serif);
+      font-size: 16px;
       font-weight: 400;
       color: var(--text);
       line-height: 1.35;
     }
-    .section-header p {
-      font-size: .82rem;
+    .blog-card-desc {
+      font-size: 12.5px;
       color: var(--muted);
-      margin-top: 5px;
       line-height: 1.5;
+      flex: 1;
+    }
+    .blog-card-arrow {
+      font-size: 12px;
+      color: var(--green);
+      margin-top: 4px;
     }
 
-    .section-gap { margin-bottom: 44px; }
-
-    /* ── Problem Cards ── */
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 44px;
+    /* ── View All link ── */
+    .view-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green);
+      border: 1px solid var(--border-green);
+      border-radius: 999px;
+      padding: 9px 18px;
+      transition: background .15s, border-color .15s;
     }
-    .problem-card {
-      background: var(--card);
+    .view-all:hover { background: var(--green-dim); border-color: var(--green); }
+
+    /* ── Section Divider ── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 52px 0; }
+
+    /* ── Hub Feature Block ── */
+    .hub-block {
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px 15px;
-      text-decoration: none;
-      color: var(--text);
+      border-radius: 18px;
+      padding: 32px 28px;
       display: flex;
-      flex-direction: column;
-      gap: 8px;
-      cursor: default;
-      transition: border-color .15s;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 52px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .15s, box-shadow .15s;
     }
-    .problem-card:hover { border-color: var(--border-green); }
-    .problem-icon { font-size: 1.3rem; }
-    .problem-title { font-size: .85rem; font-weight: 700; line-height: 1.3; }
-    .problem-arrow { font-size: .75rem; color: var(--green); margin-top: 4px; }
+    .hub-block::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(46,194,126,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hub-block:hover {
+      border-color: var(--border-green);
+      box-shadow: 0 8px 32px rgba(46,194,126,.07);
+    }
+    .hub-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: var(--green-dim);
+      border: 1px solid var(--border-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .hub-body { flex: 1; }
+    .hub-body h3 {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .hub-body p {
+      font-size: 13.5px;
+      color: var(--sage);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .hub-nodes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .hub-node {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 4px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
 
     /* ── Link Cards ── */
     .link-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 44px; }
-
     .link-card {
       display: flex; align-items: center; gap: 14px;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 14px; padding: 16px 18px;
-      text-decoration: none; color: var(--text);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px 20px;
       transition: border-color .15s, transform .12s, box-shadow .15s;
     }
     .link-card:hover {
       border-color: var(--border-green);
       transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(46,194,126,.08);
+      box-shadow: 0 4px 20px rgba(46,194,126,.07);
     }
-
     .link-card-icon {
-      width: 42px; height: 42px; flex-shrink: 0;
+      width: 44px; height: 44px; flex-shrink: 0;
       border-radius: 10px; background: var(--green-dim);
       border: 1px solid var(--border-green);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
     }
-
     .link-card-body { flex: 1; min-width: 0; }
-    .link-card-title { font-size: .92rem; font-weight: 700; line-height: 1.3; margin-bottom: 3px; }
-    .link-card-desc { font-size: .78rem; color: var(--muted); line-height: 1.45; }
-    .link-card-meta { font-size: .72rem; color: var(--green); margin-top: 4px; }
-
-    .link-card-right {
-      display: flex; flex-direction: column;
-      align-items: flex-end; gap: 5px; flex-shrink: 0;
-    }
-
+    .link-card-title { font-size: 14px; font-weight: 700; line-height: 1.3; margin-bottom: 3px; }
+    .link-card-desc { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+    .link-card-meta { font-size: 11px; color: var(--green); margin-top: 4px; }
+    .link-card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
     .price-badge {
-      font-size: .7rem; font-weight: 800;
+      font-size: 11px; font-weight: 800;
       letter-spacing: .04em; padding: 3px 9px;
       border-radius: 999px;
     }
-    .price-free {
-      background: transparent;
-      border: 1px solid var(--green);
-      color: var(--green);
-    }
-    .price-paid {
-      background: var(--green);
-      color: #07100a;
-    }
-
-    .arrow {
-      color: var(--muted); font-size: .8rem;
-      transition: color .15s, transform .15s;
-    }
+    .price-free { background: transparent; border: 1px solid var(--green); color: var(--green); }
+    .price-paid { background: var(--green); color: #07100a; }
+    .arrow { color: var(--muted); font-size: 14px; transition: color .15s, transform .15s; }
     .link-card:hover .arrow { color: var(--green); transform: translateX(3px); }
 
-    /* ── Trust / Credibility ── */
-    .trust-block {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 22px 20px;
+    /* ── Trust Block ── */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
       margin-bottom: 44px;
     }
-    .trust-block p {
-      font-size: .83rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .trust-block strong { color: var(--text); font-weight: 600; }
-
-    /* ── FAQ ── */
-    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 44px; }
-    .faq-item {
-      background: var(--card);
+    .trust-card {
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 16px 18px;
+      padding: 18px 16px;
     }
-    .faq-q { font-size: .88rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
-    .faq-a { font-size: .8rem; color: var(--muted); line-height: 1.6; }
+    .trust-num {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .trust-label {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
 
-    /* ── Direct Help ── */
-    .help-block {
-      background: var(--card);
+    /* ── Testimonial ── */
+    .testimonial-block {
+      background: var(--surface);
       border: 1px solid var(--border-green);
-      border-radius: 14px;
-      padding: 22px 20px;
-      text-align: center;
+      border-radius: 16px;
+      padding: 24px 22px;
       margin-bottom: 44px;
     }
-    .help-block h3 { font-size: .95rem; font-weight: 700; margin-bottom: 8px; }
-    .help-block p { font-size: .8rem; color: var(--muted); line-height: 1.55; margin-bottom: 16px; }
+    .testimonial-stars {
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    .testimonial-quote {
+      font-family: var(--font-serif);
+      font-size: 15.5px;
+      color: var(--sage);
+      line-height: 1.65;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .testimonial-author {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* ── Help Block ── */
+    .help-block {
+      background: var(--surface);
+      border: 1px solid var(--border-green);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .help-block h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .help-block p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     /* ── Socials ── */
-    .socials {
-      display: flex; gap: 8px; flex-wrap: wrap;
-      align-items: center; margin-bottom: 28px;
-    }
+    .socials { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 32px; }
     .social-pill {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 14px; border-radius: 999px;
+      padding: 7px 14px; border-radius: 999px;
       border: 1px solid var(--border);
-      font-size: 13px; font-weight: 500; color: var(--muted);
-      text-decoration: none;
+      font-size: 12.5px; font-weight: 500; color: var(--muted);
       transition: border-color .15s, background .15s, color .15s;
     }
     .social-pill:hover { border-color: var(--green); background: var(--green-dim); color: var(--text); }
-    .social-pill svg { width: 15px; height: 15px; }
+    .social-pill svg { width: 14px; height: 14px; }
 
     /* ── Footer ── */
     .footer {
       border-top: 1px solid var(--border);
       padding-top: 24px;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-    .footer-name { font-size: .8rem; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
-    .footer-copy { font-size: .72rem; color: var(--faint); }
+    .footer-left { font-size: 12px; color: var(--muted); }
+    .footer-links { display: flex; gap: 16px; }
+    .footer-link { font-size: 12px; color: var(--muted); transition: color .15s; }
+    .footer-link:hover { color: var(--green); }
 
+    @media (max-width: 580px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .trust-grid .trust-card:last-child { grid-column: 1 / -1; }
+      .hub-block { flex-direction: column; gap: 16px; }
+      .hub-icon { width: 44px; height: 44px; font-size: 1.2rem; }
+      .nav-link { display: none; }
+    }
     @media (max-width: 420px) {
-      .page { padding: 32px 16px 56px; }
-      .problem-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-      .problem-card { padding: 14px 12px; }
-      .link-card { padding: 14px 14px; gap: 10px; }
-      .link-card-title { font-size: .86rem; }
-      .link-card-icon { width: 36px; height: 36px; font-size: 1rem; }
-      .hero h1 { font-size: 1.45rem; }
+      .page { padding: 40px 16px 64px; }
+      .hero h1 { font-size: 1.5rem; }
       .hero-ctas { flex-direction: column; }
       .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- Wordmark -->
-  <div class="wordmark">✦ <span>JDesigns Strategist</span></div>
+<!-- ── Nav ── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">✦ JDesigns Strategist</div>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-link active">Blog</a>
+      <a href="#resources" class="nav-link">Resources</a>
+      <a href="work-with-me.html" class="nav-link">Work With Me</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
 
   <!-- Profile -->
   <div class="profile-header">
     <img src="assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
     <div>
       <div class="profile-name">Jasmine</div>
-      <div class="profile-handle">Meta Ads & Strategy · JDesigns Strategist LLC</div>
+      <div class="profile-handle">Meta Ads &amp; Strategy · JDesigns Strategist LLC</div>
     </div>
   </div>
 
   <!-- Hero -->
   <div class="hero">
-    <h1>Practical digital resources for small business owners who are tired of guessing.</h1>
-    <p class="hero-sub">Get clear, self-serve templates, checklists, guides, and systems for Meta issues, AI workflows, content planning, and business organization. Built to help you take the next step without hype, overwhelm, or endless back-and-forth.</p>
+    <div class="hero-eyebrow">Free Resource Library</div>
+    <h1>The practical guide to Meta ads, Instagram, and AI tools — for small businesses who want real answers.</h1>
+    <p class="hero-sub">19 free guides written from years of working directly with small business owners on Meta ad accounts, campaign strategy, account restrictions, Instagram growth, and AI tools. No email. No paywall. No guessing.</p>
+    <div class="hero-meta">
+      <div class="hero-stat"><div class="hero-stat-dot"></div>19 free articles</div>
+      <div class="hero-stat"><div class="hero-stat-dot"></div>Meta Ads · Social Media · AI Tools</div>
+      <div class="hero-stat"><div class="hero-stat-dot"></div>Updated June 2026</div>
+    </div>
     <div class="hero-ctas">
-      <a href="#products" class="btn-primary">Shop Digital Resources →</a>
-      <a href="meta-checklist.html" class="btn-secondary">Start With a Free Resource</a>
+      <a href="/blog/" class="btn-primary">Browse All Articles →</a>
+      <a href="/knowledge-hub.html" class="btn-secondary">Visual Knowledge Map</a>
     </div>
   </div>
 
-  <!-- Choose Your Problem -->
-  <div class="section-label">Choose Your Problem</div>
-  <div class="problem-grid">
-    <a href="#meta-help" class="problem-card">
-      <div class="problem-icon">🔐</div>
-      <div class="problem-title">Meta access, ads, or Business Portfolio issue</div>
-      <div class="problem-arrow">→ Start here</div>
-    </a>
-    <a href="#ai-tools" class="problem-card">
-      <div class="problem-icon">🧠</div>
-      <div class="problem-title">AI or business brain setup</div>
-      <div class="problem-arrow">→ Start here</div>
-    </a>
-    <a href="#products" class="problem-card">
-      <div class="problem-icon">📋</div>
-      <div class="problem-title">Content or workflow systems</div>
-      <div class="problem-arrow">→ Browse resources</div>
-    </a>
-    <a href="#direct-help" class="problem-card">
-      <div class="problem-icon">💬</div>
-      <div class="problem-title">Not sure where to start</div>
-      <div class="problem-arrow">→ Get direct help</div>
-    </a>
+  <!-- Blog Section -->
+  <div class="section-label">Featured Articles</div>
+
+  <div class="category-pills">
+    <a href="/blog/#meta-ads" class="cat-pill"><span class="cat-dot" style="background:#2ec27e;"></span>Meta Ads</a>
+    <a href="/blog/#meta-repair" class="cat-pill"><span class="cat-dot" style="background:#e8834d;"></span>Meta Access &amp; Repair</a>
+    <a href="/blog/#social" class="cat-pill"><span class="cat-dot" style="background:#60c0f0;"></span>Social Media</a>
+    <a href="/blog/#ai" class="cat-pill"><span class="cat-dot" style="background:#a78bfa;"></span>AI &amp; Tools</a>
   </div>
 
-  <!-- Free Resource -->
-  <div id="free-resource" class="section-label">Free Resource</div>
+  <div class="blog-grid">
+
+    <a href="/blog/how-to-appeal-meta-ad-account-restriction.html" class="blog-card">
+      <div class="blog-card-tag">Meta Access &amp; Repair</div>
+      <div class="blog-card-title">Your Meta appeal got rejected in 10 minutes. Here's the exact reason.</div>
+      <div class="blog-card-desc">Why timing kills appeals — and what a strong one actually looks like.</div>
+      <div class="blog-card-arrow">Read →</div>
+    </a>
+
+    <a href="/blog/instagram-algorithm-2026-shares-first.html" class="blog-card">
+      <div class="blog-card-tag">Social Media Strategy</div>
+      <div class="blog-card-title">Instagram changed what it shows people — and most small businesses still don't know.</div>
+      <div class="blog-card-desc">Shares are now the #1 distribution signal. Likes are the weakest.</div>
+      <div class="blog-card-arrow">Read →</div>
+    </a>
+
+    <a href="/blog/does-your-agency-own-your-meta-account.html" class="blog-card">
+      <div class="blog-card-tag">Meta Access &amp; Repair</div>
+      <div class="blog-card-title">If you've worked with an agency, there's a chance they own your Meta ad account.</div>
+      <div class="blog-card-desc">How to check who actually owns your assets — and what to do if it's not you.</div>
+      <div class="blog-card-arrow">Read →</div>
+    </a>
+
+    <a href="/blog/meta-ads-funnel-strategy.html" class="blog-card">
+      <div class="blog-card-tag">Meta Ads</div>
+      <div class="blog-card-title">You can't run conversion ads to cold traffic on Day 1.</div>
+      <div class="blog-card-desc">TOF/MOF/BOF explained — and why skipping the funnel wastes your entire budget.</div>
+      <div class="blog-card-arrow">Read →</div>
+    </a>
+
+    <a href="/blog/canva-grow-vs-meta-ads-strategist.html" class="blog-card">
+      <div class="blog-card-tag">AI &amp; Tools</div>
+      <div class="blog-card-title">Canva added a button that pushes ads straight to Meta. Do you still need a strategist?</div>
+      <div class="blog-card-desc">What Canva Grow actually does and where the line is.</div>
+      <div class="blog-card-arrow">Read →</div>
+    </a>
+
+    <a href="/blog/instagram-carousel-strategy-2026.html" class="blog-card">
+      <div class="blog-card-tag">Social Media Strategy</div>
+      <div class="blog-card-title">The carousel is still Instagram's highest-save format in 2026.</div>
+      <div class="blog-card-desc">Structure, slide count, and what most people get wrong on slide 1.</div>
+      <div class="blog-card-arrow">Read →</div>
+    </a>
+
+  </div>
+
+  <a href="/blog/" class="view-all">View all 19 free articles →</a>
+
+  <hr class="divider">
+
+  <!-- Knowledge Hub -->
+  <div class="section-label">Interactive Resource</div>
+  <a href="/knowledge-hub.html" class="hub-block">
+    <div class="hub-icon">✦</div>
+    <div class="hub-body">
+      <h3>Knowledge Hub — See How Everything Connects</h3>
+      <p>An interactive visual map of every concept, service, and article in this library. Click any node to go directly to that resource. Built like Obsidian — for people who think in systems.</p>
+      <div class="hub-nodes">
+        <span class="hub-node">Meta Ads</span>
+        <span class="hub-node">Meta Repair</span>
+        <span class="hub-node">Social Strategy</span>
+        <span class="hub-node">AI Tools</span>
+        <span class="hub-node">Services</span>
+        <span class="hub-node">Products</span>
+      </div>
+      <span class="btn-secondary" style="display:inline-flex;align-items:center;gap:8px;font-size:12.5px;padding:9px 18px;">Open Knowledge Hub →</span>
+    </div>
+  </a>
+
+  <hr class="divider">
+
+  <!-- Trust Numbers -->
+  <div class="section-label">About This Work</div>
+  <div class="trust-grid">
+    <div class="trust-card">
+      <div class="trust-num">19</div>
+      <div class="trust-label">Free articles — no email, no paywall</div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-num">4</div>
+      <div class="trust-label">Topic areas covering the most common small business problems</div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-num">5★</div>
+      <div class="trust-label">Fiverr rating across hundreds of client orders</div>
+    </div>
+  </div>
+
+  <!-- Testimonial -->
+  <div class="testimonial-block">
+    <div class="testimonial-stars">★★★★★</div>
+    <div class="testimonial-quote">"Jasmine is very professional, knowledgeable, and made my Facebook ads experience so much better. She is a problem-solver and delivers quality work. I would highly recommend her services."</div>
+    <div class="testimonial-author">Fiverr client · Meta Ads Strategy</div>
+  </div>
+
+  <!-- Paid Resources -->
+  <div id="resources" class="section-label">Paid Resources</div>
+  <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px;">The articles are always free. These go deeper — scripts, templates, systems, and step-by-step frameworks for when you're ready to take action.</p>
   <div class="link-stack">
+
     <a href="meta-checklist.html" class="link-card">
       <div class="link-card-icon">🆘</div>
       <div class="link-card-body">
         <div class="link-card-title">Meta Business Access Emergency Checklist</div>
-        <div class="link-card-desc">Locked out, restricted, or confused about your Meta setup? Start here. 5 sections covering the most common access and portfolio problems.</div>
+        <div class="link-card-desc">Locked out, restricted, or confused about your Meta setup? 5 sections covering the most common problems. Start here.</div>
         <div class="link-card-meta">No email required · Instant access</div>
       </div>
       <div class="link-card-right">
@@ -384,15 +684,6 @@
         <span class="arrow">→</span>
       </div>
     </a>
-  </div>
-
-  <!-- Paid Resources -->
-  <div id="products" class="section-label">Digital Resources</div>
-  <div class="section-header section-gap" style="margin-bottom:16px;">
-    <h2>Self-serve tools built around real problems.</h2>
-    <p>Each resource covers one specific area — no fluff, no upsell pressure. Buy what you actually need.</p>
-  </div>
-  <div class="link-stack" id="meta-help">
 
     <a href="meta-vault.html" class="link-card">
       <div class="link-card-icon">🔐</div>
@@ -406,12 +697,6 @@
         <span class="arrow">→</span>
       </div>
     </a>
-
-  </div>
-
-  <!-- AI Tools -->
-  <div id="ai-tools" class="section-label" style="margin-top:0;">Claude AI Tools</div>
-  <div class="link-stack">
 
     <a href="brain-guide.html" class="link-card">
       <div class="link-card-icon">🧠</div>
@@ -431,7 +716,7 @@
       <div class="link-card-body">
         <div class="link-card-title">Business Brain Command Pack</div>
         <div class="link-card-desc">6 slash commands that run your entire business from Claude — reply to clients, draft proposals, run your day, onboard clients.</div>
-        <div class="link-card-meta">Best for: Business Brain users ready to automate · Requires Business Brain setup</div>
+        <div class="link-card-meta">Best for: Business Brain users ready to automate</div>
       </div>
       <div class="link-card-right">
         <span class="price-badge price-paid">$47</span>
@@ -441,39 +726,15 @@
 
   </div>
 
-  <!-- Trust / Credibility -->
-  <div class="section-label">Why These Resources</div>
-  <div class="trust-block section-gap">
-    <p>These resources are based on <strong>real small-business support patterns</strong>, repeated Meta troubleshooting issues, and practical systems built to reduce guessing and back-and-forth. They were built because the same questions kept coming up — and the answers weren't written down anywhere useful. No fluff. No guarantees Meta can't keep. Just clear, tested steps and systems that work for real people running real businesses.</p>
-  </div>
-
-  <!-- FAQ -->
-  <div class="section-label">Common Questions</div>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q">Do I need to be technical to use these?</div>
-      <div class="faq-a">No. The Meta resources are designed for non-technical business owners. The AI tools require Claude Code (free to download) but include setup guidance step by step.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Can these resources guarantee Meta will restore my account?</div>
-      <div class="faq-a">No — and any resource that makes that promise is misleading you. These resources give you the best possible scripts, steps, and documentation. The final decision is always Meta's.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">What if I need more than a self-serve resource?</div>
-      <div class="faq-a">If your situation is complex or you want a real person to review it, the Meta Ecosystem Review on Fiverr is the right next step. See below.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">How do I get access after I pay?</div>
-      <div class="faq-a">Each product page explains exactly what happens after purchase. All products are digital and delivered instantly via PayPal checkout.</div>
-    </div>
-  </div>
-
   <!-- Direct Help -->
-  <div id="direct-help" class="section-label">Need More Than a Resource?</div>
+  <div id="direct-help" class="section-label">Ready for Direct Help?</div>
   <div class="help-block">
-    <h3>Work With Jasmine Directly on Fiverr</h3>
-    <p>For complex Meta situations, custom Meta Ads strategy, or hands-on social media support — book through Fiverr. Jasmine reviews your setup personally and provides written guidance, scripts, and next steps.</p>
-    <a href="https://www.fiverr.com/jazz96designs" class="btn-primary" target="_blank" rel="noopener noreferrer">View Services on Fiverr →</a>
+    <h3>Need direct help with Meta setup or ads?</h3>
+    <p>Start with the direct help page if you want to see the best next step before choosing a service. You can still work with Jasmine through Fiverr if that is the better fit.</p>
+    <div class="hero-ctas" style="justify-content:center;">
+      <a href="work-with-me.html" class="btn-primary">Work With Me →</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="btn-secondary" target="_blank" rel="noopener noreferrer">View Fiverr Services</a>
+    </div>
   </div>
 
   <!-- Socials -->
@@ -493,12 +754,22 @@
       </svg>
       Facebook
     </a>
+    <a href="https://www.fiverr.com/jazz96designs" class="social-pill" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+        <path d="M18.258 19.932h-3.021v-8.22h3.021v8.22zm-1.51-9.345c-.968 0-1.754-.787-1.754-1.754 0-.967.786-1.754 1.754-1.754.967 0 1.754.787 1.754 1.754 0 .967-.787 1.754-1.754 1.754zM5.742 19.932v-2.982H3V4.068h2.742v7.644h2.774V4.068H11.2v15.864H5.742z"/>
+      </svg>
+      Fiverr
+    </a>
   </div>
 
   <!-- Footer -->
   <div class="footer">
-    <div class="footer-name">JDesigns Strategist LLC</div>
-    <div class="footer-copy">Made by Jasmine &nbsp;·&nbsp; © 2026</div>
+    <div class="footer-left">© 2026 JDesigns Strategist LLC · Made by Jasmine</div>
+    <div class="footer-links">
+      <a href="/blog/" class="footer-link">Blog</a>
+      <a href="/knowledge-hub.html" class="footer-link">Knowledge Hub</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="footer-link" target="_blank" rel="noopener">Fiverr</a>
+    </div>
   </div>
 
 </div>
