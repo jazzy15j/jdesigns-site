@@ -367,6 +367,10 @@
     }
     .footer a { color: var(--accent); }
     .footer a:hover { color: var(--text); }
+    .profile-header { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+    .profile-avatar { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); flex-shrink: 0; }
+    .profile-name { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.2; }
+    .profile-handle { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
   </style>
 </head>
 <body>
@@ -379,6 +383,15 @@
     <span>/ Access Roles</span>
   </div>
 
+  <div class="profile-header">
+    <img src="../assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
+    <div>
+      <div class="profile-name">Jasmine</div>
+      <div class="profile-handle">Meta Ads & Strategy · JDesigns Strategist LLC</div>
+    </div>
+  </div>
+
+
   <!-- Article Header -->
   <div class="article-meta">
     <span class="meta-tag">Account Access</span>
@@ -387,7 +400,7 @@
 
   <h1>Who Gets What Access in Meta Business Suite</h1>
 
-  <p class="article-intro">Every Meta Business Suite account has three types of access: Employee, Admin, and Partner. Most businesses either give everyone Admin access "to be safe" or hand agencies the wrong role entirely. Both mistakes create security risks — and sometimes lock you out of your own account. Here's exactly what each role does and who should get which one.</p>
+  <p class="article-intro">Employee, Admin, or Partner — three roles, and most businesses assign them wrong. Here's what each one can actually do and who should get which.</p>
 
   <div class="article-body">
 

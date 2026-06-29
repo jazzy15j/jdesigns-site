@@ -243,6 +243,33 @@
     }
     .footer a { color: var(--accent); }
     .footer a:hover { color: var(--text); }
+
+    /* ── Profile Header ── */
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .profile-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+      flex-shrink: 0;
+    }
+    .profile-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .profile-handle {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
   </style>
 </head>
 <body>
@@ -251,6 +278,14 @@
   <div class="wordmark">
     <a href="/">✦ JDesigns Strategist</a>
     <span>/ Meta Help</span>
+  </div>
+
+  <div class="profile-header">
+    <img src="../assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
+    <div>
+      <div class="profile-name">Jasmine</div>
+      <div class="profile-handle">Meta Ads & Strategy · JDesigns Strategist LLC</div>
+    </div>
   </div>
 
   <div class="page-header">

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Hub — JDesigns Strategist</title>
+<meta name="description" content="Everything JDesigns knows about Meta advertising, social media strategy, and AI tools for small businesses.">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  :root {
+    --bg:     #07100a;
+    --border: #1e3225;
+    --green:  #2ec27e;
+    --muted:  #8aab96;
+    --label:  #c4dccb;
+    --white:  #ffffff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: system-ui, -apple-system, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse at 22% 18%, rgba(13,51,32,.7) 0%, transparent 45%),
+      radial-gradient(ellipse at 78% 12%, rgba(10,21,36,.55) 0%, transparent 38%),
+      radial-gradient(ellipse at 50% 88%, rgba(13,36,22,.65) 0%, transparent 48%);
+    pointer-events:none; z-index:0;
+  }
+
+  /* HEADER */
+  header {
+    position:fixed; top:0; left:0; right:0; z-index:200;
+    padding:12px 22px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:1px solid var(--border);
+    background:rgba(7,16,10,.92);
+    backdrop-filter:blur(14px);
+  }
+  .wordmark {
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted);
+  }
+  .wordmark .star { color:var(--green); }
+  .header-right { display:flex; align-items:center; gap:18px; }
+  .header-sub { font-size:11px; color:var(--muted); opacity:.5; }
+  .header-cta {
+    font-size:11px; color:var(--green); text-decoration:none;
+    border:1px solid rgba(46,194,126,.3); padding:5px 13px;
+    border-radius:20px; letter-spacing:.04em; transition:all .18s;
+  }
+  .header-cta:hover { background:rgba(46,194,126,.12); }
+
+  /* LEGEND */
+  .legend {
+    position:fixed; top:62px; right:16px; z-index:200;
+    background:rgba(9,18,11,.96);
+    border:1px solid var(--border); border-radius:11px;
+    padding:13px 15px;
+    backdrop-filter:blur(12px);
+  }
+  .legend h3 {
+    font-size:9px; text-transform:uppercase;
+    letter-spacing:.12em; color:var(--muted); margin-bottom:9px;
+  }
+  .leg-item {
+    display:flex; align-items:center; gap:8px;
+    padding:3px 0; cursor:pointer;
+  }
+  .leg-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .leg-label { font-size:11px; color:var(--label); }
+
+  /* TOOLTIP — Obsidian peek style */
+  .tt {
+    position:fixed; z-index:300;
+    background:rgba(9,19,12,.98);
+    border:1px solid var(--border); border-radius:10px;
+    padding:12px 14px; max-width:220px;
+    pointer-events:none; opacity:0;
+    transition:opacity .1s ease;
+    box-shadow:0 8px 28px rgba(0,0,0,.55);
+  }
+  .tt.show { opacity:1; }
+  .tt-cat  { font-size:9px; text-transform:uppercase; letter-spacing:.1em; margin-bottom:4px; }
+  .tt-name { font-size:12.5px; font-weight:600; color:var(--white); margin-bottom:4px; line-height:1.3; }
+  .tt-desc { font-size:10.5px; color:var(--muted); line-height:1.55; }
+  .tt-cta  { margin-top:8px; font-size:9.5px; color:var(--green); text-transform:uppercase; letter-spacing:.09em; }
+
+  /* GRAPH */
+  #g { position:relative; z-index:1; cursor:grab; }
+  #g:active { cursor:grabbing; }
+
+  .hint {
+    position:fixed; bottom:14px; left:50%; transform:translateX(-50%);
+    font-size:10.5px; color:var(--muted); opacity:.35;
+    pointer-events:none; z-index:100; white-space:nowrap;
+  }
+
+  .node-label {
+    pointer-events:none;
+    paint-order:stroke fill;
+  }
+
+  .sr-only {
+    position:absolute; width:1px; height:1px;
+    padding:0; overflow:hidden; clip:rect(0,0,0,0); border:0;
+  }
+</style>
+</head>
+<body>
+<h2 class="sr-only">JDesigns Strategist Knowledge Hub — interactive knowledge graph for Meta advertising, social media strategy, AI tools, services and products</h2>
+
+<header>
+  <div class="wordmark"><span class="star">✦</span> JDESIGNS STRATEGIST</div>
+  <div class="header-right">
+    <div class="header-sub">Knowledge Hub &nbsp;·&nbsp; Click any node to open</div>
+    <a href="https://jdesigns.fillout.com/areweamatch" target="_blank" class="header-cta">Work with Jasmine →</a>
+  </div>
+</header>
+
+<div class="legend" id="legend"></div>
+<div class="tt" id="tt">
+  <div class="tt-cat"  id="tt-cat"></div>
+  <div class="tt-name" id="tt-name"></div>
+  <div class="tt-desc" id="tt-desc"></div>
+  <div class="tt-cta"  id="tt-cta"></div>
+</div>
+
+<svg id="g"></svg>
+<p class="hint">Drag · Scroll to zoom · Click to open</p>
+
+<script>
+// ─────────────────────────────────────────────────────────────────
+//  CONFIG — set your blog base URL here, then add slugs to each node
+// ─────────────────────────────────────────────────────────────────
+const BLOG_BASE = 'https://jdesigns.info/blog'; // ← UPDATE THIS
+
+// ─────────────────────────────────────────────────────────────────
+//  CATEGORIES
+// ─────────────────────────────────────────────────────────────────
+const CATS = {
+  'meta-ads':    { label:'Meta Advertising',      color:'#2ec27e' },
+  'meta-repair': { label:'Meta Access & Repair',   color:'#e8834d' },
+  'social':      { label:'Social Media Strategy',  color:'#60c0f0' },
+  'ai':          { label:'AI Tools & Claude',       color:'#a78bfa' },
+  'services':    { label:'JDesigns Services',      color:'#fbbf24' },
+  'products':    { label:'Self-Serve Products',    color:'#94a3b8' },
+};
+
+// Zone targets (0–1 of viewport)
+const ZONES = {
+  'meta-ads':    { x:.38, y:.22 },
+  'meta-repair': { x:.70, y:.40 },
+  'social':      { x:.64, y:.74 },
+  'ai':          { x:.28, y:.74 },
+  'services':    { x:.14, y:.44 },
+  'products':    { x:.50, y:.50 },
+};
+
+// ─────────────────────────────────────────────────────────────────
+//  NODES
+//  url   = direct link (Fiverr, Gumroad, etc.)
+//  slug  = blog post path — appended to BLOG_BASE
+//          leave slug blank ('') if no post yet — node shows dimmed
+// ─────────────────────────────────────────────────────────────────
+const nodes = [
+
+  // ── META ADS ──────────────────────────────────────────────────
+  { id:'ma-hub',    label:'Meta Advertising',      cat:'meta-ads',    hub:1,
+    desc:'Strategy, setup, and best practices for running profitable Meta ad campaigns.',
+    url:'', slug:'' },
+
+  { id:'adv-plus',  label:'Advantage+ Campaigns',  cat:'meta-ads',    hub:0,
+    desc:"Meta's AI-powered default — Advantage+ Audience outperforms manual targeting by ~9% cost per conversion.",
+    url:'', slug:'advantage-plus-campaigns-2026' },
+
+  { id:'creative',  label:'Ad Creative Strategy',  cat:'meta-ads',    hub:0,
+    desc:'9:16 vertical, 3-second hook, Hook Rate 30%+ target. Reels with voiceover increase conversions ~13%.',
+    url:'', slug:'meta-ad-creative-strategy' },
+
+  { id:'ai-disc',   label:'AI Disclosure Rules',   cat:'meta-ads',    hub:0,
+    desc:'#3 reason Meta ads are rejected in 2026. Undisclosed AI images = policy strike and account health damage.',
+    url:'', slug:'meta-ai-disclosure-rules-2026' },
+
+  { id:'pixel',     label:'Pixel & Tracking',      cat:'meta-ads',    hub:0,
+    desc:'A broken pixel breaks your algorithm signal. Always verify events fire before spending ad budget.',
+    url:'', slug:'meta-pixel-tracking-guide' },
+
+  { id:'budget',    label:'Budget & Scaling',       cat:'meta-ads',    hub:0,
+    desc:'Never scale more than 20–30% at once. Large jumps trigger behavioral flags and account restrictions.',
+    url:'', slug:'meta-ads-budget-scaling-safely' },
+
+  { id:'funnel',    label:'TOF / MOF / BOF',        cat:'meta-ads',    hub:0,
+    desc:"Cold → Warm → Hot. You can't run conversion ads to cold traffic on Day 1.",
+    url:'', slug:'meta-ads-funnel-strategy' },
+
+  // ── META REPAIR ───────────────────────────────────────────────
+  { id:'mr-hub',    label:'Meta Access & Repair',  cat:'meta-repair', hub:1,
+    desc:'Restrictions, disabled accounts, Business Portfolio issues — how to navigate Meta with confidence.',
+    url:'', slug:'' },
+
+  { id:'behav',     label:'Behavioral Triggers',   cat:'meta-repair', hub:0,
+    desc:'"Unusual activity" means 5 different things — each trigger has a different fix and appeal path.',
+    url:'', slug:'meta-behavioral-restriction-triggers' },
+
+  { id:'appeal',    label:'Appeal Process',         cat:'meta-repair', hub:0,
+    desc:"Don't appeal immediately — Meta's AI flags fast submissions as bot behavior and auto-rejects them.",
+    url:'', slug:'how-to-appeal-meta-ad-account-restriction' },
+
+  { id:'bpsetup',   label:'Portfolio Setup',        cat:'meta-repair', hub:0,
+    desc:'Connect assets BEFORE adding any partner or admin — prevents the auto-security-flag on new portfolios.',
+    url:'', slug:'meta-business-portfolio-setup-guide' },
+
+  { id:'mverif',    label:'Meta Verified Tiers',   cat:'meta-repair', hub:0,
+    desc:'4 tiers ($14–$500/mo). Blocks agency access when active. Never subscribe during a restriction.',
+    url:'', slug:'meta-verified-tiers-small-business' },
+
+  { id:'agency',    label:'Who Owns Your Account?', cat:'meta-repair', hub:0,
+    desc:'The #1 Meta setup mistake — agencies building client assets inside their own Business Portfolio.',
+    url:'', slug:'does-your-agency-own-your-meta-account' },
+
+  { id:'igconn',    label:'Instagram Won\'t Connect', cat:'meta-repair', hub:0,
+    desc:"Instagram links to one Page only. The 'already connected' error means it's tied to an old Page.",
+    url:'', slug:'instagram-wont-connect-meta-business-suite-fix' },
+
+  { id:'bizver',    label:'Business Verification',  cat:'meta-repair', hub:0,
+    desc:'Required for ALL active ad accounts in 2026. Causing mass unexpected restrictions.',
+    url:'', slug:'meta-business-verification-required-2026' },
+
+  // ── SOCIAL MEDIA ──────────────────────────────────────────────
+  { id:'soc-hub',   label:'Social Media Strategy', cat:'social',      hub:1,
+    desc:'Organic content strategy, Instagram algorithm, and content planning for small businesses.',
+    url:'', slug:'' },
+
+  { id:'igalgo',    label:'Instagram Algorithm 2026', cat:'social',   hub:0,
+    desc:'Shares > Saves > Comments > Likes. DM shares of Reels are now the #1 distribution signal.',
+    url:'', slug:'instagram-algorithm-2026-shares-first' },
+
+  { id:'treel',     label:'Trial Reels',            cat:'social',     hub:0,
+    desc:'Test Reels with non-followers first — weak engagement stays hidden from your existing audience.',
+    url:'', slug:'how-to-use-instagram-trial-reels' },
+
+  { id:'caro',      label:'Carousel Strategy',      cat:'social',     hub:0,
+    desc:'Up to 20 slides now. The highest-save format — ideal for step-by-step and educational content.',
+    url:'', slug:'instagram-carousel-strategy-2026' },
+
+  { id:'pillars',   label:'Content Pillars',        cat:'social',     hub:0,
+    desc:'3–4 pillars per business. Every post has a strategic purpose, format, and target audience.',
+    url:'', slug:'content-pillars-for-small-business' },
+
+  { id:'canvavs',   label:'Canva vs. Strategist',  cat:'social',      hub:0,
+    desc:"Canva Grow 2.0 pushes ads to Meta — but doesn't do pixel setup, audiences, or optimization.",
+    url:'', slug:'canva-grow-vs-meta-ads-strategist' },
+
+  // ── AI TOOLS ──────────────────────────────────────────────────
+  { id:'ai-hub',    label:'AI Tools & Claude',      cat:'ai',         hub:1,
+    desc:'How solo service businesses use Claude and AI to create leverage without hiring a team.',
+    url:'', slug:'' },
+
+  { id:'brain',     label:'Claude Business Brain',  cat:'ai',         hub:0,
+    desc:"Your business knowledge in Claude's context — pricing, SOPs, client rules, and offer logic.",
+    url:'https://www.fiverr.com/jazz96designs', slug:'' },
+
+  { id:'cmdpack',   label:'Command Pack $47',       cat:'ai',         hub:0,
+    desc:'6 slash commands for any service business — built on top of the Business Brain system.',
+    url:'https://jdesignsinfo.gumroad.com/l/commandpack', slug:'' },
+
+  { id:'canvai',    label:'Canva AI 2.0',           cat:'ai',         hub:0,
+    desc:'Agentic design, Brand Intelligence, and direct Meta/TikTok/LinkedIn ad publishing.',
+    url:'', slug:'canva-ai-2-whats-new-2026' },
+
+  { id:'ccrepo',    label:'Claude Code Repo $95',   cat:'ai',         hub:0,
+    desc:'GitHub repo + guide to run a Claude AI system in your own service business.',
+    url:'https://jdesignsinfo.gumroad.com', slug:'' },
+
+  // ── JDESIGNS SERVICES ─────────────────────────────────────────
+  { id:'sv-hub',    label:'JDesigns Services',      cat:'services',   hub:1,
+    desc:'Meta ads strategy, access repair, and social media content — done for you.',
+    url:'https://jdesigns.fillout.com/areweamatch', slug:'' },
+
+  { id:'adssvc',    label:'Meta Ads Setup $395+',  cat:'services',    hub:0,
+    desc:'Phase 1 Strategy $395 · Full Setup $895. Fiverr: $250 / $450 / $750.',
+    url:'https://www.fiverr.com/jazz96designs/create-facebook-and-instagram-ad', slug:'' },
+
+  { id:'ecosys',    label:'Ecosystem Review $595',  cat:'services',   hub:0,
+    desc:'$595 minimum for restrictions, hacks, failed appeals. Written review + scripts.',
+    url:'https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues', slug:'' },
+
+  { id:'accrev',    label:'Access Review $345',     cat:'services',   hub:0,
+    desc:'$345 / 3-day — Business Portfolio, Instagram connection, partner permissions.',
+    url:'https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues', slug:'' },
+
+  { id:'content',   label:'Content Package',        cat:'services',   hub:0,
+    desc:'Strategy + content creation for Instagram and Facebook. Starter / Growth / Advanced.',
+    url:'https://www.fiverr.com/jazz96designs/instagram-and-facebook-content-creator', slug:'' },
+
+  { id:'audit',     label:'Ads Audit $195',         cat:'services',   hub:0,
+    desc:'$195 — campaign review, performance analysis, and a written optimization plan.',
+    url:'https://www.fiverr.com/jazz96designs/create-facebook-and-instagram-ad', slug:'' },
+
+  // ── SELF-SERVE PRODUCTS ───────────────────────────────────────
+  { id:'pr-hub',    label:'Self-Serve Products',    cat:'products',   hub:1,
+    desc:'Fix it yourself — free and paid resources, no Jasmine time required.',
+    url:'https://jdesignsinfo.gumroad.com', slug:'' },
+
+  { id:'vault',     label:'Fix-It Vault $97',       cat:'products',   hub:0,
+    desc:'Self-serve Meta troubleshooting vault. Scripts, checklists, step-by-step guides.',
+    url:'https://jdesignsinfo.gumroad.com', slug:'' },
+
+  { id:'freebie',   label:'Free Meta Checklist',    cat:'products',   hub:0,
+    desc:'First stop for any Meta issue — diagnose your situation and know what to do next.',
+    url:'https://jdesignsinfo.gumroad.com/l/freeminicourse', slug:'' },
+
+  { id:'workshop',  label:'Business Brain $95',     cat:'products',   hub:0,
+    desc:'GitHub repo + setup guide to build a Claude AI system for your service business.',
+    url:'https://jdesignsinfo.gumroad.com', slug:'' },
+];
+
+// ─────────────────────────────────────────────────────────────────
+//  LINKS
+// ─────────────────────────────────────────────────────────────────
+const links = [
+  // Meta Ads spokes
+  {s:'ma-hub',t:'adv-plus'},{s:'ma-hub',t:'creative'},{s:'ma-hub',t:'ai-disc'},
+  {s:'ma-hub',t:'pixel'},{s:'ma-hub',t:'budget'},{s:'ma-hub',t:'funnel'},
+  // Meta Repair spokes
+  {s:'mr-hub',t:'behav'},{s:'mr-hub',t:'appeal'},{s:'mr-hub',t:'bpsetup'},
+  {s:'mr-hub',t:'mverif'},{s:'mr-hub',t:'agency'},{s:'mr-hub',t:'igconn'},
+  {s:'mr-hub',t:'bizver'},
+  // Social spokes
+  {s:'soc-hub',t:'igalgo'},{s:'soc-hub',t:'treel'},{s:'soc-hub',t:'caro'},
+  {s:'soc-hub',t:'pillars'},{s:'soc-hub',t:'canvavs'},
+  // AI spokes
+  {s:'ai-hub',t:'brain'},{s:'ai-hub',t:'cmdpack'},{s:'ai-hub',t:'canvai'},
+  {s:'ai-hub',t:'ccrepo'},
+  // Services spokes
+  {s:'sv-hub',t:'adssvc'},{s:'sv-hub',t:'ecosys'},{s:'sv-hub',t:'accrev'},
+  {s:'sv-hub',t:'content'},{s:'sv-hub',t:'audit'},
+  // Products spokes
+  {s:'pr-hub',t:'vault'},{s:'pr-hub',t:'freebie'},{s:'pr-hub',t:'workshop'},
+  {s:'pr-hub',t:'cmdpack'},
+  // Cross-connections
+  {s:'ma-hub',   t:'mr-hub',   x:1},{s:'budget',  t:'behav',   x:1},
+  {s:'pixel',    t:'adssvc',   x:1},{s:'bizver',   t:'ecosys',  x:1},
+  {s:'agency',   t:'ecosys',   x:1},{s:'igalgo',   t:'content', x:1},
+  {s:'treel',    t:'content',  x:1},{s:'canvai',   t:'canvavs', x:1},
+  {s:'appeal',   t:'ecosys',   x:1},{s:'vault',    t:'mr-hub',  x:1},
+  {s:'freebie',  t:'mr-hub',   x:1},{s:'adv-plus', t:'adssvc',  x:1},
+  {s:'pillars',  t:'content',  x:1},{s:'audit',    t:'adssvc',  x:1},
+  {s:'igconn',   t:'accrev',   x:1},{s:'funnel',   t:'adssvc',  x:1},
+  {s:'ai-disc',  t:'audit',    x:1},{s:'soc-hub',  t:'content', x:1},
+  {s:'brain',    t:'sv-hub',   x:1},{s:'ai-hub',   t:'pr-hub',  x:1},
+  {s:'mverif',   t:'accrev',   x:1},
+];
+
+// ─────────────────────────────────────────────────────────────────
+//  RESOLVE DESTINATION URL
+// ─────────────────────────────────────────────────────────────────
+function resolveUrl(d) {
+  if (d.url && d.url !== '') return d.url;
+  if (d.slug && d.slug !== '') return BLOG_BASE + '/' + d.slug;
+  return null;
+}
+
+// ─────────────────────────────────────────────────────────────────
+//  LEGEND
+// ─────────────────────────────────────────────────────────────────
+document.getElementById('legend').innerHTML =
+  '<h3>Topics</h3>' +
+  Object.entries(CATS).map(([k,v]) =>
+    `<div class="leg-item"><div class="leg-dot" style="background:${v.color}"></div>
+     <div class="leg-label">${v.label}</div></div>`
+  ).join('');
+
+// ─────────────────────────────────────────────────────────────────
+//  D3 GRAPH
+// ─────────────────────────────────────────────────────────────────
+const W = window.innerWidth, H = window.innerHeight;
+
+const svg = d3.select('#g').attr('width', W).attr('height', H);
+const defs = svg.append('defs');
+
+// Radial gradient fill for hub nodes
+Object.entries(CATS).forEach(([k, v]) => {
+  // Glow filter
+  const f = defs.append('filter').attr('id','glow-'+k)
+    .attr('x','-80%').attr('y','-80%').attr('width','260%').attr('height','260%');
+  f.append('feGaussianBlur').attr('stdDeviation','3.5').attr('result','blur');
+  const m = f.append('feMerge');
+  m.append('feMergeNode').attr('in','blur');
+  m.append('feMergeNode').attr('in','SourceGraphic');
+
+  // Hub glow (stronger)
+  const fh = defs.append('filter').attr('id','hub-glow-'+k)
+    .attr('x','-100%').attr('y','-100%').attr('width','300%').attr('height','300%');
+  fh.append('feGaussianBlur').attr('stdDeviation','6').attr('result','blur');
+  const mh = fh.append('feMerge');
+  mh.append('feMergeNode').attr('in','blur');
+  mh.append('feMergeNode').attr('in','SourceGraphic');
+});
+
+const container = svg.append('g');
+
+// Pan + zoom
+svg.call(d3.zoom().scaleExtent([0.15, 6])
+  .on('zoom', e => container.attr('transform', e.transform)));
+
+const nodeById = Object.fromEntries(nodes.map(n => [n.id, n]));
+const linkData = links.map(l => ({ source: l.s, target: l.t, cross: !!l.x }));
+
+const sim = d3.forceSimulation(nodes)
+  .force('link', d3.forceLink(linkData).id(d => d.id)
+    .distance(d => {
+      const s = nodeById[d.source.id || d.source];
+      if (d.cross) return 180;
+      if (s && s.hub) return 88;
+      return 65;
+    })
+    .strength(0.6))
+  .force('charge', d3.forceManyBody().strength(d => d.hub ? -650 : -200))
+  .force('center', d3.forceCenter(W/2, H/2).strength(0.04))
+  .force('collide', d3.forceCollide().radius(d => d.hub ? 44 : 28))
+  .force('x', d3.forceX(d => ZONES[d.cat].x * W).strength(0.10))
+  .force('y', d3.forceY(d => ZONES[d.cat].y * H).strength(0.10));
+
+// ── EDGES ────────────────────────────────────────────────────────
+const link = container.append('g').selectAll('line').data(linkData).join('line')
+  .attr('stroke', d => {
+    const s = nodeById[d.source.id || d.source];
+    return s ? CATS[s.cat].color : '#1e3225';
+  })
+  .attr('stroke-opacity', d => d.cross ? 0.08 : 0.18)
+  .attr('stroke-width', d => d.cross ? 0.75 : 1)
+  .attr('stroke-dasharray', d => d.cross ? '4,6' : null);
+
+// ── NODES ────────────────────────────────────────────────────────
+const node = container.append('g').selectAll('g').data(nodes).join('g')
+  .style('cursor', d => resolveUrl(d) ? 'pointer' : 'default')
+  .call(d3.drag()
+    .on('start', (e,d) => { if(!e.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+    .on('drag',  (e,d) => { d.fx=e.x; d.fy=e.y; })
+    .on('end',   (e,d) => { if(!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null; })
+  );
+
+// Hub outer ring (halo)
+node.filter(d => d.hub).append('circle')
+  .attr('r', 20)
+  .attr('fill', 'none')
+  .attr('stroke', d => CATS[d.cat].color)
+  .attr('stroke-opacity', 0.18)
+  .attr('stroke-width', 1.5);
+
+// Main dot — Obsidian-style small circles
+node.append('circle')
+  .attr('r', d => d.hub ? 11 : 5.5)
+  .attr('fill', d => {
+    const c = CATS[d.cat].color;
+    const hasLink = !!resolveUrl(d);
+    if (d.hub) return c;
+    return hasLink ? c : 'transparent';
+  })
+  .attr('stroke', d => CATS[d.cat].color)
+  .attr('stroke-width', d => {
+    if (d.hub) return 0;
+    return resolveUrl(d) ? 0 : 1.2;
+  })
+  .attr('stroke-opacity', d => resolveUrl(d) ? 1 : 0.35)
+  .attr('fill-opacity', d => {
+    if (d.hub) return 1;
+    return resolveUrl(d) ? 0.9 : 0;
+  })
+  .attr('filter', d => d.hub ? `url(#hub-glow-${d.cat})` : null);
+
+// Labels — always visible, Obsidian-style
+node.append('text')
+  .attr('class', 'node-label')
+  .attr('x', d => d.hub ? 0 : 9)
+  .attr('y', d => d.hub ? (d.hub ? 20 : 9) : 1)
+  .attr('text-anchor', d => d.hub ? 'middle' : 'start')
+  .attr('dominant-baseline', d => d.hub ? 'auto' : 'middle')
+  .attr('font-size', d => d.hub ? 10 : 9.5)
+  .attr('font-weight', d => d.hub ? '600' : '400')
+  .attr('fill', d => {
+    const hasLink = !!resolveUrl(d);
+    if (d.hub) return CATS[d.cat].color;
+    return hasLink ? 'rgba(196,220,203,0.85)' : 'rgba(138,171,150,0.4)';
+  })
+  .attr('stroke', 'rgba(7,16,10,0.7)')
+  .attr('stroke-width', 2.5)
+  .text(d => d.label);
+
+// ── INTERACTIONS ─────────────────────────────────────────────────
+const tt     = document.getElementById('tt');
+const ttCat  = document.getElementById('tt-cat');
+const ttName = document.getElementById('tt-name');
+const ttDesc = document.getElementById('tt-desc');
+const ttCta  = document.getElementById('tt-cta');
+
+node
+  .on('mouseover', (e, d) => {
+    d3.select(e.currentTarget).select('circle')
+      .transition().duration(80)
+      .attr('r', d.hub ? 13 : 8)
+      .attr('fill-opacity', 1);
+
+    ttCat.textContent  = CATS[d.cat].label;
+    ttCat.style.color  = CATS[d.cat].color;
+    ttName.textContent = d.label;
+    ttDesc.textContent = d.desc;
+    const dest = resolveUrl(d);
+    ttCta.textContent  = dest
+      ? (d.url && d.url !== '' ? '→ Click to open' : '→ Click to read the blog post')
+      : '→ Blog post coming soon';
+    tt.classList.add('show');
+  })
+  .on('mousemove', e => {
+    const x = e.clientX + 15;
+    const y = Math.min(e.clientY - 8, window.innerHeight - 155);
+    tt.style.left = x + 'px';
+    tt.style.top  = y + 'px';
+  })
+  .on('mouseout', (e, d) => {
+    d3.select(e.currentTarget).select('circle')
+      .transition().duration(80)
+      .attr('r', d.hub ? 11 : 5.5)
+      .attr('fill-opacity', d => {
+        if (d.hub) return 1;
+        return resolveUrl(d) ? 0.9 : 0;
+      });
+    tt.classList.remove('show');
+  })
+  .on('click', (e, d) => {
+    const dest = resolveUrl(d);
+    if (dest) window.open(dest, '_blank');
+  });
+
+// ── TICK ─────────────────────────────────────────────────────────
+sim.on('tick', () => {
+  link
+    .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+    .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+  node.attr('transform', d => `translate(${d.x},${d.y})`);
+});
+
+setTimeout(() => sim.alphaTarget(0), 4500);
+
+// Resize
+window.addEventListener('resize', () => {
+  const w = window.innerWidth, h = window.innerHeight;
+  svg.attr('width', w).attr('height', h);
+  sim.force('center', d3.forceCenter(w/2, h/2).strength(0.04))
+     .force('x', d3.forceX(d => ZONES[d.cat].x * w).strength(0.10))
+     .force('y', d3.forceY(d => ZONES[d.cat].y * h).strength(0.10))
+     .alpha(0.3).restart();
+  setTimeout(() => sim.alphaTarget(0), 2000);
+});
+</script>
+</body>
+</html>
