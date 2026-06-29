@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JDesigns Strategist — Jasmine</title>
+  <title>JDesigns Strategist — Digital Resources for Small Business</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -32,9 +32,36 @@
     }
 
     .page {
-      max-width: 480px;
+      max-width: 520px;
       margin: 0 auto;
-      padding: 52px 20px 72px;
+      padding: 48px 20px 72px;
+    }
+
+    /* ── Profile Header ── */
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .profile-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--green);
+      flex-shrink: 0;
+    }
+    .profile-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .profile-handle {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 2px;
     }
 
     /* ── Wordmark ── */
@@ -45,84 +72,124 @@
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--green);
-      margin-bottom: 40px;
+      margin-bottom: 44px;
       display: flex;
       align-items: center;
       gap: 0.65rem;
     }
     .wordmark span { color: var(--muted); }
 
-    /* ── Profile ── */
-    .profile {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 18px;
+    /* ── Hero ── */
+    .hero {
+      margin-bottom: 48px;
     }
-    .avatar {
-      width: 68px; height: 68px;
-      border-radius: 50%;
-      border: 2px solid var(--border-green);
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-    .profile-text h1 {
+    .hero h1 {
       font-family: Georgia, 'Times New Roman', serif;
-      font-size: 22px;
+      font-size: clamp(1.5rem, 5vw, 1.9rem);
       font-weight: 400;
-      letter-spacing: 0.01em;
+      line-height: 1.3;
       color: var(--text);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
     }
-    .profile-handle {
-      font-size: 13px;
-      color: var(--green);
-      margin-top: 3px;
-      letter-spacing: 0.02em;
-    }
-    .tagline {
-      font-size: 14.5px;
+    .hero-sub {
+      font-size: 0.9rem;
       color: var(--muted);
+      line-height: 1.7;
       margin-bottom: 28px;
-      line-height: 1.6;
-      max-width: 480px;
+      max-width: 460px;
     }
-
-    /* ── Socials ── */
-    .socials {
-      display: flex; gap: 8px; flex-wrap: wrap;
-      align-items: center; margin-bottom: 44px;
+    .hero-ctas {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
-    .social-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 14px; border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 13px; font-weight: 500; color: var(--muted);
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #07100a;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
       text-decoration: none;
-      transition: border-color .15s, background .15s, color .15s;
+      transition: opacity .15s, transform .12s;
     }
-    .social-pill:hover { border-color: var(--green); background: var(--green-dim); color: var(--text); }
-    .social-pill svg { width: 15px; height: 15px; }
-    .social-pill-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 9px 18px; border-radius: 999px;
-      background: var(--text); color: var(--bg);
-      font-size: 13px; font-weight: 700;
-      letter-spacing: 0.04em; text-transform: uppercase;
+    .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: transparent;
+      border: 1px solid var(--border-green);
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
       text-decoration: none;
-      transition: background .15s, transform .12s;
+      transition: border-color .15s, color .15s, background .15s;
     }
-    .social-pill-cta:hover { background: var(--green); color: var(--bg); transform: translateY(-1px); }
+    .btn-secondary:hover { border-color: var(--green); color: var(--text); background: var(--green-dim); }
 
     /* ── Section Label ── */
     .section-label {
       font-size: .68rem; font-weight: 700;
       letter-spacing: .14em; text-transform: uppercase;
-      color: var(--green); margin-bottom: 10px;
+      color: var(--green); margin-bottom: 12px;
       padding-left: 2px;
     }
 
+    /* ── Section header ── */
+    .section-header {
+      margin-bottom: 16px;
+    }
+    .section-header h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.35;
+    }
+    .section-header p {
+      font-size: .82rem;
+      color: var(--muted);
+      margin-top: 5px;
+      line-height: 1.5;
+    }
+
+    .section-gap { margin-bottom: 44px; }
+
+    /* ── Problem Cards ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 44px;
+    }
+    .problem-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 15px;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      cursor: default;
+      transition: border-color .15s;
+    }
+    .problem-card:hover { border-color: var(--border-green); }
+    .problem-icon { font-size: 1.3rem; }
+    .problem-title { font-size: .85rem; font-weight: 700; line-height: 1.3; }
+    .problem-arrow { font-size: .75rem; color: var(--green); margin-top: 4px; }
+
     /* ── Link Cards ── */
-    .link-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .link-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 44px; }
 
     .link-card {
       display: flex; align-items: center; gap: 14px;
@@ -138,7 +205,7 @@
     }
 
     .link-card-icon {
-      width: 40px; height: 40px; flex-shrink: 0;
+      width: 42px; height: 42px; flex-shrink: 0;
       border-radius: 10px; background: var(--green-dim);
       border: 1px solid var(--border-green);
       display: flex; align-items: center; justify-content: center;
@@ -146,8 +213,9 @@
     }
 
     .link-card-body { flex: 1; min-width: 0; }
-    .link-card-title { font-size: .92rem; font-weight: 700; line-height: 1.3; margin-bottom: 2px; }
-    .link-card-desc { font-size: .78rem; color: var(--muted); line-height: 1.4; }
+    .link-card-title { font-size: .92rem; font-weight: 700; line-height: 1.3; margin-bottom: 3px; }
+    .link-card-desc { font-size: .78rem; color: var(--muted); line-height: 1.45; }
+    .link-card-meta { font-size: .72rem; color: var(--green); margin-top: 4px; }
 
     .link-card-right {
       display: flex; flex-direction: column;
@@ -175,61 +243,79 @@
     }
     .link-card:hover .arrow { color: var(--green); transform: translateX(3px); }
 
-    /* ── Featured card (Work with me) ── */
-    .link-card-featured {
-      border-color: var(--border-green);
-      background: linear-gradient(135deg, var(--card) 0%, rgba(13,51,32,.5) 100%);
+    /* ── Trust / Credibility ── */
+    .trust-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 20px;
+      margin-bottom: 44px;
     }
+    .trust-block p {
+      font-size: .83rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .trust-block strong { color: var(--text); font-weight: 600; }
 
-    /* ── Email section ── */
-    .email-section {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 14px; padding: 22px 20px;
-      text-align: center; margin-bottom: 32px;
+    /* ── FAQ ── */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 44px; }
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
     }
-    .email-section h3 {
-      font-size: .95rem; font-weight: 700; margin-bottom: 6px;
+    .faq-q { font-size: .88rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .faq-a { font-size: .8rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── Direct Help ── */
+    .help-block {
+      background: var(--card);
+      border: 1px solid var(--border-green);
+      border-radius: 14px;
+      padding: 22px 20px;
+      text-align: center;
+      margin-bottom: 44px;
     }
-    .email-section p {
-      font-size: .8rem; color: var(--muted); margin-bottom: 16px; line-height: 1.5;
+    .help-block h3 { font-size: .95rem; font-weight: 700; margin-bottom: 8px; }
+    .help-block p { font-size: .8rem; color: var(--muted); line-height: 1.55; margin-bottom: 16px; }
+
+    /* ── Socials ── */
+    .socials {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      align-items: center; margin-bottom: 28px;
     }
-    .email-form { display: flex; gap: 8px; }
-    .email-form input {
-      flex: 1; padding: 10px 14px; border-radius: 999px;
-      border: 1px solid var(--border); background: var(--bg);
-      color: var(--text); font-size: .85rem;
-      font-family: inherit; outline: none;
-      transition: border-color .15s;
+    .social-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px; border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      text-decoration: none;
+      transition: border-color .15s, background .15s, color .15s;
     }
-    .email-form input::placeholder { color: var(--muted); }
-    .email-form input:focus { border-color: var(--green); }
-    .email-form button {
-      padding: 10px 18px; border-radius: 999px;
-      background: var(--green); color: #07100a;
-      font-size: .8rem; font-weight: 700;
-      font-family: inherit; border: none; cursor: pointer;
-      white-space: nowrap; transition: opacity .15s;
-    }
-    .email-form button:hover { opacity: .88; }
-    .email-success { display: none; font-size: .85rem; color: var(--green); margin-top: 12px; }
-    .email-note { font-size: .72rem; color: var(--faint); margin-top: 10px; }
+    .social-pill:hover { border-color: var(--green); background: var(--green-dim); color: var(--text); }
+    .social-pill svg { width: 15px; height: 15px; }
 
     /* ── Footer ── */
     .footer {
       border-top: 1px solid var(--border);
-      padding-top: 28px;
+      padding-top: 24px;
       text-align: center;
     }
     .footer-name { font-size: .8rem; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
     .footer-copy { font-size: .72rem; color: var(--faint); }
 
     @media (max-width: 420px) {
-      .page { padding: 36px 16px 56px; }
-      .email-form { flex-direction: column; }
-      .email-form input, .email-form button { border-radius: 10px; width: 100%; }
+      .page { padding: 32px 16px 56px; }
+      .problem-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .problem-card { padding: 14px 12px; }
       .link-card { padding: 14px 14px; gap: 10px; }
       .link-card-title { font-size: .86rem; }
       .link-card-icon { width: 36px; height: 36px; font-size: 1rem; }
+      .hero h1 { font-size: 1.45rem; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -239,18 +325,150 @@
   <!-- Wordmark -->
   <div class="wordmark">✦ <span>JDesigns Strategist</span></div>
 
-  <!-- Profile -->
-  <div class="profile">
-    <img class="avatar" src="assets/jasmineheadshot.png" alt="Jasmine Stock" />
-    <div class="profile-text">
-      <h1>Jasmine Stock</h1>
-      <div class="profile-handle">@jdesigns.info</div>
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Practical digital resources for small business owners who are tired of guessing.</h1>
+    <p class="hero-sub">Get clear, self-serve templates, checklists, guides, and systems for Meta issues, AI workflows, content planning, and business organization. Built to help you take the next step without hype, overwhelm, or endless back-and-forth.</p>
+    <div class="hero-ctas">
+      <a href="#products" class="btn-primary">Shop Digital Resources →</a>
+      <a href="meta-checklist.html" class="btn-secondary">Start With a Free Resource</a>
     </div>
   </div>
 
-  <p class="tagline">Stuck inside Meta? Start with the free access checklist, then upgrade to the Fix-It Vault if you need the deeper step-by-step path.</p>
+  <!-- Choose Your Problem -->
+  <div class="section-label">Choose Your Problem</div>
+  <div class="problem-grid">
+    <a href="#meta-help" class="problem-card">
+      <div class="problem-icon">🔐</div>
+      <div class="problem-title">Meta access, ads, or Business Portfolio issue</div>
+      <div class="problem-arrow">→ Start here</div>
+    </a>
+    <a href="#ai-tools" class="problem-card">
+      <div class="problem-icon">🧠</div>
+      <div class="problem-title">AI or business brain setup</div>
+      <div class="problem-arrow">→ Start here</div>
+    </a>
+    <a href="#products" class="problem-card">
+      <div class="problem-icon">📋</div>
+      <div class="problem-title">Content or workflow systems</div>
+      <div class="problem-arrow">→ Browse resources</div>
+    </a>
+    <a href="#direct-help" class="problem-card">
+      <div class="problem-icon">💬</div>
+      <div class="problem-title">Not sure where to start</div>
+      <div class="problem-arrow">→ Get direct help</div>
+    </a>
+  </div>
+
+  <!-- Free Resource -->
+  <div id="free-resource" class="section-label">Free Resource</div>
+  <div class="link-stack">
+    <a href="meta-checklist.html" class="link-card">
+      <div class="link-card-icon">🆘</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Meta Business Access Emergency Checklist</div>
+        <div class="link-card-desc">Locked out, restricted, or confused about your Meta setup? Start here. 5 sections covering the most common access and portfolio problems.</div>
+        <div class="link-card-meta">No email required · Instant access</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-free">Free</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Paid Resources -->
+  <div id="products" class="section-label">Digital Resources</div>
+  <div class="section-header section-gap" style="margin-bottom:16px;">
+    <h2>Self-serve tools built around real problems.</h2>
+    <p>Each resource covers one specific area — no fluff, no upsell pressure. Buy what you actually need.</p>
+  </div>
+  <div class="link-stack" id="meta-help">
+
+    <a href="meta-vault.html" class="link-card">
+      <div class="link-card-icon">🔐</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Meta Business Fix-It Vault</div>
+        <div class="link-card-desc">Full troubleshooting system — scripts, checklists, and next steps for restrictions, hacked accounts, failed appeals, and portfolio access issues.</div>
+        <div class="link-card-meta">Best for: anyone stuck inside Meta · Beginner-friendly</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-paid">$97</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- AI Tools -->
+  <div id="ai-tools" class="section-label" style="margin-top:0;">Claude AI Tools</div>
+  <div class="link-stack">
+
+    <a href="brain-guide.html" class="link-card">
+      <div class="link-card-icon">🧠</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Build Your Business Brain</div>
+        <div class="link-card-desc">Teach Claude your business once — your services, prices, voice, and clients. Stop re-explaining yourself every session.</div>
+        <div class="link-card-meta">Best for: service providers using Claude · Requires Claude Code (free)</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-paid">$95</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+    <a href="command-pack.html" class="link-card">
+      <div class="link-card-icon">⚡</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Business Brain Command Pack</div>
+        <div class="link-card-desc">6 slash commands that run your entire business from Claude — reply to clients, draft proposals, run your day, onboard clients.</div>
+        <div class="link-card-meta">Best for: Business Brain users ready to automate · Requires Business Brain setup</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-paid">$47</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Trust / Credibility -->
+  <div class="section-label">Why These Resources</div>
+  <div class="trust-block section-gap">
+    <p>These resources are based on <strong>real small-business support patterns</strong>, repeated Meta troubleshooting issues, and practical systems built to reduce guessing and back-and-forth. They were built because the same questions kept coming up — and the answers weren't written down anywhere useful. No fluff. No guarantees Meta can't keep. Just clear, tested steps and systems that work for real people running real businesses.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section-label">Common Questions</div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">Do I need to be technical to use these?</div>
+      <div class="faq-a">No. The Meta resources are designed for non-technical business owners. The AI tools require Claude Code (free to download) but include setup guidance step by step.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can these resources guarantee Meta will restore my account?</div>
+      <div class="faq-a">No — and any resource that makes that promise is misleading you. These resources give you the best possible scripts, steps, and documentation. The final decision is always Meta's.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I need more than a self-serve resource?</div>
+      <div class="faq-a">If your situation is complex or you want a real person to review it, the Meta Ecosystem Review on Fiverr is the right next step. See below.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I get access after I pay?</div>
+      <div class="faq-a">Each product page explains exactly what happens after purchase. All products are digital and delivered instantly via PayPal checkout.</div>
+    </div>
+  </div>
+
+  <!-- Direct Help -->
+  <div id="direct-help" class="section-label">Need More Than a Resource?</div>
+  <div class="help-block">
+    <h3>Work With Jasmine Directly on Fiverr</h3>
+    <p>For complex Meta situations, custom Meta Ads strategy, or hands-on social media support — book through Fiverr. Jasmine reviews your setup personally and provides written guidance, scripts, and next steps.</p>
+    <a href="https://www.fiverr.com/jazz96designs" class="btn-primary" target="_blank" rel="noopener noreferrer">View Services on Fiverr →</a>
+  </div>
 
   <!-- Socials -->
+  <div class="section-label">Find Me Online</div>
   <div class="socials">
     <a href="https://instagram.com/jdesigns.info" class="social-pill" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -266,110 +484,14 @@
       </svg>
       Facebook
     </a>
-    <a href="https://www.fiverr.com/jazz96designs" class="social-pill-cta" target="_blank" rel="noopener noreferrer">
-      Work with me on Fiverr →
-    </a>
-  </div>
-
-  <!-- Meta Help -->
-  <div class="section-label">Meta Business Help</div>
-  <div class="link-stack">
-
-    <a href="meta-checklist.html" class="link-card">
-      <div class="link-card-icon">🆘</div>
-      <div class="link-card-body">
-        <div class="link-card-title">Meta Business Access Emergency Checklist</div>
-        <div class="link-card-desc">Locked out or confused? Start here — free.</div>
-      </div>
-      <div class="link-card-right">
-        <span class="price-badge price-free">Free</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-
-    <a href="meta-vault.html" class="link-card">
-      <div class="link-card-icon">🔐</div>
-      <div class="link-card-body">
-        <div class="link-card-title">Meta Business Fix-It Vault</div>
-        <div class="link-card-desc">Full troubleshooting system — scripts, checklists, next steps.</div>
-      </div>
-      <div class="link-card-right">
-        <span class="price-badge price-paid">$97</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-
-    <a href="https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues" class="link-card" target="_blank" rel="noopener">
-      <div class="link-card-icon">👩‍💻</div>
-      <div class="link-card-body">
-        <div class="link-card-title">Meta Ecosystem Review — Done With You</div>
-        <div class="link-card-desc">Complex situation? Jasmine reviews your setup personally.</div>
-      </div>
-      <div class="link-card-right">
-        <span class="arrow">→</span>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- Claude AI Tools -->
-  <div class="section-label">Claude AI Tools</div>
-  <div class="link-stack">
-
-    <a href="brain-guide.html" class="link-card">
-      <div class="link-card-icon">🧠</div>
-      <div class="link-card-body">
-        <div class="link-card-title">Build Your Business Brain</div>
-        <div class="link-card-desc">Teach Claude your business once. It never forgets again.</div>
-      </div>
-      <div class="link-card-right">
-        <span class="price-badge price-paid">$95</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-
-    <a href="command-pack.html" class="link-card">
-      <div class="link-card-icon">⚡</div>
-      <div class="link-card-body">
-        <div class="link-card-title">Business Brain Command Pack</div>
-        <div class="link-card-desc">6 slash commands that run your entire business from Claude.</div>
-      </div>
-      <div class="link-card-right">
-        <span class="price-badge price-paid">$47</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- Free Checklist Email Opt-in -->
-  <div class="email-section" id="checklist-optin">
-    <h3>Get the free Meta checklist</h3>
-    <p>Enter your email and get instant access — plus occasional Meta tips.</p>
-    <form class="email-form" id="checklist-form" onsubmit="handleSubmit(event)">
-      <input type="email" id="checklist-email" placeholder="your@email.com" required>
-      <button type="submit">Send it</button>
-    </form>
-    <div class="email-success" id="checklist-success">
-      Done — <a href="https://canva.link/4f76owjsk84ho9s" style="color:var(--green);" target="_blank" rel="noopener">open the checklist →</a>
-    </div>
-    <p class="email-note">No spam. Unsubscribe anytime.</p>
   </div>
 
   <!-- Footer -->
   <div class="footer">
     <div class="footer-name">JDesigns Strategist LLC</div>
-    <div class="footer-copy">Made by Jasmine &nbsp;·&nbsp; © 2025</div>
+    <div class="footer-copy">Made by Jasmine &nbsp;·&nbsp; © 2026</div>
   </div>
 
 </div>
-
-<script>
-  function handleSubmit(e) {
-    e.preventDefault();
-    document.getElementById('checklist-form').style.display = 'none';
-    document.getElementById('checklist-success').style.display = 'block';
-  }
-</script>
 </body>
 </html>
