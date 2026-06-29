@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✦ JDesigns Strategist — Command Pack Access</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       #1a7a4e;
+      --border-muted: #102b18;
+      --accent:       #2ec27e;
+      --accent-dim:   #0d3320;
+      --text:         #ffffff;
+      --muted:        #8aab96;
+      --radius:       14px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 64px 24px 88px;
+    }
+
+    .wordmark {
+      font-family: var(--font-serif);
+      font-size: 0.775rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 52px;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .wordmark span { color: var(--muted); }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      text-align: center;
+    }
+
+    .check-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    .card h1 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .dl-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 13px 28px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, transform 0.12s;
+      cursor: pointer;
+      margin-bottom: 28px;
+    }
+    .dl-btn:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .steps {
+      text-align: left;
+      margin-bottom: 28px;
+    }
+    .steps p {
+      margin-bottom: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-muted);
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .step strong { color: var(--text); }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border-muted);
+      margin: 32px 0;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .footer-note a { color: var(--accent); }
+
+    @media (max-width: 480px) {
+      .page { padding: 40px 16px 64px; }
+      .card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="wordmark">✦ <span>JDesigns Strategist</span></div>
+
+    <div class="card">
+
+      <div class="check-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2ec27e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+
+      <h1>You're in. Here are your 6 command files.</h1>
+      <p>Download the zip below, unzip it, and drop all 6 <code style="font-size:12px;background:var(--accent-dim);padding:1px 5px;border-radius:4px;color:var(--accent);">.md</code> files into your <code style="font-size:12px;background:var(--accent-dim);padding:1px 5px;border-radius:4px;color:var(--accent);">.claude/commands/</code> folder. That's it.</p>
+
+      <!-- REPLACE THIS HREF with the Google Drive / Dropbox zip link -->
+      <a href="PASTE_DOWNLOAD_LINK_HERE" class="dl-btn" target="_blank" rel="noopener noreferrer">
+        Download Command Files →
+      </a>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div><strong>Download the zip</strong> using the button above. You'll get a file called <code style="font-size:12px;background:var(--accent-dim);padding:1px 5px;border-radius:4px;color:var(--accent);">business-brain-command-pack.zip</code>.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div><strong>Unzip it.</strong> You'll see 6 <code style="font-size:12px;background:var(--accent-dim);padding:1px 5px;border-radius:4px;color:var(--accent);">.md</code> files: <code style="font-size:12px;color:var(--accent);">daily-priorities</code>, <code style="font-size:12px;color:var(--accent);">capture-message</code>, <code style="font-size:12px;color:var(--accent);">client-update</code>, <code style="font-size:12px;color:var(--accent);">onboard-client</code>, <code style="font-size:12px;color:var(--accent);">save-session</code>, <code style="font-size:12px;color:var(--accent);">route-offer</code>.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div><strong>Move all 6 files into <code style="font-size:12px;color:var(--accent);">.claude/commands/</code></strong> inside your Business Brain folder. If that folder doesn't exist yet, create it.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div><strong>Open Claude Code</strong> in that folder and type <code style="font-size:12px;color:var(--accent);">/daily-priorities</code> to run your first command.</div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <p class="footer-note">
+        Haven't built your Business Brain yet? <a href="https://jdesigns.info/brain-guide.html">Start here first →</a><br><br>
+        Questions? <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener">Fiverr</a> or <a href="https://instagram.com/jdesigns.info" target="_blank" rel="noopener">@jdesigns.info</a>
+      </p>
+
+    </div>
+
+  </div>
+</body>
+</html>
