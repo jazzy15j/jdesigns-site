@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meta Business Help — Free Guides & Answers | JDesigns Strategist</title>
+  <meta name="description" content="Free answers to the most common Meta Business Suite, Business Manager, and Facebook ad account questions. No fluff — just clear steps from a Meta strategist." />
+  <meta property="og:title" content="Meta Business Help — Free Guides & Answers" />
+  <meta property="og:description" content="Free answers to the most common Meta Business Suite and ad account questions." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       #1a7a4e;
+      --border-muted: #102b18;
+      --accent:       #2ec27e;
+      --accent-dim:   #0d3320;
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --radius:       14px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 52px 24px 88px;
+    }
+
+    .wordmark {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wordmark span { color: var(--muted); }
+    .wordmark a:hover { color: var(--text); }
+
+    .page-header {
+      margin-bottom: 48px;
+    }
+    .page-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .page-subtitle {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    /* ── Topic Sections ── */
+    .topic-section {
+      margin-bottom: 52px;
+    }
+    .topic-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .topic-title {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    /* ── Article Cards ── */
+    .article-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .article-card {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+    }
+    .article-card:hover {
+      border-color: var(--border);
+      box-shadow: 0 0 0 1px var(--accent-dim), 0 4px 20px rgba(46,194,126,0.06);
+    }
+    .article-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      border: 1px solid var(--border-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .article-icon svg {
+      width: 16px;
+      height: 16px;
+      color: var(--accent);
+    }
+    .article-body { flex: 1; min-width: 0; }
+    .article-title {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 5px;
+    }
+    .article-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .article-arrow {
+      color: var(--muted);
+      flex-shrink: 0;
+      margin-top: 4px;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .article-card:hover .article-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    /* ── Coming Soon Cards ── */
+    .article-card.coming-soon {
+      opacity: 0.5;
+      cursor: default;
+    }
+    .article-card.coming-soon:hover {
+      border-color: var(--border-muted);
+      box-shadow: none;
+    }
+    .article-card.coming-soon .article-arrow { display: none; }
+    .soon-badge {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border-muted);
+      padding: 2px 7px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+    /* ── CTA Block ── */
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .cta-block h3 {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .cta-block p {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, transform 0.12s;
+      cursor: pointer;
+      border: none;
+    }
+    .cta-btn:hover { background: var(--accent); transform: translateY(-1px); }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid var(--border-muted);
+      padding-top: 28px;
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer a { color: var(--accent); }
+    .footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="wordmark">
+    <a href="/">✦ JDesigns Strategist</a>
+    <span>/ Meta Help</span>
+  </div>
+
+  <div class="page-header">
+    <div class="page-label">Free Resources</div>
+    <h1 class="page-title">Meta Business Help &amp; Answers</h1>
+    <p class="page-subtitle">Plain-English answers to the most common Meta Business Suite, Business Manager, ad account, and Instagram questions. Written by a Meta strategist — not a chatbot.</p>
+  </div>
+
+  <!-- SECTION 1: Account Access & Connections -->
+  <div class="topic-section">
+    <div class="topic-label">Account Access &amp; Connections</div>
+    <h2 class="topic-title">Getting into your accounts and connecting them correctly</h2>
+    <div class="article-list">
+
+      <a href="/help/instagram-wont-connect-meta-business-suite" class="article-card">
+        <div class="article-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-title">Why Your Instagram Won't Connect to Meta Business Suite</div>
+          <div class="article-desc">The "already connected to a different page" error — what causes it and how to fix it in 3 steps.</div>
+        </div>
+        <svg class="article-arrow" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+
+      <a href="/help/who-owns-my-meta-ad-account" class="article-card">
+        <div class="article-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-title">Who Actually Owns Your Meta Ad Account?</div>
+          <div class="article-desc">How to check if your previous agency owns your account — and what to do if they do.</div>
+        </div>
+        <svg class="article-arrow" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+
+      <div class="article-card coming-soon">
+        <div class="article-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-title">Who Gets What Access in Meta Business Suite</div>
+          <div class="article-desc">Employee vs. Admin vs. Partner — what each role can do and who should get which one.</div>
+          <span class="soon-badge">Coming soon</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 2: Restrictions & Verification -->
+  <div class="topic-section">
+    <div class="topic-label">Restrictions &amp; Verification</div>
+    <h2 class="topic-title">When Meta restricts, disables, or requires verification</h2>
+    <div class="article-list">
+
+      <div class="article-card coming-soon">
+        <div class="article-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-title">Why Meta Business Verification Keeps Getting Rejected</div>
+          <div class="article-desc">The exact checklist to prepare before you submit — and the most common rejection reasons.</div>
+          <span class="soon-badge">Coming soon</span>
+        </div>
+      </div>
+
+      <div class="article-card coming-soon">
+        <div class="article-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-title">My Meta Ad Account Is Restricted — What Do I Do?</div>
+          <div class="article-desc">What triggered it, whether to appeal, and how to write an appeal that doesn't get auto-rejected.</div>
+          <span class="soon-badge">Coming soon</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 3: Setup & Structure -->
+  <div class="topic-section">
+    <div class="topic-label">Setup &amp; Structure</div>
+    <h2 class="topic-title">Setting things up correctly from the start</h2>
+    <div class="article-list">
+
+      <div class="article-card coming-soon">
+        <div class="article-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-title">Meta Business Suite vs. Business Manager vs. Business Portfolio</div>
+          <div class="article-desc">These are three different tools with three different jobs. Here's what each one is actually for.</div>
+          <span class="soon-badge">Coming soon</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Still stuck after reading?</h3>
+    <p>Some Meta issues need a second set of eyes. I review your account, identify exactly what's wrong, and give you a written action plan — no fluff, no runaround.</p>
+    <a href="https://www.fiverr.com/jazz96designs" class="cta-btn" target="_blank" rel="noopener">See How I Can Help →</a>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 JDesigns Strategist LLC</span>
+    <a href="/">← Back to main site</a>
+  </footer>
+
+</div>
+</body>
+</html>

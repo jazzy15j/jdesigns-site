@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✦ JDesigns Strategist — Vault Access</title>
+  <!-- TODO: Set this page URL as the PayPal return/thank-you URL for the $197 Meta Business Fix-It Vault payment link.
+       The full URL to enter in PayPal will be: https://[your-domain]/vault-thank-you.html
+       Replace [your-domain] with your actual deployed domain (e.g. jdesigns.info or your Netlify URL).
+       In PayPal: go to your payment link settings → Return URL / Confirmation page → paste the full URL. -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       #1a7a4e;
+      --border-muted: #102b18;
+      --accent:       #2ec27e;
+      --accent-dim:   #0d3320;
+      --text:         #ffffff;
+      --muted:        #8aab96;
+      --radius:       14px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 64px 24px 88px;
+    }
+
+    .wordmark {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 52px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wordmark span { color: var(--muted); }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      text-align: center;
+    }
+
+    .check-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    .card h1 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .vault-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 13px 28px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, transform 0.12s;
+      cursor: pointer;
+      margin-bottom: 28px;
+    }
+    .vault-btn:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .disclaimer {
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.55;
+      padding: 14px 18px;
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      background: rgba(13,51,32,0.3);
+      text-align: left;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border-muted);
+      margin: 32px 0;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer-note a {
+      color: var(--accent);
+    }
+
+    @media (max-width: 480px) {
+      .page { padding: 40px 16px 64px; }
+      .card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="wordmark">✦ <span>JDesigns Strategist</span></div>
+
+    <div class="card">
+
+      <div class="check-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2ec27e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+
+      <h1>Thank you for purchasing the Meta Business Fix-It Vault.</h1>
+      <p>Your Vault access is ready below. Please save this link for your records.</p>
+
+      <!-- Private Vault access link — only shown on this post-purchase page, not on the main sales page -->
+      <a href="https://canva.link/c0e4s3f7xh8n0b2" class="vault-btn" target="_blank" rel="noopener noreferrer">
+        Open the Vault →
+      </a>
+
+      <div class="disclaimer">
+        This is a self-guided digital resource. It does not guarantee that Meta will restore, approve, or fix any account, Page, ad account, or Business Portfolio issue. Meta controls Meta's final decisions.
+      </div>
+
+      <hr class="divider" />
+
+      <p class="footer-note">
+        Questions? Reach out on <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener noreferrer">Fiverr</a> or through Instagram <a href="https://instagram.com/jdesigns.info" target="_blank" rel="noopener noreferrer">@jdesigns.info</a>.
+      </p>
+
+    </div>
+
+  </div>
+</body>
+</html>

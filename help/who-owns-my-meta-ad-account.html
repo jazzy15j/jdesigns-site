@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who Actually Owns Your Meta Ad Account? | JDesigns Strategist</title>
+  <meta name="description" content="If a marketing agency set up your Meta ads, there's a chance they own your ad account — not you. Here's how to check and what to do about it." />
+  <meta property="og:title" content="Who Actually Owns Your Meta Ad Account?" />
+  <meta property="og:description" content="If an agency set up your Meta ads, they may own your account. Here's how to check and what to do." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       #1a7a4e;
+      --border-muted: #102b18;
+      --accent:       #2ec27e;
+      --accent-dim:   #0d3320;
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --radius:       14px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 52px 24px 88px;
+    }
+
+    .wordmark {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wordmark span { color: var(--muted); }
+    .wordmark a:hover { color: var(--text); }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .meta-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border-muted);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+    .meta-date { font-size: 12px; color: var(--muted); }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .article-intro {
+      font-size: 15.5px;
+      color: var(--sage);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border-muted);
+    }
+
+    .article-body h2 {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--text);
+      margin: 40px 0 12px;
+      line-height: 1.3;
+    }
+    .article-body h3 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 32px 0 10px;
+    }
+    .article-body p {
+      font-size: 15px;
+      color: var(--sage);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    .article-body strong { color: var(--text); font-weight: 600; }
+
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      color: var(--sage);
+      line-height: 1.65;
+    }
+    .callout strong { color: var(--text); }
+
+    .callout-warning {
+      background: rgba(180, 50, 30, 0.08);
+      border: 1px solid rgba(220, 80, 60, 0.25);
+      border-left: 3px solid #e05a3a;
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      color: var(--sage);
+      line-height: 1.65;
+    }
+    .callout-warning strong { color: #f0a090; }
+
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-body { flex: 1; }
+    .step-body strong {
+      display: block;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .step-body p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* ── Comparison Table ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .compare-table th {
+      text-align: left;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-table td {
+      padding: 12px 14px;
+      color: var(--sage);
+      border-bottom: 1px solid var(--border-muted);
+      line-height: 1.5;
+      vertical-align: top;
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:first-child { color: var(--text); font-weight: 500; }
+
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .cta-block h3 {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .cta-block p {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, transform 0.12s;
+      cursor: pointer;
+      border: none;
+    }
+    .cta-btn:hover { background: var(--accent); transform: translateY(-1px); }
+    .cta-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, border-color 0.15s, transform 0.12s;
+      cursor: pointer;
+    }
+    .cta-btn-outline:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+    .disclaimer {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+
+    .related-section { margin-top: 56px; }
+    .related-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .related-list { display: flex; flex-direction: column; gap: 8px; }
+    .related-card {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: border-color 0.15s;
+    }
+    .related-card:hover { border-color: var(--border); }
+    .related-title { font-size: 14px; color: var(--sage); line-height: 1.4; }
+    .related-arrow { color: var(--muted); flex-shrink: 0; }
+    .related-card:hover .related-arrow { color: var(--accent); }
+
+    .footer {
+      border-top: 1px solid var(--border-muted);
+      padding-top: 28px;
+      margin-top: 52px;
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer a { color: var(--accent); }
+    .footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="wordmark">
+    <a href="/">✦ JDesigns Strategist</a>
+    <span>/</span>
+    <a href="/help">Meta Help</a>
+    <span>/ Account Ownership</span>
+  </div>
+
+  <div class="article-meta">
+    <span class="meta-tag">Account Access</span>
+    <span class="meta-date">Updated June 2026</span>
+  </div>
+
+  <h1>Who Actually Owns Your Meta Ad Account?</h1>
+
+  <p class="article-intro">If a marketing agency ever set up your Meta ads, there's a real chance they own your ad account — not you. This is one of the most common and most damaging Meta setup mistakes, and most business owners don't find out until the agency relationship is over and the data is gone.</p>
+
+  <div class="article-body">
+
+    <h2>Why this matters more than you think</h2>
+
+    <p>Your Meta ad account contains years of data: your pixel audiences, custom audiences, conversion history, creative performance records, and the algorithm signals Meta uses to find buyers for you. <strong>All of that lives in the account — not in any document the agency gives you.</strong></p>
+
+    <p>If the agency owns the account, all of that goes with them when you part ways. You start from zero, your new campaigns take months to find their footing, and there's nothing you can do to get the historical data back.</p>
+
+    <div class="callout-warning">
+      <strong>This happens more than you'd think.</strong> Agencies often build client ad accounts inside their own Business Portfolio because it's faster for them to manage. It's not always malicious — but it means you own nothing.
+    </div>
+
+    <h2>How to check who owns your ad account</h2>
+
+    <h3>Step 1 — Find your Business Portfolio</h3>
+
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Go to business.facebook.com</strong>
+          <p>Log in with your personal Facebook account — the one you use for business.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Look at the Business Portfolio name in the top left</strong>
+          <p>Does it say your business name? Or does it say your agency's name, a generic name, or something you don't recognize?</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Go to Settings → Business Info</strong>
+          <p>Check the Business Portfolio owner. If your name or your business name isn't there — someone else owns it.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Step 2 — Check who owns your ad account specifically</h3>
+
+    <p>Even if the Business Portfolio looks right, the ad account inside it might be owned by a different portfolio:</p>
+
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Go to Settings → Ad Accounts</strong>
+          <p>Find your ad account in the list.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Look at the ownership label</strong>
+          <p>It will say either "Owned by [your Business Portfolio]" or "Shared from [Agency Portfolio]." Shared means you don't own it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Owned by your portfolio = you're fine.</strong> You control it and keep it if the agency relationship ends.<br><br>
+      <strong>Shared from an agency portfolio = they own it.</strong> They can remove your access at any time, and you cannot take the account or its data with you.
+    </div>
+
+    <h2>What it looks like in each scenario</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Situation</th>
+          <th>What you'll see</th>
+          <th>What it means</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>You set it up yourself</td>
+          <td>Your name / business name owns everything</td>
+          <td>You're in control. Good.</td>
+        </tr>
+        <tr>
+          <td>Agency used "partner access"</td>
+          <td>Your portfolio owns assets, agency is listed as a Partner</td>
+          <td>Correct setup. You own the data, agency just has access.</td>
+        </tr>
+        <tr>
+          <td>Agency built it under their portfolio</td>
+          <td>Agency name in the Business Info or "Shared from [Agency]" on ad account</td>
+          <td>They own it. You lose access and data if they remove you.</td>
+        </tr>
+        <tr>
+          <td>You're not sure / can't find it</td>
+          <td>You may not have admin access to the Business Portfolio at all</td>
+          <td>Needs a full review to understand what you actually control.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>What to do if the agency owns it</h2>
+
+    <p>You have a few options, and the right one depends on your relationship with the agency and how much history is in the account.</p>
+
+    <h3>Option A — Ask the agency to transfer ownership</h3>
+
+    <p>This is the cleanest fix. Meta allows Business Portfolio ownership to be transferred. Ask the agency to transfer the ad account to your Business Portfolio. A legitimate agency should do this without resistance — it's your business and your data.</p>
+
+    <p>If they refuse, that's a red flag and you'll need to decide how much leverage you have in the relationship.</p>
+
+    <h3>Option B — Request that they add you as an admin and transfer assets</h3>
+
+    <p>If the full portfolio can't be transferred, the agency can move individual assets (your Facebook Page, ad account, pixel) to your own Business Portfolio by going to their Settings → Ad Accounts → and using the "Transfer" option. This requires a Business Portfolio on your end to receive them.</p>
+
+    <h3>Option C — Start a new setup (last resort)</h3>
+
+    <p>If the agency is unresponsive or the relationship has ended badly, you may need to build a clean setup from scratch — your own Business Portfolio, a new ad account, and a new pixel. You'll lose historical data, but you'll own everything going forward.</p>
+
+    <div class="callout">
+      <strong>Before you walk away from the old account:</strong> Download any reports, export custom audiences if you have access, and screenshot your top-performing ad creative and copy. None of the platform data will transfer, but your learnings can.
+    </div>
+
+    <h2>How to set it up correctly next time</h2>
+
+    <p>If you're working with a new agency or contractor, the correct setup is <strong>partner access</strong> — not co-ownership. Here's what that looks like:</p>
+
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>You create your own Business Portfolio at business.facebook.com</strong>
+          <p>This is yours. Your name, your business email, your Facebook account.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>You add your assets to your portfolio</strong>
+          <p>Your Facebook Page, ad account, Instagram account, and pixel all live under your portfolio.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>You give the agency Partner access — not admin access to your portfolio</strong>
+          <p>Go to Settings → Partners → Add a Partner. The agency enters their Business Portfolio ID. They get access to work but don't own anything.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>This way, if the relationship ends, you revoke partner access and everything stays with you.</p>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Not sure what you own or how it's set up?</h3>
+    <p>I do a full Meta Ecosystem Review — I map out your Business Portfolio, ad accounts, pages, pixel, and Instagram connection, tell you exactly who owns what, and give you a written plan to fix the structure if needed.</p>
+    <div class="cta-row">
+      <a href="https://www.fiverr.com/jazz96designs/review-and-guide-your-meta-business-access-setup-issues" class="cta-btn" target="_blank" rel="noopener">Get a Meta Ecosystem Review →</a>
+      <a href="/help" class="cta-btn-outline">← More Free Guides</a>
+    </div>
+    <p class="disclaimer">Meta Ecosystem Review starts at $595. I review your full Meta setup and give you a written action plan — I don't log in to your accounts or contact Meta on your behalf.</p>
+  </div>
+
+  <div class="related-section">
+    <div class="related-label">Related Guides</div>
+    <div class="related-list">
+      <a href="/help/instagram-wont-connect-meta-business-suite" class="related-card">
+        <span class="related-title">Why Your Instagram Won't Connect to Meta Business Suite</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help" class="related-card">
+        <span class="related-title">View All Meta Help Guides →</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 JDesigns Strategist LLC</span>
+    <a href="/help">← Back to Meta Help</a>
+  </footer>
+
+</div>
+</body>
+</html>

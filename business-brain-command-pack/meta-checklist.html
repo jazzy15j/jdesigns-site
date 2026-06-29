@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta Business Access Emergency Checklist — Free — JDesigns Strategist LLC</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #2ec27e;
+      --green-dim: rgba(46,194,126,.15);
+      --green-faint: rgba(46,194,126,.07);
+      --green-glow: #0d3320;
+      --bg: #07100a;
+      --card: #0d1a10;
+      --border: rgba(30,50,37,0.6);
+      --border-green: rgba(46,194,126,.2);
+      --text: #ffffff;
+      --muted: #8aab96;
+      --faint: #1e3225;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px; line-height: 1.65;
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.85); }
+    }
+
+    .fu  { animation: fadeUp .65s ease both; }
+    .fu1 { animation-delay: .1s; }
+    .fu2 { animation-delay: .2s; }
+    .fu3 { animation-delay: .3s; }
+    .fu4 { animation-delay: .45s; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      background: rgba(7,16,10,.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+    .nav-mark {
+      width: 34px; height: 34px; border-radius: 9px;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .88rem; font-weight: 900; color: #07100a;
+      letter-spacing: -.02em; flex-shrink: 0;
+    }
+    .nav-wordmark { font-size: .88rem; font-weight: 700; color: var(--text); }
+    .nav-wordmark span { color: var(--green); }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .82rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--green) !important; color: #07100a !important;
+      padding: .4rem 1rem; border-radius: 7px; font-weight: 700 !important;
+      transition: opacity .2s !important;
+    }
+    .nav-cta:hover { opacity: .88 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 90vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 5rem 1.5rem 4.5rem;
+      overflow: hidden;
+    }
+    .orb-1 {
+      position: absolute; top: -15%; left: 50%;
+      transform: translateX(-50%);
+      width: 950px; height: 600px;
+      background: radial-gradient(ellipse, rgba(46,194,126,.13) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .orb-2 {
+      position: absolute; bottom: -5%; right: 5%;
+      width: 400px; height: 300px;
+      background: radial-gradient(ellipse, rgba(46,194,126,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--green-faint); border: 1px solid var(--border-green);
+      border-radius: 100px; padding: .35rem 1.1rem;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 2rem;
+    }
+    .badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green); animation: pulse 2s ease infinite;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4.8rem);
+      font-weight: 900; line-height: 1.07;
+      letter-spacing: -.04em;
+      max-width: 860px; margin-bottom: 1.5rem;
+    }
+    .text-green {
+      background: linear-gradient(135deg, #2ec27e 0%, #6edba8 45%, #2ec27e 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; animation: shimmer 4s linear infinite;
+    }
+    .hero-sub {
+      font-size: clamp(.97rem, 2vw, 1.15rem);
+      color: var(--muted); max-width: 560px;
+      line-height: 1.8; margin-bottom: 2.5rem;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-weight: 700; font-size: .95rem;
+      border-radius: 10px; text-decoration: none;
+      padding: .85rem 1.9rem; transition: all .2s;
+      letter-spacing: -.01em;
+    }
+    .btn-green { background: var(--green); color: #07100a; }
+    .btn-green:hover {
+      opacity: .9; transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(46,194,126,.3);
+    }
+    .btn-ghost {
+      background: transparent; color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { color: var(--text); border-color: rgba(46,194,126,.35); }
+    .hero-ctas { display: flex; gap: .9rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.5rem; }
+    .hero-note { font-size: .8rem; color: var(--muted); }
+
+    /* ── SECTIONS ── */
+    .section {
+      max-width: 900px; margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+    .section-narrow { max-width: 680px; }
+    .eyebrow {
+      font-size: .72rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 1rem;
+    }
+    .section h2 {
+      font-size: clamp(1.75rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -.03em; margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 1.05rem;
+      line-height: 1.8; max-width: 620px;
+      margin-bottom: 2rem;
+    }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ── PROBLEM CARDS ── */
+    .prob-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem; margin-top: 2rem;
+    }
+    .prob-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem;
+    }
+    .prob-icon { font-size: 1.5rem; margin-bottom: .75rem; }
+    .prob-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
+    .prob-card p { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── CHECKLIST PREVIEW ── */
+    .checklist-wrap {
+      background: var(--card); border: 1px solid var(--border-green);
+      border-radius: 16px; overflow: hidden; margin-top: 2rem;
+    }
+    .checklist-bar {
+      background: rgba(46,194,126,.06);
+      border-bottom: 1px solid var(--border-green);
+      padding: .75rem 1.25rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .checklist-bar-title { font-size: .8rem; font-weight: 700; color: var(--green); letter-spacing: .05em; }
+    .checklist-body { padding: 1.5rem; }
+    .cl-section { margin-bottom: 1.5rem; }
+    .cl-section:last-child { margin-bottom: 0; }
+    .cl-section-title {
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: .75rem;
+    }
+    .cl-item {
+      display: flex; align-items: flex-start; gap: .65rem;
+      margin-bottom: .5rem; font-size: .88rem; color: #d4e8db;
+    }
+    .cl-box {
+      width: 16px; height: 16px; flex-shrink: 0;
+      border: 2px solid rgba(46,194,126,.35); border-radius: 4px;
+      margin-top: 2px;
+    }
+    .cl-more {
+      font-size: .82rem; color: var(--muted);
+      padding-top: 1rem; border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+
+    /* ── WHAT'S INSIDE ── */
+    .inside-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem; margin-top: 2rem;
+    }
+    .inside-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem;
+      position: relative; overflow: hidden;
+    }
+    .inside-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--green); opacity: .4;
+    }
+    .inside-num {
+      font-size: .7rem; font-weight: 800; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: .6rem;
+    }
+    .inside-card h3 { font-size: .97rem; font-weight: 700; margin-bottom: .4rem; }
+    .inside-card p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--card) 0%, rgba(13,51,32,.6) 100%);
+      border: 1px solid var(--border-green);
+      border-radius: 20px; text-align: center;
+      padding: 4rem 2rem; margin: 0 1.5rem;
+    }
+    .cta-section h2 { font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; }
+    .cta-section p { color: var(--muted); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .free-badge {
+      display: inline-block;
+      background: rgba(46,194,126,.12); border: 1px solid var(--border-green);
+      border-radius: 100px; padding: .3rem 1rem;
+      font-size: .78rem; font-weight: 700; color: var(--green);
+      letter-spacing: .08em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── UPSELL ── */
+    .upsell-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem;
+      display: flex; align-items: flex-start; gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .upsell-text { flex: 1; min-width: 240px; }
+    .upsell-text h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: .6rem; }
+    .upsell-text p { color: var(--muted); font-size: .93rem; line-height: 1.75; }
+    .upsell-cta { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: .75rem; justify-content: center; }
+    .upsell-price { font-size: 1.6rem; font-weight: 900; color: var(--green); letter-spacing: -.04em; }
+
+    /* ── FOOTER ── */
+    footer {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--border);
+      margin-top: 5rem;
+    }
+    .footer-brand { display: flex; align-items: center; gap: .6rem; margin-bottom: .3rem; }
+    .footer-mark {
+      width: 30px; height: 30px; border-radius: 8px;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .78rem; font-weight: 900; color: #07100a;
+    }
+    .footer-name { font-weight: 700; font-size: .88rem; color: var(--text); }
+    .footer-tagline { font-size: .8rem; color: var(--muted); font-style: italic; margin-bottom: .45rem; }
+    .footer-copy { font-size: .75rem; color: var(--faint); }
+    .footer-links { display: flex; flex-direction: column; gap: .5rem; text-align: right; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: .85rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--green); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; }
+      .footer-links { text-align: left; }
+      .upsell-cta { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-mark">JD</div>
+    <div class="nav-wordmark">JDesigns <span>Strategist</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#whats-inside">What's Inside</a></li>
+    <li><a href="#get-it">Get Free Access</a></li>
+    <li><a href="meta-vault.html">Fix-It Vault — $97</a></li>
+    <li><a href="#get-it" class="nav-cta">Get It Free →</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="orb-1"></div>
+  <div class="orb-2"></div>
+
+  <div class="hero-badge fu fu1">
+    <div class="badge-dot"></div>
+    Free Resource — Meta Business Access Emergency Checklist
+  </div>
+
+  <h1 class="fu fu2">
+    Your Meta account is <span class="text-green">locked, broken,</span><br>or just confusing.<br>Start here — free.
+  </h1>
+
+  <p class="hero-sub fu fu3">
+    Before you spend hours guessing, calling Meta support, or hiring someone — get the free checklist. Know exactly what you're looking at, what to screenshot, and what to say.
+  </p>
+
+  <div class="hero-ctas fu fu4">
+    <a href="#get-it" class="btn btn-green">Get the Free Checklist →</a>
+    <a href="#whats-inside" class="btn btn-ghost">See what's inside</a>
+  </div>
+  <p class="hero-note fu fu4">100% free. No email required. Instant access.</p>
+</section>
+
+<hr class="divider">
+
+<!-- ── PROBLEM ── -->
+<section class="section" id="problem">
+  <div class="eyebrow">Sound familiar?</div>
+  <h2>Meta is a maze. This is the map.</h2>
+  <p class="section-sub">If any of these sounds like you, the free checklist is exactly where you need to start.</p>
+
+  <div class="prob-grid">
+    <div class="prob-card">
+      <div class="prob-icon">🔒</div>
+      <h3>Can't access your Facebook Page</h3>
+      <p>You're logged in but the Page is gone, restricted, or controlled by someone else.</p>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">🔗</div>
+      <h3>Instagram won't connect to Facebook</h3>
+      <p>The connection keeps failing, looping, or throwing an error you've never seen before.</p>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">🚫</div>
+      <h3>Ad account is restricted or disabled</h3>
+      <p>You woke up to a disabled account and no clear reason why — or how to fix it.</p>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">❓</div>
+      <h3>Business Portfolio is a mess</h3>
+      <p>You're not sure what's connected to what, who has access, or where anything actually lives.</p>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">👥</div>
+      <h3>Can't add or remove an admin</h3>
+      <p>Meta says another admin has to complete the action — but you're the only one.</p>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">📸</div>
+      <h3>Don't know what screenshots to send</h3>
+      <p>Meta support asked for proof but you have no idea what they actually need.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── WHAT'S INSIDE ── -->
+<section class="section" id="whats-inside">
+  <div class="eyebrow">What's Inside</div>
+  <h2>Five sections. No guessing.</h2>
+  <p class="section-sub">The checklist walks you through exactly what to check, what to gather, and what to say — before you contact Meta or book any paid support.</p>
+
+  <div class="inside-grid">
+    <div class="inside-card">
+      <div class="inside-num">Section 1</div>
+      <h3>Identify your actual problem</h3>
+      <p>Check the boxes that apply — and stop trying to fix something you haven't named yet.</p>
+    </div>
+    <div class="inside-card">
+      <div class="inside-num">Section 2</div>
+      <h3>The 10 places to check first</h3>
+      <p>Business Settings, Account Quality, Security Center, Page ownership, Instagram connection — in order.</p>
+    </div>
+    <div class="inside-card">
+      <div class="inside-num">Section 3</div>
+      <h3>Screenshots to gather</h3>
+      <p>Exact list of what Meta support needs and what proves your case — nothing more, nothing less.</p>
+    </div>
+    <div class="inside-card">
+      <div class="inside-num">Section 4</div>
+      <h3>Copy-paste Meta support message</h3>
+      <p>A clear, organized message you can send to Meta right now — no writing required.</p>
+    </div>
+    <div class="inside-card">
+      <div class="inside-num">Section 5</div>
+      <h3>Free Meta911 diagnostic tools</h3>
+      <p>Links to free tools to decode Meta errors, diagnose your issue, and find setup help — all free.</p>
+    </div>
+  </div>
+
+  <!-- Checklist preview -->
+  <div class="checklist-wrap" style="margin-top: 3rem;">
+    <div class="checklist-bar">
+      <div class="checklist-bar-title">PREVIEW — Meta Business Access Emergency Checklist</div>
+    </div>
+    <div class="checklist-body">
+      <div class="cl-section">
+        <div class="cl-section-title">Section 2 — Check these areas first</div>
+        <div class="cl-item"><div class="cl-box"></div>Business Settings → People / Full Control</div>
+        <div class="cl-item"><div class="cl-box"></div>Pages — confirm your Page is connected</div>
+        <div class="cl-item"><div class="cl-box"></div>Instagram Accounts — connection status</div>
+        <div class="cl-item"><div class="cl-box"></div>Ad Accounts — current status and restrictions</div>
+        <div class="cl-item"><div class="cl-box"></div>Account Quality — any active warnings</div>
+        <div class="cl-item"><div class="cl-box"></div>Security Center — any identity or verification flags</div>
+      </div>
+      <div class="cl-section">
+        <div class="cl-section-title">Section 3 — Screenshots to gather</div>
+        <div class="cl-item"><div class="cl-box"></div>Exact error message</div>
+        <div class="cl-item"><div class="cl-box"></div>Business Portfolio name and ID</div>
+        <div class="cl-item"><div class="cl-box"></div>Account Quality warning screen</div>
+        <div class="cl-item"><div class="cl-box"></div>Any reply from Meta support</div>
+      </div>
+      <div class="cl-more">+ Section 1 (identify the problem), Section 4 (copy-paste support message), Section 5 (free tools) — all in the free download.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── META911 TOOLS ── -->
+<section class="section" id="meta911-tools">
+  <div class="eyebrow">Bonus — Free Meta911 Tools</div>
+  <h2>Not sure what the error means?<br>Use these free tools.</h2>
+  <p class="section-sub">Meta911 is a free toolkit built by Jasmine — no account, no email, no waiting. Use it alongside the checklist to decode errors, diagnose your issue, and find the right setup path.</p>
+
+  <div class="inside-grid" style="margin-top: 2rem;">
+    <a href="https://meta911.lovable.app" target="_blank" rel="noopener" style="text-decoration:none;">
+      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(46,194,126,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(30,50,37,0.6)';this.style.transform='none'">
+        <div class="inside-num">Meta911 Home</div>
+        <h3 style="color:#fff;">meta911.lovable.app</h3>
+        <p>The main hub — start here if you're not sure which tool you need.</p>
+      </div>
+    </a>
+    <a href="https://meta911.lovable.app/meta-error" target="_blank" rel="noopener" style="text-decoration:none;">
+      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(46,194,126,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(30,50,37,0.6)';this.style.transform='none'">
+        <div class="inside-num">Meta Error Help</div>
+        <h3 style="color:#fff;">meta911.lovable.app/meta-error</h3>
+        <p>Paste the exact error you're seeing and get plain-English context on what it means.</p>
+      </div>
+    </a>
+    <a href="https://meta911.lovable.app/decoder" target="_blank" rel="noopener" style="text-decoration:none;">
+      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(46,194,126,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(30,50,37,0.6)';this.style.transform='none'">
+        <div class="inside-num">Meta Decoder</div>
+        <h3 style="color:#fff;">meta911.lovable.app/decoder</h3>
+        <p>Decode confusing Meta messages, restriction notices, and support replies.</p>
+      </div>
+    </a>
+    <a href="https://meta911.lovable.app/diagnose" target="_blank" rel="noopener" style="text-decoration:none;">
+      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(46,194,126,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(30,50,37,0.6)';this.style.transform='none'">
+        <div class="inside-num">Diagnose Your Issue</div>
+        <h3 style="color:#fff;">meta911.lovable.app/diagnose</h3>
+        <p>Answer a few questions and get a clear picture of what's actually wrong with your setup.</p>
+      </div>
+    </a>
+    <a href="https://meta911.lovable.app/setup" target="_blank" rel="noopener" style="text-decoration:none;">
+      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(46,194,126,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(30,50,37,0.6)';this.style.transform='none'">
+        <div class="inside-num">Meta Setup Help</div>
+        <h3 style="color:#fff;">meta911.lovable.app/setup</h3>
+        <p>Step-by-step guidance for setting up Business Manager, Pages, Instagram, and ad accounts correctly.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── GET IT ── -->
+<section style="padding: 5rem 1.5rem;" id="get-it">
+  <div class="cta-section">
+    <div class="free-badge">Free — No Email Required</div>
+    <h2>Get the Emergency Checklist + Free Tools</h2>
+    <p>The checklist walks you through every section. The Meta911 tools help you decode what you find. Together they give you a complete first-step system — all free.</p>
+    <a href="https://meta911.lovable.app" class="btn btn-green" target="_blank" rel="noopener">Go to Meta911 — Free →</a>
+    <p style="margin-top: 1.25rem; font-size: .8rem; color: var(--muted);">meta911.lovable.app &nbsp;·&nbsp; Free Meta tools + emergency checklist by Jasmine at JDesigns</p>
+  </div>
+</section>
+
+<!-- ── UPSELL ── -->
+<section class="section" id="next-step">
+  <div class="eyebrow">Need More Than a Checklist?</div>
+  <h2>The checklist is your first step.<br>The Vault goes deeper.</h2>
+  <p class="section-sub">If you've gone through the checklist and still don't have answers — or your situation involves restrictions, failed appeals, or multiple broken assets — the Meta Business Fix-It Vault gives you the full system.</p>
+
+  <div class="upsell-box">
+    <div class="upsell-text">
+      <h3>Meta Business Fix-It Vault</h3>
+      <p>A complete self-serve troubleshooting vault with organized steps, scripts, checklists, and support message templates for the most common Meta Business problems. Work through it at your own pace — no waiting, no booking, no back-and-forth.</p>
+      <p style="margin-top: .75rem; font-size: .85rem; color: var(--muted);">Includes everything from the free checklist, plus deeper troubleshooting flows, appeal scripts, and next-step action plans.</p>
+    </div>
+    <div class="upsell-cta">
+      <div class="upsell-price">$97</div>
+      <a href="meta-vault.html" class="btn btn-green">See the Vault →</a>
+      <p style="font-size: .78rem; color: var(--muted);">One-time. Instant access.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 1.25rem; padding: 1.25rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px;">
+    <p style="font-size: .88rem; color: var(--muted); line-height: 1.75;">
+      <strong style="color:var(--text);">Have a complex situation?</strong> Multiple failed appeals, a hacked account, or a business portfolio that needs a full review? That's what the <a href="https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues" style="color:var(--green);" target="_blank" rel="noopener">Meta Ecosystem Review ($595)</a> is for. Jasmine reviews your situation personally and provides a written action plan, scripts, and checklist — no call required.
+    </p>
+    <p style="font-size: .75rem; color: var(--faint); margin-top: .75rem;">
+      Disclaimer: This checklist helps you organize your issue and prepare your next steps. It does not guarantee Meta will remove restrictions, restore access, or approve an account. Meta makes all final decisions.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand">
+      <div class="footer-mark">JD</div>
+      <div class="footer-name">JDesigns Strategist LLC</div>
+    </div>
+    <div class="footer-tagline">Simple Systems for Real Life &amp; Business</div>
+    <div class="footer-copy">Made by Jasmine &nbsp;·&nbsp; © 2025 JDesigns Strategist LLC</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://jdesigns.info/" target="_blank">jdesigns.info</a>
+    <a href="https://fiverr.com/jazz96designs" target="_blank">fiverr.com/jazz96designs</a>
+    <a href="meta-vault.html">Meta Business Fix-It Vault</a>
+    <a href="index.html">Business Brain Command Pack</a>
+    <a href="brain-guide.html">Build Your Business Brain</a>
+  </div>
+</footer>
+
+</body>
+</html>
