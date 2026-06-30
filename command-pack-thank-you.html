@@ -19,137 +19,351 @@
       --radius:       14px;
       --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
       --font-serif: Georgia, 'Times New Roman', serif;
+      --font-mono: 'Courier New', Courier, monospace;
     }
 
-    body { font-family: var(--font-sans); background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.6; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
     a { color: inherit; text-decoration: none; }
 
-    .page { max-width: 600px; margin: 0 auto; padding: 64px 24px 88px; }
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 64px 24px 88px;
+    }
 
     .wordmark {
       font-family: var(--font-serif);
-      font-size: 0.775rem; font-weight: 700;
-      letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 52px;
-      display: flex; align-items: center; gap: 0.65rem;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 52px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
     .wordmark span { color: var(--muted); }
 
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 36px; text-align: center; }
+    /* ── CONFIRMATION CARD ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
 
     .check-icon {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: var(--accent-dim); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin: 0 auto 24px;
     }
 
-    .card h1 { font-family: var(--font-serif); font-size: 22px; font-weight: 400; letter-spacing: 0.01em; line-height: 1.35; margin-bottom: 12px; }
-    .card > p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
-
-    .install-block { background: #051009; border: 1px solid var(--border-muted); border-radius: 10px; padding: 18px 20px; text-align: left; margin-bottom: 28px; }
-    .install-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-    .install-cmd { font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace; font-size: 13px; color: var(--accent); word-break: break-all; line-height: 1.6; }
-    .copy-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      margin-top: 12px; padding: 7px 14px; border-radius: 6px;
-      background: var(--accent-dim); border: 1px solid var(--border);
-      color: var(--muted); font-size: 12px; font-weight: 600;
-      cursor: pointer; transition: background .15s, color .15s;
+    .card h1 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+      margin-bottom: 12px;
     }
-    .copy-btn:hover { background: var(--border); color: var(--text); }
 
-    .steps { text-align: left; margin-bottom: 28px; }
-    .step { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--border-muted); font-size: 13.5px; color: var(--muted); line-height: 1.5; }
-    .step:last-child { border-bottom: none; }
-    .step-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-dim); border: 1px solid var(--border); color: var(--accent); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-    .step strong { color: var(--text); }
-    code { font-size: 12px; background: var(--accent-dim); padding: 1px 5px; border-radius: 4px; color: var(--accent); }
+    .card > p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
 
-    .divider { border: none; border-top: 1px solid var(--border-muted); margin: 32px 0; }
-    .footer-note { text-align: center; font-size: 12px; color: var(--muted); }
+    /* ── INSTALL SECTION ── */
+    .install-card {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      margin-bottom: 20px;
+    }
+
+    .install-card h2 {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .install-card > p {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .os-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+
+    .terminal {
+      background: #040e08;
+      border: 1px solid rgba(46,194,126,0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .t-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .t-dot.r { background: #ff5f56; }
+    .t-dot.y { background: #ffbd2e; }
+    .t-dot.g { background: #27c93f; }
+    .t-label { margin-left: auto; font-size: 11px; color: #1e3225; font-family: var(--font-mono); }
+
+    .terminal-body {
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .terminal-cmd {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent);
+      line-height: 1.5;
+      word-break: break-all;
+      flex: 1;
+    }
+
+    .copy-btn {
+      flex-shrink: 0;
+      background: var(--accent-dim);
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      color: var(--accent);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 5px 12px;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .copy-btn:hover { background: rgba(46,194,126,0.2); border-color: var(--border); }
+    .copy-btn.copied { color: var(--text); }
+
+    .install-note {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-top: -4px;
+      margin-bottom: 20px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border-muted);
+      margin: 24px 0;
+    }
+
+    /* ── COMMANDS LIST ── */
+    .commands-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .cmd-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--accent-dim);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+
+    .cmd-name {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 160px;
+    }
+
+    .cmd-desc {
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    /* ── DISCLAIMER + FOOTER ── */
+    .disclaimer {
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.55;
+      padding: 14px 18px;
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      background: rgba(13,51,32,0.3);
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
     .footer-note a { color: var(--accent); }
 
     @media (max-width: 480px) {
       .page { padding: 40px 16px 64px; }
-      .card { padding: 28px 20px; }
-      .install-cmd { font-size: 11.5px; }
+      .card, .install-card { padding: 28px 20px; }
+      .terminal-body { flex-direction: column; align-items: flex-start; }
+      .copy-btn { align-self: flex-end; }
+      .cmd-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .cmd-name { min-width: unset; }
     }
   </style>
+  <link rel="canonical" href="https://jdesigns.info/command-pack-thank-you"/>
+  <meta name="robots" content="noindex, nofollow"/>
 </head>
 <body>
   <div class="page">
 
     <div class="wordmark">✦ <span>JDesigns Strategist</span></div>
 
+    <!-- CONFIRMATION -->
     <div class="card">
-
       <div class="check-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="#2ec27e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
           <polyline points="20 6 9 17 4 12"/>
         </svg>
       </div>
+      <h1>Thank you for purchasing the Business Brain Command Pack.</h1>
+      <p>Your 6 commands are ready to install below. Run one command in your terminal and everything drops into place automatically — no zip file, no manual setup.</p>
+    </div>
 
-      <h1>You're in. Run this and your 6 commands install in 60 seconds.</h1>
-      <p>Open your terminal, navigate to your Business Brain folder, and run the command below. That's it — all 6 commands go straight into the right place.</p>
+    <!-- INSTALL -->
+    <div class="install-card">
+      <h2>Install Your Commands</h2>
+      <p>Open your terminal, navigate to your Business Brain folder, and run the install command for your operating system. All 6 commands will be installed automatically.</p>
 
-      <div class="install-block">
-        <div class="install-label">Run this in your terminal (inside your Business Brain folder)</div>
-        <div class="install-cmd" id="install-cmd">curl -fsSL https://raw.githubusercontent.com/jazzy15j/business-brain-command-pack/main/install.sh | bash</div>
-        <button class="copy-btn" onclick="copyCmd()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span id="copy-label">Copy command</span>
-        </button>
-      </div>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div><strong>Open your terminal</strong> — Terminal on Mac, Command Prompt or PowerShell on Windows.</div>
+      <div class="os-label">Mac / Linux</div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span>
+          <span class="t-label">Terminal</span>
         </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div><strong>Navigate to your Business Brain folder:</strong> <code>cd my-business-brain</code></div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div><strong>Paste and run the command above.</strong> It installs all 6 <code>.md</code> files into <code>.claude/commands/</code> automatically.</div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div><strong>Open Claude Code:</strong> <code>claude</code> — then type <code>/daily-priorities</code> to run your first command.</div>
+        <div class="terminal-body">
+          <span class="terminal-cmd" id="mac-cmd">curl -fsSL https://raw.githubusercontent.com/jazzy15j/business-brain-command-pack/main/install.sh | bash</span>
+          <button class="copy-btn" onclick="copyCmd('mac-cmd', this)">Copy</button>
         </div>
       </div>
+      <p class="install-note">Run this from inside your Business Brain folder — the one where your CLAUDE.md file lives.</p>
 
-      <div style="background:var(--accent-dim);border:1px solid var(--border-muted);border-radius:8px;padding:14px 16px;text-align:left;margin-bottom:28px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Your 6 commands</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.8;">
-          <code>/daily-priorities</code> — what to focus on today<br>
-          <code>/capture-message</code> — process any client or lead message<br>
-          <code>/client-update</code> — log what happened, get next step<br>
-          <code>/onboard-client</code> — kickoff message + intake checklist<br>
-          <code>/save-session</code> — wrap up and log the session<br>
-          <code>/route-offer</code> — figure out what to pitch and for how much
+      <div class="os-label">Windows (PowerShell)</div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span>
+          <span class="t-label">PowerShell</span>
+        </div>
+        <div class="terminal-body">
+          <span class="terminal-cmd" id="win-cmd">irm https://raw.githubusercontent.com/jazzy15j/business-brain-command-pack/main/install.ps1 | iex</span>
+          <button class="copy-btn" onclick="copyCmd('win-cmd', this)">Copy</button>
+        </div>
+      </div>
+      <p class="install-note">Open PowerShell, navigate to your Business Brain folder, then paste and run the command above.</p>
+
+      <hr class="divider" />
+
+      <div class="os-label" style="margin-bottom: 12px;">What Gets Installed</div>
+      <div class="commands-list">
+        <div class="cmd-row">
+          <span class="cmd-name">/daily-priorities</span>
+          <span class="cmd-desc">Run every morning — ranked action board for your day</span>
+        </div>
+        <div class="cmd-row">
+          <span class="cmd-name">/capture-message</span>
+          <span class="cmd-desc">Paste any message — get it classified and a draft reply</span>
+        </div>
+        <div class="cmd-row">
+          <span class="cmd-name">/client-update</span>
+          <span class="cmd-desc">Turn rough notes into a clean log and follow-up draft</span>
+        </div>
+        <div class="cmd-row">
+          <span class="cmd-name">/onboard-client</span>
+          <span class="cmd-desc">New client signed — folder, welcome doc, checklist in seconds</span>
+        </div>
+        <div class="cmd-row">
+          <span class="cmd-name">/save-session</span>
+          <span class="cmd-desc">End-of-day wrap-up — memory files updated for tomorrow</span>
+        </div>
+        <div class="cmd-row">
+          <span class="cmd-name">/route-offer</span>
+          <span class="cmd-desc">Paste a lead's message — get the right offer and pitch drafted</span>
         </div>
       </div>
 
       <hr class="divider" />
 
-      <p class="footer-note">
-        Haven't built your Business Brain yet? <a href="https://jdesigns.info/brain-guide.html">Start here first →</a><br><br>
-        Questions? <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener">Fiverr</a> or <a href="https://instagram.com/jdesigns.info" target="_blank" rel="noopener">@jdesigns.info</a>
-      </p>
-
+      <div style="font-size: 13px; color: var(--muted); line-height: 1.65;">
+        <strong style="color: var(--text);">First time?</strong> Open Claude Code in your Business Brain folder after installing:
+        <br><br>
+        <span style="font-family: var(--font-mono); font-size: 12.5px; color: var(--accent);">claude</span>
+        <br><br>
+        Then type any command to get started — no prompts to write, no setup. Claude already knows your business from your Brain files.
+      </div>
     </div>
+
+    <div class="disclaimer">
+      This is a self-install digital product. The command files work inside Claude Code, which is free from Anthropic. You need your Business Brain files (CLAUDE.md, my-business-brain.md, my-prompts.md) already set up for the commands to have context. All sales are final.
+    </div>
+
+    <div class="footer-note">
+      Questions? Reach out on <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener noreferrer">Fiverr</a> or through Instagram <a href="https://instagram.com/jdesigns.info" target="_blank" rel="noopener noreferrer">@jdesigns.info</a>.
+    </div>
+
   </div>
 
   <script>
-    function copyCmd() {
-      const cmd = document.getElementById('install-cmd').textContent;
-      navigator.clipboard.writeText(cmd).then(() => {
-        const label = document.getElementById('copy-label');
-        label.textContent = 'Copied!';
-        setTimeout(() => label.textContent = 'Copy command', 2000);
+    function copyCmd(id, btn) {
+      const text = document.getElementById(id).textContent.trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
       });
     }
   </script>
