@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Account Health Checker — Free — JDesigns Strategist LLC</title>
+<meta name="description" content="Answer one question and find out exactly what's wrong with your Facebook or Instagram business account — and the fastest way to fix it.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --font-serif: Georgia, 'Times New Roman', serif;
+    --green: #2ec27e;
+    --green-dim: rgba(46,194,126,.15);
+    --green-faint: rgba(46,194,126,.07);
+    --green-glow: #0d3320;
+    --bg: #07100a;
+    --card: #0d1a10;
+    --border: rgba(30,50,37,0.6);
+    --border-green: rgba(46,194,126,.2);
+    --text: #ffffff;
+    --muted: #8aab96;
+    --faint: #1e3225;
+    --amber: #e0a53d;
+    --amber-dim: rgba(224,165,61,.14);
+    --red: #e0563d;
+    --red-dim: rgba(224,86,61,.14);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px; line-height: 1.65;
+    overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: .5; transform: scale(.85); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    background: rgba(7,16,10,.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+  .nav-wordmark {
+    font-family: var(--font-serif);
+    font-size: .775rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+  }
+  .nav-wordmark .wm-star { color: var(--green); font-size: .9rem; }
+  .nav-tag { font-size: .78rem; color: var(--muted); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 5rem 1.5rem 4.5rem;
+    overflow: hidden;
+  }
+  .orb-1 {
+    position: absolute; top: -15%; left: 50%;
+    transform: translateX(-50%);
+    width: 950px; height: 600px;
+    background: radial-gradient(ellipse, rgba(46,194,126,.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    position: relative; z-index: 1;
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--green-faint); border: 1px solid var(--border-green);
+    border-radius: 100px; padding: .35rem 1.1rem;
+    font-size: .72rem; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--green); margin-bottom: 2rem;
+  }
+  .badge-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green); animation: pulse 2s ease infinite;
+  }
+  .hero h1 {
+    position: relative; z-index: 1;
+    font-size: clamp(2rem, 5.5vw, 3.4rem);
+    font-family: var(--font-serif);
+    font-weight: 400; line-height: 1.15;
+    letter-spacing: -.03em;
+    max-width: 720px; margin-bottom: 1.5rem;
+  }
+  .text-green { color: var(--green); }
+  .hero-sub {
+    position: relative; z-index: 1;
+    font-size: clamp(.97rem, 2vw, 1.1rem);
+    color: var(--muted); max-width: 540px;
+    line-height: 1.8; margin-bottom: 2.5rem;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-weight: 700; font-size: .95rem;
+    border-radius: 10px; text-decoration: none;
+    padding: .85rem 1.9rem; transition: all .2s;
+    letter-spacing: -.01em; cursor: pointer; border: none;
+  }
+  .btn-green { background: var(--green); color: #07100a; }
+  .btn-green:hover {
+    opacity: .9; transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(46,194,126,.3);
+  }
+  .btn-ghost {
+    background: transparent; color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { color: var(--text); border-color: rgba(46,194,126,.35); }
+
+  /* ── SECTIONS ── */
+  .section { max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem; }
+  .eyebrow {
+    font-size: .72rem; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--green);
+    margin-bottom: 1rem;
+  }
+  .section h2 {
+    font-family: var(--font-serif); font-weight: 400;
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    line-height: 1.2; letter-spacing: -.02em; margin-bottom: 1.75rem;
+  }
+
+  /* ── OPTIONS (Step 1) ── */
+  #quiz { display: none; }
+  .options { display: grid; grid-template-columns: 1fr; gap: .75rem; }
+  .option {
+    text-align: left; background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.1rem 1.3rem; cursor: pointer;
+    transition: border-color .2s, transform .15s; color: var(--text); font-size: .96rem;
+    font-family: inherit;
+  }
+  .option:hover { border-color: var(--border-green); transform: translateX(3px); }
+  .option strong { display: block; font-size: 1rem; margin-bottom: .2rem; }
+  .option span { color: var(--muted); font-size: .87rem; }
+
+  /* ── RESULT (Step 2) ── */
+  #result { display: none; }
+  .result-card {
+    background: var(--card); border: 1px solid var(--border-green); border-radius: 16px;
+    padding: 2rem;
+  }
+  .risk-badge {
+    display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .06em;
+    text-transform: uppercase; padding: .3rem .8rem; border-radius: 100px; margin-bottom: 1.2rem;
+  }
+  .risk-low { background: var(--green-dim); color: var(--green); }
+  .risk-medium { background: var(--amber-dim); color: var(--amber); }
+  .risk-high { background: var(--red-dim); color: var(--red); }
+  .result-headline {
+    font-family: var(--font-serif); font-weight: 400;
+    font-size: 1.5rem; line-height: 1.25; margin-bottom: 1.25rem;
+  }
+  .result-bullets { list-style: none; margin-bottom: 1.4rem; }
+  .result-bullets li {
+    position: relative; padding-left: 1.3rem; margin-bottom: .6rem; color: #d4e8db; font-size: .95rem;
+  }
+  .result-bullets li::before {
+    content: "•"; position: absolute; left: 0; color: var(--green); font-weight: 900;
+  }
+  .truth-box {
+    background: var(--green-faint); border: 1px solid var(--border-green); border-radius: 12px;
+    padding: 1.1rem 1.3rem; font-size: .92rem; color: var(--text); margin-bottom: 1.5rem;
+  }
+  .truth-box strong { color: var(--green); }
+  .price-line { margin-bottom: 1.3rem; font-size: .92rem; color: var(--muted); }
+  .price-line strong { color: var(--green); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 1.25rem; }
+  .reset-link {
+    display: inline-block; font-size: .85rem; color: var(--muted);
+    text-decoration: underline; cursor: pointer; background: none; border: none;
+    font-family: inherit;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    padding: 2.5rem 2rem;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+  .footer-brand { display: flex; align-items: center; gap: .6rem; margin-bottom: .3rem; }
+  .footer-name { font-weight: 700; font-size: .88rem; color: var(--text); }
+  .footer-tagline { font-size: .8rem; color: var(--muted); font-style: italic; margin-bottom: .45rem; }
+  .footer-copy { font-size: .75rem; color: var(--faint); }
+  .footer-disclaimer {
+    font-size: .78rem; color: var(--muted); max-width: 620px; line-height: 1.7;
+    padding: 0 2rem; margin-top: -1.5rem; margin-bottom: 1.5rem;
+  }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+  .footer-links a { font-size: .82rem; color: var(--muted); transition: color .15s; }
+  .footer-links a:hover { color: var(--green); }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    footer { flex-direction: column; align-items: flex-start; padding: 2rem 1.25rem; }
+    .footer-disclaimer { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://jdesigns.info/" class="nav-brand">
+    <div class="nav-wordmark"><span class="wm-star">✦</span> JDesigns Strategist</div>
+  </a>
+  <div class="nav-tag">Meta Account Health Checker</div>
+</nav>
+
+<header class="hero">
+  <div class="orb-1"></div>
+  <span class="hero-badge"><span class="badge-dot"></span> Free 60-Second Diagnosis</span>
+  <h1>What's actually wrong<br>with your <span class="text-green">Meta account?</span></h1>
+  <p class="hero-sub">Pick the symptom that matches what you're seeing. Get a real diagnosis, the risk level, and the fastest fix — no guessing, no generic Google answer.</p>
+  <button class="btn btn-green" onclick="startQuiz()">Start My Diagnosis →</button>
+</header>
+
+<section class="section" id="quiz">
+  <div class="eyebrow">Step 1 of 2</div>
+  <h2>What's going on?</h2>
+  <div class="options" id="options"></div>
+</section>
+
+<section class="section" id="result">
+  <div class="eyebrow">Your Diagnosis</div>
+  <div class="result-card" id="resultCard"></div>
+</section>
+
+<p class="footer-disclaimer">
+  This is guidance based on common Meta account patterns — not a guarantee. You (or Jasmine, once hired) take the action; Meta makes the final call on any account, restriction, or appeal decision. JDesigns does not contact Meta support on a client's behalf or promise account restoration.
+</p>
+
+<footer>
+  <div>
+    <div class="footer-brand">
+      <div class="nav-wordmark"><span class="wm-star">✦</span> JDesigns Strategist</div>
+    </div>
+    <div class="footer-name">JDesigns Strategist LLC</div>
+    <div class="footer-tagline">Simple Systems for Real Life &amp; Business</div>
+    <div class="footer-copy">Made by Jasmine &nbsp;·&nbsp; © 2026 JDesigns Strategist LLC</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://jdesigns.info/" target="_blank">jdesigns.info</a>
+    <a href="https://fiverr.com/jazz96designs" target="_blank">fiverr.com/jazz96designs</a>
+    <a href="meta-vault.html">Meta Business Fix-It Vault</a>
+  </div>
+</footer>
+
+<script>
+const categories = [
+  {
+    id: 1,
+    label: "Can't access my Page, Business Portfolio, ad account, or Instagram",
+    sub: "Locked out or stuck with viewer-only access",
+    headline: "You're locked out — this is one of the easiest ones to fix",
+    risk: "low", riskLabel: "Usually Low Risk",
+    bullets: [
+      "You can't log into your Page, Business Portfolio, or ad account",
+      "You have viewer access but can't make changes",
+      "You need to add someone (like Jasmine) as an admin and aren't sure how"
+    ],
+    truth: "<strong>The real truth:</strong> Most access issues come down to using the wrong method (like a personal friend request instead of the correct “assign assets” flow) or being logged into the wrong Facebook login. Fixable in one clean pass once someone identifies which login actually owns the asset.",
+    price: "Quick Fix — $195 (one issue) or Full Fix — $345 (multiple platforms)",
+    ctaText: "Message Me About This — Starting at $195",
+    ctaHref: "https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues"
+  },
+  {
+    id: 2,
+    label: "An old agency or freelancer owns my Page or Business Portfolio",
+    sub: "You can't claim full control because someone else's account is in the way",
+    headline: "Someone else controls your Page — here's the honest path forward",
+    risk: "high", riskLabel: "Medium–High Risk",
+    bullets: [
+      "You can't add full-control admins because an old agency's portfolio owns the asset",
+      "The agency is slow, gone, or unresponsive",
+      "You tried to claim it yourself and hit a wall"
+    ],
+    truth: "<strong>The real truth:</strong> No one — including Jasmine — can force a release. Only Meta or the agency can do that. What actually moves this is the right release request plus, if needed, a Meta escalation built the right way.",
+    price: "Expert Meta Repair — $595 minimum",
+    ctaText: "Get This Untangled — Expert Meta Repair, $595+",
+    ctaHref: "https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues"
+  },
+  {
+    id: 3,
+    label: "My ad account is disabled or restricted",
+    sub: "Appeal denied, or no clear reason shown",
+    headline: "Your ad account is down — here's what's realistic",
+    risk: "high", riskLabel: "High Risk",
+    bullets: [
+      "Ads Manager shows disabled or restricted",
+      "An appeal was submitted and denied",
+      "There's no “request review” button, or Account Quality looks clean but you're still blocked"
+    ],
+    truth: "<strong>The real truth:</strong> Nobody can guarantee Meta restores an account — anyone who promises that is lying to you. What helps: building the strongest possible case, and not creating a new account too soon (that usually gets disabled immediately too).",
+    price: "Expert Meta Repair — $595 minimum",
+    ctaText: "Build My Strongest Case — Expert Meta Repair, $595+",
+    ctaHref: "https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues"
+  },
+  {
+    id: 4,
+    label: "My account was hacked or has admins I don't recognize",
+    sub: "Unknown logins, unknown admins, or a Page being deleted",
+    headline: "This one's urgent — secure it before anything else",
+    risk: "high", riskLabel: "High Risk — Time-Sensitive",
+    bullets: [
+      "Login alerts from places you don't recognize",
+      "Admins on your Page or Business Portfolio that you didn't add",
+      "Ads running, or money spent, that isn't yours"
+    ],
+    truth: "<strong>The real truth:</strong> Secure your login today — password, two-factor authentication — before doing anything else. Every hour a hacked account sits open is an hour more damage can happen.",
+    price: "Expert Meta Repair — $595 minimum",
+    ctaText: "Get Emergency Help — Expert Meta Repair, $595+",
+    ctaHref: "https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues"
+  },
+  {
+    id: 5,
+    label: "Instagram won't connect to Facebook properly",
+    sub: "Wrong account linked, or it's just not showing up",
+    headline: "Your Instagram connection is broken — and it's blocking ads",
+    risk: "low", riskLabel: "Low–Medium Risk",
+    bullets: [
+      "Instagram doesn't show up in Business Suite or Business Manager",
+      "The wrong Instagram is linked to your Page or ad account",
+      "Accounts Center shows a tangle of the wrong accounts"
+    ],
+    truth: "<strong>The real truth:</strong> This won't get your account restricted, but it will block you from running ads until it's fixed. The exact steps vary a lot by account, so a generic tutorial usually doesn't cut it.",
+    price: "Quick Fix — $195 (isolated) or Full Fix — $345 (with other issues)",
+    ctaText: "Get It Connected — Starting at $195",
+    ctaHref: "https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues"
+  },
+  {
+    id: 6,
+    label: "My pixel isn't tracking, or events aren't firing",
+    sub: "Missing leads, missing purchases, or you're not sure it's set up right",
+    headline: "Your pixel is likely leaking data — and ad spend with it",
+    risk: "low", riskLabel: "Low–Medium Risk",
+    bullets: [
+      "Pixel isn't firing on your website",
+      "Lead or purchase events aren't showing in Events Manager",
+      "You want to confirm tracking works before spending more on ads"
+    ],
+    truth: "<strong>The real truth:</strong> Broken tracking won't get you restricted, but it will waste ad spend and cripple Meta's ability to optimize for you. Worth fixing before you scale spend, not after.",
+    price: "Quick Fix — $195 (one issue) or Full Fix — $345 (broader setup)",
+    ctaText: "Fix My Tracking — Starting at $195",
+    ctaHref: "https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues"
+  },
+  {
+    id: 7,
+    label: "Meta support isn't helping me",
+    sub: "Vague answers, no resolution, or you don't know what to say next",
+    headline: "Meta support is going in circles — here's a better approach",
+    risk: "high", riskLabel: "Medium–High Risk",
+    bullets: [
+      "Support gave a confusing or contradictory answer",
+      "No real resolution after multiple attempts",
+      "You don't know how to word the next message"
+    ],
+    truth: "<strong>The real truth:</strong> Meta support responds better to factual, specific, unemotional messages than to frustrated ones. There's no guarantee of a response, but the way it's written changes the odds significantly.",
+    price: "Expert Meta Repair — $595 minimum (escalation included)",
+    ctaText: "Get the Right Message Sent — $595+",
+    ctaHref: "https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues"
+  },
+  {
+    id: 8,
+    label: "My Business Portfolio is a mess — old agencies, duplicate accounts",
+    sub: "Nothing is mapped, secured, or cleaned up",
+    headline: "Your setup is messy — and that's how the next problem starts",
+    risk: "medium", riskLabel: "Medium Risk",
+    bullets: [
+      "Multiple Business Portfolios exist and you're not sure which is real",
+      "Old admins, agencies, or contractors still have access",
+      "Assets are connected to the wrong place, and 2FA may not even be on"
+    ],
+    truth: "<strong>The real truth:</strong> Messy Meta setups are the #1 reason restrictions happen out of nowhere. Getting it mapped and locked down now is cheaper than fixing a disabled account later.",
+    price: "Full Fix — $345 (straightforward cleanup) or Expert Meta Repair — $595 (if disputes/restrictions are involved)",
+    ctaText: "Clean This Up — Starting at $345",
+    ctaHref: "https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues"
+  },
+  {
+    id: 9,
+    label: "My ads might need a special category or disclaimer",
+    sub: "Political, social issue, housing, employment, or credit ads getting flagged",
+    headline: "Your ad topic may require special category setup",
+    risk: "medium", riskLabel: "Medium Risk",
+    bullets: [
+      "Running political, social issue, housing, employment, or credit ads",
+      "Getting flagged or disapproved without a clear reason",
+      "Not sure if you need ID verification or a disclaimer"
+    ],
+    truth: "<strong>The real truth:</strong> Skip this and your ads simply won't run. This is a classification and setup issue — for anything legal or regulatory, that's a conversation for your attorney, not your ads person.",
+    price: "Quick Fix — $195 (disclaimer/category only) or Full Fix — $345 (with broader setup)",
+    ctaText: "Get Compliant — Starting at $195",
+    ctaHref: "https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues"
+  },
+  {
+    id: 10,
+    label: "I'm just checking on an order I already placed",
+    sub: "Not a new issue — just want a status update",
+    headline: "You're not broken — you just need an update",
+    risk: "low", riskLabel: "Low Risk",
+    bullets: [
+      "You want to know what's done, what's left, or what's next",
+      "You're waiting on Meta, or waiting on Jasmine",
+      "Nothing new is wrong — this is a delivery question, not a repair question"
+    ],
+    truth: "<strong>The real truth:</strong> This isn't something a diagnostic tool can answer — it needs your actual order details. Message directly with your order number for a clear status update.",
+    price: null,
+    ctaText: "Message Me on Fiverr",
+    ctaHref: "https://www.fiverr.com/jazz96designs/fix-your-meta-business-facebook-page-and-ad-account-issues"
+  }
+];
+
+const optionsEl = document.getElementById('options');
+categories.forEach(cat => {
+  const btn = document.createElement('button');
+  btn.className = 'option';
+  btn.innerHTML = `<strong>${cat.label}</strong><span>${cat.sub}</span>`;
+  btn.onclick = () => showResult(cat.id);
+  optionsEl.appendChild(btn);
+});
+
+function startQuiz() {
+  document.getElementById('quiz').style.display = 'block';
+  document.getElementById('result').style.display = 'none';
+  document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+}
+
+function showResult(id) {
+  const cat = categories.find(c => c.id === id);
+  const riskClass = cat.risk === 'low' ? 'risk-low' : (cat.risk === 'medium' ? 'risk-medium' : 'risk-high');
+  const priceLine = cat.price
+    ? `<p class="price-line">Typical offer: <strong>${cat.price}</strong></p>`
+    : '';
+  document.getElementById('resultCard').innerHTML = `
+    <span class="risk-badge ${riskClass}">${cat.riskLabel}</span>
+    <div class="result-headline">${cat.headline}</div>
+    <ul class="result-bullets">${cat.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+    <div class="truth-box">${cat.truth}</div>
+    ${priceLine}
+    <div class="cta-row">
+      <a class="btn btn-green" href="${cat.ctaHref}" target="_blank" rel="noopener">${cat.ctaText}</a>
+    </div>
+    <button class="reset-link" onclick="startQuiz()">← Check a different issue</button>
+  `;
+  document.getElementById('quiz').style.display = 'none';
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
