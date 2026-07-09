@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>"The Pixel Is Installed" Doesn't Mean It's Tracking Anything. Here's the Test. | JDesigns Strategist</title>
+  <meta name="description" content="A developer adding the pixel code to your site and a pixel that actually reports usable data to Meta are two different things. Here's exactly how to tell which one you have."/>
+  <link rel="stylesheet" href="../assets/blog.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="wordmark">
+    <a href="/">✦ JDesigns Strategist</a>
+    <span>/</span>
+    <a href="/blog/">Blog</a>
+    <span>/ Pixel &amp; Tracking</span>
+  </div>
+
+  <div class="profile-header">
+    <img src="../assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
+    <div>
+      <div class="profile-name">Jasmine</div>
+      <div class="profile-handle">Meta Ads &amp; Strategy · JDesigns Strategist LLC</div>
+    </div>
+  </div>
+
+  <div class="article-meta">
+    <span class="meta-tag">Meta Ads</span>
+    <span class="meta-date">July 2026</span>
+  </div>
+
+  <h1>"The pixel is installed" doesn't mean it's tracking anything. Here's the test.</h1>
+
+  <p class="article-intro">"My developer already installed the pixel" is one of the most common sentences I hear before a campaign launch — and one of the least reliable. Not because anyone's lying. Because "installed" and "actually sending Meta usable data" are two different jobs, and most people who did the first one never checked for the second.</p>
+
+  <div class="article-body">
+
+    <h2>Two different jobs, one word</h2>
+
+    <p>"Installing the pixel" usually means someone pasted the base Meta Pixel snippet into the site's header code. That step alone does almost nothing for your ads. It can register a page view if it's placed correctly — that's it.</p>
+
+    <p>The part that actually makes a campaign work is <strong>custom events</strong>: the code that fires when someone adds to cart, starts checkout, submits a lead form, or completes a purchase. That's a separate, deliberate step. It has to be wired to the specific action on the specific page, tested, and confirmed. Skipping it is easy to do by accident — the base snippet "working" gives everyone false confidence that the job is done.</p>
+
+    <div class="callout-warning">
+      <strong>A recent example:</strong> a client's developer confirmed the pixel was installed, and the Meta side checked out — the pixel and dataset existed, access was granted, nothing looked broken. But testing in Events Manager showed zero events firing. Not a missing Purchase event. Nothing at all. No one had actually verified it past "the code is on the site somewhere."
+    </div>
+
+    <h2>The exact test — don't skip any step</h2>
+
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Install the Meta Pixel Helper Chrome extension</strong>
+          <p>Visit your site with it active. It should show a green checkmark and your pixel ID on every page. Gray or nothing means the base pixel itself isn't firing — stop here, that's the more serious problem.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Open Events Manager → your pixel → Test Events</strong>
+          <p>This is the real source of truth, not the Pixel Helper alone. Load your site with Test Events open. You should see PageView events land in real time. "No activity in the last 48 hours" means the base install has a problem, regardless of what anyone told you about it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Actually complete the action you'll be advertising for</strong>
+          <p>Add a product to cart. Submit the lead form. Go through a real (or test-mode) purchase. Watch Test Events for the matching custom event — AddToCart, Lead, Purchase, whichever applies. If PageView shows up but the actual conversion event never does, the base pixel is fine and the custom events are the gap.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Confirm it's the right event, not just an event</strong>
+          <p>Some site builders and plugins fire a generic event automatically but never map it to Purchase or Lead specifically. Check the event name in Test Events matches what your campaign will actually optimize toward — a "CustomEvent" that isn't named correctly won't help your ad set learn anything.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="decision-box">
+      <div class="decision-box-label">What your test result actually means</div>
+      <div class="decision-row">
+        <div class="decision-condition">Pixel Helper shows nothing at all</div>
+        <div class="decision-action stop">Base pixel isn't installed correctly — fix this before anything else</div>
+      </div>
+      <div class="decision-row">
+        <div class="decision-condition">PageView fires, nothing else does</div>
+        <div class="decision-action caution">Custom events were never built — this is the most common gap</div>
+      </div>
+      <div class="decision-row">
+        <div class="decision-condition">PageView fires, custom event fires but under the wrong name</div>
+        <div class="decision-action caution">Event exists but won't optimize correctly — needs to be renamed/remapped</div>
+      </div>
+      <div class="decision-row">
+        <div class="decision-condition">Correct custom event fires on the correct action</div>
+        <div class="decision-action">You're actually ready to launch a conversion campaign</div>
+      </div>
+    </div>
+
+    <h2>Why this is worth checking before you launch anything</h2>
+
+    <p>A campaign aimed at conversions — sales, leads, checkouts — needs conversion data to optimize against. No custom events means Meta's algorithm has nothing to learn from except "who visited the page," which isn't the audience you're trying to reach. You end up paying to show ads to a cold audience with zero feedback loop telling the system who actually buys.</p>
+
+    <p>This matters even more if you're running a funnel with stages — top of funnel for awareness, then retargeting, then a bottom-of-funnel sales push. Pushing straight to the bottom-of-funnel, sales-focused stage without working event data isn't a shortcut. It's spending the same budget you'd spend building an audience properly, except with nothing to show for it afterward.</p>
+
+    <div class="callout">
+      <strong>Before you launch:</strong> don't take "the pixel is installed" at face value from anyone — a developer, a plugin, a past agency. Run the four-step test yourself. It takes ten minutes and it's the only way to know for sure.
+    </div>
+
+  </div>
+
+  <div class="cta-block">
+    <h3>Not sure if your pixel is actually tracking anything useful?</h3>
+    <p>Meta Ads Strategy includes pixel and custom event verification as part of setup — confirming the events that matter actually fire, before your first dollar goes toward the campaign.</p>
+    <div class="cta-row">
+      <a href="https://www.fiverr.com/jazz96designs/create-facebook-and-instagram-ad" class="cta-btn" target="_blank" rel="noopener">Get Meta Ads Strategy →</a>
+      <a href="/blog/" class="cta-btn-outline">← More Posts</a>
+    </div>
+    <p class="disclaimer">Phase 1 Meta Ads Strategy starts at $395 on Fiverr.</p>
+  </div>
+
+  <div class="related-section">
+    <div class="related-label">Related Posts</div>
+    <div class="related-list">
+      <a href="/blog/meta-pixel-tracking-guide.html" class="related-card">
+        <span class="related-title">A broken pixel breaks your Meta algorithm. Verify before you spend.</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <a href="/blog/meta-ads-funnel-strategy.html" class="related-card">
+        <span class="related-title">You can't run conversion ads to cold traffic on Day 1</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 JDesigns Strategist LLC</span>
+    <a href="/blog/">← All Posts</a>
+  </footer>
+
+</div>
+</body>
+</html>
