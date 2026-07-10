@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>LinkedIn Graphics — JDesigns Strategist</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #111;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* ─── NAV BAR ─── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #0a0a0a;
+      border-bottom: 1px solid rgba(46,194,126,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 20px;
+      z-index: 100;
+    }
+    .nav-btn {
+      background: #1a1a1a;
+      border: 1px solid rgba(46,194,126,.2);
+      color: #8aab96;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .nav-btn:hover  { background: #2ec27e; color: #07100a; border-color: #2ec27e; }
+    .nav-btn.active { background: #2ec27e; color: #07100a; border-color: #2ec27e; }
+
+    /* ─── STAGE ─── */
+    .stage {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 90px 40px 40px;
+    }
+    .stage.active { display: flex; }
+
+    .label {
+      color: #8aab96;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .post-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ─── BASE FRAME ─── */
+    .frame {
+      width: 1080px;
+      height: 1080px;
+      background: #07100a;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* inner border on all frames */
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 36px;
+      border: 1px solid rgba(46,194,126,.2);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* ─── SHARED TOKENS ─── */
+    .green   { color: #2ec27e; }
+    .sage    { color: #c4dccb; }
+    .muted   { color: #8aab96; }
+    .surface { background: #0d1a10; }
+
+    /* ─── SHARED FOOTER ─── */
+    .foot {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: #0d1a10;
+      padding: 28px 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(46,194,126,.18);
+    }
+    .foot-left {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 28px;
+      color: #c4dccb;
+      line-height: 1.25;
+      max-width: 680px;
+    }
+    .foot-brand {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 22px;
+      color: #2ec27e;
+      white-space: nowrap;
+    }
+
+    /* ─── KICKER LABEL ─── */
+    .kicker {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #2ec27e;
+    }
+
+
+    /* ════════════════════════════════════════
+       POST 1 — AGENCY OWNS YOUR ACCOUNT
+       Split layout: what you think vs reality
+    ════════════════════════════════════════ */
+
+    #p1 { padding: 68px 70px 140px; gap: 0; }
+
+    #p1 .top {
+      margin-bottom: 52px;
+    }
+    #p1 h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      font-size: 52px;
+      line-height: 1.1;
+      color: #fff;
+      margin-top: 18px;
+      max-width: 860px;
+    }
+    #p1 h1 em {
+      color: #2ec27e;
+      font-style: italic;
+    }
+
+    #p1 .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      flex: 1;
+      border: 1px solid rgba(46,194,126,.22);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    #p1 .col {
+      padding: 40px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    #p1 .col-left  { background: #0d1a10; border-right: 1px solid rgba(46,194,126,.22); }
+    #p1 .col-right { background: #091410; }
+
+    #p1 .col-head {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    #p1 .col-head.think { color: #8aab96; }
+    #p1 .col-head.real  { color: #2ec27e; }
+
+    #p1 .col-main {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 34px;
+      line-height: 1.2;
+    }
+    #p1 .col-left  .col-main { color: #8aab96; font-style: italic; }
+    #p1 .col-right .col-main { color: #fff; font-weight: 700; }
+
+    #p1 .col-sub {
+      font-size: 26px;
+      line-height: 1.35;
+      margin-top: 6px;
+    }
+    #p1 .col-left  .col-sub { color: #4a6b52; }
+    #p1 .col-right .col-sub { color: #c4dccb; }
+
+    #p1 .verdict {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 27px;
+      font-style: italic;
+      color: #2ec27e;
+      margin-top: 10px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(46,194,126,.22);
+    }
+    #p1 .verdict.bad { color: #5a3a3a; }
+
+
+    /* ════════════════════════════════════════
+       POST 2 — APPEAL REJECTED IN 10 MINUTES
+       Vertical timeline
+    ════════════════════════════════════════ */
+
+    #p2 { padding: 68px 70px 140px; }
+
+    #p2 .top { margin-bottom: 60px; }
+    #p2 h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      font-size: 56px;
+      line-height: 1.08;
+      margin-top: 18px;
+    }
+    #p2 h1 em { color: #2ec27e; font-style: italic; }
+
+    #p2 .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+      position: relative;
+    }
+
+    /* vertical connecting line */
+    #p2 .timeline::before {
+      content: "";
+      position: absolute;
+      left: 36px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #2ec27e, rgba(46,194,126,.15));
+    }
+
+    #p2 .node {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(46,194,126,.12);
+      position: relative;
+    }
+    #p2 .node:last-child { border-bottom: none; }
+
+    #p2 .dot {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-weight: 800;
+      font-size: 22px;
+      position: relative;
+      z-index: 1;
+    }
+    #p2 .dot-start { background: #2ec27e; color: #07100a; }
+    #p2 .dot-bad   { background: #1a0a0a; border: 2px solid #8a3a3a; color: #c47c7c; font-size: 28px; }
+    #p2 .dot-fix   { background: #0d1a10; border: 2px solid #2ec27e; color: #2ec27e; font-size: 26px; }
+
+    #p2 .node-text { padding-top: 12px; }
+    #p2 .node-label {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    #p2 .node-label.start  { color: #8aab96; }
+    #p2 .node-label.bad    { color: #c47c7c; }
+    #p2 .node-label.fix    { color: #2ec27e; }
+
+    #p2 .node-main {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 38px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    #p2 .node:nth-child(1) .node-main { color: #c4dccb; }
+    #p2 .node:nth-child(2) .node-main { color: #fff; font-weight: 700; }
+    #p2 .node:nth-child(3) .node-main { color: #2ec27e; }
+
+    #p2 .node-sub {
+      font-size: 26px;
+      color: #8aab96;
+      font-style: italic;
+    }
+
+    #p2 .ten {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+    #p2 .ten span { font-size: 28px; color: #8aab96; font-family: inherit; }
+
+
+    /* ════════════════════════════════════════
+       POST 3 — FLAGGED, DIDN'T CHANGE ANYTHING
+       Secret checklist of behavioral triggers
+    ════════════════════════════════════════ */
+
+    #p3 { padding: 68px 70px 140px; }
+
+    #p3 .top { margin-bottom: 44px; }
+    #p3 h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      font-size: 54px;
+      line-height: 1.08;
+      margin-top: 18px;
+    }
+    #p3 h1 em { color: #2ec27e; font-style: italic; }
+
+    #p3 .section-label {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #8aab96;
+      margin-bottom: 26px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(46,194,126,.22);
+    }
+    #p3 .section-label span { color: #2ec27e; }
+
+    #p3 .trigger-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    #p3 .trigger {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding: 26px 30px;
+      border-bottom: 1px solid rgba(46,194,126,.1);
+    }
+    #p3 .trigger:last-child { border-bottom: none; }
+    #p3 .trigger:nth-child(odd)  { background: rgba(13,26,16,.6); }
+    #p3 .trigger:nth-child(even) { background: transparent; }
+
+    #p3 .tr-star {
+      font-size: 22px;
+      color: #2ec27e;
+      flex-shrink: 0;
+      width: 30px;
+      text-align: center;
+    }
+    #p3 .tr-name {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 33px;
+      color: #fff;
+      font-weight: 700;
+      min-width: 280px;
+    }
+    #p3 .tr-desc {
+      font-size: 24px;
+      color: #8aab96;
+      font-style: italic;
+      line-height: 1.25;
+    }
+
+
+    /* ════════════════════════════════════════
+       POST 4 — DOUBLING BUDGET GOT YOU FLAGGED
+       Before/after two-panel
+    ════════════════════════════════════════ */
+
+    #p4 { padding: 68px 70px 140px; }
+
+    #p4 .top { margin-bottom: 50px; }
+    #p4 h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      font-size: 54px;
+      line-height: 1.08;
+      margin-top: 18px;
+    }
+    #p4 h1 em { color: #2ec27e; font-style: italic; }
+
+    #p4 .panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      flex: 1;
+    }
+
+    #p4 .panel {
+      border-radius: 4px;
+      padding: 40px 42px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    #p4 .panel-left  { background: #0d1a10; border: 1px solid rgba(139,58,58,.4); }
+    #p4 .panel-right { background: #0a1a10; border: 1px solid rgba(46,194,126,.3); }
+
+    #p4 .panel-head {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(46,194,126,.15);
+    }
+    #p4 .panel-left  .panel-head { color: #c47c7c; }
+    #p4 .panel-right .panel-head { color: #2ec27e; }
+
+    #p4 .panel-amount {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    #p4 .panel-left  .panel-amount { color: #fff; }
+    #p4 .panel-right .panel-amount { color: #2ec27e; }
+
+    #p4 .panel-sub {
+      font-size: 26px;
+      line-height: 1.3;
+    }
+    #p4 .panel-left  .panel-sub { color: #8aab96; }
+    #p4 .panel-right .panel-sub { color: #c4dccb; }
+
+    #p4 .panel-verdict {
+      margin-top: auto;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 24px;
+      font-style: italic;
+      padding-top: 16px;
+      border-top: 1px solid rgba(46,194,126,.15);
+    }
+    #p4 .panel-left  .panel-verdict { color: #c47c7c; }
+    #p4 .panel-right .panel-verdict { color: #2ec27e; }
+
+
+    /* ════════════════════════════════════════
+       POST 5 — COLD TRAFFIC FUNNEL
+       Three-stage funnel rows
+    ════════════════════════════════════════ */
+
+    #p5 { padding: 68px 70px 140px; }
+
+    #p5 .top { margin-bottom: 44px; }
+    #p5 h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      font-size: 52px;
+      line-height: 1.08;
+      margin-top: 18px;
+    }
+    #p5 h1 em { color: #2ec27e; font-style: italic; }
+
+    #p5 .funnel {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(46,194,126,.2);
+      border-radius: 4px;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    #p5 .stage {
+      display: grid;
+      grid-template-columns: 160px 1fr auto;
+      align-items: center;
+      gap: 0;
+      padding: 0;
+      flex: 1;
+      border-bottom: 1px solid rgba(46,194,126,.15);
+      position: relative;
+    }
+    #p5 .stage:last-child { border-bottom: none; }
+
+    #p5 .stage-temp {
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      border-right: 1px solid rgba(46,194,126,.15);
+      height: 100%;
+      justify-content: center;
+    }
+    #p5 .stage-temp .temp-word {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    #p5 .stage-temp .temp-num {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 42px;
+      color: rgba(255,255,255,.12);
+      line-height: 1;
+    }
+
+    #p5 .stage-cold .temp-word  { color: #8aab96; }
+    #p5 .stage-warm .temp-word  { color: #c4dccb; }
+    #p5 .stage-hot  .temp-word  { color: #2ec27e; }
+
+    #p5 .stage-cold { background: #0d1a10; }
+    #p5 .stage-warm { background: #0a1710; }
+    #p5 .stage-hot  {
+      background: linear-gradient(90deg, #091410, #0c1f12);
+      border-left: 3px solid #2ec27e;
+    }
+
+    #p5 .stage-content {
+      padding: 30px 44px;
+    }
+    #p5 .stage-obj {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 38px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    #p5 .stage-hot .stage-obj { color: #2ec27e; }
+
+    #p5 .stage-desc {
+      font-size: 25px;
+      color: #8aab96;
+      font-style: italic;
+      line-height: 1.3;
+    }
+    #p5 .stage-hot .stage-desc { color: #c4dccb; }
+
+    #p5 .stage-badge {
+      margin-right: 44px;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    #p5 .stage-cold .stage-badge { background: #1e3225; color: #8aab96; }
+    #p5 .stage-warm .stage-badge { background: #1e3a28; color: #c4dccb; }
+    #p5 .stage-hot  .stage-badge { background: #2ec27e; color: #07100a; }
+
+    #p5 .wrong-label {
+      background: rgba(139,58,58,.15);
+      border: 1px solid rgba(139,58,58,.3);
+      border-radius: 3px;
+      padding: 18px 40px;
+      margin-top: 26px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 27px;
+      font-style: italic;
+      color: #c47c7c;
+      text-align: center;
+    }
+    #p5 .wrong-label strong { color: #fff; font-style: normal; }
+
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <button class="nav-btn active" onclick="show(1,this)">Post 1 — Agency</button>
+    <button class="nav-btn" onclick="show(2,this)">Post 2 — Appeal</button>
+    <button class="nav-btn" onclick="show(3,this)">Post 3 — Flagged</button>
+    <button class="nav-btn" onclick="show(4,this)">Post 4 — Budget</button>
+    <button class="nav-btn" onclick="show(5,this)">Post 5 — Funnel</button>
+  </nav>
+
+  <script>
+    function show(n, btn) {
+      document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('stage' + n).classList.add('active');
+      btn.classList.add('active');
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+
+  <div class="stage active" id="stage1">
+  <!-- ══════════════════════════════════════
+       POST 1 — AGENCY OWNS YOUR ACCOUNT
+  ══════════════════════════════════════ -->
+  <div class="post-wrap">
+    <div class="label">Post 1 of 5 — Agency Owns Your Meta Account — Screenshot this graphic</div>
+    <article class="frame" id="p1">
+
+      <div class="top">
+        <div class="kicker">✦ Meta Ownership</div>
+        <h1>If an agency set up your Meta account — <em>check who actually owns it.</em></h1>
+      </div>
+
+      <div class="split">
+        <div class="col col-left">
+          <div class="col-head think">What you think</div>
+          <div class="col-main">"My agency manages my Meta account for me."</div>
+          <div class="col-sub">You've been paying them for two years. Everything is set up. Ads are running.</div>
+          <div class="verdict bad">✓ Seems fine… until you part ways.</div>
+        </div>
+        <div class="col col-right">
+          <div class="col-head real">✦ What's actually true</div>
+          <div class="col-main">They built it inside their Business Portfolio. Not yours.</div>
+          <div class="col-sub">The ad account. The pixel. The audience data. The account history. All of it sits under their roof.</div>
+          <div class="verdict">When you leave — it stays with them.</div>
+        </div>
+      </div>
+
+      <div class="foot">
+        <div class="foot-left">Your Meta account is a business asset. You should own your assets.</div>
+        <div class="foot-brand">✦ JDesigns Strategist</div>
+      </div>
+
+    </article>
+  </div>
+
+
+  </div><!-- /stage1 -->
+
+  <div class="stage" id="stage2">
+  <!-- ══════════════════════════════════════
+       POST 2 — APPEAL REJECTED IN 10 MINUTES
+  ══════════════════════════════════════ -->
+  <div class="post-wrap">
+    <div class="label">Post 2 of 5 — Meta Appeal Rejected in 10 Minutes — Screenshot this graphic</div>
+    <article class="frame" id="p2">
+
+      <div class="top">
+        <div class="kicker">✦ Meta Appeals</div>
+        <h1>Your Meta appeal got rejected in 10 minutes. <em>That wasn't a human.</em></h1>
+      </div>
+
+      <div class="timeline">
+
+        <div class="node">
+          <div class="dot dot-start">1</div>
+          <div class="node-text">
+            <div class="node-label start">What happened</div>
+            <div class="node-main">Account restricted. Appeal submitted immediately.</div>
+            <div class="node-sub">They wanted it resolved fast. Submitted right away.</div>
+          </div>
+        </div>
+
+        <div class="node">
+          <div class="dot dot-bad">
+            <div>
+              <div class="ten">10<span>min</span></div>
+            </div>
+          </div>
+          <div class="node-text">
+            <div class="node-label bad">Auto-rejected</div>
+            <div class="node-main">Denied. No human ever saw it.</div>
+            <div class="node-sub">Fast submission = bot behavior flag = auto-deny. Timing is part of the appeal.</div>
+          </div>
+        </div>
+
+        <div class="node">
+          <div class="dot dot-fix">✦</div>
+          <div class="node-text">
+            <div class="node-label fix">What a strong appeal actually needs</div>
+            <div class="node-main">Wait 48–72 hrs. Build the case. Then submit.</div>
+            <div class="node-sub">Screenshots. Written context. Account history that backs your claim. One appeal is rarely enough.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="foot">
+        <div class="foot-left">Submitting fast doesn't mean submitting right.</div>
+        <div class="foot-brand">✦ JDesigns Strategist</div>
+      </div>
+
+    </article>
+  </div>
+
+
+  </div><!-- /stage2 -->
+
+  <div class="stage" id="stage3">
+  <!-- ══════════════════════════════════════
+       POST 3 — FLAGGED, DIDN'T CHANGE ANYTHING
+  ══════════════════════════════════════ -->
+  <div class="post-wrap">
+    <div class="label">Post 3 of 5 — Meta Flagged You, You Didn't Change Anything — Screenshot this graphic</div>
+    <article class="frame" id="p3">
+
+      <div class="top">
+        <div class="kicker">✦ Meta Restrictions</div>
+        <h1>Meta flagged your account. <em>You didn't change your ads.</em></h1>
+      </div>
+
+      <div class="section-label">What Meta was <span>actually</span> watching — not your content</div>
+
+      <div class="trigger-list">
+
+        <div class="trigger">
+          <div class="tr-star">✦</div>
+          <div class="tr-name">Budget spike</div>
+          <div class="tr-desc">Sudden jump in spend after low activity looks like a compromised account</div>
+        </div>
+
+        <div class="trigger">
+          <div class="tr-star">✦</div>
+          <div class="tr-name">Login pattern</div>
+          <div class="tr-desc">Multiple people, different locations, same ad account in a short window</div>
+        </div>
+
+        <div class="trigger">
+          <div class="tr-star">✦</div>
+          <div class="tr-name">Account age vs. spend</div>
+          <div class="tr-desc">New account trying to spend $1,000/day before trust is established</div>
+        </div>
+
+        <div class="trigger">
+          <div class="tr-star">✦</div>
+          <div class="tr-name">Rapid campaign creation</div>
+          <div class="tr-desc">Many campaigns launched quickly with varied creative and targeting</div>
+        </div>
+
+        <div class="trigger">
+          <div class="tr-star">✦</div>
+          <div class="tr-name">Payment method changes</div>
+          <div class="tr-desc">Switching billing sources frequently, especially near a large spend</div>
+        </div>
+
+      </div>
+
+      <div class="foot">
+        <div class="foot-left">Meta is pattern-detecting. Not policy-reading.</div>
+        <div class="foot-brand">✦ JDesigns Strategist</div>
+      </div>
+
+    </article>
+  </div>
+
+
+  </div><!-- /stage3 -->
+
+  <div class="stage" id="stage4">
+  <!-- ══════════════════════════════════════
+       POST 4 — DOUBLING BUDGET GOT YOU FLAGGED
+  ══════════════════════════════════════ -->
+  <div class="post-wrap">
+    <div class="label">Post 4 of 5 — Doubling Your Budget Got You Flagged — Screenshot this graphic</div>
+    <article class="frame" id="p4">
+
+      <div class="top">
+        <div class="kicker">✦ Meta Ads Scaling</div>
+        <h1>Your ads were finally working. <em>So you doubled the budget.</em></h1>
+      </div>
+
+      <div class="panels">
+
+        <div class="panel panel-left">
+          <div class="panel-head">🚩 What happened</div>
+          <div class="panel-amount">$50 → $100</div>
+          <div class="panel-sub">Overnight. Same week results started coming in.</div>
+          <div class="panel-sub" style="margin-top: 8px; color: #c47c7c;">Account flagged 2 days later.</div>
+          <div class="panel-sub" style="margin-top: 8px;">Meta's fraud system saw an anomaly. It didn't know you were excited. It responded to the pattern.</div>
+          <div class="panel-verdict">Spend spike = threat signal.</div>
+        </div>
+
+        <div class="panel panel-right">
+          <div class="panel-head">✦ The rule</div>
+          <div class="panel-amount">20–30%</div>
+          <div class="panel-sub">Maximum budget increase per 7-day window.</div>
+          <div class="panel-sub" style="margin-top: 8px;">Let the learning phase stabilize. Scale the budget — not the number of campaigns running.</div>
+          <div class="panel-sub" style="margin-top: 8px;">$50/day → $500/day is a jump you have to earn incrementally.</div>
+          <div class="panel-verdict">Patience after good results = protected momentum.</div>
+        </div>
+
+      </div>
+
+      <div class="foot">
+        <div class="foot-left">The fastest way to lose momentum is to get restricted the week things start working.</div>
+        <div class="foot-brand">✦ JDesigns Strategist</div>
+      </div>
+
+    </article>
+  </div>
+
+
+  </div><!-- /stage4 -->
+
+  <div class="stage" id="stage5">
+  <!-- ══════════════════════════════════════
+       POST 5 — COLD TRAFFIC FUNNEL
+  ══════════════════════════════════════ -->
+  <div class="post-wrap">
+    <div class="label">Post 5 of 5 — You Can't Run Conversion Ads to Cold Traffic — Screenshot this graphic</div>
+    <article class="frame" id="p5">
+
+      <div class="top">
+        <div class="kicker">✦ Meta Ads Strategy</div>
+        <h1>Running purchase ads to cold traffic <em>is skipping two steps.</em></h1>
+      </div>
+
+      <div class="funnel">
+
+        <div class="stage stage-cold">
+          <div class="stage-temp">
+            <div class="temp-word">Cold</div>
+            <div class="temp-num">01</div>
+          </div>
+          <div class="stage-content">
+            <div class="stage-obj">Awareness &amp; Reach</div>
+            <div class="stage-desc">They don't know you exist. The goal is recognition — not conversion. You are a stranger to them.</div>
+          </div>
+          <div class="stage-badge">01</div>
+        </div>
+
+        <div class="stage stage-warm">
+          <div class="stage-temp">
+            <div class="temp-word">Warm</div>
+            <div class="temp-num">02</div>
+          </div>
+          <div class="stage-content">
+            <div class="stage-obj">Traffic &amp; Leads</div>
+            <div class="stage-desc">They've seen you before. Watched a video. Visited your site. Now build intent and collect leads.</div>
+          </div>
+          <div class="stage-badge">02</div>
+        </div>
+
+        <div class="stage stage-hot">
+          <div class="stage-temp">
+            <div class="temp-word">Hot</div>
+            <div class="temp-num">03</div>
+          </div>
+          <div class="stage-content">
+            <div class="stage-obj">Conversion</div>
+            <div class="stage-desc">Added to cart. High intent. Multiple touchpoints. <strong style="color:#fff;">Now</strong> you run the purchase ad.</div>
+          </div>
+          <div class="stage-badge">✦</div>
+        </div>
+
+      </div>
+
+      <div class="wrong-label">
+        Most people skip to Step 3 on Day 1. <strong>The creative isn't the problem — the funnel stage is.</strong>
+      </div>
+
+      <div class="foot">
+        <div class="foot-left">The campaign objective isn't the guess. The audience stage is the answer.</div>
+        <div class="foot-brand">✦ JDesigns Strategist</div>
+      </div>
+
+    </article>
+  </div>
+
+
+  </div><!-- /stage5 -->
+
+</body>
+</html>

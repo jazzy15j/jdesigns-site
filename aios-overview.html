@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JDesigns AIOS — The Big Picture</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f11; color: #f0f0f0; padding: 20px; font-size: 13px; }
+
+  h1 { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #f0f0f0; }
+  .subtitle { font-size: 12px; color: #888; margin-bottom: 20px; }
+
+  .tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+  .tab { padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 500; border: 1px solid transparent; background: #1a1a1e; color: #888; transition: all 0.15s; }
+  .tab.active { background: #6c63ff; color: #fff; border-color: #6c63ff; }
+  .tab:hover:not(.active) { background: #222228; color: #f0f0f0; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .card { background: #1a1a1e; border-radius: 10px; padding: 14px; border: 1px solid #2a2a30; }
+  .card-accent { border-left: 3px solid; }
+  .card h3 { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .card p { font-size: 11px; color: #888; line-height: 1.5; }
+  .card ul { list-style: none; margin-top: 6px; }
+  .card ul li { font-size: 11px; color: #888; padding: 2px 0; }
+  .card ul li::before { content: "→ "; color: #6c63ff; }
+
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; margin: 2px; }
+  .pill-purple { background: rgba(108,99,255,0.15); color: #a89eff; }
+  .pill-green { background: rgba(52,211,153,0.15); color: #34d399; }
+  .pill-blue { background: rgba(59,130,246,0.15); color: #60a5fa; }
+  .pill-orange { background: rgba(251,146,60,0.15); color: #fb923c; }
+  .pill-pink { background: rgba(236,72,153,0.15); color: #f472b6; }
+  .pill-yellow { background: rgba(250,204,21,0.15); color: #facc15; }
+
+  .flow-node { background: #1a1a1e; border: 1px solid #2a2a30; border-radius: 8px; padding: 10px 14px; flex: 1; }
+  .flow-node.highlight { border-color: #6c63ff; background: rgba(108,99,255,0.08); }
+  .flow-down { text-align: center; color: #444; font-size: 18px; padding: 4px 0; }
+
+  .section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #888; margin-bottom: 8px; margin-top: 16px; }
+
+  .conn-grid { display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0; align-items: center; margin-bottom: 10px; }
+  .conn-from, .conn-to { background: #1a1a1e; border-radius: 8px; padding: 8px 12px; font-size: 11px; }
+  .conn-arrow { text-align: center; color: #6c63ff; font-size: 16px; }
+
+  .stat-row { display: flex; gap: 12px; margin-bottom: 16px; }
+  .stat { flex: 1; background: #1a1a1e; border-radius: 10px; padding: 14px; text-align: center; border: 1px solid #2a2a30; }
+  .stat-num { font-size: 26px; font-weight: 700; color: #6c63ff; }
+  .stat-label { font-size: 10px; color: #888; margin-top: 2px; }
+
+  .term-box { background: rgba(108,99,255,0.08); border: 1px solid rgba(108,99,255,0.3); border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+  .term-box h3 { color: #a89eff; font-size: 14px; margin-bottom: 6px; }
+  .term-box p { font-size: 12px; line-height: 1.6; color: #ccc; }
+
+  .sell-card { background: #1a1a1e; border-radius: 10px; padding: 16px; border: 1px solid #2a2a30; margin-bottom: 12px; }
+  .sell-card h3 { font-size: 13px; font-weight: 600; margin-bottom: 4px; color: #f0f0f0; }
+  .sell-card .price { font-size: 18px; font-weight: 700; color: #34d399; margin-bottom: 8px; }
+  .sell-card p { font-size: 11px; color: #888; line-height: 1.5; }
+  .sell-card .audience { font-size: 10px; color: #fb923c; margin-top: 6px; font-weight: 600; }
+
+  @media (max-width: 600px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .stat-row { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🗺️ JDesigns AIOS — The Big Picture</h1>
+<p class="subtitle">Everything built, how it connects, and how to sell it</p>
+
+<div class="tabs">
+  <div class="tab active" onclick="show('overview', this)">Overview</div>
+  <div class="tab" onclick="show('system', this)">The System</div>
+  <div class="tab" onclick="show('flow', this)">How It Flows</div>
+  <div class="tab" onclick="show('website', this)">Website + Content</div>
+  <div class="tab" onclick="show('connections', this)">What Feeds What</div>
+  <div class="tab" onclick="show('terms', this)">The Term for It</div>
+  <div class="tab" onclick="show('sellable', this)">Sell It to Others</div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="section active" id="overview">
+  <div class="stat-row">
+    <div class="stat"><div class="stat-num">35+</div><div class="stat-label">Slash Commands</div></div>
+    <div class="stat"><div class="stat-num">14</div><div class="stat-label">Files per Client</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Delivery SOPs</div></div>
+    <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Blog Posts</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Live Products</div></div>
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">Memory Files</div></div>
+  </div>
+
+  <div class="section-label">The 7 Layers of What You've Built</div>
+  <div class="grid grid-2">
+    <div class="card card-accent" style="border-color:#6c63ff">
+      <h3>🧠 Business Brain</h3>
+      <p>Identity, pricing, rules, Fiverr architecture, tool stack — locked in files AI reads before every answer.</p>
+      <ul><li>identity.md — voice, positioning, ideal client</li><li>services-and-pricing.md — every price, both contexts</li><li>business-rules.md — non-negotiables</li><li>fiverr-gig-architecture.md — package tiers</li></ul>
+    </div>
+    <div class="card card-accent" style="border-color:#34d399">
+      <h3>⚙️ Agent Operating System</h3>
+      <p>Workflow engine — 35+ slash commands that handle every business task, from lead intake to offboarding.</p>
+      <ul><li>Skills / commands for every situation</li><li>Delivery SOPs per service type</li><li>Templates, language rules, upsell paths</li><li>Trackers: revenue, leads, reviews</li></ul>
+    </div>
+    <div class="card card-accent" style="border-color:#60a5fa">
+      <h3>👥 Client File System</h3>
+      <p>Local CRM — one folder per client, 14 structured files each. Active, leads, and archived tiers.</p>
+      <ul><li>8 active clients</li><li>25 leads in pipeline</li><li>Archived history for repeat clients</li><li>Standardized template for every intake</li></ul>
+    </div>
+    <div class="card card-accent" style="border-color:#fb923c">
+      <h3>💾 Session Memory</h3>
+      <p>9 persistent memory files that give Claude full context every session — without re-explaining anything.</p>
+      <ul><li>recent-memory.md — rolling 48hr context</li><li>client-status.md — every active status</li><li>decisions.md — no re-litigating</li><li>research-inbox.md — validated intel</li></ul>
+    </div>
+    <div class="card card-accent" style="border-color:#f472b6">
+      <h3>🌐 Live Website</h3>
+      <p>JDesigns.info — full static site on Netlify with sales pages, blog, knowledge hub, and product delivery.</p>
+      <ul><li>index + work-with-me + vault page</li><li>20+ SEO blog posts, all AI-written</li><li>Knowledge hub — interactive resource center</li><li>Meta checklist, command pack pages</li></ul>
+    </div>
+    <div class="card card-accent" style="border-color:#facc15">
+      <h3>📦 Product Suite</h3>
+      <p>4 live products + pipeline of 5 more — all self-serve, no Jasmine time required after publish.</p>
+      <ul><li>Meta Fix-It Checklist (free)</li><li>Meta Business Fix-It Vault ($97)</li><li>Business Brain Command Pack (free)</li><li>Build Your Business Brain ($95)</li></ul>
+    </div>
+    <div class="card card-accent" style="border-color:#a89eff">
+      <h3>🔬 Research Engine</h3>
+      <p>Automated research workflow that scouts Meta/Instagram trends, validates them, and routes insights to content.</p>
+      <ul><li>/research-scout — finds intel</li><li>/research-synthesis — patterns it</li><li>/promote-research — routes to content</li><li>Feeds blog posts + product ideas</li></ul>
+    </div>
+    <div class="card card-accent" style="border-color:#f43f5e">
+      <h3>🎓 Education System</h3>
+      <p>The productized version of expertise — workshops, tutorials, asset ladder, and roadmap for scaling.</p>
+      <ul><li>Build Your Business Brain workshop</li><li>Business Brain Command Pack</li><li>Asset ladder + roadmap files</li><li>Meta Setup Presentation (in progress)</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- THE SYSTEM -->
+<div class="section" id="system">
+  <div class="section-label">Business Brain — Source of Truth</div>
+  <div class="grid grid-3">
+    <div class="card"><h3>identity.md</h3><p>Brand voice, mission, ideal client, positioning. Every piece of content starts here.</p></div>
+    <div class="card"><h3>services-and-pricing.md</h3><p>Full menu: Fiverr context ($250/$450/$750) vs direct ($395/$895). Claude checks before every quote.</p></div>
+    <div class="card"><h3>business-rules.md</h3><p>Non-negotiables: no sending without approval, no Meta promises, no scope creep.</p></div>
+    <div class="card"><h3>fiverr-gig-architecture.md</h3><p>All gig tiers, package contents, positioning — routing and onboarding reads this automatically.</p></div>
+    <div class="card"><h3>content-strategy.md</h3><p>What to post, topics, CTAs, what to avoid. Every social content draft checks here first.</p></div>
+    <div class="card"><h3>important-links.md</h3><p>Fiverr order links, business links, key URLs — used when referencing your platforms.</p></div>
+  </div>
+
+  <div class="section-label">Agent OS — Commands by Category</div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Daily Workflow</h3>
+      <div class="pill pill-purple">/daily-command-center</div>
+      <div class="pill pill-purple">/100k-revenue-manager</div>
+      <div class="pill pill-purple">/capture-update</div>
+      <div class="pill pill-purple">/consolidate-memory</div>
+      <p style="margin-top:8px">Morning board, money dashboard, catch-all intake, memory sync.</p>
+    </div>
+    <div class="card">
+      <h3>Lead + Client Intake</h3>
+      <div class="pill pill-blue">/revenue-routing</div>
+      <div class="pill pill-blue">/meta-lead-diagnosis</div>
+      <div class="pill pill-blue">/client-intake-digest</div>
+      <div class="pill pill-blue">/onboard-client</div>
+      <p style="margin-top:8px">Classify the lead → match the offer → digest intake → create client folder.</p>
+    </div>
+    <div class="card">
+      <h3>Delivery Engine</h3>
+      <div class="pill pill-green">/one-shot-deliverable</div>
+      <div class="pill pill-green">/deliver-meta-ads</div>
+      <div class="pill pill-green">/deliver-content-package</div>
+      <div class="pill pill-green">/deliver-social-strategy</div>
+      <div class="pill pill-green">/deliver-meta-fix</div>
+      <div class="pill pill-green">/delivery-message</div>
+      <p style="margin-top:8px">Full deliverable in one pass. SOPs auto-load per service type.</p>
+    </div>
+    <div class="card">
+      <h3>Client Lifecycle Close</h3>
+      <div class="pill pill-orange">/approval-ready-check</div>
+      <div class="pill pill-orange">/upsell-path</div>
+      <div class="pill pill-orange">/offboard-client</div>
+      <div class="pill pill-orange">/meta-support-case</div>
+      <p style="margin-top:8px">Validate draft → pitch upsell → close clean → manage Meta issues.</p>
+    </div>
+    <div class="card">
+      <h3>Research + Content</h3>
+      <div class="pill pill-pink">/research-scout</div>
+      <div class="pill pill-pink">/research-synthesis</div>
+      <div class="pill pill-pink">/promote-research</div>
+      <div class="pill pill-pink">/jdesigns-reels</div>
+      <div class="pill pill-pink">/jdesigns-research</div>
+      <p style="margin-top:8px">Scout trends → synthesize patterns → route to content or product ideas.</p>
+    </div>
+    <div class="card">
+      <h3>Ad Creative Tools</h3>
+      <div class="pill pill-yellow">/build-ad-mocks</div>
+      <div class="pill pill-yellow">/resize-ad-mocks</div>
+      <div class="pill pill-yellow">/export-ad-creatives</div>
+      <div class="pill pill-yellow">/build-delivery-page</div>
+      <p style="margin-top:8px">Generate, resize, and export ad mockups. Build HTML delivery pages for clients.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Delivery SOPs — Auto-Loaded per Order Type</div>
+  <div class="grid grid-3">
+    <div class="card"><h3>meta-ads-strategy-setup-sop.md</h3><p>Phase 1 Meta Ads — TOF strategy, campaign build, targeting doc, ad copy.</p></div>
+    <div class="card"><h3>meta-business-fix-sop.md</h3><p>Fix-It Vault / Access Review / Ecosystem Review — restriction, hack, failed appeal.</p></div>
+    <div class="card"><h3>organic-social-strategy-sop.md</h3><p>Organic social — content pillars, posting cadence, platform strategy.</p></div>
+    <div class="card"><h3>content-creation-sop.md</h3><p>Starter/Growth/Advanced content packages — captions + hashtags + visuals.</p></div>
+    <div class="card"><h3>meta-ads-audit-sop.md</h3><p>Ad account audit — performance review, diagnosis, optimization recommendations.</p></div>
+    <div class="card"><h3>digital-marketing-starter-package-sop.md</h3><p>Starter package — social + ads strategy bundled.</p></div>
+  </div>
+</div>
+
+<!-- HOW IT FLOWS -->
+<div class="section" id="flow">
+  <div class="section-label">The Full Client Journey — Start to Archive</div>
+
+  <div style="display:flex; gap:12px; margin-bottom:16px;">
+    <div style="flex:1">
+      <div class="flow-node highlight" style="margin-bottom:6px">
+        <strong>1. Lead Arrives</strong><br>
+        <span style="font-size:11px;color:#888">Fiverr message / DM / referral / website → paste into /capture-update</span>
+      </div>
+      <div class="flow-down">↓</div>
+      <div class="flow-node" style="margin-bottom:6px">
+        <strong>2. Pre-Screen + Classify</strong><br>
+        <span style="font-size:11px;color:#888">5-flag auto pre-screen: budget, timeline, Meta readiness, scope clarity, red flags → PASS or DISQUALIFY</span>
+      </div>
+      <div class="flow-down">↓</div>
+      <div class="flow-node" style="margin-bottom:6px">
+        <strong>3. Revenue Route</strong><br>
+        <span style="font-size:11px;color:#888">/revenue-routing matches lead to correct offer + price (Fiverr vs direct context)</span>
+      </div>
+      <div class="flow-down">↓</div>
+      <div class="flow-node" style="margin-bottom:6px">
+        <strong>4. Onboard</strong><br>
+        <span style="font-size:11px;color:#888">/onboard-client creates the full 14-file folder in JDesigns-Clients/active/</span>
+      </div>
+    </div>
+    <div style="flex:1">
+      <div class="flow-node" style="margin-bottom:6px">
+        <strong>5. Deliver</strong><br>
+        <span style="font-size:11px;color:#888">Correct SOP auto-selected by order type → /one-shot-deliverable builds full output</span>
+      </div>
+      <div class="flow-down">↓</div>
+      <div class="flow-node" style="margin-bottom:6px">
+        <strong>6. Approval Check</strong><br>
+        <span style="font-size:11px;color:#888">/approval-ready-check validates draft → Jasmine reviews → sends</span>
+      </div>
+      <div class="flow-down">↓</div>
+      <div class="flow-node" style="margin-bottom:6px">
+        <strong>7. Upsell</strong><br>
+        <span style="font-size:11px;color:#888">/upsell-path checks for next offer opportunity → pitch or no pitch</span>
+      </div>
+      <div class="flow-down">↓</div>
+      <div class="flow-node highlight" style="margin-bottom:6px">
+        <strong>8. Offboard + Archive</strong><br>
+        <span style="font-size:11px;color:#888">/offboard-client closes clean, sets re-engagement date, moves folder to archived/</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">The Research Loop — How Content Gets Made</div>
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+    <div class="flow-node highlight" style="flex:1; min-width:120px"><strong>/research-scout</strong><br><span style="font-size:10px;color:#888">Finds Meta/IG trends + FAQs</span></div>
+    <div style="color:#6c63ff; font-size:20px">→</div>
+    <div class="flow-node" style="flex:1; min-width:120px"><strong>/research-synthesis</strong><br><span style="font-size:10px;color:#888">Patterns across scouts</span></div>
+    <div style="color:#6c63ff; font-size:20px">→</div>
+    <div class="flow-node" style="flex:1; min-width:120px"><strong>research-inbox.md</strong><br><span style="font-size:10px;color:#888">Validated findings staging</span></div>
+    <div style="color:#6c63ff; font-size:20px">→</div>
+    <div class="flow-node" style="flex:1; min-width:120px"><strong>/promote-research</strong><br><span style="font-size:10px;color:#888">Routes to blog / content / product ideas</span></div>
+    <div style="color:#6c63ff; font-size:20px">→</div>
+    <div class="flow-node highlight" style="flex:1; min-width:120px"><strong>Blog + Content + Products</strong><br><span style="font-size:10px;color:#888">SEO posts + social + product pipeline</span></div>
+  </div>
+
+  <div class="section-label">Memory Loop — How Context Persists</div>
+  <div class="grid grid-3" style="margin-top:0">
+    <div class="card"><h3>During Session</h3><p>Claude reads recent-memory.md + client-status.md + working-with-jasmine.md before every answer.</p></div>
+    <div class="card"><h3>Session End</h3><p>/consolidate-memory updates all memory files with what changed: new clients, status changes, decisions made.</p></div>
+    <div class="card"><h3>Next Session</h3><p>Claude starts with full context already loaded. Jasmine never re-explains anything that's been consolidated.</p></div>
+  </div>
+</div>
+
+<!-- WEBSITE + CONTENT -->
+<div class="section" id="website">
+  <div class="section-label">JDesigns.info — What's Live on Netlify</div>
+  <div class="grid grid-3">
+    <div class="card"><h3>index.html</h3><span class="pill pill-green">Live</span><p>Main homepage — positioning, services, CTA to work with Jasmine or buy a product.</p></div>
+    <div class="card"><h3>work-with-me.html</h3><span class="pill pill-green">Live</span><p>Services + pricing page — links to Fiverr gigs and direct inquiry.</p></div>
+    <div class="card"><h3>knowledge-hub.html</h3><span class="pill pill-green">Live</span><p>Interactive resource center — all blog posts organized by topic with click navigation.</p></div>
+    <div class="card"><h3>meta-vault.html</h3><span class="pill pill-green">Live</span><p>Fix-It Vault sales page → routes to Gumroad $97 purchase.</p></div>
+    <div class="card"><h3>meta-checklist.html</h3><span class="pill pill-green">Live</span><p>Free Meta checklist page — lead gen freebie delivery.</p></div>
+    <div class="card"><h3>command-pack.html</h3><span class="pill pill-green">Live</span><p>Business Brain Command Pack — free gateway product to $95 workshop.</p></div>
+    <div class="card"><h3>brain-guide.html</h3><span class="pill pill-green">Live</span><p>Build Your Business Brain — $95 workshop landing + delivery page.</p></div>
+    <div class="card"><h3>blog/index.html</h3><span class="pill pill-green">Live</span><p>Blog index — 20+ posts all written with AI, SEO-targeted for Meta/IG keywords.</p></div>
+    <div class="card"><h3>help/</h3><span class="pill pill-blue">Directory</span><p>Help center pages — routes common questions to the right product or resource.</p></div>
+  </div>
+
+  <div class="section-label">Blog Posts — 20+ Published Articles</div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Meta Ads Content</h3>
+      <ul>
+        <li>how-to-appeal-meta-ad-account-restriction</li>
+        <li>meta-ads-budget-scaling-safely</li>
+        <li>meta-ads-funnel-strategy</li>
+        <li>meta-ad-creative-strategy</li>
+        <li>advantage-plus-campaigns-2026</li>
+        <li>meta-pixel-tracking-guide</li>
+        <li>meta-behavioral-restriction-triggers</li>
+        <li>meta-business-portfolio-setup-guide</li>
+        <li>meta-business-verification-required-2026</li>
+        <li>meta-verified-tiers-small-business</li>
+        <li>meta-ai-disclosure-rules-2026</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Instagram + Social Content</h3>
+      <ul>
+        <li>instagram-algorithm-2026-shares-first</li>
+        <li>instagram-carousel-strategy-2026</li>
+        <li>how-to-use-instagram-trial-reels</li>
+        <li>instagram-wont-connect-meta-business-suite-fix</li>
+        <li>content-pillars-for-small-business</li>
+        <li>canva-ai-2-whats-new-2026</li>
+        <li>canva-grow-vs-meta-ads-strategist</li>
+        <li>does-your-agency-own-your-meta-account</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">How Questions Become Digital Products</div>
+  <div style="background:rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.25); border-radius:10px; padding:14px;">
+    <p style="font-size:12px; line-height:1.7; color:#ccc">
+      When a client or lead asks a Meta question that doesn't match an existing product → it gets logged in <strong>memory/product-ideas.md</strong>.
+      When the same question appears 3+ times → it becomes a freebie, a blog post, or a paid guide.
+      The research scout actively looks for what people are already asking about on forums, Facebook groups, and support threads — those findings feed research-inbox.md → /promote-research routes them to blog ideas or product pipeline.
+      This is how your 20+ blog posts got written and how the Vault + Command Pack got built.
+    </p>
+  </div>
+</div>
+
+<!-- CONNECTIONS -->
+<div class="section" id="connections">
+  <div class="section-label">What Feeds What — The Feedback Loops</div>
+
+  <div class="conn-grid">
+    <div class="conn-from"><strong>Client questions + lead messages</strong><br><span style="font-size:10px;color:#888">captured by /capture-update</span></div>
+    <div class="conn-arrow">→</div>
+    <div class="conn-to"><strong>product-ideas.md</strong><br><span style="font-size:10px;color:#888">logged when no product exists</span></div>
+  </div>
+  <div class="conn-grid">
+    <div class="conn-from"><strong>product-ideas.md + research-inbox.md</strong><br><span style="font-size:10px;color:#888">recurring questions + validated trends</span></div>
+    <div class="conn-arrow">→</div>
+    <div class="conn-to"><strong>Blog posts + Freebies + Paid products</strong><br><span style="font-size:10px;color:#888">content pipeline + Vault + guides</span></div>
+  </div>
+  <div class="conn-grid">
+    <div class="conn-from"><strong>/research-scout summaries</strong><br><span style="font-size:10px;color:#888">3 dated files in research-summaries/</span></div>
+    <div class="conn-arrow">→</div>
+    <div class="conn-to"><strong>research-context.md</strong><br><span style="font-size:10px;color:#888">established intel — scout skips what's known</span></div>
+  </div>
+  <div class="conn-grid">
+    <div class="conn-from"><strong>Completed client deliverables</strong><br><span style="font-size:10px;color:#888">ad strategies, content plans, audits</span></div>
+    <div class="conn-arrow">→</div>
+    <div class="conn-to"><strong>review-feedback-loop.md</strong><br><span style="font-size:10px;color:#888">reviews, lessons, service improvement</span></div>
+  </div>
+  <div class="conn-grid">
+    <div class="conn-from"><strong>review-feedback-loop.md + testimonials.md</strong><br><span style="font-size:10px;color:#888">real outcomes + 5-star reviews</span></div>
+    <div class="conn-arrow">→</div>
+    <div class="conn-to"><strong>Website copy + Fiverr gig updates</strong><br><span style="font-size:10px;color:#888">/update-fiverr-gigs uses real proof</span></div>
+  </div>
+  <div class="conn-grid">
+    <div class="conn-from"><strong>Revenue tracker + lead pipeline</strong><br><span style="font-size:10px;color:#888">revenue-tracker.md + lead-to-offer-tracker.md</span></div>
+    <div class="conn-arrow">→</div>
+    <div class="conn-to"><strong>/100k-revenue-manager</strong><br><span style="font-size:10px;color:#888">daily money dashboard + gap math</span></div>
+  </div>
+  <div class="conn-grid">
+    <div class="conn-from"><strong>Archived client folders</strong><br><span style="font-size:10px;color:#888">full history on every past client</span></div>
+    <div class="conn-arrow">→</div>
+    <div class="conn-to"><strong>Repeat client detection</strong><br><span style="font-size:10px;color:#888">/capture-update checks archived before new folder</span></div>
+  </div>
+  <div class="conn-grid">
+    <div class="conn-from"><strong>pattern-confidence.md</strong><br><span style="font-size:10px;color:#888">tracks which research patterns are proven</span></div>
+    <div class="conn-arrow">→</div>
+    <div class="conn-to"><strong>/research-scout confidence scoring</strong><br><span style="font-size:10px;color:#888">higher confidence = faster promotion to content</span></div>
+  </div>
+
+  <div class="section-label">The File System IS the CRM</div>
+  <div class="card" style="background:rgba(52,211,153,0.06); border-color:rgba(52,211,153,0.3)">
+    <h3 style="color:#34d399">14-File Client Folder = Full CRM Record</h3>
+    <div class="grid grid-3" style="margin-top:10px">
+      <div><div class="pill pill-green">00-client-summary.md</div><div class="pill pill-green">package-and-scope.md</div><div class="pill pill-green">onboarding.md</div><div class="pill pill-green">messages.md</div><div class="pill pill-green">next-actions.md</div></div>
+      <div><div class="pill pill-blue">access-and-assets.md</div><div class="pill pill-blue">business-and-brand.md</div><div class="pill pill-blue">voice-tone.md</div><div class="pill pill-blue">ad-strategy.md</div><div class="pill pill-blue">issue-diagnosis.md</div></div>
+      <div><div class="pill pill-orange">analytics-reports.md</div><div class="pill pill-orange">meta-support-case.md</div><div class="pill pill-orange">content-history.md</div><div class="pill pill-orange">outcome-review-log.md</div></div>
+    </div>
+    <p style="margin-top:10px">Active / Leads / Archived tiers. Claude reads this instead of asking Jasmine. No Notion, no Airtable, no Lovable needed.</p>
+  </div>
+</div>
+
+<!-- THE TERM FOR IT -->
+<div class="section" id="terms">
+  <div class="term-box">
+    <h3>The Technical Term: "File-Based AI Operating System" or "Local AIOS"</h3>
+    <p>You've built a <strong>file-system-native AI operating system</strong>. Instead of a SaaS CRM or database, your business logic lives in structured Markdown files that any AI — Claude Code, Codex, OpenCode, Cursor — can read and act on. The AI reads the files as its memory and context. The files ARE the system.</p>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="term-box" style="border-color:rgba(52,211,153,0.3)">
+      <h3 style="color:#34d399">Why This Works Everywhere</h3>
+      <p>Markdown files are plain text. Claude Code reads them. Codex reads them. OpenCode reads them. GitHub Copilot reads them. Any AI coding agent reads them. You're not locked into one tool — your system is <strong>AI-agnostic by default</strong>. Switch the model, keep the brain.</p>
+    </div>
+    <div class="term-box" style="border-color:rgba(251,146,60,0.3)">
+      <h3 style="color:#fb923c">Why It Replaces a CRM</h3>
+      <p>A CRM stores records in a database — you query it, it shows you data. Your file system stores records in folders — the AI reads them and acts on them. <strong>The difference:</strong> your AI doesn't just look up the client. It understands the full context, drafts the reply, selects the SOP, and flags the next action — all from the files.</p>
+    </div>
+    <div class="term-box" style="border-color:rgba(108,99,255,0.3)">
+      <h3 style="color:#a89eff">Industry Terms for What You've Built</h3>
+      <p><strong>Agent OS</strong> — an operating system for AI agents with instructions, memory, and tools.<br><br><strong>RAG-lite system</strong> — retrieval-augmented generation using local files instead of a vector database.<br><br><strong>CLAUDE.md-driven context</strong> — the protocol for giving an AI persistent business context across sessions.<br><br><strong>Local-first AI stack</strong> — all data stays on your machine, AI reads it, no SaaS required.</p>
+    </div>
+    <div class="term-box" style="border-color:rgba(244,63,94,0.3)">
+      <h3 style="color:#f43f5e">What This Means for Selling It</h3>
+      <p>You don't sell "a Notion template" or "a CRM setup." You sell a <strong>Local AI Operating System</strong> — a complete business-in-a-folder that any AI can run. The buyer gets the folder structure, the CLAUDE.md, the slash commands, the SOPs, and the memory files. They fill in their brain files, and their AI becomes their business assistant.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SELL IT TO OTHERS -->
+<div class="section" id="sellable">
+  <div class="section-label">What You Can Package and Sell</div>
+
+  <div class="sell-card">
+    <h3>🧠 The Business Brain Starter Kit</h3>
+    <div class="price">$95 — already live as "Build Your Business Brain"</div>
+    <p>The brain files only: identity.md, services.md, business-rules.md, language-rules.md + setup guide + Claude Code orientation + prompt library. The buyer fills in their business info, gets a working AI assistant that knows their business.</p>
+    <div class="audience">→ Freelancers, consultants, solopreneurs who want AI but don't know how to set it up</div>
+  </div>
+
+  <div class="sell-card">
+    <h3>⚙️ The Full AIOS Template Pack</h3>
+    <div class="price">$195–$295 (next product)</div>
+    <p>The complete folder system: Brain files + Agent OS with 15 core commands + 3-tier client folder template + memory files + CLAUDE.md. Buyer drops in their business info, has a functioning AI operating system in under 2 hours. This is the upgrade from the Business Brain.</p>
+    <div class="audience">→ Service providers with more than 3 active clients who need structure</div>
+  </div>
+
+  <div class="sell-card">
+    <h3>🏗️ The AIOS Build-Out (Done With You)</h3>
+    <div class="price">$595–$895 (coming soon)</div>
+    <p>Jasmine builds a custom AIOS for another service business. Their brain files, their commands, their SOPs, their client template, deployed and working. A 1:1 offer using your exact method — billed as "AI Business Setup." This is the consulting version of what Claude built for you.</p>
+    <div class="audience">→ Agency owners, coaches, consultants who want this done for them</div>
+  </div>
+
+  <div class="sell-card">
+    <h3>📚 The AIOS Course / Workshop (future)</h3>
+    <div class="price">$297–$495 (productization roadmap)</div>
+    <p>Step-by-step video course teaching how to build a file-based AI OS from scratch. Module 1: Brain files. Module 2: Commands. Module 3: Client folders. Module 4: Memory. Module 5: Research loop. Module 6: Products from client questions.</p>
+    <div class="audience">→ Anyone building a service business who wants AI to run it</div>
+  </div>
+
+  <div class="section-label">The Core Sales Pitch</div>
+  <div class="term-box">
+    <h3>What You Say When You Sell This</h3>
+    <p style="line-height:1.8">
+      "I run my entire consulting business out of a folder on my laptop. No CRM. No project management tool. No Notion. No Lovable. Just structured files that my AI reads — and acts on.<br><br>
+      When a lead messages me, I paste it in and get a pre-screen, a price match, and a draft reply in 30 seconds. When I deliver a client project, I paste their intake answers and get a full strategy doc + ad copy + delivery message in one pass. When I want to know where I stand on revenue, I run one command and get a money dashboard with math.<br><br>
+      Every client has 14 files that replace a CRM. My AI reads them instead of asking me. My research engine turns what people are already asking into blog posts and products automatically.<br><br>
+      I built this in Claude Code. It works the same in Codex. In OpenCode. In Cursor. Because it's just files.<br><br>
+      <strong>I can show you how to build one for your business. Or I can build it for you.</strong>"
+    </p>
+  </div>
+</div>
+
+<script>
+function show(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+
+</body>
+</html>
