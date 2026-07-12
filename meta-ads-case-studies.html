@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta Ads Case Studies — Real Campaign Results | JDesigns Strategist</title>
+  <meta name="description" content="Real Meta Ads campaign results from JDesigns Strategist — cost per click, cost per lead, reach, and ad recall numbers from actual client campaigns."/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       rgba(30,50,37,0.7);
+      --border-green: rgba(46,194,126,.22);
+      --green:        #2ec27e;
+      --green-dim:    rgba(46,194,126,.08);
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --radius:       14px;
+      --font-serif:   Georgia, 'Times New Roman', serif;
+      --font-sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,16,10,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-link {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 5px 11px;
+      border-radius: 999px;
+      transition: color .15s, background .15s;
+      white-space: nowrap;
+    }
+    .nav-link:hover { color: var(--text); background: var(--surface); }
+    .nav-link.active { color: var(--green); }
+    .nav-cta {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #07100a;
+      background: var(--green);
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: opacity .15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    .page { max-width: 760px; margin: 0 auto; padding: 60px 24px 88px; }
+
+    .profile-header { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
+    .profile-avatar { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; border: 2px solid var(--green); flex-shrink: 0; }
+    .profile-name { font-size: 15px; font-weight: 700; line-height: 1.2; }
+    .profile-handle { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+    .hero { margin-bottom: 40px; }
+    .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; }
+    .hero h1 { font-family: var(--font-serif); font-size: clamp(1.65rem, 5vw, 2.15rem); font-weight: 400; line-height: 1.25; color: var(--text); margin-bottom: 16px; }
+    .hero-sub { font-size: 15px; color: var(--sage); line-height: 1.7; margin-bottom: 26px; max-width: 600px; }
+    .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .btn-primary, .btn-secondary {
+      display: inline-flex; align-items: center; gap: 7px; padding: 11px 22px; border-radius: 999px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.03em;
+      transition: opacity .15s, transform .12s, border-color .15s, color .15s, background .15s;
+    }
+    .btn-primary { background: var(--green); color: #07100a; }
+    .btn-primary:hover, .btn-secondary:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-secondary { background: transparent; border: 1px solid var(--border-green); color: var(--muted); }
+    .btn-secondary:hover { border-color: var(--green); color: var(--text); background: var(--green-dim); }
+
+    .section-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); margin: 44px 0 18px; padding-left: 2px; }
+    .section-label:first-of-type { margin-top: 0; }
+
+    /* Case study card */
+    .case-study {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 26px;
+      margin-bottom: 22px;
+    }
+    .cs-tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .cs-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--green); border: 1px solid var(--border-green); padding: 3px 10px; border-radius: 999px;
+    }
+    .cs-tag.muted { color: var(--muted); border-color: var(--border); }
+    .case-study h2 { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 400; color: var(--text); line-height: 1.3; margin-bottom: 4px; }
+    .cs-client { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+    .cs-client strong { color: var(--sage); }
+    .case-study h3 { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin: 18px 0 8px; }
+    .case-study p { font-size: 14px; color: var(--sage); line-height: 1.65; margin-bottom: 4px; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 16px 0 6px; }
+    .stat-tile { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+    .stat-value { font-family: var(--font-serif); font-size: 1.4rem; color: var(--green); line-height: 1.15; }
+    .stat-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .stat-label { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 6px; }
+
+    .cs-takeaway {
+      background: var(--green-dim);
+      border: 1px solid var(--border-green);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-top: 18px;
+      font-size: 13.5px;
+      color: var(--sage);
+      line-height: 1.6;
+    }
+    .cs-takeaway strong { color: var(--text); }
+
+    .mini-table { width: 100%; border-collapse: collapse; margin: 14px 0 4px; font-size: 12.5px; }
+    .mini-table th, .mini-table td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border); color: var(--sage); }
+    .mini-table th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+    .mini-table tr:last-child td { border-bottom: none; font-weight: 700; color: var(--text); }
+
+    .cs-cta { margin-top: 18px; }
+    .cs-cta a { font-size: 12.5px; font-weight: 700; color: var(--green); }
+    .cs-cta a:hover { color: var(--text); }
+
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin: 40px 0;
+    }
+    .callout h3 { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400; color: var(--text); margin-bottom: 10px; }
+    .callout p { font-size: 13.5px; color: var(--sage); line-height: 1.65; margin-bottom: 10px; }
+    .callout p:last-child { margin-bottom: 0; }
+    .callout a { color: var(--green); font-weight: 700; }
+    .callout a:hover { color: var(--text); }
+
+    .note-block {
+      background: rgba(46,194,126,.06);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      margin: 44px 0;
+    }
+    .note-block h3 { font-size: 12px; color: var(--green); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+    .note-block p { font-size: 13px; color: var(--sage); line-height: 1.65; margin-bottom: 10px; }
+    .note-block p:last-child { margin-bottom: 0; }
+
+    .help-block {
+      background: var(--surface);
+      border: 1px solid var(--border-green);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      margin: 44px 0;
+    }
+    .help-block h2 { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; margin-bottom: 8px; }
+    .help-block p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; max-width: 460px; margin-left: auto; margin-right: auto; }
+
+    .footer { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .footer-left, .footer-link { font-size: 12px; color: var(--muted); }
+    .footer-links { display: flex; gap: 16px; }
+    .footer-link:hover { color: var(--green); }
+
+    @media (max-width: 580px) {
+      .nav-link { display: none; }
+    }
+    @media (max-width: 420px) {
+      .page { padding: 40px 16px 64px; }
+      .hero h1 { font-size: 1.5rem; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .case-study { padding: 20px 18px; }
+      .footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">✦ JDesigns Strategist</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Resources</a>
+        <a href="meta-ads-case-studies.html" class="nav-link active">Meta Ads Results</a>
+        <a href="pinterest-case-studies.html" class="nav-link">Pinterest Results</a>
+        <a href="work-with-me.html" class="nav-link">Work With Me</a>
+        <a href="https://www.fiverr.com/jazz96designs/create-facebook-and-instagram-ad" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="profile-header">
+      <img src="assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
+      <div>
+        <div class="profile-name">Jasmine</div>
+        <div class="profile-handle">Meta Ads Strategist · JDesigns Strategist LLC</div>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-eyebrow">Real Campaign Results</div>
+      <h1>Real Meta Ads campaigns. Real numbers.</h1>
+      <p class="hero-sub">Every result on this page came from an actual client's Ads Manager — no mockups, no projections. Local service businesses, ecommerce, health services, and family platforms, across booking, traffic, awareness, and lead-generation objectives.</p>
+      <div class="hero-ctas">
+        <a href="https://www.fiverr.com/jazz96designs/create-facebook-and-instagram-ad" class="btn-primary" target="_blank" rel="noopener">View my Meta Ads gig →</a>
+        <a href="#studies" class="btn-secondary">See the results</a>
+      </div>
+    </section>
+
+    <div class="section-label" id="studies">Case Study 01</div>
+    <div class="case-study">
+      <div class="cs-tag-row">
+        <span class="cs-tag">Meta Ads</span>
+        <span class="cs-tag muted">Beauty Salon &amp; Lash Studio</span>
+        <span class="cs-tag muted">30 Days</span>
+      </div>
+      <h2>Meta Ads Booking Campaign</h2>
+      <div class="cs-client"><strong>More Than Lash</strong> — Las Vegas Beauty Studio · Facebook, Instagram · Booking via Vagaro</div>
+
+      <h3>Goal</h3>
+      <p>Drive qualified traffic and bookings for lash services through targeted Meta Ads campaigns.</p>
+
+      <h3>What I Did</h3>
+      <p>Built the full Meta ads strategy, developed booking-focused campaign architecture, guided creative direction, and planned promotional campaigns including UV lash technology services.</p>
+
+      <div class="stat-grid">
+        <div class="stat-tile"><div class="stat-value">737</div><div class="stat-label">Landing Page Views</div></div>
+        <div class="stat-tile"><div class="stat-value">$0.19</div><div class="stat-label">Cost / Landing Page View</div></div>
+        <div class="stat-tile"><div class="stat-value">18,189</div><div class="stat-label">Impressions</div></div>
+        <div class="stat-tile"><div class="stat-value">11,647</div><div class="stat-label">Reach</div></div>
+      </div>
+
+      <div class="cs-takeaway"><strong>Takeaway:</strong> Efficient traffic generation for a local beauty business using booking-focused Meta campaigns — a sub-$0.20 cost per landing page view in a competitive local market.</div>
+    </div>
+
+    <div class="section-label">Case Study 02</div>
+    <div class="case-study">
+      <div class="cs-tag-row">
+        <span class="cs-tag">Meta Ads</span>
+        <span class="cs-tag muted">Education &amp; Career Development</span>
+        <span class="cs-tag muted">Campaign Launch Phase</span>
+      </div>
+      <h2>Meta Ads Strategy &amp; Traffic Campaign</h2>
+      <div class="cs-client"><strong>DRIVE – Ignite Your Career</strong> · Facebook, Instagram, LinkedIn</div>
+
+      <h3>Goal</h3>
+      <p>Build awareness, drive traffic, and support program growth for early-career professionals and Gen Z audiences.</p>
+
+      <h3>What I Did</h3>
+      <p>Developed full Meta ads strategy including audience targeting, funnel structure, messaging direction, and performance reporting. Also supported LinkedIn authority-building strategy.</p>
+
+      <div class="stat-grid">
+        <div class="stat-tile"><div class="stat-value">1,946</div><div class="stat-label">Clicks</div></div>
+        <div class="stat-tile"><div class="stat-value">$0.12</div><div class="stat-label">Cost Per Click</div></div>
+        <div class="stat-tile"><div class="stat-value">3,714</div><div class="stat-label">Landing Page Views</div></div>
+        <div class="stat-tile"><div class="stat-value">7.41%</div><div class="stat-label">CTR <span class="stat-sub">(1-2% avg)</span></div></div>
+      </div>
+
+      <div class="cs-takeaway"><strong>Takeaway:</strong> Strong low-cost traffic and messaging resonance for a professional education offer — a $0.12 CPC and 7.41% CTR demonstrate precise audience targeting and compelling creative strategy.</div>
+    </div>
+
+    <div class="section-label">Case Study 03</div>
+    <div class="case-study">
+      <div class="cs-tag-row">
+        <span class="cs-tag">Meta Ads</span>
+        <span class="cs-tag muted">Skincare &amp; Ecommerce</span>
+        <span class="cs-tag muted">Awareness Phase</span>
+      </div>
+      <h2>Meta Ads Brand Awareness Campaign</h2>
+      <div class="cs-client"><strong>Ecenci Skincare</strong> · Facebook, Instagram</div>
+
+      <h3>Goal</h3>
+      <p>Build brand awareness and support ecommerce growth through structured Meta Ads campaigns.</p>
+
+      <h3>What I Did</h3>
+      <p>Built and managed awareness-focused Meta campaigns with product-based creative direction and structured campaign testing to maximize brand lift and ad recall efficiency.</p>
+
+      <div class="stat-grid">
+        <div class="stat-tile"><div class="stat-value">5,730</div><div class="stat-label">Ad Recall Lifts</div></div>
+        <div class="stat-tile"><div class="stat-value">$0.04</div><div class="stat-label">Cost / Recall Lift</div></div>
+        <div class="stat-tile"><div class="stat-value">104,486</div><div class="stat-label">Impressions</div></div>
+        <div class="stat-tile"><div class="stat-value">62,272</div><div class="stat-label">Reach</div></div>
+      </div>
+
+      <div class="cs-takeaway"><strong>Takeaway:</strong> Strong awareness efficiency and brand lift performance — 5,730 ad recall lifts at just $0.04 each across 100k+ impressions for a skincare ecommerce brand.</div>
+    </div>
+
+    <div class="section-label">Case Study 04</div>
+    <div class="case-study">
+      <div class="cs-tag-row">
+        <span class="cs-tag">Meta Ads</span>
+        <span class="cs-tag muted">Health Insurance / Expat Services</span>
+        <span class="cs-tag muted">First Week Results</span>
+      </div>
+      <h2>TOF Awareness Campaign — 4-Market Launch</h2>
+      <div class="cs-client"><strong>Expat Healthcare 360</strong> — Malaysia-based, serving expats, digital nomads &amp; international retirees · Facebook, Instagram</div>
+
+      <h3>Goal</h3>
+      <p>Replace a prior contractor's underperforming setup (wrong objective, wrong geo-targeting, mostly bot leads) with a properly structured top-of-funnel awareness campaign across four market groups.</p>
+
+      <h3>What I Did</h3>
+      <p>Rebuilt the campaign from scratch with corrected geo-targeting across 10 countries in 4 ad-set groups, TOF Awareness objective per standard funnel sequencing, and new creative direction.</p>
+
+      <table class="mini-table">
+        <tr><th>Market</th><th>Reach</th><th>Impressions</th><th>Cost / 1,000 Reach</th></tr>
+        <tr><td>Malaysia</td><td>209,108</td><td>254,122</td><td>$0.36</td></tr>
+        <tr><td>Thailand, Philippines</td><td>196,626</td><td>236,201</td><td>$0.37</td></tr>
+        <tr><td>France, Germany, Portugal, Italy, Turkey</td><td>125,334</td><td>144,067</td><td>$0.35</td></tr>
+        <tr><td>Hong Kong, UAE</td><td>154,387</td><td>180,990</td><td>$0.36</td></tr>
+        <tr><td>Combined (first 6 days)</td><td>685,455</td><td>815,380</td><td>~$0.36</td></tr>
+      </table>
+
+      <div class="cs-takeaway"><strong>Takeaway:</strong> 685k+ reach and 815k+ impressions in the campaign's first 6 days, for under $250 spent — roughly $0.36 per 1,000 people reached across four geo-targeted markets simultaneously.</div>
+    </div>
+
+    <div class="section-label">Case Study 05</div>
+    <div class="case-study">
+      <div class="cs-tag-row">
+        <span class="cs-tag">Meta Ads</span>
+        <span class="cs-tag muted">Family &amp; Childcare Services</span>
+        <span class="cs-tag muted">Full Funnel</span>
+      </div>
+      <h2>TOF Traffic → BOF Lead Conversion</h2>
+      <div class="cs-client"><strong>Village Acres</strong> — Palm Beach County, FL · Facebook, Instagram</div>
+
+      <h3>Goal</h3>
+      <p>Connect families with trusted local caregivers ("Villagers") — starting with low-cost top-of-funnel traffic, then converting that audience into real inquiries.</p>
+
+      <h3>What I Did</h3>
+      <p>Built a two-stage campaign: a top-of-funnel traffic campaign to build the audience, followed by a bottom-funnel conversion campaign targeting engaged viewers.</p>
+
+      <table class="mini-table">
+        <tr><th>Stage</th><th>Result</th><th>Cost / Result</th></tr>
+        <tr><td>TOF — Landing Page Views</td><td>421</td><td>$0.38</td></tr>
+        <tr><td>BOF — Real Lead Conversions</td><td>161</td><td>$1.90</td></tr>
+      </table>
+
+      <div class="cs-takeaway"><strong>Takeaway:</strong> Cheap top-of-funnel traffic ($0.38/landing page view) fed a bottom-funnel campaign that converted 161 real leads at just $1.90 each — the full funnel working as designed, from awareness to an actual result.</div>
+    </div>
+
+    <div class="section-label">Case Study 06</div>
+    <div class="case-study">
+      <div class="cs-tag-row">
+        <span class="cs-tag">Meta Ads</span>
+        <span class="cs-tag muted">Ecommerce · UK</span>
+        <span class="cs-tag muted">Near-Purchase Funnel</span>
+      </div>
+      <h2>Checkout-Initiation Campaign</h2>
+      <div class="cs-client"><strong>Lily Travers</strong> · Facebook, Instagram · UK market</div>
+
+      <h3>Goal</h3>
+      <p>Drive website purchases for a UK-based ecommerce brand through broad targeting optimized for checkout initiation.</p>
+
+      <h3>What I Did</h3>
+      <p>Built and managed a conversion-optimized campaign targeting UK shoppers, tracking checkout initiation as the primary bottom-funnel signal.</p>
+
+      <div class="stat-grid">
+        <div class="stat-tile"><div class="stat-value">85</div><div class="stat-label">Checkout Initiations</div></div>
+        <div class="stat-tile"><div class="stat-value">£6.80</div><div class="stat-label">Cost / Checkout Start</div></div>
+        <div class="stat-tile"><div class="stat-value">90,365</div><div class="stat-label">Impressions</div></div>
+        <div class="stat-tile"><div class="stat-value">39,825</div><div class="stat-label">Reach</div></div>
+      </div>
+
+      <div class="cs-takeaway"><strong>Takeaway:</strong> 85 shoppers actively started checkout at £6.80 each — a genuine near-purchase signal, one step before an actual sale.</div>
+    </div>
+
+    <div class="section-label">Case Study 07</div>
+    <div class="case-study">
+      <div class="cs-tag-row">
+        <span class="cs-tag">Meta Ads</span>
+        <span class="cs-tag muted">Investment / Mineral Rights</span>
+        <span class="cs-tag muted">TOF Awareness</span>
+      </div>
+      <h2>Broad National Awareness Campaign</h2>
+      <div class="cs-client"><strong>Kings &amp; Wealth</strong> — USA, ages 25-55 · Facebook, Instagram</div>
+
+      <h3>Goal</h3>
+      <p>Build broad national brand awareness ahead of a future retargeting phase.</p>
+
+      <h3>What I Did</h3>
+      <p>Built a TOF brand awareness campaign with broad national targeting (USA, ages 25-55), tested across multiple creative concepts and audience angles.</p>
+
+      <div class="stat-grid">
+        <div class="stat-tile"><div class="stat-value">194,642</div><div class="stat-label">Reach</div></div>
+        <div class="stat-tile"><div class="stat-value">262,239</div><div class="stat-label">Impressions</div></div>
+        <div class="stat-tile"><div class="stat-value">~$3.07</div><div class="stat-label">Cost / 1,000 Reach</div></div>
+      </div>
+
+      <div class="cs-takeaway"><strong>Takeaway:</strong> Broad national targeting reached nearly 200k people across four ad concepts, with the top-performing ad ("Scotland") pulling an above-average quality ranking at 137,832 reach on its own.</div>
+    </div>
+
+    <div class="callout">
+      <h3>Why these numbers vary so much</h3>
+      <p>Every campaign above is a snapshot of one funnel stage — some are top-of-funnel awareness, some are traffic, some are bottom-funnel conversions. Low-cost reach and low-cost traffic are the goal of a TOF stage; low-cost leads or purchases are the goal further down the funnel. Running conversion ads to cold traffic on day one is a common mistake that wastes budget — the sequence matters as much as the targeting.</p>
+      <p><a href="blog/meta-ads-funnel-strategy.html">Read why funnel stage determines strategy →</a></p>
+    </div>
+
+    <div class="note-block">
+      <h3>Important boundaries</h3>
+      <p>These are real results from real client accounts, shown as reported in Meta Ads Manager. Past performance does not guarantee future results — outcomes depend on industry, offer, budget, creative, and market conditions.</p>
+      <p>JDesigns does not guarantee ad results, sales, leads, or ROI. Every campaign is built and reported on its own merits.</p>
+    </div>
+
+    <div class="help-block">
+      <h2>Want results like these?</h2>
+      <p>Start with the Meta Ads gig on Fiverr, or reach out directly to talk through your campaign.</p>
+      <div class="hero-ctas" style="justify-content:center;">
+        <a href="https://www.fiverr.com/jazz96designs/create-facebook-and-instagram-ad" class="btn-primary" target="_blank" rel="noopener">View my Meta Ads gig →</a>
+        <a href="work-with-me.html" class="btn-secondary">Work with me directly</a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-left">✦ JDesigns Strategist LLC</div>
+      <div class="footer-links">
+        <a href="pinterest-case-studies.html" class="footer-link">Pinterest Results</a>
+        <a href="work-with-me.html" class="footer-link">Work With Me</a>
+        <a href="https://www.fiverr.com/jazz96designs" class="footer-link" target="_blank" rel="noopener">Fiverr</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

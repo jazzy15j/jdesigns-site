@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinterest Results — Real Account Growth | JDesigns Strategist</title>
+  <meta name="description" content="Real Pinterest results from JDesigns Strategist — organic growth, automation results, and client case studies with verified numbers."/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       rgba(30,50,37,0.7);
+      --border-green: rgba(46,194,126,.22);
+      --green:        #2ec27e;
+      --green-dim:    rgba(46,194,126,.08);
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --radius:       14px;
+      --font-serif:   Georgia, 'Times New Roman', serif;
+      --font-sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,16,10,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-link {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 5px 11px;
+      border-radius: 999px;
+      transition: color .15s, background .15s;
+      white-space: nowrap;
+    }
+    .nav-link:hover { color: var(--text); background: var(--surface); }
+    .nav-link.active { color: var(--green); }
+    .nav-cta {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #07100a;
+      background: var(--green);
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: opacity .15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    .page { max-width: 760px; margin: 0 auto; padding: 60px 24px 88px; }
+
+    .profile-header { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
+    .profile-avatar { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; border: 2px solid var(--green); flex-shrink: 0; }
+    .profile-name { font-size: 15px; font-weight: 700; line-height: 1.2; }
+    .profile-handle { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+    .hero { margin-bottom: 40px; }
+    .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; }
+    .hero h1 { font-family: var(--font-serif); font-size: clamp(1.65rem, 5vw, 2.15rem); font-weight: 400; line-height: 1.25; color: var(--text); margin-bottom: 16px; }
+    .hero-sub { font-size: 15px; color: var(--sage); line-height: 1.7; margin-bottom: 26px; max-width: 600px; }
+    .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .btn-primary, .btn-secondary {
+      display: inline-flex; align-items: center; gap: 7px; padding: 11px 22px; border-radius: 999px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.03em;
+      transition: opacity .15s, transform .12s, border-color .15s, color .15s, background .15s;
+    }
+    .btn-primary { background: var(--green); color: #07100a; }
+    .btn-primary:hover, .btn-secondary:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-secondary { background: transparent; border: 1px solid var(--border-green); color: var(--muted); }
+    .btn-secondary:hover { border-color: var(--green); color: var(--text); background: var(--green-dim); }
+
+    .section-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); margin: 44px 0 18px; padding-left: 2px; }
+    .section-label:first-of-type { margin-top: 0; }
+
+    .case-study {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 26px;
+      margin-bottom: 22px;
+    }
+    .case-study.featured { border-color: var(--border-green); box-shadow: 0 4px 24px rgba(46,194,126,.06); }
+    .cs-tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .cs-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--green); border: 1px solid var(--border-green); padding: 3px 10px; border-radius: 999px;
+    }
+    .cs-tag.muted { color: var(--muted); border-color: var(--border); }
+    .case-study h2 { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 400; color: var(--text); line-height: 1.3; margin-bottom: 4px; }
+    .cs-client { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+    .cs-client strong { color: var(--sage); }
+    .case-study h3 { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin: 18px 0 8px; }
+    .case-study p { font-size: 14px; color: var(--sage); line-height: 1.65; margin-bottom: 4px; }
+
+    .headline-stat { text-align: center; padding: 8px 0 20px; }
+    .headline-stat .num { font-family: var(--font-serif); font-size: clamp(2.2rem, 8vw, 3rem); color: var(--green); line-height: 1; }
+    .headline-stat .label { font-size: 13px; color: var(--sage); margin-top: 8px; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 16px 0 6px; }
+    .stat-tile { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+    .stat-value { font-family: var(--font-serif); font-size: 1.4rem; color: var(--green); line-height: 1.15; }
+    .stat-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .stat-label { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 6px; }
+    .stat-change { font-size: 11px; color: var(--green); margin-top: 2px; font-weight: 700; }
+
+    .cs-takeaway {
+      background: var(--green-dim);
+      border: 1px solid var(--border-green);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-top: 18px;
+      font-size: 13.5px;
+      color: var(--sage);
+      line-height: 1.6;
+    }
+    .cs-takeaway strong { color: var(--text); }
+
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 16px 0;
+      font-size: 13.5px;
+      color: var(--sage);
+      line-height: 1.6;
+    }
+    .callout strong { color: var(--text); }
+
+    .note-block {
+      background: rgba(46,194,126,.06);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      margin: 44px 0;
+    }
+    .note-block h3 { font-size: 12px; color: var(--green); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+    .note-block p { font-size: 13px; color: var(--sage); line-height: 1.65; margin-bottom: 10px; }
+    .note-block p:last-child { margin-bottom: 0; }
+
+    .help-block {
+      background: var(--surface);
+      border: 1px solid var(--border-green);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      margin: 44px 0;
+    }
+    .help-block h2 { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; margin-bottom: 8px; }
+    .help-block p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; max-width: 460px; margin-left: auto; margin-right: auto; }
+
+    .footer { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .footer-left, .footer-link { font-size: 12px; color: var(--muted); }
+    .footer-links { display: flex; gap: 16px; }
+    .footer-link:hover { color: var(--green); }
+
+    @media (max-width: 580px) {
+      .nav-link { display: none; }
+    }
+    @media (max-width: 420px) {
+      .page { padding: 40px 16px 64px; }
+      .hero h1 { font-size: 1.5rem; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .case-study { padding: 20px 18px; }
+      .footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">✦ JDesigns Strategist</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Resources</a>
+        <a href="meta-ads-case-studies.html" class="nav-link">Meta Ads Results</a>
+        <a href="pinterest-case-studies.html" class="nav-link active">Pinterest Results</a>
+        <a href="work-with-me.html" class="nav-link">Work With Me</a>
+        <a href="https://www.fiverr.com/jazz96designs/create-branded-content-for-your-pinterest" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="profile-header">
+      <img src="assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
+      <div>
+        <div class="profile-name">Jasmine</div>
+        <div class="profile-handle">Pinterest Strategy &amp; Automation · JDesigns Strategist LLC</div>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-eyebrow">Real Pinterest Results</div>
+      <h1>Pinterest is a search engine, not a social feed.</h1>
+      <p class="hero-sub">Content posted a year ago can still be pulling impressions today. These are real, verified numbers — pulled straight from Pinterest Analytics — from a client account, a personal growth account, and an automation implementation.</p>
+      <div class="hero-ctas">
+        <a href="https://www.fiverr.com/jazz96designs/create-branded-content-for-your-pinterest" class="btn-primary" target="_blank" rel="noopener">View my Pinterest gig →</a>
+        <a href="#results" class="btn-secondary">See the results</a>
+      </div>
+    </section>
+
+    <div class="section-label" id="results">Evergreen Growth — Jazzy's Lifestyle</div>
+    <div class="case-study featured">
+      <div class="cs-tag-row">
+        <span class="cs-tag">Pinterest Organic</span>
+        <span class="cs-tag muted">Lifetime — Jan 2025 to Present</span>
+      </div>
+      <h2>2.81M lifetime impressions, and still climbing</h2>
+      <div class="cs-client"><strong>Jazzy's Lifestyle</strong> — personal Pinterest brand, grown organically with zero ad spend</div>
+
+      <div class="headline-stat">
+        <div class="num">2.81M</div>
+        <div class="label">Lifetime Impressions</div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-tile"><div class="stat-value">1.76M</div><div class="stat-label">Total Audience</div></div>
+        <div class="stat-tile"><div class="stat-value">149.62k</div><div class="stat-label">Engagements</div></div>
+        <div class="stat-tile"><div class="stat-value">101.06k</div><div class="stat-label">Engaged Audience</div></div>
+        <div class="stat-tile"><div class="stat-value">31.07k</div><div class="stat-label">Saves</div></div>
+      </div>
+
+      <h3>Recent 31-Day Momentum</h3>
+      <div class="stat-grid">
+        <div class="stat-tile"><div class="stat-value">257.37k</div><div class="stat-label">Impressions</div><div class="stat-change">↑ 68%</div></div>
+        <div class="stat-tile"><div class="stat-value">195.8k</div><div class="stat-label">Total Audience</div><div class="stat-change">↑ 81%</div></div>
+        <div class="stat-tile"><div class="stat-value">13.65k</div><div class="stat-label">Engagements</div><div class="stat-change">↑ 40%</div></div>
+        <div class="stat-tile"><div class="stat-value">2.72k</div><div class="stat-label">Saves</div><div class="stat-change">↑ 53%</div></div>
+      </div>
+
+      <h3>What the Growth Curve Shows</h3>
+      <p>This account started at roughly 90 impressions a day in January 2025. No cliffs, no dead periods — just a steady, compounding climb to over 12,000 impressions a day at its 2026 peak. One board alone (Christmas) drove 142,916 impressions in a single 31-day window, and one individual pin hit 58,201 impressions on its own.</p>
+
+      <div class="cs-takeaway"><strong>Why this matters:</strong> This is what makes Pinterest an evergreen channel instead of a feed that dies in 48 hours. Every metric compounds — impressions, audience, saves — because well-made pins keep circulating and getting rediscovered through search, long after they're published.</div>
+    </div>
+
+    <div class="section-label">Client Case Study — Ecenci Skincare</div>
+    <div class="case-study">
+      <div class="cs-tag-row">
+        <span class="cs-tag">Pinterest Organic</span>
+        <span class="cs-tag muted">Skincare &amp; Ecommerce</span>
+        <span class="cs-tag muted">Last 90 Days</span>
+      </div>
+      <h2>Pinterest Organic Growth System</h2>
+      <div class="cs-client"><strong>Ecenci Skincare</strong></div>
+
+      <h3>Goal</h3>
+      <p>Build organic visibility and support product discovery through a scalable Pinterest content system.</p>
+
+      <h3>What I Did</h3>
+      <p>Built a Pinterest content system using branded product visuals, SEO-informed pin publishing strategy, and automation-based growth support to drive consistent organic reach.</p>
+
+      <div class="stat-grid">
+        <div class="stat-tile"><div class="stat-value">52.05k</div><div class="stat-label">Impressions</div></div>
+        <div class="stat-tile"><div class="stat-value">767</div><div class="stat-label">Engagements</div></div>
+        <div class="stat-tile"><div class="stat-value">137</div><div class="stat-label">Saves</div></div>
+        <div class="stat-tile"><div class="stat-value">23.58k</div><div class="stat-label">Total Audience</div></div>
+      </div>
+
+      <div class="cs-takeaway"><strong>Takeaway:</strong> Pinterest used as a long-term organic discovery engine for skincare products — building compounding reach and engagement through SEO-optimized pin strategy and branded visual consistency.</div>
+    </div>
+
+    <div class="section-label">Automation Result — Debbie's Creepy Creations</div>
+    <div class="case-study">
+      <div class="cs-tag-row">
+        <span class="cs-tag">Pinterest Automation</span>
+        <span class="cs-tag muted">Halloween Niche</span>
+        <span class="cs-tag muted">Jan 2025 – Jun 2026</span>
+      </div>
+      <h2>4.94M impressions from an automated pin pipeline</h2>
+      <div class="cs-client"><strong>Debbie's Creepy Creations</strong> — example result, not a paying client</div>
+
+      <div class="headline-stat">
+        <div class="num">4.94M</div>
+        <div class="label">Impressions over its active run (Jan 2025 – Jun 2026), before being paused</div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-tile"><div class="stat-value">1.51M</div><div class="stat-label">Total Audience</div></div>
+        <div class="stat-tile"><div class="stat-value">266.09k</div><div class="stat-label">Engagements</div></div>
+        <div class="stat-tile"><div class="stat-value">124.42k</div><div class="stat-label">Engaged Audience</div></div>
+        <div class="stat-tile"><div class="stat-value">84k</div><div class="stat-label">Saves</div></div>
+      </div>
+
+      <h3>How It Worked</h3>
+      <p>A photo drops into Dropbox, AI generates an SEO-optimized pin title and caption, and Pinterest auto-publishes to the target board. No manual pin creation required once the pipeline is set up.</p>
+
+      <div class="cs-takeaway"><strong>What it signals:</strong> Strong top-of-funnel visibility and repeat discovery across Pinterest surfaces — proof the automation approach can produce real scale, not just a demo.</div>
+    </div>
+
+    <div class="callout">
+      <strong>Expectation setting:</strong> Pinterest supports awareness, discovery, traffic, and eventual conversions over time. No guarantees — results depend on niche, offer, content quality, and consistency.
+    </div>
+
+    <div class="note-block">
+      <h3>Important boundaries</h3>
+      <p>These are real results, shown as reported in Pinterest Analytics, from a client account, a personal growth account, and an automation demo (not a paying client). Past performance does not guarantee future results.</p>
+      <p>JDesigns does not guarantee reach, saves, traffic, or sales from Pinterest content or automation.</p>
+    </div>
+
+    <div class="help-block">
+      <h2>Want a Pinterest system like this?</h2>
+      <p>Start with the Pinterest gig on Fiverr, or reach out directly to talk through your account.</p>
+      <div class="hero-ctas" style="justify-content:center;">
+        <a href="https://www.fiverr.com/jazz96designs/create-branded-content-for-your-pinterest" class="btn-primary" target="_blank" rel="noopener">View my Pinterest gig →</a>
+        <a href="work-with-me.html" class="btn-secondary">Work with me directly</a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-left">✦ JDesigns Strategist LLC</div>
+      <div class="footer-links">
+        <a href="meta-ads-case-studies.html" class="footer-link">Meta Ads Results</a>
+        <a href="work-with-me.html" class="footer-link">Work With Me</a>
+        <a href="https://www.fiverr.com/jazz96designs" class="footer-link" target="_blank" rel="noopener">Fiverr</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
