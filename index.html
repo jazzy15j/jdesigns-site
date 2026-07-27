@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JDesigns Strategist — Meta Ads Strategy & Business Systems for Small Business</title>
-  <meta name="description" content="Free guides on Meta ads, account access, and the business systems that keep small business marketing and operations running. Updated weekly with the best of what Jasmine, Meta Ads Strategist at JDesigns Strategist LLC, is currently seeing with clients."/>
+  <meta name="description" content="Simple systems for small businesses — free guides on Meta ads, account access, and the systems that keep marketing and operations running."/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -50,7 +50,7 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-inner {
-      max-width: 720px;
+      max-width: 1040px;
       margin: 0 auto;
       padding: 0 24px;
       height: 52px;
@@ -58,6 +58,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      position: relative;
     }
     .nav-logo {
       font-family: var(--font-serif);
@@ -79,6 +80,7 @@
       padding: 5px 12px;
       border-radius: 999px;
       transition: color .15s, background .15s;
+      white-space: nowrap;
     }
     .nav-link:hover { color: var(--text); background: var(--surface); }
     .nav-link.active { color: var(--green); }
@@ -94,10 +96,75 @@
       white-space: nowrap;
     }
     .nav-cta:hover { opacity: .85; }
+    .nav-dropdown { position: relative; cursor: pointer; }
+    .nav-dropdown::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 6px;
+    }
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      min-width: 130px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 6px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.35);
+      flex-direction: column;
+      gap: 2px;
+      z-index: 150;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu { display: flex; }
+    .nav-dropdown-item {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 7px 12px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: color .15s, background .15s;
+    }
+    .nav-dropdown-item:hover { color: var(--text); background: var(--bg); }
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 16px; height: 1.5px;
+      background: var(--sage);
+      position: relative;
+      transition: background .15s;
+    }
+    .nav-toggle span::before, .nav-toggle span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 16px; height: 1.5px;
+      background: var(--sage);
+      transition: transform .15s;
+    }
+    .nav-toggle span::before { top: -5px; }
+    .nav-toggle span::after { top: 5px; }
+    .nav-toggle:hover { border-color: var(--border-green); }
 
     /* ── Page ── */
     .page {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
       padding: 60px 24px 88px;
     }
@@ -110,14 +177,35 @@
       margin-bottom: 32px;
     }
     .profile-avatar {
-      width: 68px; height: 68px;
+      width: 112px; height: 112px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--green);
+      border: 3px solid var(--green);
       flex-shrink: 0;
     }
-    .profile-name { font-size: 15px; font-weight: 700; line-height: 1.2; }
-    .profile-handle { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+    .profile-name { font-size: 19px; font-weight: 700; line-height: 1.2; }
+    .profile-handle { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+    @media (max-width: 420px) {
+      .profile-avatar { width: 84px; height: 84px; }
+    }
+
+    /* ── Quick Router ── */
+    .quick-router-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 10px;
+    }
+    .quick-router-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .quick-link {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 13px 14px; font-size: 13px; font-weight: 600; color: var(--text);
+      transition: border-color .15s, background .15s;
+    }
+    .quick-link span { color: var(--green); }
+    .quick-link:hover { border-color: var(--border-green); background: var(--green-dim); }
+    @media (min-width: 580px) {
+      .quick-router-grid { grid-template-columns: repeat(4, 1fr); }
+    }
 
     /* ── Hero ── */
     .hero { margin-bottom: 52px; }
@@ -398,31 +486,12 @@
     .arrow { color: var(--muted); font-size: 14px; transition: color .15s, transform .15s; }
     .link-card:hover .arrow { color: var(--green); transform: translateX(3px); }
 
-    /* ── Trust Block ── */
-    .trust-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 44px;
-    }
-    .trust-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px 16px;
-    }
-    .trust-num {
-      font-family: var(--font-serif);
-      font-size: 26px;
-      color: var(--green);
-      line-height: 1;
-      margin-bottom: 5px;
-    }
-    .trust-label {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.4;
-    }
+    /* ── Stat Grid (Real Results) ── */
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 20px; }
+    .stat-tile { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 16px 14px; }
+    .stat-value { font-family: var(--font-serif); font-size: 1.5rem; color: var(--green); line-height: 1.15; }
+    .stat-sub { font-size: 11px; color: var(--muted); }
+    .stat-label { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 6px; line-height: 1.4; }
 
     /* ── Testimonial ── */
     .testimonial-block {
@@ -504,13 +573,49 @@
     .footer-link { font-size: 12px; color: var(--muted); transition: color .15s; }
     .footer-link:hover { color: var(--green); }
 
+    /* ── Nav collapse (dropdown menu, not hidden links) ── */
+    @media (max-width: 900px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 16px 16px;
+        box-shadow: 0 16px 32px rgba(0,0,0,.35);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links.open .nav-link,
+      .nav-links.open .nav-cta {
+        width: 100%;
+        justify-content: space-between;
+        padding: 14px 14px;
+        border-radius: 10px;
+        font-size: 14px;
+      }
+      .nav-links.open .nav-link::after { content: '→'; opacity: .5; }
+      .nav-links.open .nav-dropdown-menu {
+        display: flex;
+        position: static;
+        border: none;
+        padding: 0 0 0 14px;
+        box-shadow: none;
+        background: transparent;
+      }
+      .nav-links.open .nav-dropdown-item {
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+    }
     @media (max-width: 580px) {
       .blog-grid { grid-template-columns: 1fr; }
-      .trust-grid { grid-template-columns: 1fr 1fr; }
-      .trust-grid .trust-card:last-child { grid-column: 1 / -1; }
       .hub-block { flex-direction: column; gap: 16px; }
       .hub-icon { width: 44px; height: 44px; font-size: 1.2rem; }
-      .nav-link { display: none; }
     }
     @media (max-width: 420px) {
       .page { padding: 40px 16px 64px; }
@@ -520,6 +625,23 @@
       .footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1748369839650273');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -527,16 +649,37 @@
 <nav class="nav">
   <div class="nav-inner">
     <div class="nav-logo">✦ JDesigns Strategist</div>
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a href="/blog/" class="nav-link active">Blog</a>
-      <a href="#resources" class="nav-link">Resources</a>
-      <a href="meta-ads-case-studies.html" class="nav-link">Meta Ads Results</a>
-      <a href="pinterest-case-studies.html" class="nav-link">Pinterest Results</a>
+      <a href="#free-resources" class="nav-link">Resources</a>
+      <div class="nav-link nav-dropdown" tabindex="0">
+        Results
+        <div class="nav-dropdown-menu">
+          <a href="meta-ads-case-studies.html" class="nav-dropdown-item">Meta Ads</a>
+          <a href="pinterest-case-studies.html" class="nav-dropdown-item">Pinterest</a>
+        </div>
+      </div>
       <a href="work-with-me.html" class="nav-link">Work With Me</a>
       <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
     </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span>
+    </button>
   </div>
 </nav>
+<script>
+  (function () {
+    var btn = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+    btn.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { links.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); });
+    });
+  })();
+</script>
 
 <div class="page">
 
@@ -551,19 +694,142 @@
 
   <!-- Hero -->
   <div class="hero">
-    <div class="hero-eyebrow">Free Resource Library</div>
-    <h1>The practical guide to Meta ads, account setup, and the systems that keep a small business running — for owners who want real answers.</h1>
-    <p class="hero-sub">Free practical guides built from real work with small businesses — on Meta ad accounts, campaign strategy, account restrictions, and the systems that keep marketing and operations repeatable. Updated weekly with the best of what I'm currently seeing.</p>
-    <div class="hero-meta">
-      <div class="hero-stat"><div class="hero-stat-dot"></div>Free practical guides</div>
-      <div class="hero-stat"><div class="hero-stat-dot"></div>Meta Ads · Meta Access · Business Systems</div>
-      <div class="hero-stat"><div class="hero-stat-dot"></div>Updated weekly</div>
-    </div>
-    <div class="hero-ctas">
-      <a href="/blog/" class="btn-primary">Browse All Articles →</a>
-      <a href="/knowledge-hub.html" class="btn-secondary">Visual Knowledge Map</a>
+    <div class="hero-eyebrow">Simple Systems for Small Businesses</div>
+    <h1>Meta ads, account access, business systems.</h1>
+    <p class="hero-sub">Real client work. No fluff.</p>
+    <div class="quick-router-label">What do you need right now?</div>
+    <div class="quick-router-grid">
+      <a href="meta-checklist.html" class="quick-link">Locked out <span>→</span></a>
+      <a href="meta-ads-case-studies.html" class="quick-link">Ads not working <span>→</span></a>
+      <a href="meta-vault.html" class="quick-link">Full fix-it system <span>→</span></a>
+      <a href="/blog/" class="quick-link">Just browsing <span>→</span></a>
     </div>
   </div>
+
+  <!-- Real Results -->
+  <div class="section-label">Real Results</div>
+  <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px;">Real numbers. Not projections.</p>
+  <div class="stat-grid">
+    <div class="stat-tile"><div class="stat-value">7.41%</div><div class="stat-label">Meta Ads CTR <span class="stat-sub">($0.12 CPC)</span></div></div>
+    <div class="stat-tile"><div class="stat-value">161</div><div class="stat-label">Leads at $1.90 Each</div></div>
+    <div class="stat-tile"><div class="stat-value">2.81M</div><div class="stat-label">Pinterest Lifetime Impressions</div></div>
+    <div class="stat-tile"><div class="stat-value">4.94M</div><div class="stat-label">Impressions, Automated Pin Pipeline</div></div>
+  </div>
+  <div class="hero-ctas" style="margin-bottom:52px;">
+    <a href="meta-ads-case-studies.html" class="btn-secondary">See Meta Ads Results →</a>
+    <a href="pinterest-case-studies.html" class="btn-secondary">See Pinterest Results →</a>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Free Resources -->
+  <div id="free-resources" class="section-label">Free Resources</div>
+  <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px;">Locked out or confused about your Meta setup? Start here.</p>
+  <div class="link-stack">
+
+    <a href="meta-health-checker.html" class="link-card">
+      <div class="link-card-icon">🩺</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Meta Account Health Checker</div>
+        <div class="link-card-desc">Answer one question. Get your risk level and fastest fix.</div>
+        <div class="link-card-meta">No email required · 60-second interactive diagnosis</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-free">Free</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+    <a href="meta-checklist.html" class="link-card">
+      <div class="link-card-icon">🆘</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Meta Business Access Emergency Checklist</div>
+        <div class="link-card-desc">5 sections covering the most common Meta lockouts.</div>
+        <div class="link-card-meta">Email required for instant access</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-free">Free</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+    <a href="/blog/instagram-keeps-disconnecting-meta-business-suite.html" class="link-card">
+      <div class="link-card-icon">🔗</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Why Does Instagram Keep Disconnecting From Meta Business Suite?</div>
+        <div class="link-card-desc">The token cycle behind the "Review Connection" notice.</div>
+        <div class="link-card-meta">No email required · Instant access</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-free">Free</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+    <a href="/blog/protect-your-ad-spend-before-sharing-access.html" class="link-card">
+      <div class="link-card-icon">💸</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Protect Your Ad Spend Before You Share Access</div>
+        <div class="link-card-desc">The pre-launch checklist before anyone else gets access.</div>
+        <div class="link-card-meta">No email required · Instant access</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-free">Free</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- Paid Resources -->
+  <div id="paid-resources" class="section-label">Paid Resources</div>
+  <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px;">Free gets you started. This goes deeper.</p>
+  <div class="link-stack">
+
+    <a href="meta-vault.html" class="link-card">
+      <div class="link-card-icon">🔐</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Meta Business Fix-It Vault</div>
+        <div class="link-card-desc">Scripts and checklists for restrictions, hacked accounts, failed appeals.</div>
+        <div class="link-card-meta">Best for: anyone stuck inside Meta · Beginner-friendly</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-paid">$97</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+    <a href="brain-guide.html" class="link-card">
+      <div class="link-card-icon">🧠</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Build Your Business Brain</div>
+        <div class="link-card-desc">One organized reference for Claude. Stop re-explaining yourself.</div>
+        <div class="link-card-meta">Best for: service providers using Claude · Requires Claude Code (free)</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-paid">$95</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+    <a href="command-pack.html" class="link-card">
+      <div class="link-card-icon">⚡</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Business Brain Command Pack</div>
+        <div class="link-card-desc">6 slash commands for client replies, proposals, onboarding.</div>
+        <div class="link-card-meta">Best for: Business Brain users ready to automate</div>
+      </div>
+      <div class="link-card-right">
+        <span class="price-badge price-paid">$47</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <hr class="divider">
 
   <!-- Blog Section -->
   <div class="section-label">Featured Articles</div>
@@ -644,7 +910,7 @@
     <div class="hub-icon">✦</div>
     <div class="hub-body">
       <h3>Knowledge Hub — See How Everything Connects</h3>
-      <p>An interactive visual map of every concept, service, and article in this library. Click any node to go directly to that resource. Built like Obsidian — for people who think in systems.</p>
+      <p>Every article, mapped. Click any node.</p>
       <div class="hub-nodes">
         <span class="hub-node">Meta Ads</span>
         <span class="hub-node">Meta Repair</span>
@@ -659,142 +925,26 @@
 
   <hr class="divider">
 
-  <!-- Trust Numbers -->
+  <!-- Testimonials -->
   <div class="section-label">About This Work</div>
-  <div class="trust-grid">
-    <div class="trust-card">
-      <div class="trust-num">Free</div>
-      <div class="trust-label">Practical guides — updated weekly with the best info I've got</div>
-    </div>
-    <div class="trust-card">
-      <div class="trust-num">3</div>
-      <div class="trust-label">Topic areas: Meta ads, Meta access, and the systems behind them</div>
-    </div>
-    <a href="https://www.fiverr.com/jazz96designs" class="trust-card" target="_blank" rel="noopener noreferrer">
-      <div class="trust-num">5★</div>
-      <div class="trust-label">Fiverr rating — verified client reviews</div>
-    </a>
-  </div>
-
-  <!-- Testimonial -->
   <div class="testimonial-block">
     <div class="testimonial-stars">★★★★★</div>
-    <div class="testimonial-quote">"Jasmine is very professional, knowledgeable, and made my Facebook ads experience so much better. She is a problem-solver and delivers quality work. I would highly recommend her services."</div>
-    <div class="testimonial-author">Fiverr client · Meta Ads Strategy</div>
+    <div class="testimonial-quote">"Working with Jasmine on our Alistrol Meta Ads campaign was an excellent experience. She took the time to thoroughly audit our existing advertising strategy and quickly identified several areas that were limiting our campaign performance. Rather than focusing on short-term sales tactics, Jasmine developed a clear, data-driven strategy centered around building a strong top-of-funnel audience, improving our creative direction, and creating a more effective customer journey. Her recommendations were detailed, practical, and easy to understand, giving us confidence in the direction of our marketing."</div>
+    <div class="testimonial-author">babysonjay · Canada · Fiverr client</div>
   </div>
-
-  <!-- Free Resources -->
-  <div id="free-resources" class="section-label">Free Resources</div>
-  <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px;">Start here if you're locked out or confused about your Meta setup — each resource below shows exactly what it costs and what it needs from you.</p>
-  <div class="link-stack">
-
-    <a href="meta-health-checker.html" class="link-card">
-      <div class="link-card-icon">🩺</div>
-      <div class="link-card-body">
-        <div class="link-card-title">Meta Account Health Checker</div>
-        <div class="link-card-desc">Not sure what's actually wrong? Answer one question and get a real diagnosis — the risk level, what's really happening, and the fastest fix.</div>
-        <div class="link-card-meta">No email required · 60-second interactive diagnosis</div>
-      </div>
-      <div class="link-card-right">
-        <span class="price-badge price-free">Free</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-
-    <a href="meta-checklist.html" class="link-card">
-      <div class="link-card-icon">🆘</div>
-      <div class="link-card-body">
-        <div class="link-card-title">Meta Business Access Emergency Checklist</div>
-        <div class="link-card-desc">Locked out, restricted, or confused about your Meta setup? 5 sections covering the most common problems. Start here.</div>
-        <div class="link-card-meta">Email required for instant access</div>
-      </div>
-      <div class="link-card-right">
-        <span class="price-badge price-free">Free</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-
-    <a href="/blog/instagram-keeps-disconnecting-meta-business-suite.html" class="link-card">
-      <div class="link-card-icon">🔗</div>
-      <div class="link-card-body">
-        <div class="link-card-title">Why Does Instagram Keep Disconnecting From Meta Business Suite?</div>
-        <div class="link-card-desc">It worked fine, then it didn't. The routine token cycle behind the "Review Connection" notice — and how to stop it catching you off guard.</div>
-        <div class="link-card-meta">No email required · Instant access</div>
-      </div>
-      <div class="link-card-right">
-        <span class="price-badge price-free">Free</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-
-    <a href="/blog/protect-your-ad-spend-before-sharing-access.html" class="link-card">
-      <div class="link-card-icon">💸</div>
-      <div class="link-card-body">
-        <div class="link-card-title">Protect Your Ad Spend Before You Share Access</div>
-        <div class="link-card-desc">Meta won't refund your team's mistake. The pre-launch checklist to run before anyone else gets access to your ad account.</div>
-        <div class="link-card-meta">No email required · Instant access</div>
-      </div>
-      <div class="link-card-right">
-        <span class="price-badge price-free">Free</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-
+  <div class="testimonial-block">
+    <div class="testimonial-stars">★★★★★</div>
+    <div class="testimonial-quote">"Jasmine is absolutely amazing to work with, and I can't recommend her highly enough. I was struggling for months with my Meta ad account being down, and I honestly didn't know how to fix it. Jasmine stepped in and was there for me every step of the way. Thanks to her persistence and expertise, my ad account is back up and running, and my ads are live again. Jasmine's dedication, responsiveness, and willingness to go the extra mile made all the difference. I would recommend her ten times over."</div>
+    <div class="testimonial-author">solosstudios · Senegal · Fiverr client</div>
   </div>
 
   <hr class="divider">
-
-  <!-- Paid Resources -->
-  <div id="resources" class="section-label">Paid Resources</div>
-  <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px;">The articles (and the checklist above) are always free. These go deeper — scripts, templates, systems, and step-by-step frameworks for when you're ready to take action.</p>
-  <div class="link-stack">
-
-    <a href="meta-vault.html" class="link-card">
-      <div class="link-card-icon">🔐</div>
-      <div class="link-card-body">
-        <div class="link-card-title">Meta Business Fix-It Vault</div>
-        <div class="link-card-desc">Full troubleshooting system — scripts, checklists, and next steps for restrictions, hacked accounts, failed appeals, and portfolio access issues.</div>
-        <div class="link-card-meta">Best for: anyone stuck inside Meta · Beginner-friendly</div>
-      </div>
-      <div class="link-card-right">
-        <span class="price-badge price-paid">$97</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-
-    <a href="brain-guide.html" class="link-card">
-      <div class="link-card-icon">🧠</div>
-      <div class="link-card-body">
-        <div class="link-card-title">Build Your Business Brain</div>
-        <div class="link-card-desc">Turn scattered business knowledge into one organized reference for Claude — built the same way Jasmine runs her own Meta and business work. Stop re-explaining yourself.</div>
-        <div class="link-card-meta">Best for: service providers using Claude · Requires Claude Code (free)</div>
-      </div>
-      <div class="link-card-right">
-        <span class="price-badge price-paid">$95</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-
-    <a href="command-pack.html" class="link-card">
-      <div class="link-card-icon">⚡</div>
-      <div class="link-card-body">
-        <div class="link-card-title">Business Brain Command Pack</div>
-        <div class="link-card-desc">6 slash commands that turn repeatable business tasks into one-line routines — reply to clients, draft proposals, run your day, onboard clients.</div>
-        <div class="link-card-meta">Best for: Business Brain users ready to automate</div>
-      </div>
-      <div class="link-card-right">
-        <span class="price-badge price-paid">$47</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-
-  </div>
 
   <!-- Direct Help -->
   <div id="direct-help" class="section-label">Ready for Direct Help?</div>
   <div class="help-block">
     <h3>Need direct help with Meta setup or ads?</h3>
-    <p>Start with the direct help page if you want to see the best next step before choosing a service. You can still work with Jasmine through Fiverr if that is the better fit.</p>
+    <p>See your next step — or go straight to Fiverr.</p>
     <div class="hero-ctas" style="justify-content:center;">
       <a href="work-with-me.html" class="btn-primary">Work With Me →</a>
       <a href="https://www.fiverr.com/jazz96designs" class="btn-secondary" target="_blank" rel="noopener noreferrer">View Fiverr Services</a>
@@ -820,7 +970,7 @@
     </a>
     <a href="https://www.fiverr.com/jazz96designs" class="social-pill" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
-        <path d="M18.258 19.932h-3.021v-8.22h3.021v8.22zm-1.51-9.345c-.968 0-1.754-.787-1.754-1.754 0-.967.786-1.754 1.754-1.754.967 0 1.754.787 1.754 1.754 0 .967-.787 1.754-1.754 1.754zM5.742 19.932v-2.982H3V4.068h2.742v7.644h2.774V4.068H11.2v15.864H5.742z"/>
+        <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h.527v1.316zm-6.786 1.501h-3.359c.088.546.43.858 1.006.858.43 0 .732-.175.83-.487l1.425.4c-.351.848-1.22 1.364-2.255 1.364-1.748 0-2.549-1.355-2.549-2.515 0-1.14.703-2.505 2.45-2.505 1.856 0 2.471 1.384 2.471 2.408 0 .224-.01.37-.02.477zm-1.562-.945c-.04-.42-.342-.81-.889-.81-.508 0-.81.225-.908.81h1.797zM7.508 15.44h1.416l1.767-4.874h-1.62l-.86 2.837-.878-2.837H5.72l1.787 4.874zm-6.6 0H2.51v-3.558h1.524v3.558h1.591v-4.874H2.51v-.302c0-.332.235-.536.606-.536h.918V8.412H2.85c-1.162 0-1.943.712-1.943 1.755v.4H0v1.316h.908v3.558z"/>
       </svg>
       Fiverr
     </a>

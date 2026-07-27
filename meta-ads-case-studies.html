@@ -47,7 +47,7 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-inner {
-      max-width: 760px;
+      max-width: 1040px;
       margin: 0 auto;
       padding: 0 24px;
       height: 52px;
@@ -55,6 +55,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      position: relative;
     }
     .nav-logo {
       font-family: var(--font-serif);
@@ -88,6 +89,45 @@
       white-space: nowrap;
     }
     .nav-cta:hover { opacity: .85; }
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .nav-toggle span { display: block; width: 16px; height: 1.5px; background: var(--sage); position: relative; }
+    .nav-toggle span::before, .nav-toggle span::after {
+      content: ''; position: absolute; left: 0; width: 16px; height: 1.5px; background: var(--sage);
+    }
+    .nav-toggle span::before { top: -5px; }
+    .nav-toggle span::after { top: 5px; }
+    .nav-toggle:hover { border-color: var(--border-green); }
+    @media (max-width: 900px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 16px 16px;
+        box-shadow: 0 16px 32px rgba(0,0,0,.35);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links.open .nav-link, .nav-links.open .nav-cta {
+        width: 100%; justify-content: space-between; padding: 14px 14px; border-radius: 10px; font-size: 14px;
+      }
+      .nav-links.open .nav-link::after { content: '→'; opacity: .5; }
+    }
 
     .page { max-width: 760px; margin: 0 auto; padding: 60px 24px 88px; }
 
@@ -203,9 +243,6 @@
     .footer-links { display: flex; gap: 16px; }
     .footer-link:hover { color: var(--green); }
 
-    @media (max-width: 580px) {
-      .nav-link { display: none; }
-    }
     @media (max-width: 420px) {
       .page { padding: 40px 16px 64px; }
       .hero h1 { font-size: 1.5rem; }
@@ -215,20 +252,53 @@
       .footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1748369839650273');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
   <nav class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">✦ JDesigns Strategist</a>
-      <div class="nav-links">
+      <div class="nav-links" id="navLinks">
         <a href="index.html" class="nav-link">Resources</a>
         <a href="meta-ads-case-studies.html" class="nav-link active">Meta Ads Results</a>
         <a href="pinterest-case-studies.html" class="nav-link">Pinterest Results</a>
         <a href="work-with-me.html" class="nav-link">Work With Me</a>
         <a href="https://www.fiverr.com/jazz96designs/create-facebook-and-instagram-ad" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
       </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+      </button>
     </div>
   </nav>
+  <script>
+    (function () {
+      var btn = document.getElementById('navToggle');
+      var links = document.getElementById('navLinks');
+      btn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { links.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); });
+      });
+    })();
+  </script>
 
   <main class="page">
     <div class="profile-header">

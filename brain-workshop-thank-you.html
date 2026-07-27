@@ -289,6 +289,24 @@
 
     .footer-note a { color: var(--accent); }
 
+    /* ── SCREENSHOTS ── */
+    .screenshot {
+      margin: 4px 0 20px;
+    }
+    .screenshot img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      border: 1px solid rgba(46,194,126,0.2);
+    }
+    .screenshot-caption {
+      font-size: 11.5px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
     @media (max-width: 480px) {
       .page { padding: 40px 16px 64px; }
       .card, .install-card { padding: 28px 20px; }
@@ -300,6 +318,23 @@
   </style>
   <link rel="canonical" href="https://jdesigns.info/brain-workshop-thank-you"/>
   <meta name="robots" content="noindex, nofollow"/>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1748369839650273');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
   <div class="page">
@@ -314,13 +349,88 @@
         </svg>
       </div>
       <h1>Thank you for purchasing Build Your Business Brain.</h1>
-      <p>The workshop installs in one command. Run it in your terminal, open Claude Code, and type <span style="font-family: var(--font-mono); font-size: 13px; color: var(--accent);">/brain-start</span> — the workshop walks you through everything from there. About 30 minutes start to finish.</p>
+      <p>Open Claude Code, paste one install command, then type <span style="font-family: var(--font-mono); font-size: 13px; color: var(--accent);">/brain-start</span> — the workshop walks you through everything from there. About 30 minutes start to finish. Exact steps below, with screenshots at every stage.</p>
+    </div>
+
+    <!-- GET CLAUDE CODE FIRST -->
+    <div class="install-card">
+      <h2>New to Claude Code? Start Here</h2>
+      <p>Claude Code is the free tool from Anthropic that runs this workshop. Already have it installed and know it works? Skip to "Install the Workshop" below.</p>
+
+      <div class="steps" style="margin-bottom: 20px;">
+        <div class="step-row">
+          <div class="step-num">1</div>
+          <div class="step-text">Get a free Claude account — <a href="https://claude.ai/referral/3Xf9GS_m6g" target="_blank" rel="noopener" style="color: var(--accent);">sign up here</a> (includes a free week of Claude Pro).</div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">2</div>
+          <div class="step-text">Open Terminal (Mac) or PowerShell (Windows).</div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">3</div>
+          <div class="step-text">Paste the command for your system below and press Enter. <strong style="color: var(--text);">It can sit with no text on screen for 10–30 seconds before anything prints — that's normal, it's downloading in the background. Don't retype or close the window, just wait.</strong></div>
+        </div>
+      </div>
+
+      <div class="os-label">Mac / Linux</div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span>
+          <span class="t-label">Terminal</span>
+        </div>
+        <div class="terminal-body">
+          <span class="terminal-cmd" id="cc-mac-cmd">curl -fsSL https://claude.ai/install.sh | bash</span>
+          <button class="copy-btn" onclick="copyCmd('cc-mac-cmd', this)">Copy</button>
+        </div>
+      </div>
+
+      <div class="os-label">Windows (PowerShell)</div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span>
+          <span class="t-label">PowerShell</span>
+        </div>
+        <div class="terminal-body">
+          <span class="terminal-cmd" id="cc-win-cmd">irm https://claude.ai/install.ps1 | iex</span>
+          <button class="copy-btn" onclick="copyCmd('cc-win-cmd', this)">Copy</button>
+        </div>
+      </div>
+      <p class="install-note">Claude Code itself is free to install. Using it requires a Claude Pro, Max, Team, Enterprise, or Console account — the sign-up link above gets you a free week of Pro to try it.</p>
+      <p class="install-note">Nothing printing after a minute, or an error appears? You're likely on a network that blocks the download — try <code>npm install -g @anthropic-ai/claude-code</code> instead (requires <a href="https://nodejs.org" target="_blank" rel="noopener" style="color: var(--accent);">Node.js</a>), or see <a href="https://code.claude.com/docs" target="_blank" rel="noopener" style="color: var(--accent);">code.claude.com/docs</a>.</p>
+
+      <div class="steps" style="margin-bottom: 20px;">
+        <div class="step-row">
+          <div class="step-num">4</div>
+          <div class="step-text">Check it worked — this is what you'll see:</div>
+        </div>
+      </div>
+
+      <div class="screenshot">
+        <img src="assets/brain-workshop-setup/01-install-claude-code.png" alt="Terminal showing Claude Code successfully installed after running the install command" loading="lazy" />
+        <div class="screenshot-caption">"Claude Code successfully installed!" with a version number. That's your confirmation — no separate check needed.</div>
+      </div>
+
+      <div class="steps" style="margin-bottom: 20px;">
+        <div class="step-row">
+          <div class="step-num">5</div>
+          <div class="step-text">Type <code>claude</code> and press Enter — this launches Claude Code.</div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">6</div>
+          <div class="step-text">The first time in a folder, it asks to trust it. If you haven't moved anywhere else, this will be your default home folder (something like <code>/Users/yourname</code>) — that's exactly right, don't overthink it. Choose "Yes, I trust this folder."</div>
+        </div>
+      </div>
+
+      <div class="screenshot">
+        <img src="assets/brain-workshop-setup/02-trust-folder.png" alt="Claude Code asking to trust the current folder, with Yes I trust this folder selected" loading="lazy" />
+        <div class="screenshot-caption">This is the trust prompt — select "Yes, I trust this folder" and press Enter.</div>
+      </div>
     </div>
 
     <!-- INSTALL -->
     <div class="install-card">
       <h2>Install the Workshop</h2>
-      <p>Open your terminal, navigate to the folder where you want to build your Business Brain, and run the install command for your operating system.</p>
+      <p>Still inside Claude Code from the last step (same window, same folder) — paste this command right at the Claude Code prompt and press Enter.</p>
 
       <div class="os-label">Mac / Linux</div>
       <div class="terminal">
@@ -333,7 +443,7 @@
           <button class="copy-btn" onclick="copyCmd('mac-cmd', this)">Copy</button>
         </div>
       </div>
-      <p class="install-note">Run this from the folder where you want your Business Brain to live — or create a new folder first and run it there.</p>
+      <p class="install-note">Claude Code will ask to approve running this once — approve it. It only downloads the 7 workshop command files, nothing else.</p>
 
       <div class="os-label">Windows (PowerShell)</div>
       <div class="terminal">
@@ -346,7 +456,12 @@
           <button class="copy-btn" onclick="copyCmd('win-cmd', this)">Copy</button>
         </div>
       </div>
-      <p class="install-note">Open PowerShell, navigate to your chosen folder, then paste and run the command above.</p>
+      <p class="install-note">Same idea in PowerShell — paste it at the Claude Code prompt and approve when asked.</p>
+
+      <div class="screenshot">
+        <img src="assets/brain-workshop-setup/03-install-workshop.png" alt="Claude Code running the workshop install script and confirming the 7 brain commands are installed" loading="lazy" />
+        <div class="screenshot-caption">Claude Code checks the script before running it, then confirms once the 7 <code style="font-family: var(--font-mono); background: var(--accent-dim); color: var(--accent); padding: 1px 6px; border-radius: 4px;">/brain-*</code> commands are installed. That's your cue to type <code style="font-family: var(--font-mono); background: var(--accent-dim); color: var(--accent); padding: 1px 6px; border-radius: 4px;">/brain-start</code>.</div>
+      </div>
 
       <hr class="divider" />
 
@@ -354,15 +469,31 @@
       <div class="steps">
         <div class="step-row">
           <div class="step-num">1</div>
-          <div class="step-text">After install completes, open Claude Code in the same folder: <code>claude</code></div>
+          <div class="step-text">Type <code>/brain-start</code> and press Enter — the workshop begins and shows you what you're about to build.</div>
         </div>
+      </div>
+
+      <div class="screenshot">
+        <img src="assets/brain-workshop-setup/04-brain-start.png" alt="Claude Code showing the brain-start welcome screen with the four files you'll end up with and the order to run commands in" loading="lazy" />
+        <div class="screenshot-caption"><code style="font-family: var(--font-mono); background: var(--accent-dim); color: var(--accent); padding: 1px 6px; border-radius: 4px;">/brain-start</code> shows you what you're building and the order to run things: <code style="font-family: var(--font-mono); background: var(--accent-dim); color: var(--accent); padding: 1px 6px; border-radius: 4px;">/brain-setup</code> → <code style="font-family: var(--font-mono); background: var(--accent-dim); color: var(--accent); padding: 1px 6px; border-radius: 4px;">/brain-prompts</code> → <code style="font-family: var(--font-mono); background: var(--accent-dim); color: var(--accent); padding: 1px 6px; border-radius: 4px;">/brain-test</code>.</div>
+      </div>
+
+      <div class="steps" style="margin-bottom: 20px;">
         <div class="step-row">
           <div class="step-num">2</div>
-          <div class="step-text">Type <code>/brain-start</code> — the workshop begins and walks you through every step.</div>
+          <div class="step-text">Type <code>/brain-setup</code> and press Enter, then just answer each question in plain language — no templates, nothing to fill in yourself.</div>
         </div>
+      </div>
+
+      <div class="screenshot">
+        <img src="assets/brain-workshop-setup/05-brain-setup-live.png" alt="Claude Code running brain-setup and asking plain-language questions about the business, one at a time" loading="lazy" />
+        <div class="screenshot-caption"><code style="font-family: var(--font-mono); background: var(--accent-dim); color: var(--accent); padding: 1px 6px; border-radius: 4px;">/brain-setup</code> asks one question at a time and reacts to what you type — this is the real thing, not a mockup.</div>
+      </div>
+
+      <div class="steps">
         <div class="step-row">
           <div class="step-num">3</div>
-          <div class="step-text">Follow the prompts. The workshop takes about 30 minutes. Your Business Brain is ready when you finish.</div>
+          <div class="step-text">Keep following the prompts through <code>/brain-prompts</code> and <code>/brain-test</code>. About 30 minutes total, start to finish. Your Business Brain is ready when you're done.</div>
         </div>
       </div>
 
@@ -401,8 +532,78 @@
       </div>
     </div>
 
+    <!-- WHAT YOU'LL BUILD -->
+    <div class="install-card">
+      <h2>What You'll Have When You're Done</h2>
+      <p>Five files, built once, working every session after. This is exactly what lands in your folder.</p>
+
+      <div class="terminal" style="margin-bottom: 20px;">
+        <div class="terminal-bar">
+          <span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span>
+          <span class="t-label">your-folder</span>
+        </div>
+        <div style="padding: 16px 18px; font-family: var(--font-mono); font-size: 12.5px; color: var(--accent); line-height: 1.9; white-space: pre; overflow-x: auto;">your-folder/
+├── CLAUDE.md
+└── business-brain/
+    ├── my-business-brain.md
+    ├── my-brand-kit.md
+    ├── my-prompts.md
+    └── workflow-map.md</div>
+      </div>
+
+      <div class="commands-list" style="margin-bottom: 24px;">
+        <div class="cmd-row">
+          <span class="cmd-name" style="min-width: 180px;">CLAUDE.md</span>
+          <span class="cmd-desc">Auto-loaded every session — who you are, your rules, your voice, your current goals</span>
+        </div>
+        <div class="cmd-row">
+          <span class="cmd-name" style="min-width: 180px;">my-business-brain.md</span>
+          <span class="cmd-desc">The full write-up — offers, ideal clients, objections, brand, operations, goals</span>
+        </div>
+        <div class="cmd-row">
+          <span class="cmd-name" style="min-width: 180px;">my-brand-kit.md</span>
+          <span class="cmd-desc">Colors, fonts, logo status — quick reference for any design work</span>
+        </div>
+        <div class="cmd-row">
+          <span class="cmd-name" style="min-width: 180px;">my-prompts.md</span>
+          <span class="cmd-desc">10 ready-to-use prompts, pre-filled with your real voice and rules</span>
+        </div>
+        <div class="cmd-row">
+          <span class="cmd-name" style="min-width: 180px;">workflow-map.md</span>
+          <span class="cmd-desc">"When this happens → use this prompt," so you always know what to run</span>
+        </div>
+      </div>
+
+      <p style="font-size: 13.5px; color: var(--muted); line-height: 1.6; margin-bottom: 12px;">A peek inside <code style="font-family: var(--font-mono); background: var(--accent-dim); color: var(--accent); padding: 1px 6px; border-radius: 4px;">CLAUDE.md</code> — the file Claude reads automatically, every time you open this folder:</p>
+
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span>
+          <span class="t-label">CLAUDE.md</span>
+        </div>
+        <div style="padding: 16px 18px; font-family: var(--font-mono); font-size: 11.5px; color: #cfe8da; line-height: 1.75; white-space: pre-wrap; overflow-x: auto;"># [Your Business] — Business Brain
+
+## Who I Am
+[Your name], [your role] at [your business]...
+
+## My Offers
+[Your services — what you sell, what makes the most money]...
+
+## My Voice
+[How you sound — phrases you use, phrases you never say]
+
+## My Rules for Claude
+- Label every draft: [DRAFT — REVIEW BEFORE SENDING]
+- Never promise outcomes or results — flag anything uncertain instead
+- Write in my voice, not generic AI language
+
+## My Focus Right Now
+[Your current goal — update this as your business changes]</div>
+      </div>
+    </div>
+
     <div class="disclaimer">
-      This is a self-guided digital workshop. It installs 7 slash commands that run inside Claude Code (free from Anthropic). You'll need a Claude account to use them — Claude Code is free to download at claude.ai/code. All sales are final.
+      This is a self-guided digital workshop. It installs 7 slash commands that run inside Claude Code (free from Anthropic). You'll need a Claude account to use them — Claude Code is free to <a href="https://claude.ai/referral/3Xf9GS_m6g" target="_blank" rel="noopener">download here</a> (includes a free week of Claude Pro). All sales are final.
     </div>
 
     <div class="footer-note">

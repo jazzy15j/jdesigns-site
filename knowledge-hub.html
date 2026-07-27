@@ -47,7 +47,10 @@
     font-family:Georgia,'Times New Roman',serif;
     font-size:12px; letter-spacing:.14em; text-transform:uppercase;
     color:var(--muted);
+    text-decoration:none;
+    transition:color .15s;
   }
+  .wordmark:hover { color:var(--label); }
   .wordmark .star { color:var(--green); }
   .header-right { display:flex; align-items:center; gap:18px; }
   .header-sub { font-size:11px; color:var(--muted); opacity:.5; }
@@ -113,12 +116,29 @@
     padding:0; overflow:hidden; clip:rect(0,0,0,0); border:0;
   }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1748369839650273');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 <h2 class="sr-only">JDesigns Strategist Knowledge Hub — interactive knowledge graph for Meta advertising, Meta Business access, marketing systems, services and products</h2>
 
 <header>
-  <div class="wordmark"><span class="star">✦</span> JDESIGNS STRATEGIST</div>
+  <a href="https://jdesigns.info/" class="wordmark"><span class="star">✦</span> JDESIGNS STRATEGIST</a>
   <div class="header-right">
     <div class="header-sub">Knowledge Hub &nbsp;·&nbsp; Click any node to open</div>
     <a href="https://jdesigns.fillout.com/areweamatch" target="_blank" class="header-cta">Work with Jasmine →</a>
@@ -197,6 +217,14 @@ const nodes = [
     desc:'Never scale more than 20–30% at once. Large jumps trigger behavioral flags and account restrictions.',
     url:'', slug:'meta-ads-budget-scaling-safely' },
 
+  { id:'pixnotrack', label:'Pixel Not Actually Tracking', cat:'meta-ads', hub:0,
+    desc:"Installed and working are two different jobs. The 4-step test to tell which one you have.",
+    url:'', slug:'meta-pixel-installed-but-not-tracking' },
+
+  { id:'protectspend', label:'Protect Your Ad Spend', cat:'meta-ads',  hub:0,
+    desc:"Meta's refund policy doesn't cover user error. The checklist to run before anyone else gets account access.",
+    url:'', slug:'protect-your-ad-spend-before-sharing-access' },
+
   { id:'funnel',    label:'TOF / MOF / BOF',        cat:'meta-ads',    hub:0,
     desc:"Cold → Warm → Hot. You can't run conversion ads to cold traffic on Day 1.",
     url:'', slug:'meta-ads-funnel-strategy' },
@@ -234,6 +262,14 @@ const nodes = [
     desc:'Required for ALL active ad accounts in 2026. Causing mass unexpected restrictions.',
     url:'', slug:'meta-business-verification-required-2026' },
 
+  { id:'igdiscon',  label:'IG Keeps Disconnecting', cat:'meta-repair', hub:0,
+    desc:"It worked fine, then it didn't. The routine token cycle behind the 'Review Connection' notice.",
+    url:'', slug:'instagram-keeps-disconnecting-meta-business-suite' },
+
+  { id:'restlayers', label:'Restriction Layers',    cat:'meta-repair', hub:0,
+    desc:'Restrictions can hit 5 separate layers. A "restored" email often only covers one of them.',
+    url:'', slug:'meta-restriction-layers-explained' },
+
   // ── SOCIAL MEDIA ──────────────────────────────────────────────
   { id:'soc-hub',   label:'Social Media Strategy', cat:'social',      hub:1,
     desc:'Organic content strategy, Instagram algorithm, and content planning for small businesses.',
@@ -258,6 +294,14 @@ const nodes = [
   { id:'canvavs',   label:'Canva vs. Strategist',  cat:'social',      hub:0,
     desc:"Canva Grow 2.0 pushes ads to Meta — but doesn't do pixel setup, audiences, or optimization.",
     url:'', slug:'canva-grow-vs-meta-ads-strategist' },
+
+  { id:'datapersuade', label:'Data Alone Doesn\'t Persuade', cat:'social', hub:0,
+    desc:'A real post proves its own ROI with sourced data and still reads flat. The psychology gap, and two rewrites.',
+    url:'', slug:'why-true-data-still-fails-to-persuade' },
+
+  { id:'ragebait', label:'Why Rage Bait Works', cat:'social', hub:0,
+    desc:"Oxford's 2025 Word of the Year, decoded. The psychology behind it, and how to use the same hook honestly.",
+    url:'', slug:'why-rage-bait-content-works' },
 
   // ── AI TOOLS ──────────────────────────────────────────────────
   { id:'ai-hub',    label:'Business Systems',       cat:'ai',         hub:1,
@@ -305,6 +349,10 @@ const nodes = [
     desc:'$195 — campaign review, performance analysis, and a written optimization plan.',
     url:'https://www.fiverr.com/jazz96designs/create-facebook-and-instagram-ad', slug:'' },
 
+  { id:'strengths', label:'Why I Don\'t Soften Feedback', cat:'services', hub:0,
+    desc:"Direct, no-hedging reviews aren't a style choice — they're a measurable strengths profile. What it means for clients.",
+    url:'', slug:'why-i-dont-soften-the-feedback' },
+
   // ── SELF-SERVE PRODUCTS ───────────────────────────────────────
   { id:'pr-hub',    label:'Self-Serve Products',    cat:'products',   hub:1,
     desc:'Fix it yourself — free and paid resources, no Jasmine time required.',
@@ -330,19 +378,21 @@ const links = [
   // Meta Ads spokes
   {s:'ma-hub',t:'adv-plus'},{s:'ma-hub',t:'creative'},{s:'ma-hub',t:'ai-disc'},
   {s:'ma-hub',t:'pixel'},{s:'ma-hub',t:'budget'},{s:'ma-hub',t:'funnel'},
+  {s:'ma-hub',t:'pixnotrack'},{s:'ma-hub',t:'protectspend'},
   // Meta Repair spokes
   {s:'mr-hub',t:'behav'},{s:'mr-hub',t:'appeal'},{s:'mr-hub',t:'bpsetup'},
   {s:'mr-hub',t:'mverif'},{s:'mr-hub',t:'agency'},{s:'mr-hub',t:'igconn'},
-  {s:'mr-hub',t:'bizver'},
+  {s:'mr-hub',t:'bizver'},{s:'mr-hub',t:'igdiscon'},{s:'mr-hub',t:'restlayers'},
   // Social spokes
   {s:'soc-hub',t:'igalgo'},{s:'soc-hub',t:'treel'},{s:'soc-hub',t:'caro'},
-  {s:'soc-hub',t:'pillars'},{s:'soc-hub',t:'canvavs'},
+  {s:'soc-hub',t:'pillars'},{s:'soc-hub',t:'canvavs'},{s:'soc-hub',t:'datapersuade'},
+  {s:'soc-hub',t:'ragebait'},
   // AI spokes
   {s:'ai-hub',t:'brain'},{s:'ai-hub',t:'cmdpack'},{s:'ai-hub',t:'canvai'},
   {s:'ai-hub',t:'ccrepo'},
   // Services spokes
   {s:'sv-hub',t:'adssvc'},{s:'sv-hub',t:'ecosys'},{s:'sv-hub',t:'accrev'},
-  {s:'sv-hub',t:'content'},{s:'sv-hub',t:'audit'},
+  {s:'sv-hub',t:'content'},{s:'sv-hub',t:'audit'},{s:'sv-hub',t:'strengths'},
   // Products spokes
   {s:'pr-hub',t:'vault'},{s:'pr-hub',t:'freebie'},{s:'pr-hub',t:'workshop'},
   {s:'pr-hub',t:'cmdpack'},
@@ -358,6 +408,8 @@ const links = [
   {s:'ai-disc',  t:'audit',    x:1},{s:'soc-hub',  t:'content', x:1},
   {s:'brain',    t:'sv-hub',   x:1},{s:'ai-hub',   t:'pr-hub',  x:1},
   {s:'mverif',   t:'accrev',   x:1},
+  {s:'pixnotrack', t:'pixel',   x:1},{s:'protectspend', t:'budget', x:1},
+  {s:'restlayers', t:'behav',   x:1},{s:'strengths', t:'ecosys',   x:1},
 ];
 
 // ─────────────────────────────────────────────────────────────────

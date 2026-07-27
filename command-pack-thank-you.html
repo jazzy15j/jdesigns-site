@@ -193,6 +193,48 @@
       margin: 24px 0;
     }
 
+    /* ── STEPS ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .step-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border-muted);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .step-text {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .step-text code {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--accent);
+    }
+
     /* ── COMMANDS LIST ── */
     .commands-list {
       display: flex;
@@ -256,6 +298,23 @@
   </style>
   <link rel="canonical" href="https://jdesigns.info/command-pack-thank-you"/>
   <meta name="robots" content="noindex, nofollow"/>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1748369839650273');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
   <div class="page">
@@ -271,6 +330,53 @@
       </div>
       <h1>Thank you for purchasing the Business Brain Command Pack.</h1>
       <p>Your 6 commands are ready to install below. Run one command in your terminal and everything drops into place automatically — no zip file, no manual setup.</p>
+    </div>
+
+    <!-- GET CLAUDE CODE FIRST -->
+    <div class="install-card">
+      <h2>New to Claude Code? Start Here</h2>
+      <p>Claude Code is the free tool from Anthropic that runs these commands. Already have it installed and your Business Brain built? Skip to "Install Your Commands" below.</p>
+
+      <div class="steps" style="margin-bottom: 20px;">
+        <div class="step-row">
+          <div class="step-num">1</div>
+          <div class="step-text">Get a free Claude account — <a href="https://claude.ai/referral/3Xf9GS_m6g" target="_blank" rel="noopener" style="color: var(--accent);">sign up here</a> (includes a free week of Claude Pro).</div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">2</div>
+          <div class="step-text">Open Terminal (Mac) or PowerShell (Windows) and paste the command for your system below, then press Enter. <strong style="color: var(--text);">It can sit with no text on screen for 10–30 seconds before anything prints — that's normal, it's downloading in the background. Don't retype or close the window, just wait.</strong></div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">3</div>
+          <div class="step-text">Check it worked: type <code>claude --version</code> and press Enter — you should see a version number print.</div>
+        </div>
+      </div>
+
+      <div class="os-label">Mac / Linux</div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span>
+          <span class="t-label">Terminal</span>
+        </div>
+        <div class="terminal-body">
+          <span class="terminal-cmd" id="cc-mac-cmd">curl -fsSL https://claude.ai/install.sh | bash</span>
+          <button class="copy-btn" onclick="copyCmd('cc-mac-cmd', this)">Copy</button>
+        </div>
+      </div>
+
+      <div class="os-label">Windows (PowerShell)</div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span>
+          <span class="t-label">PowerShell</span>
+        </div>
+        <div class="terminal-body">
+          <span class="terminal-cmd" id="cc-win-cmd">irm https://claude.ai/install.ps1 | iex</span>
+          <button class="copy-btn" onclick="copyCmd('cc-win-cmd', this)">Copy</button>
+        </div>
+      </div>
+      <p class="install-note">Claude Code itself is free to install. Using it requires a Claude Pro, Max, Team, Enterprise, or Console account — the sign-up link above gets you a free week of Pro to try it. You'll also need your Business Brain files (<code>CLAUDE.md</code>, <code>my-business-brain.md</code>) already built — the commands read from those.</p>
+      <p class="install-note">Still nothing after a minute, or an error appears? You're likely on a network that blocks the download — try <code>npm install -g @anthropic-ai/claude-code</code> instead (requires <a href="https://nodejs.org" target="_blank" rel="noopener" style="color: var(--accent);">Node.js</a>), or see <a href="https://code.claude.com/docs" target="_blank" rel="noopener" style="color: var(--accent);">code.claude.com/docs</a>.</p>
     </div>
 
     <!-- INSTALL -->
