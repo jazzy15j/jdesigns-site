@@ -353,6 +353,18 @@ const nodes = [
     desc:"Direct, no-hedging reviews aren't a style choice — they're a measurable strengths profile. What it means for clients.",
     url:'', slug:'why-i-dont-soften-the-feedback' },
 
+  { id:'mktbudget', label:'Budget by Revenue Tier', cat:'services', hub:0,
+    desc:'SBA-sourced: what marketing actually costs as a % of revenue at $100K vs. $500K a year — no billion-dollar case studies.',
+    url:'', slug:'marketing-budget-by-revenue-tier' },
+
+  { id:'hirestrat', label:'Strategist vs. Running a Business', cat:'services', hub:0,
+    desc:"A strategist gets you visibility and structure — not product-market fit, margins, or fulfillment. Where the line actually is.",
+    url:'', slug:'hiring-a-strategist-vs-running-a-business' },
+
+  { id:'nikescale', label:"Why One Order Won't Get Nike's Results", cat:'services', hub:0,
+    desc:'Nike spends $4.7B/year — same 7–10%-of-revenue rule, wildly bigger base. What one order can realistically do.',
+    url:'', slug:'nike-scale-small-business-expectations' },
+
   // ── SELF-SERVE PRODUCTS ───────────────────────────────────────
   { id:'pr-hub',    label:'Self-Serve Products',    cat:'products',   hub:1,
     desc:'Fix it yourself — free and paid resources, no Jasmine time required.',
@@ -393,6 +405,7 @@ const links = [
   // Services spokes
   {s:'sv-hub',t:'adssvc'},{s:'sv-hub',t:'ecosys'},{s:'sv-hub',t:'accrev'},
   {s:'sv-hub',t:'content'},{s:'sv-hub',t:'audit'},{s:'sv-hub',t:'strengths'},
+  {s:'sv-hub',t:'mktbudget'},{s:'sv-hub',t:'hirestrat'},{s:'sv-hub',t:'nikescale'},
   // Products spokes
   {s:'pr-hub',t:'vault'},{s:'pr-hub',t:'freebie'},{s:'pr-hub',t:'workshop'},
   {s:'pr-hub',t:'cmdpack'},
@@ -410,6 +423,8 @@ const links = [
   {s:'mverif',   t:'accrev',   x:1},
   {s:'pixnotrack', t:'pixel',   x:1},{s:'protectspend', t:'budget', x:1},
   {s:'restlayers', t:'behav',   x:1},{s:'strengths', t:'ecosys',   x:1},
+  {s:'nikescale',  t:'adssvc',  x:1},{s:'hirestrat', t:'strengths', x:1},
+  {s:'mktbudget',  t:'nikescale', x:1},
 ];
 
 // ─────────────────────────────────────────────────────────────────
