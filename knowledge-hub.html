@@ -515,8 +515,8 @@ const link = container.append('g').selectAll('line').data(linkData).join('line')
     const s = nodeById[d.source.id || d.source];
     return s ? CATS[s.cat].color : '#1e3225';
   })
-  .attr('stroke-opacity', d => d.cross ? 0.08 : 0.18)
-  .attr('stroke-width', d => d.cross ? 0.75 : 1)
+  .attr('stroke-opacity', d => d.cross ? 0.32 : 0.55)
+  .attr('stroke-width', d => d.cross ? 1 : 1.4)
   .attr('stroke-dasharray', d => d.cross ? '4,6' : null);
 
 // ── NODES ────────────────────────────────────────────────────────
