@@ -68,17 +68,37 @@
     border:1px solid var(--border); border-radius:11px;
     padding:13px 15px;
     backdrop-filter:blur(12px);
+    max-width:min(220px, 55vw);
   }
   .legend h3 {
     font-size:9px; text-transform:uppercase;
     letter-spacing:.12em; color:var(--muted); margin-bottom:9px;
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
   }
+  .legend-toggle { display:none; }
   .leg-item {
     display:flex; align-items:center; gap:8px;
     padding:3px 0; cursor:pointer;
   }
   .leg-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
   .leg-label { font-size:11px; color:var(--label); }
+
+  /* MOBILE — keep header on one line, shrink and auto-collapse legend
+     so it doesn't cover most of the graph on narrow screens */
+  @media (max-width: 560px) {
+    header { padding:9px 14px; }
+    .wordmark { font-size:9.5px; letter-spacing:.08em; white-space:nowrap; }
+    .header-sub { display:none; }
+    .header-cta { font-size:10px; padding:4px 10px; white-space:nowrap; }
+    .legend { top:52px; right:10px; padding:9px 11px; max-width:44vw; }
+    .legend h3 { margin-bottom:0; }
+    .legend.collapsed h3 { margin-bottom:0; }
+    .legend .legend-toggle { display:inline; color:var(--green); font-size:11px; }
+    .legend.collapsed .leg-item { display:none; }
+    .legend:not(.collapsed) h3 { margin-bottom:9px; }
+    .leg-dot { width:7px; height:7px; }
+    .leg-label { font-size:10px; }
+  }
 
   /* TOOLTIP — Obsidian peek style */
   .tt {
@@ -451,12 +471,22 @@ function resolveUrl(d) {
 // ─────────────────────────────────────────────────────────────────
 //  LEGEND
 // ─────────────────────────────────────────────────────────────────
-document.getElementById('legend').innerHTML =
-  '<h3>Topics</h3>' +
+const legendEl = document.getElementById('legend');
+legendEl.innerHTML =
+  '<h3>Topics <span class="legend-toggle">▸</span></h3>' +
   Object.entries(CATS).map(([k,v]) =>
     `<div class="leg-item"><div class="leg-dot" style="background:${v.color}"></div>
      <div class="leg-label">${v.label}</div></div>`
   ).join('');
+
+// On narrow screens the legend covers too much of the graph — start
+// collapsed to just the "Topics" label, tap to expand.
+if (window.innerWidth <= 560) legendEl.classList.add('collapsed');
+legendEl.querySelector('h3').addEventListener('click', () => {
+  legendEl.classList.toggle('collapsed');
+  const arrow = legendEl.querySelector('.legend-toggle');
+  if (arrow) arrow.textContent = legendEl.classList.contains('collapsed') ? '▸' : '▾';
+});
 
 // ─────────────────────────────────────────────────────────────────
 //  D3 GRAPH
@@ -633,8 +663,23 @@ node
     setTimeout(() => document.body.removeChild(a), 0);
   });
 
+// ── BOUNDS ───────────────────────────────────────────────────────
+// The fixed header always paints over the canvas (z-index above it), so
+// any node placed underneath it is permanently invisible and unclickable
+// — unlike the rest of the canvas, panning can't reveal it. Only guard
+// that one edge; let nodes spread naturally everywhere else (drag/zoom
+// is how you reach anything off the initial view, same as desktop).
+const headerEl = document.querySelector('header');
+function topSafe() { return headerEl.offsetHeight + 16; }
+function clampNode(d) {
+  const r = (d.hub ? 22 : 14);
+  const minY = topSafe() + r;
+  if (d.y < minY) d.y = minY;
+}
+
 // ── TICK ─────────────────────────────────────────────────────────
 sim.on('tick', () => {
+  nodes.forEach(clampNode);
   link
     .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
     .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
