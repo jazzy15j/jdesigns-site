@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>LinkedIn — Why I Don't Soften the Feedback</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #07100a; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+
+  .frame {
+    width: 1080px;
+    height: 1080px;
+    background: #07100a;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 68px 70px 140px;
+  }
+  .frame::before {
+    content: "";
+    position: absolute;
+    inset: 36px;
+    border: 1px solid rgba(46,194,126,.2);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .green   { color: #2ec27e; }
+  .sage    { color: #c4dccb; }
+  .muted   { color: #8aab96; }
+
+  .foot {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: #0d1a10;
+    padding: 28px 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(46,194,126,.18);
+  }
+  .foot-left {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: #c4dccb;
+    line-height: 1.25;
+    max-width: 700px;
+  }
+  .foot-brand {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 22px;
+    color: #2ec27e;
+    white-space: nowrap;
+  }
+
+  .kicker {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #2ec27e;
+  }
+
+  .top { margin-bottom: 44px; }
+  .top h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.12;
+    color: #fff;
+    margin-top: 18px;
+    max-width: 900px;
+  }
+  .top h1 em { color: #2ec27e; font-style: italic; }
+
+  .ranked-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+    border: 1px solid rgba(46,194,126,.2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .rank-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 22px 34px;
+    border-bottom: 1px solid rgba(46,194,126,.12);
+  }
+  .rank-row:last-child { border-bottom: none; }
+  .rank-row:nth-child(odd)  { background: rgba(13,26,16,.6); }
+  .rank-row:nth-child(even) { background: transparent; }
+  .rank-row.r1 { background: #0d1a10; border-bottom: 1px solid rgba(46,194,126,.3); }
+
+  .rank-num {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: rgba(255,255,255,.14);
+    width: 56px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .rank-row.r1 .rank-num { color: #2ec27e; }
+
+  .rank-name {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 32px;
+    color: #fff;
+    font-weight: 700;
+    min-width: 300px;
+  }
+  .rank-desc {
+    font-size: 23px;
+    color: #8aab96;
+    font-style: italic;
+    line-height: 1.3;
+  }
+</style>
+</head>
+<body>
+
+<article class="frame">
+  <div class="top">
+    <div class="kicker">✦ Strengths Profile</div>
+    <h1>Almost every client says the same thing after their first review: <em>"You just told me straight."</em></h1>
+  </div>
+
+  <div class="ranked-list">
+    <div class="rank-row r1">
+      <div class="rank-num">1</div>
+      <div class="rank-name">Command</div>
+      <div class="rank-desc">Takes charge when things are unclear. Tells you what's wrong, not just that something is.</div>
+    </div>
+    <div class="rank-row">
+      <div class="rank-num">2</div>
+      <div class="rank-name">Strategic</div>
+      <div class="rank-desc">Spots the real pattern fast. Skips the theory, goes straight to what matters.</div>
+    </div>
+    <div class="rank-row">
+      <div class="rank-num">3</div>
+      <div class="rank-name">Arranger</div>
+      <div class="rank-desc">Organizes chaos into a system that runs without hand-holding.</div>
+    </div>
+    <div class="rank-row">
+      <div class="rank-num">4</div>
+      <div class="rank-name">Self-Assurance</div>
+      <div class="rank-desc">Doesn't need your buy-in first to give you the straight answer.</div>
+    </div>
+    <div class="rank-row">
+      <div class="rank-num">5</div>
+      <div class="rank-name">Discipline</div>
+      <div class="rank-desc">Follows through. Every review comes back with what's wrong and what to do next.</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">Decisiveness isn't a lack of empathy. It's the fastest way to get you an answer you can actually use.</div>
+    <div class="foot-brand">✦ JDesigns Strategist</div>
+  </div>
+</article>
+
+</body>
+</html>

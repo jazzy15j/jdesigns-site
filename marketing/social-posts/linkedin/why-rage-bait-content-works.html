@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>LinkedIn — Why Rage Bait Content Works</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #07100a; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+
+  .frame {
+    width: 1080px;
+    height: 1080px;
+    background: #07100a;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 68px 70px 140px;
+  }
+  .frame::before {
+    content: "";
+    position: absolute;
+    inset: 36px;
+    border: 1px solid rgba(46,194,126,.2);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .foot {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: #0d1a10;
+    padding: 28px 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(46,194,126,.18);
+  }
+  .foot-left {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: #c4dccb;
+    line-height: 1.25;
+    max-width: 700px;
+  }
+  .foot-brand {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 22px;
+    color: #2ec27e;
+    white-space: nowrap;
+  }
+
+  .kicker {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #2ec27e;
+  }
+
+  .top { margin-bottom: 46px; }
+  .top h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.1;
+    margin-top: 18px;
+    max-width: 900px;
+  }
+  .top h1 em { color: #2ec27e; font-style: italic; }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+    position: relative;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 36px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #2ec27e, rgba(46,194,126,.15));
+  }
+
+  .node {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(46,194,126,.12);
+    position: relative;
+  }
+  .node:last-child { border-bottom: none; }
+
+  .dot {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 800;
+    font-size: 22px;
+    position: relative;
+    z-index: 1;
+  }
+  .dot-start { background: #2ec27e; color: #07100a; }
+  .dot-bad   { background: #1a0a0a; border: 2px solid #8a3a3a; color: #c47c7c; font-size: 26px; }
+  .dot-fix   { background: #0d1a10; border: 2px solid #2ec27e; color: #2ec27e; font-size: 24px; }
+
+  .node-text { padding-top: 10px; }
+  .node-label {
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .node-label.start { color: #8aab96; }
+  .node-label.bad   { color: #c47c7c; }
+  .node-label.fix   { color: #2ec27e; }
+
+  .node-main {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 34px;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  .node:nth-child(1) .node-main { color: #c4dccb; }
+  .node:nth-child(2) .node-main { color: #fff; font-weight: 700; }
+  .node:nth-child(3) .node-main { color: #2ec27e; }
+
+  .node-sub {
+    font-size: 24px;
+    color: #8aab96;
+    font-style: italic;
+    line-height: 1.3;
+  }
+</style>
+</head>
+<body>
+
+<article class="frame">
+  <div class="top">
+    <div class="kicker">✦ Content Psychology</div>
+    <h1>A cooking video with the "wrong" technique pulled 9 million views. <em>You weren't watching for the recipe.</em></h1>
+  </div>
+
+  <div class="timeline">
+    <div class="node">
+      <div class="dot dot-start">1</div>
+      <div class="node-text">
+        <div class="node-label start">You see it</div>
+        <div class="node-main">Someone confidently does something obviously wrong.</div>
+        <div class="node-sub">Cuts an avocado backwards. Cooks bacon in a pot of water.</div>
+      </div>
+    </div>
+    <div class="node">
+      <div class="dot dot-bad">✕</div>
+      <div class="node-text">
+        <div class="node-label bad">Your brain reacts</div>
+        <div class="node-main">Being told something is wrong creates tension you want to resolve immediately.</div>
+        <div class="node-sub">You don't sit with "that's incorrect" — you correct it, or prove yourself right.</div>
+      </div>
+    </div>
+    <div class="node">
+      <div class="dot dot-fix">✦</div>
+      <div class="node-text">
+        <div class="node-label fix">You comment</div>
+        <div class="node-main">Either way, you're typing.</div>
+        <div class="node-sub">Oxford named it 2025's Word of the Year: rage bait.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">The honest version works the same way — a real mistake, stated plainly, followed by the fix.</div>
+    <div class="foot-brand">✦ JDesigns Strategist</div>
+  </div>
+</article>
+
+</body>
+</html>

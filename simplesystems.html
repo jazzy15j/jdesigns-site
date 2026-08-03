@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Systems | JDesigns Strategist</title>
+  <meta name="description" content="Technology as a tool, not a replacement for thinking. How Jasmine at JDesigns Strategist helps curious, capable business owners build simple, usable systems."/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       rgba(30,50,37,0.7);
+      --border-green: rgba(46,194,126,.22);
+      --green:        #2ec27e;
+      --green-dim:    rgba(46,194,126,.08);
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --radius:       14px;
+      --font-serif:   Georgia, 'Times New Roman', serif;
+      --font-sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,16,10,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      position: relative;
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 5px 12px;
+      border-radius: 999px;
+      transition: color .15s, background .15s;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover { color: var(--text); background: var(--surface); }
+    .nav-link.active { color: var(--green); }
+
+    .nav-cta {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #07100a;
+      background: var(--green);
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: opacity .15s;
+      white-space: nowrap;
+    }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 16px; height: 1.5px;
+      background: var(--sage);
+      position: relative;
+    }
+    .nav-toggle span::before, .nav-toggle span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 16px; height: 1.5px;
+      background: var(--sage);
+    }
+    .nav-toggle span::before { top: -5px; }
+    .nav-toggle span::after { top: 5px; }
+    .nav-toggle:hover { border-color: var(--border-green); }
+
+    @media (max-width: 900px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 16px 16px;
+        box-shadow: 0 16px 32px rgba(0,0,0,.35);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links.open .nav-link, .nav-links.open .nav-cta {
+        width: 100%;
+        justify-content: space-between;
+        padding: 14px 14px;
+        border-radius: 10px;
+        font-size: 14px;
+      }
+      .nav-links.open .nav-link::after { content: '→'; opacity: .5; }
+    }
+
+    .nav-cta:hover { opacity: .85; }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 24px 88px;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .profile-avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--green);
+      flex-shrink: 0;
+    }
+
+    .profile-name {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .profile-handle {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .hero { margin-bottom: 44px; }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.65rem, 5vw, 2.15rem);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: 0;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--sage);
+      line-height: 1.7;
+      margin-bottom: 26px;
+      max-width: 580px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      transition: opacity .15s, transform .12s, border-color .15s, color .15s, background .15s;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #07100a;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      opacity: .88;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-green);
+      color: var(--muted);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--green);
+      color: var(--text);
+      background: var(--green-dim);
+    }
+
+    .section-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+      padding-left: 2px;
+    }
+
+    .body-copy {
+      font-size: 14.5px;
+      color: var(--sage);
+      line-height: 1.75;
+      margin-bottom: 44px;
+      max-width: 620px;
+    }
+
+    .body-copy p { margin-bottom: 14px; }
+    .body-copy p:last-child { margin-bottom: 0; }
+
+    .link-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 44px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: border-color .15s, transform .12s, box-shadow .15s;
+    }
+
+    .link-card:hover {
+      border-color: var(--border-green);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(46,194,126,.07);
+    }
+
+    .link-card-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: var(--green-dim);
+      border: 1px solid var(--border-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+    }
+
+    .link-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .link-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+
+    .link-card-desc {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .link-card-meta {
+      font-size: 11px;
+      color: var(--green);
+      margin-top: 4px;
+    }
+
+    .link-card-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .price-badge {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #07100a;
+      white-space: nowrap;
+    }
+
+    .arrow {
+      color: var(--muted);
+      font-size: 14px;
+      transition: color .15s, transform .15s;
+    }
+
+    .link-card:hover .arrow {
+      color: var(--green);
+      transform: translateX(3px);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    .note-block {
+      background: rgba(46,194,126,.06);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    .note-block h3 {
+      font-size: 12px;
+      color: var(--green);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .note-block p {
+      font-size: 13px;
+      color: var(--sage);
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .note-block p:last-child { margin-bottom: 0; }
+
+    .note-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+
+    @media (max-width: 620px) {
+      .note-grid { grid-template-columns: 1fr; }
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-left,
+    .footer-link {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-link:hover { color: var(--green); }
+
+    @media (max-width: 420px) {
+      .page { padding: 40px 16px 64px; }
+      .hero h1 { font-size: 1.5rem; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .link-card { padding: 16px; }
+      .link-card-icon { width: 40px; height: 40px; }
+      .footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1748369839650273');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">✦ JDesigns Strategist</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Resources</a>
+        <a href="meta-ads-case-studies.html" class="nav-link">Meta Ads Results</a>
+        <a href="pinterest-case-studies.html" class="nav-link">Pinterest Results</a>
+        <a href="work-with-me.html" class="nav-link">Work With Me</a>
+        <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+      </button>
+    </div>
+  </nav>
+  <script>
+    (function () {
+      var btn = document.getElementById('navToggle');
+      var links = document.getElementById('navLinks');
+      btn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { links.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); });
+      });
+    })();
+  </script>
+
+  <main class="page">
+    <div class="profile-header">
+      <img src="assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
+      <div>
+        <div class="profile-name">Jasmine</div>
+        <div class="profile-handle">@jdesigns.info</div>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-eyebrow">Simple Systems</div>
+      <h1>Technology as a tool, not a replacement for thinking.</h1>
+      <p class="hero-sub">AI, agents, and automation don't magically solve business problems — most people are being sold unrealistic expectations. Real value comes from learning how to think, organize information, build workflows, and use technology intentionally. That's what Simple Systems is: not a product, a way of working.</p>
+      <div class="hero-ctas">
+        <a href="systemize-your-business.html" class="btn-primary">See Systemize Your Business →</a>
+        <a href="#practice" class="btn-secondary">What this looks like</a>
+      </div>
+    </section>
+
+    <div class="section-label" id="practice">What Simple Systems means in practice</div>
+    <div class="body-copy">
+      <p>Jasmine's role isn't to save your business, be your tech support, or be the smartest person in the room. It's to help curious, capable people use modern technology more effectively — organizing information, identifying bottlenecks, building repeatable workflows, and simplifying what's actually complicated.</p>
+      <p>The AI Command Center that runs this entire business — client replies, delivery, memory, revenue tracking — is proof this works, not a theoretical demo. It was built because Jasmine needed it, and it's the same structure behind <a href="systemize-your-business.html" style="color:var(--green);">Systemize Your Business</a>: one organized reference for Claude, built once and reused, instead of re-explaining your business every time.</p>
+    </div>
+
+    <div class="note-grid">
+      <div class="note-block">
+        <h3>Good fit</h3>
+        <p>Curious, capable, and proactive. You like learning, you're willing to experiment, and you're looking for leverage — not a shortcut.</p>
+      </div>
+      <div class="note-block">
+        <h3>Not a fit</h3>
+        <p>Looking for a magic AI fix, unwilling to learn or experiment, or expecting someone else to do all the thinking for you.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-label">Put it to work</div>
+    <div class="link-stack">
+      <a href="systemize-your-business.html" class="link-card">
+        <div class="link-card-icon">🧠</div>
+        <div class="link-card-body">
+          <div class="link-card-title">Systemize Your Business</div>
+          <div class="link-card-desc">One organized reference for Claude. Stop re-explaining yourself.</div>
+          <div class="link-card-meta">Best for: service providers using Claude · Requires Claude Code (free)</div>
+        </div>
+        <div class="link-card-right">
+          <span class="price-badge">$95</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="systemized.html" class="link-card">
+        <div class="link-card-icon">⚡</div>
+        <div class="link-card-body">
+          <div class="link-card-title">Systemized</div>
+          <div class="link-card-desc">6 slash commands for client replies, proposals, onboarding.</div>
+          <div class="link-card-meta">Best for: Systemize Your Business users ready to automate</div>
+        </div>
+        <div class="link-card-right">
+          <span class="price-badge">$47</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-left">✦ JDesigns Strategist LLC</div>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Resources</a>
+        <a href="https://www.fiverr.com/jazz96designs" class="footer-link" target="_blank" rel="noopener">Fiverr</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

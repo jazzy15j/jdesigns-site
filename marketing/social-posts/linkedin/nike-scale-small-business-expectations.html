@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>LinkedIn — Nike Doesn't Have 78,000 Marketers</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #07100a; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+
+  .frame {
+    width: 1080px;
+    height: 1080px;
+    background: #07100a;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 68px 70px 140px;
+  }
+  .frame::before {
+    content: "";
+    position: absolute;
+    inset: 36px;
+    border: 1px solid rgba(46,194,126,.2);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .foot {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: #0d1a10;
+    padding: 28px 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(46,194,126,.18);
+  }
+  .foot-left {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: #c4dccb;
+    line-height: 1.25;
+    max-width: 700px;
+  }
+  .foot-brand {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 22px;
+    color: #2ec27e;
+    white-space: nowrap;
+  }
+
+  .kicker {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #2ec27e;
+  }
+
+  .top { margin-bottom: 50px; }
+  .top h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.1;
+    margin-top: 18px;
+    max-width: 900px;
+  }
+  .top h1 em { color: #2ec27e; font-style: italic; }
+
+  .panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    flex: 1;
+  }
+  .panel {
+    border-radius: 4px;
+    padding: 40px 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .panel-left  { background: #0d1a10; border: 1px solid rgba(138,171,150,.3); }
+  .panel-right { background: #0a1a10; border: 1px solid rgba(46,194,126,.35); }
+
+  .panel-head {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(46,194,126,.15);
+  }
+  .panel-left  .panel-head { color: #8aab96; }
+  .panel-right .panel-head { color: #2ec27e; }
+
+  .panel-amount {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 84px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .panel-left  .panel-amount { color: #fff; }
+  .panel-right .panel-amount { color: #2ec27e; }
+
+  .panel-sub {
+    font-size: 25px;
+    line-height: 1.35;
+  }
+  .panel-left  .panel-sub { color: #8aab96; }
+  .panel-right .panel-sub { color: #c4dccb; }
+
+  .panel-verdict {
+    margin-top: auto;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 24px;
+    font-style: italic;
+    padding-top: 16px;
+    border-top: 1px solid rgba(46,194,126,.15);
+  }
+  .panel-left  .panel-verdict { color: #8aab96; }
+  .panel-right .panel-verdict { color: #2ec27e; }
+</style>
+</head>
+<body>
+
+<article class="frame">
+  <div class="top">
+    <div class="kicker">✦ Marketing Budgets</div>
+    <h1>Nike doesn't have 78,000 marketers. <em>The real number is 1,506.</em></h1>
+  </div>
+
+  <div class="panels">
+    <div class="panel panel-left">
+      <div class="panel-head">Nike — FY2026</div>
+      <div class="panel-amount">10%</div>
+      <div class="panel-sub">$4.754B marketing spend on $46.4B revenue. 1,506 people. That's the whole department.</div>
+      <div class="panel-verdict">Not a bigger machine. Just more zeros.</div>
+    </div>
+    <div class="panel panel-right">
+      <div class="panel-head">Small Business — SBA Guideline</div>
+      <div class="panel-amount">7–8%</div>
+      <div class="panel-sub">Recommended marketing spend for any business under $5M a year in revenue.</div>
+      <div class="panel-verdict">Same math. Same discipline. Different scale.</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">The gap between Nike and you isn't strategy. It's zeros.</div>
+    <div class="foot-brand">✦ JDesigns Strategist</div>
+  </div>
+</article>
+
+</body>
+</html>

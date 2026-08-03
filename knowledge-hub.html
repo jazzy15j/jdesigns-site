@@ -352,6 +352,10 @@ const nodes = [
     desc:'Start with the first missing layer, then add the next only after the audience and data exist.',
     url:'', slug:'strategic-client-growth-path' },
 
+  { id:'bigbrandai', label:'Big Brands Running AI Ads', cat:'ai', hub:0,
+    desc:'Tommy Hilfiger, Coca-Cola, H&M, Cadbury, Netflix — what\'s landing, what\'s backfiring, and the real lesson for a small budget.',
+    url:'', slug:'big-brands-ai-ads-2026' },
+
   { id:'ccrepo',    label:'Claude Code Repo $95',   cat:'ai',         hub:0,
     desc:'GitHub repo + guide to run a Claude AI system in your own service business.',
     url:'https://jdesignsinfo.gumroad.com', slug:'' },
@@ -422,7 +426,7 @@ const links = [
   // Meta Ads spokes
   {s:'ma-hub',t:'adv-plus'},{s:'ma-hub',t:'creative'},{s:'ma-hub',t:'ai-disc'},
   {s:'ma-hub',t:'pixel'},{s:'ma-hub',t:'budget'},{s:'ma-hub',t:'funnel'},
-  {s:'ma-hub',t:'pixnotrack'},{s:'ma-hub',t:'protectspend'},
+  {s:'ma-hub',t:'pixnotrack'},{s:'ma-hub',t:'protectspend'},{s:'ma-hub',t:'retarget'},
   // Meta Repair spokes
   {s:'mr-hub',t:'behav'},{s:'mr-hub',t:'appeal'},{s:'mr-hub',t:'bpsetup'},
   {s:'mr-hub',t:'mverif'},{s:'mr-hub',t:'agency'},{s:'mr-hub',t:'igconn'},
@@ -430,10 +434,10 @@ const links = [
   // Social spokes
   {s:'soc-hub',t:'igalgo'},{s:'soc-hub',t:'treel'},{s:'soc-hub',t:'caro'},
   {s:'soc-hub',t:'pillars'},{s:'soc-hub',t:'canvavs'},{s:'soc-hub',t:'datapersuade'},
-  {s:'soc-hub',t:'ragebait'},
+  {s:'soc-hub',t:'ragebait'},{s:'soc-hub',t:'pindecide'},
   // AI spokes
   {s:'ai-hub',t:'brain'},{s:'ai-hub',t:'cmdpack'},{s:'ai-hub',t:'canvai'},
-  {s:'ai-hub',t:'ccrepo'},
+  {s:'ai-hub',t:'ccrepo'},{s:'ai-hub',t:'growthpath'},{s:'ai-hub',t:'bigbrandai'},
   // Services spokes
   {s:'sv-hub',t:'adssvc'},{s:'sv-hub',t:'ecosys'},{s:'sv-hub',t:'accrev'},
   {s:'sv-hub',t:'content'},{s:'sv-hub',t:'audit'},{s:'sv-hub',t:'strengths'},
@@ -457,6 +461,7 @@ const links = [
   {s:'restlayers', t:'behav',   x:1},{s:'strengths', t:'ecosys',   x:1},
   {s:'nikescale',  t:'adssvc',  x:1},{s:'hirestrat', t:'strengths', x:1},
   {s:'mktbudget',  t:'nikescale', x:1},
+  {s:'bigbrandai', t:'canvai',    x:1},{s:'bigbrandai', t:'ai-disc',  x:1},
 ];
 
 // ─────────────────────────────────────────────────────────────────
@@ -550,14 +555,27 @@ const link = container.append('g').selectAll('line').data(linkData).join('line')
   .attr('stroke-dasharray', d => d.cross ? '4,6' : null);
 
 // ── NODES ────────────────────────────────────────────────────────
-// Track drag so we don't navigate when the user just moved a node
+// Track drag so we don't navigate when the user just moved a node.
+// Real pointer/touch input always has a little jitter even on a tap —
+// without a distance threshold, that jitter alone was enough to flag
+// _dragged and silently cancel the click, so most taps did nothing.
 let _dragged = false;
+let _dragStart = { x: 0, y: 0 };
+const DRAG_THRESHOLD = 5;
 
 const node = container.append('g').selectAll('g').data(nodes).join('g')
   .style('cursor', d => resolveUrl(d) ? 'pointer' : 'default')
   .call(d3.drag()
-    .on('start', (e,d) => { _dragged = false; if(!e.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
-    .on('drag',  (e,d) => { _dragged = true; d.fx=e.x; d.fy=e.y; })
+    .on('start', (e,d) => {
+      _dragged = false;
+      _dragStart = { x: e.x, y: e.y };
+      if(!e.active) sim.alphaTarget(0.3).restart();
+      d.fx=d.x; d.fy=d.y;
+    })
+    .on('drag',  (e,d) => {
+      if (Math.hypot(e.x - _dragStart.x, e.y - _dragStart.y) > DRAG_THRESHOLD) _dragged = true;
+      d.fx=e.x; d.fy=e.y;
+    })
     .on('end',   (e,d) => { if(!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null; })
   );
 
@@ -607,6 +625,16 @@ node.append('text')
   .attr('stroke', 'rgba(7,16,10,0.7)')
   .attr('stroke-width', 2.5)
   .text(d => d.label);
+
+// Invisible hit-target — the visible dot is only 5.5px (11px for hubs),
+// far smaller than a comfortable tap/click area, and labels have
+// pointer-events:none, so a hover/tap a few px off the dot hit nothing.
+// This sits on top and owns all pointer interaction instead.
+node.append('circle')
+  .attr('class', 'hit-target')
+  .attr('r', d => d.hub ? 26 : 18)
+  .attr('fill', 'transparent')
+  .style('pointer-events', 'all');
 
 // ── INTERACTIONS ─────────────────────────────────────────────────
 const tt     = document.getElementById('tt');

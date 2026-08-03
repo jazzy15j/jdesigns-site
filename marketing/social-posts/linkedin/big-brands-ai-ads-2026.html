@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>LinkedIn — Big Brands Are Already Running AI Ads</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #07100a; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+
+  .frame {
+    width: 1080px;
+    height: 1080px;
+    background: #07100a;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 68px 70px 140px;
+  }
+  .frame::before {
+    content: "";
+    position: absolute;
+    inset: 36px;
+    border: 1px solid rgba(46,194,126,.2);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .foot {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: #0d1a10;
+    padding: 26px 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(46,194,126,.18);
+  }
+  .foot-left {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 25px;
+    color: #c4dccb;
+    line-height: 1.25;
+    max-width: 700px;
+  }
+  .foot-brand {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 22px;
+    color: #2ec27e;
+    white-space: nowrap;
+  }
+
+  .kicker {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #2ec27e;
+  }
+
+  .top { margin-bottom: 40px; }
+  .top h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1.15;
+    margin-top: 18px;
+    max-width: 920px;
+  }
+  .top h1 em { color: #2ec27e; font-style: italic; }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    flex: 1;
+    border: 1px solid rgba(46,194,126,.22);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .col {
+    padding: 38px 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .col-left  { background: #0d1a10; border-right: 1px solid rgba(46,194,126,.22); }
+  .col-right { background: #091410; }
+
+  .col-head {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  .col-head.think { color: #c47c7c; }
+  .col-head.real  { color: #2ec27e; }
+
+  .col-main {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 30px;
+    line-height: 1.22;
+  }
+  .col-left  .col-main { color: #fff; font-weight: 700; }
+  .col-right .col-main { color: #fff; font-weight: 700; }
+
+  .col-sub {
+    font-size: 23px;
+    line-height: 1.35;
+  }
+  .col-left  .col-sub { color: #8aab96; }
+  .col-right .col-sub { color: #c4dccb; }
+
+  .verdict {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 24px;
+    font-style: italic;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid rgba(46,194,126,.22);
+  }
+  .verdict.bad { color: #c47c7c; }
+  .verdict.good { color: #2ec27e; }
+</style>
+</head>
+<body>
+
+<article class="frame">
+  <div class="top">
+    <div class="kicker">✦ AI In Advertising, 2026</div>
+    <h1>Coca-Cola's AI Christmas ad got called "soulless." Cadbury's AI campaign personalized ads for thousands of local shops. <em>Same technology. Opposite reception.</em></h1>
+  </div>
+
+  <div class="split">
+    <div class="col col-left">
+      <div class="col-head think">✕ Backfired</div>
+      <div class="col-main">Replaced the human, emotional core people already loved.</div>
+      <div class="col-sub">Coca-Cola's AI holiday ad — real boycott threats, two years running. Toys "R" Us — called "creepy," not magical.</div>
+      <div class="verdict bad">AI replacing feeling, not adding speed.</div>
+    </div>
+    <div class="col col-right">
+      <div class="col-head real">✦ Landed</div>
+      <div class="col-main">Used AI to do something only AI could do — at scale.</div>
+      <div class="col-sub">Cadbury personalized ads for thousands of local shops. H&amp;M cut reshoot costs while keeping real models' consent.</div>
+      <div class="verdict good">Speed and scale. Not a personality transplant.</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">AI works when it's a tool applied with intention. It backfires when it's used to skip the thinking.</div>
+    <div class="foot-brand">✦ JDesigns Strategist</div>
+  </div>
+</article>
+
+</body>
+</html>

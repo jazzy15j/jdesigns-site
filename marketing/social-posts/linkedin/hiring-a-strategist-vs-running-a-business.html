@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>LinkedIn — Why Businesses Actually Fail</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #07100a; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+
+  .frame {
+    width: 1080px;
+    height: 1080px;
+    background: #07100a;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 68px 70px 140px;
+  }
+  .frame::before {
+    content: "";
+    position: absolute;
+    inset: 36px;
+    border: 1px solid rgba(46,194,126,.2);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .foot {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: #0d1a10;
+    padding: 28px 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(46,194,126,.18);
+  }
+  .foot-left {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: #c4dccb;
+    line-height: 1.25;
+    max-width: 700px;
+  }
+  .foot-brand {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 22px;
+    color: #2ec27e;
+    white-space: nowrap;
+  }
+
+  .kicker {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #2ec27e;
+  }
+
+  .top { margin-bottom: 40px; }
+  .top h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.12;
+    margin-top: 18px;
+    max-width: 900px;
+  }
+  .top h1 em { color: #2ec27e; font-style: italic; }
+
+  .section-label {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #8aab96;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(46,194,126,.22);
+  }
+  .section-label span { color: #2ec27e; }
+
+  .fail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+  }
+  .fail-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 24px 30px;
+    border-bottom: 1px solid rgba(46,194,126,.1);
+  }
+  .fail-row:last-child { border-bottom: none; }
+  .fail-row:nth-child(odd)  { background: rgba(13,26,16,.6); }
+  .fail-row:nth-child(even) { background: transparent; }
+
+  .fail-pct {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #2ec27e;
+    width: 130px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .fail-name {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 32px;
+    color: #fff;
+    font-weight: 700;
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+
+<article class="frame">
+  <div class="top">
+    <div class="kicker">✦ Why Businesses Actually Fail</div>
+    <h1>Marketing doesn't even crack the top 5 reasons businesses fail. <em>Here's what does.</em></h1>
+  </div>
+
+  <div class="section-label">Top reasons businesses fail — <span>CB Insights</span></div>
+
+  <div class="fail-list">
+    <div class="fail-row">
+      <div class="fail-pct">42%</div>
+      <div class="fail-name">No market need</div>
+    </div>
+    <div class="fail-row">
+      <div class="fail-pct">29%</div>
+      <div class="fail-name">Ran out of cash</div>
+    </div>
+    <div class="fail-row">
+      <div class="fail-pct">23%</div>
+      <div class="fail-name">Wrong team</div>
+    </div>
+    <div class="fail-row">
+      <div class="fail-pct">20%</div>
+      <div class="fail-name">Got outcompeted</div>
+    </div>
+    <div class="fail-row">
+      <div class="fail-pct">18%</div>
+      <div class="fail-name">Pricing or cost problems</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">Marketing doesn't build the foundation. It puts a spotlight on whatever foundation is already there.</div>
+    <div class="foot-brand">✦ JDesigns Strategist</div>
+  </div>
+</article>
+
+</body>
+</html>
