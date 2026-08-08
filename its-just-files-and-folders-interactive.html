@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>You Don't Need a Smarter AI Tool. You Need a Folder. | JDesigns Strategist</title>
+<meta name="description" content="A scroll-through, interactive version: what a folder is, what a markdown file is, and how to build your own AI 'business brain' — in an afternoon."/>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1748369839650273');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --bg:#07100a; --surface:#0d1a10; --surface2:#0f2216;
+    --border:#1a7a4e; --border-muted:#102b18;
+    --accent:#2ec27e; --accent-dim:#0d3320; --accent-glow: rgba(46,194,126,.35);
+    --text:#ffffff; --sage:#c4dccb; --muted:#8aab96;
+    --radius:16px;
+    --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    --font-serif:Georgia,'Times New Roman',serif;
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--text); font-family:var(--font-sans);
+    line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  a{color:inherit;}
+
+  /* progress bar */
+  .progress-bar{position:fixed; top:0; left:0; height:3px; width:0%; background:var(--accent); z-index:200; box-shadow:0 0 12px var(--accent-glow); transition:width .08s linear;}
+
+  .topnav{position:fixed; top:0; left:0; right:0; z-index:150; display:flex; align-items:center; justify-content:space-between; padding:14px 24px; background:linear-gradient(to bottom, rgba(7,16,10,.9), transparent); pointer-events:none;}
+  .topnav a{pointer-events:auto;}
+  .wordmark-mini{font-family:var(--font-serif); font-size:12.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent);}
+  .back-link{font-size:12px; color:var(--muted); border:1px solid var(--border-muted); padding:6px 12px; border-radius:999px;}
+  .back-link:hover{color:var(--text); border-color:var(--accent);}
+
+  section{min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:100px 24px; position:relative; text-align:center;}
+  .wrap{max-width:640px; width:100%;}
+
+  .eyebrow{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:18px; font-weight:700;}
+
+  h1{font-family:var(--font-serif); font-size:clamp(32px,6vw,58px); line-height:1.12; margin-bottom:22px;}
+  h2{font-family:var(--font-serif); font-size:clamp(24px,4.4vw,38px); line-height:1.18; margin-bottom:18px;}
+  p.lead{color:var(--sage); font-size:clamp(15px,2vw,18px); line-height:1.65; max-width:560px; margin:0 auto;}
+
+  /* reveal system */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;} .reveal.d3{transition-delay:.24s;} .reveal.d4{transition-delay:.32s;} .reveal.d5{transition-delay:.4s;}
+
+  .scroll-cue{position:absolute; bottom:34px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--muted); font-size:11px; letter-spacing:.1em; text-transform:uppercase; animation:bob 1.8s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
+
+  /* ---------- HERO folder icon ---------- */
+  .folder-hero{width:120px; height:96px; margin:0 auto 36px; position:relative;}
+  .folder-back{position:absolute; inset:0; background:linear-gradient(160deg,var(--accent-dim),var(--surface2)); border:1.5px solid var(--border); border-radius:10px;}
+  .folder-tab{position:absolute; top:-14px; left:8px; width:46px; height:18px; background:var(--accent-dim); border:1.5px solid var(--border); border-bottom:none; border-radius:8px 8px 0 0;}
+  .folder-front{position:absolute; left:0; right:0; bottom:0; height:70%; background:linear-gradient(160deg,var(--surface2),var(--surface)); border:1.5px solid var(--accent); border-radius:10px; box-shadow:0 0 30px var(--accent-glow); transform-origin:bottom; transition:transform .5s ease;}
+  .folder-hero.open .folder-front{transform:rotateX(-25deg) translateY(-4px);}
+  .folder-glow-dot{position:absolute; width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent);}
+
+  /* ---------- messy files -> organized ---------- */
+  .files-stage{position:relative; height:280px; width:100%; max-width:480px; margin:36px auto;}
+  .fchip{position:absolute; width:64px; height:52px; background:var(--surface2); border:1px solid var(--border-muted); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:9px; color:var(--muted); font-weight:700; letter-spacing:.03em; transition:all 1s cubic-bezier(.2,.8,.2,1); box-shadow:0 4px 14px rgba(0,0,0,.4);}
+  .files-stage.organized .fchip{border-color:var(--accent); color:var(--sage); box-shadow:0 0 16px var(--accent-glow);}
+  /* scattered starting positions set inline via style + data attrs, organized position via class below */
+  .fchip[data-i="0"]{top:6%; left:8%; transform:rotate(-14deg);}
+  .fchip[data-i="1"]{top:2%; left:60%; transform:rotate(9deg);}
+  .fchip[data-i="2"]{top:30%; left:30%; transform:rotate(20deg);}
+  .fchip[data-i="3"]{top:14%; left:82%; transform:rotate(-6deg);}
+  .fchip[data-i="4"]{top:52%; left:4%; transform:rotate(11deg);}
+  .fchip[data-i="5"]{top:60%; left:70%; transform:rotate(-18deg);}
+  .fchip[data-i="6"]{top:40%; left:56%; transform:rotate(4deg);}
+  .fchip[data-i="7"]{top:70%; left:38%; transform:rotate(-9deg);}
+
+  .files-stage.organized .fchip[data-i="0"]{top:8%;  left:8%;  transform:rotate(0);}
+  .files-stage.organized .fchip[data-i="1"]{top:8%;  left:24%; transform:rotate(0);}
+  .files-stage.organized .fchip[data-i="2"]{top:8%;  left:40%; transform:rotate(0);}
+  .files-stage.organized .fchip[data-i="3"]{top:8%;  left:56%; transform:rotate(0);}
+  .files-stage.organized .fchip[data-i="4"]{top:36%; left:8%;  transform:rotate(0);}
+  .files-stage.organized .fchip[data-i="5"]{top:36%; left:24%; transform:rotate(0);}
+  .files-stage.organized .fchip[data-i="6"]{top:36%; left:40%; transform:rotate(0);}
+  .files-stage.organized .fchip[data-i="7"]{top:36%; left:56%; transform:rotate(0);}
+
+  .folder-outline{position:absolute; left:0; right:22%; bottom:0; top:60%; border:1.5px dashed var(--border-muted); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--muted); letter-spacing:.05em; text-transform:uppercase; transition:border-color .6s, color .6s;}
+  .files-stage.organized .folder-outline{border-color:var(--accent); color:var(--accent); border-style:solid; box-shadow:0 0 24px var(--accent-glow) inset;}
+
+  .caption-flip{margin-top:14px; font-size:13px; color:var(--muted); transition:color .5s;}
+  .files-stage.organized ~ .caption-flip{color:var(--accent);}
+
+  /* ---------- chat bubbles fading ---------- */
+  .chat-stage{display:flex; flex-direction:column; gap:10px; max-width:340px; margin:0 auto 8px;}
+  .bubble{align-self:flex-start; background:var(--surface2); border:1px solid var(--border-muted); padding:9px 14px; border-radius:14px 14px 14px 4px; font-size:13px; color:var(--sage); opacity:1; transition:opacity 1.4s ease, filter 1.4s ease;}
+  .bubble.me{align-self:flex-end; background:var(--accent-dim); border-color:var(--border); border-radius:14px 14px 4px 14px;}
+  .chat-stage.forgotten .bubble{opacity:.12; filter:blur(1.5px);}
+  .persist-file{margin-top:20px; display:inline-flex; align-items:center; gap:8px; padding:8px 16px; border-radius:999px; border:1px solid var(--border-muted); color:var(--muted); font-size:12px; transition:all .8s ease;}
+  .chat-stage.forgotten + .persist-file{border-color:var(--accent); color:var(--accent); box-shadow:0 0 18px var(--accent-glow);}
+  .dot{width:6px; height:6px; border-radius:50%; background:currentColor;}
+
+  /* ---------- definition flip cards ---------- */
+  .def-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px;}
+  @media (max-width:560px){.def-grid{grid-template-columns:1fr;}}
+  .def-card{background:var(--surface); border:1px solid var(--border-muted); border-radius:var(--radius); padding:22px; text-align:left; transition:border-color .3s, transform .3s;}
+  .def-card:hover{border-color:var(--accent); transform:translateY(-3px);}
+  .def-card .k{font-family:var(--font-serif); font-size:19px; color:var(--accent); margin-bottom:8px;}
+  .def-card .v{font-size:13.5px; color:var(--sage); line-height:1.6;}
+
+  /* ---------- agentic pills ---------- */
+  .pill-row{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:10px;}
+  .pill{padding:9px 18px; border-radius:999px; border:1px solid var(--border-muted); background:var(--surface); font-size:13px; font-weight:600; color:var(--sage); transform:scale(.85); opacity:0; transition:all .5s cubic-bezier(.3,1.4,.4,1);}
+  .pill-row.in .pill{transform:scale(1); opacity:1;}
+  .pill-row.in .pill:nth-child(1){transition-delay:.05s;}
+  .pill-row.in .pill:nth-child(2){transition-delay:.15s;}
+  .pill-row.in .pill:nth-child(3){transition-delay:.25s;}
+  .pill-row.in .pill:nth-child(4){transition-delay:.35s;}
+
+  /* ---------- step line ---------- */
+  .steps{position:relative; max-width:480px; margin:20px auto 0; text-align:left;}
+  .step-line{position:absolute; left:19px; top:6px; bottom:6px; width:2px; background:var(--border-muted); overflow:hidden;}
+  .step-line-fill{position:absolute; top:0; left:0; width:100%; height:0%; background:var(--accent); box-shadow:0 0 10px var(--accent-glow); transition:height .3s linear;}
+  .step-row{display:flex; gap:18px; padding:18px 0; opacity:.25; transition:opacity .5s;}
+  .step-row.active{opacity:1;}
+  .step-circle{flex-shrink:0; width:40px; height:40px; border-radius:50%; border:1.5px solid var(--border-muted); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; color:var(--muted); background:var(--bg); transition:all .4s;}
+  .step-row.active .step-circle{border-color:var(--accent); color:var(--accent); box-shadow:0 0 16px var(--accent-glow);}
+  .step-body strong{display:block; font-size:15.5px; margin-bottom:3px;}
+  .step-body span{font-size:13.5px; color:var(--muted);}
+
+  /* ---------- example chat + tags + typewriter ---------- */
+  .example-box{background:var(--surface); border:1px solid var(--border-muted); border-radius:var(--radius); padding:22px; text-align:left; max-width:480px; margin:10px auto 0;}
+  .in-bubble{background:var(--surface2); border:1px solid var(--border-muted); border-radius:12px; padding:12px 14px; font-size:13.5px; color:var(--sage); margin-bottom:14px;}
+  .tag-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;}
+  .tag{font-size:11px; padding:5px 11px; border-radius:999px; border:1px solid var(--border); color:var(--accent); background:var(--accent-dim); opacity:0; transform:translateY(6px) scale(.9); transition:all .4s cubic-bezier(.3,1.3,.4,1);}
+  .example-box.in .tag:nth-child(1){transition-delay:.2s;}
+  .tag-row .tag:nth-child(1){transition-delay:.2s;}
+  .tag-row .tag:nth-child(2){transition-delay:.35s;}
+  .tag-row .tag:nth-child(3){transition-delay:.5s;}
+  .example-box.in .tag{opacity:1; transform:translateY(0) scale(1);}
+  .reply-out{font-size:13.5px; color:var(--text); border-left:2px solid var(--accent); padding-left:12px; min-height:44px;}
+  .caret{display:inline-block; width:7px; height:14px; background:var(--accent); margin-left:2px; animation:blink 1s step-end infinite; vertical-align:middle;}
+  @keyframes blink{50%{opacity:0;}}
+
+  /* ---------- open-up cards ---------- */
+  .open-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:10px;}
+  @media (max-width:560px){.open-grid{grid-template-columns:1fr;}}
+  .open-card{background:var(--surface); border:1px solid var(--border-muted); border-radius:var(--radius); padding:22px; text-align:left; transition:transform .3s, border-color .3s;}
+  .open-card:hover{transform:translateY(-4px); border-color:var(--accent);}
+  .open-card .icon{width:36px; height:36px; border-radius:10px; background:var(--accent-dim); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; margin-bottom:12px; font-size:16px;}
+  .open-card h3{font-size:15px; margin-bottom:6px;}
+  .open-card p{font-size:13px; color:var(--muted); line-height:1.55;}
+
+  /* ---------- swap cards ---------- */
+  .swap-row{display:flex; flex-direction:column; gap:10px; max-width:420px; margin:10px auto 0; text-align:left;}
+  .swap{display:flex; align-items:center; gap:14px; background:var(--surface); border:1px solid var(--border-muted); border-radius:12px; padding:12px 16px; opacity:0; transform:translateX(-16px); transition:all .5s cubic-bezier(.2,.8,.2,1);}
+  .swap-row.in .swap{opacity:1; transform:translateX(0);}
+  .swap-row.in .swap:nth-child(1){transition-delay:.05s;}
+  .swap-row.in .swap:nth-child(2){transition-delay:.2s;}
+  .swap-row.in .swap:nth-child(3){transition-delay:.35s;}
+  .swap .old{font-size:12.5px; color:var(--muted); text-decoration:line-through; flex:1;}
+  .swap .arrow{color:var(--accent); font-size:13px;}
+  .swap .new{font-size:13px; color:var(--text); font-weight:600; flex:1; text-align:right;}
+
+  /* ---------- pricing ---------- */
+  .price-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px;}
+  @media (max-width:560px){.price-grid{grid-template-columns:1fr;}}
+  .price-card{background:var(--surface); border:1px solid var(--border-muted); border-radius:var(--radius); padding:26px 22px; text-align:left; transition:border-color .3s, transform .3s;}
+  .price-card:hover{border-color:var(--accent); transform:translateY(-4px);}
+  .price-card .amt{font-family:var(--font-serif); font-size:32px; color:var(--accent); margin-bottom:6px;}
+  .price-card h3{font-size:15px; margin-bottom:8px;}
+  .price-card p{font-size:12.5px; color:var(--muted); line-height:1.5; margin-bottom:16px;}
+  .cta-btn{display:inline-block; width:100%; text-align:center; background:var(--accent); color:#062012; font-weight:700; font-size:13.5px; padding:11px 0; border-radius:999px; transition:opacity .2s;}
+  .cta-btn:hover{opacity:.88;}
+  .bundle-note{margin-top:18px; font-size:12.5px; color:var(--muted); text-align:center;}
+  .bundle-note strong{color:var(--accent);}
+
+  footer{padding:60px 24px 90px; text-align:center; color:var(--muted); font-size:12px;}
+  footer a{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="topnav">
+  <span class="wordmark-mini">✦ JDesigns Strategist</span>
+  <a class="back-link" href="/blog/its-just-files-and-folders.html">Read as article →</a>
+</div>
+
+<!-- 1. HERO -->
+<section>
+  <div class="wrap">
+    <div class="folder-hero" id="heroFolder">
+      <div class="folder-back"></div>
+      <div class="folder-tab"></div>
+      <div class="folder-front"></div>
+    </div>
+    <div class="eyebrow reveal in">AI &amp; Tools · An Interactive Walkthrough</div>
+    <h1 class="reveal in d1">You don't need a smarter AI tool.<br>You need a folder.</h1>
+    <p class="lead reveal in d2">Scroll to see exactly why — and how to build one yourself, today.</p>
+  </div>
+  <div class="scroll-cue">Scroll ↓</div>
+</section>
+
+<!-- 2. THE HABIT -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">The habit</div>
+    <h2 class="reveal d1">Remember this?</h2>
+    <p class="lead reveal d2">"Save your file somewhere you can find it. Name it something that makes sense. Put it in a folder. Don't just dump it on the desktop." That was the whole lesson, back in ninth grade computer class.</p>
+
+    <div class="files-stage reveal d3" id="filesStage">
+      <div class="fchip" data-i="0">PRICES</div>
+      <div class="fchip" data-i="1">NOTES</div>
+      <div class="fchip" data-i="2">CLIENT</div>
+      <div class="fchip" data-i="3">VOICE</div>
+      <div class="fchip" data-i="4">RULES</div>
+      <div class="fchip" data-i="5">DRAFT</div>
+      <div class="fchip" data-i="6">IDEAS</div>
+      <div class="fchip" data-i="7">TODO</div>
+      <div class="folder-outline">your folder</div>
+    </div>
+    <p class="caption-flip reveal d4" id="filesCaption">That habit is scattered right now. Keep scrolling.</p>
+  </div>
+</section>
+
+<!-- 3. WHY AI FORGETS -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Why it matters now</div>
+    <h2 class="reveal d1">That one small habit is what actually elevates how you use AI.</h2>
+    <p class="lead reveal d2">Countless AI conversations about your business. Good ones. But close the chat, or start a new one, and all of it is just gone.</p>
+
+    <div class="chat-stage reveal d3" id="chatStage">
+      <div class="bubble me">Here's my pricing and how I talk to clients...</div>
+      <div class="bubble">Got it, I'll remember that.</div>
+      <div class="bubble me">Great, let's keep going...</div>
+    </div>
+    <div class="persist-file reveal d4"><span class="dot"></span> a real file doesn't forget</div>
+  </div>
+</section>
+
+<!-- 4. DEFINITIONS -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Two words, defined</div>
+    <h2 class="reveal d1">Nothing here is a mystery.</h2>
+    <div class="def-grid">
+      <div class="def-card reveal d2">
+        <div class="k">Folder</div>
+        <div class="v">A place on your computer where related things live together. Like a drawer. Mine is named "JDesigns."</div>
+      </div>
+      <div class="def-card reveal d3">
+        <div class="k">.md file</div>
+        <div class="v">A plain text file with a few simple symbols. Not pretty to look at — but you're not the one who has to read it. The AI is.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. AGENTIC AI -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">The category has a name</div>
+    <h2 class="reveal d1">Agentic AI.</h2>
+    <p class="lead reveal d2">The difference between an assistant that answers one prompt at a time, and one that takes a goal, breaks it into steps, and carries them out.</p>
+    <div class="pill-row" id="pillRow">
+      <div class="pill">ChatGPT</div>
+      <div class="pill">Claude</div>
+      <div class="pill">Gemini</div>
+      <div class="pill">Copilot</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. HOW TO START -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">How you'd actually start</div>
+    <h2 class="reveal d1">Four steps. That's it.</h2>
+
+    <div class="steps" id="stepsWrap">
+      <div class="step-line"><div class="step-line-fill" id="stepFill"></div></div>
+
+      <div class="step-row" data-step="1">
+        <div class="step-circle">1</div>
+        <div class="step-body"><strong>Make a folder.</strong><span>Name it after your business.</span></div>
+      </div>
+      <div class="step-row" data-step="2">
+        <div class="step-circle">2</div>
+        <div class="step-body"><strong>Open ChatGPT or Claude.</strong><span>The paid version — about $20/mo — so it actually remembers.</span></div>
+      </div>
+      <div class="step-row" data-step="3">
+        <div class="step-circle">3</div>
+        <div class="step-body"><strong>Tell it about your business.</strong><span>Prices, rules, how you talk to people. Ask it to save that as files.</span></div>
+      </div>
+      <div class="step-row" data-step="4">
+        <div class="step-circle">4</div>
+        <div class="step-body"><strong>Come back and chat again.</strong><span>It already knows you. No more starting over.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. WHAT IT LOOKS LIKE -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Once it's built</div>
+    <h2 class="reveal d1">Your job gets smarter.</h2>
+    <p class="lead reveal d2">Less filing and remembering. More actually thinking.</p>
+
+    <div class="example-box" id="exampleBox">
+      <div class="in-bubble">"Hi — do you still have openings this month? What do you charge?"</div>
+      <div class="tag-row">
+        <div class="tag">New Lead</div>
+        <div class="tag">Pricing Question</div>
+        <div class="tag">Needs Reply</div>
+      </div>
+      <div class="reply-out" id="replyOut"><span class="caret"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. WHAT THIS OPENS UP -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">What this could open up</div>
+    <h2 class="reveal d1">What would this do for what <em>you</em> run?</h2>
+    <div class="open-grid">
+      <div class="open-card reveal d2">
+        <div class="icon">🔨</div>
+        <h3>Contractors</h3>
+        <p>Every job in its own folder — before/after photos, the quote, the warranty — pulled up instantly.</p>
+      </div>
+      <div class="open-card reveal d3">
+        <div class="icon">🛍️</div>
+        <h3>Retail shops</h3>
+        <p>Supplier history, seasonal sell-through, customer preferences — reorder smarter, guess less.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. STOP RENTING -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Stop renting the tools</div>
+    <h2 class="reveal d1">Build them instead.</h2>
+    <div class="swap-row" id="swapRow">
+      <div class="swap"><span class="old">Budgeting app subscription</span><span class="arrow">→</span><span class="new">My own money system ($2/mo)</span></div>
+      <div class="swap"><span class="old">Website builder subscription</span><span class="arrow">→</span><span class="new">My own site &amp; blog</span></div>
+      <div class="swap"><span class="old">CRM subscription</span><span class="arrow">→</span><span class="new">The system you just saw</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. CTA -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Ready to build yours?</div>
+    <h2 class="reveal d1">Organize it once. Any AI tool can pick it up from there.</h2>
+
+    <div class="price-grid">
+      <div class="price-card reveal d2">
+        <div class="amt">$95</div>
+        <h3>Systemize Your Business</h3>
+        <p>The guided workshop. Turns your pricing, rules, client history, and voice into files Claude reads automatically. ~30 minutes, no coding.</p>
+        <a class="cta-btn" href="https://jdesignsinfo.gumroad.com" target="_blank" rel="noopener">Get it →</a>
+      </div>
+      <div class="price-card reveal d3">
+        <div class="amt">$47</div>
+        <h3>Systemized</h3>
+        <p>6 ready-made commands on top of your system, so you're not typing the same prompts from scratch every day.</p>
+        <a class="cta-btn" href="https://jdesignsinfo.gumroad.com/l/commandpack" target="_blank" rel="noopener">Get it →</a>
+      </div>
+    </div>
+    <p class="bundle-note reveal d4">Bundled together: <strong>$127</strong></p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 JDesigns Strategist LLC · <a href="/blog/">More posts</a> · <a href="/blog/its-just-files-and-folders.html">Read this as a plain article</a></p>
+</footer>
+
+<script>
+// scroll progress bar
+const bar = document.getElementById('progressBar');
+function onScroll(){
+  const h = document.documentElement;
+  const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  bar.style.width = pct + '%';
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+
+// generic reveal
+const revealEls = document.querySelectorAll('.reveal:not(.in)');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+},{threshold:.25});
+revealEls.forEach(el=>io.observe(el));
+
+// hero folder open
+const heroFolder = document.getElementById('heroFolder');
+setTimeout(()=>heroFolder.classList.add('open'), 400);
+
+// files stage organize
+const filesStage = document.getElementById('filesStage');
+const filesCaption = document.getElementById('filesCaption');
+const io2 = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      setTimeout(()=>{
+        filesStage.classList.add('organized');
+        filesCaption.textContent = "Now it's a folder an AI can actually use.";
+      }, 600);
+    }
+  });
+},{threshold:.5});
+io2.observe(filesStage);
+
+// chat forgetting
+const chatStage = document.getElementById('chatStage');
+const io3 = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ setTimeout(()=>chatStage.classList.add('forgotten'), 900); }
+  });
+},{threshold:.5});
+io3.observe(chatStage);
+
+// pill row
+const pillRow = document.getElementById('pillRow');
+const io4 = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) pillRow.classList.add('in'); });
+},{threshold:.5});
+io4.observe(pillRow);
+
+// swap row
+const swapRow = document.getElementById('swapRow');
+const io5 = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) swapRow.classList.add('in'); });
+},{threshold:.4});
+io5.observe(swapRow);
+
+// example box tags + typewriter reply
+const exampleBox = document.getElementById('exampleBox');
+const replyOut = document.getElementById('replyOut');
+const replyText = "Hey! Yes, I have openings this month. My rate for that is $395 — want me to send full details?";
+let typed = false;
+const io6 = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && !typed){
+      typed = true;
+      exampleBox.classList.add('in');
+      let i = 0;
+      setTimeout(function typeNext(){
+        if(i <= replyText.length){
+          replyOut.innerHTML = replyText.slice(0,i) + '<span class="caret"></span>';
+          i++;
+          setTimeout(typeNext, 22);
+        }
+      }, 1400);
+    }
+  });
+},{threshold:.5});
+io6.observe(exampleBox);
+
+// step progress line — based on scroll position within steps wrap
+const stepsWrap = document.getElementById('stepsWrap');
+const stepFill = document.getElementById('stepFill');
+const stepRows = document.querySelectorAll('.step-row');
+function updateSteps(){
+  const rect = stepsWrap.getBoundingClientRect();
+  const vh = window.innerHeight;
+  const total = rect.height;
+  const start = vh * 0.75;
+  const progressed = Math.min(Math.max(start - rect.top, 0), total);
+  const pct = total ? (progressed/total)*100 : 0;
+  stepFill.style.height = pct + '%';
+  stepRows.forEach(row=>{
+    const rr = row.getBoundingClientRect();
+    if(rr.top < vh*0.7){ row.classList.add('active'); }
+  });
+}
+window.addEventListener('scroll', updateSteps, {passive:true});
+updateSteps();
+</script>
+
+</body>
+</html>
