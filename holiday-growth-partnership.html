@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>The 6-Month Holiday Growth Partnership — JDesigns Strategist</title>
+  <meta name="description" content="A 6-month path to be ready before the holiday rush — built from real Meta ads and content work, not a rebuild every November."/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       rgba(30,50,37,0.7);
+      --border-green: rgba(46,194,126,.22);
+      --green:        #2ec27e;
+      --green-dim:    rgba(46,194,126,.08);
+      --green-glow:   rgba(46,194,126,.06);
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --faint:        #1e3225;
+      --radius:       14px;
+      --font-serif:   Georgia, 'Times New Roman', serif;
+      --font-sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(7,16,10,0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 760px; margin: 0 auto; padding: 0 24px; height: 52px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .nav-logo {
+      font-family: var(--font-serif); font-size: 13px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--green); white-space: nowrap;
+    }
+    .nav-cta {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+      color: #07100a; background: var(--green); padding: 6px 14px;
+      border-radius: 999px; transition: opacity .15s; white-space: nowrap;
+    }
+    .nav-cta:hover { opacity: .85; }
+    @media (max-width:400px) {
+      .nav-inner { padding: 0 14px; }
+      .nav-logo { font-size: 11px; }
+      .nav-cta { font-size: 10.5px; padding: 6px 10px; }
+    }
+
+    .story-progress{position:fixed; top:0; left:0; height:2.5px; width:0%; background:var(--green); z-index:200; box-shadow:0 0 10px rgba(46,194,126,.5); transition:width .08s linear;}
+
+    /* ── Page ── */
+    .page { max-width: 760px; margin: 0 auto; padding: 60px 24px 88px; }
+
+    /* ── Hero ── */
+    .hero { margin-bottom: 52px; position:relative; }
+    .hero::before{
+      content:''; position:absolute; top:-60px; left:-40px; width:340px; height:340px;
+      background:radial-gradient(circle, rgba(46,194,126,.14) 0%, transparent 70%);
+      pointer-events:none; z-index:0; animation:driftGlow 9s ease-in-out infinite;
+    }
+    @keyframes driftGlow{0%,100%{transform:translate(0,0) scale(1); opacity:.8;} 50%{transform:translate(24px,16px) scale(1.12); opacity:1;}}
+    .hero > *{position:relative; z-index:1;}
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-family: var(--font-serif); font-size: clamp(1.75rem, 5.5vw, 2.5rem);
+      font-weight: 400; line-height: 1.2; color: var(--text); margin-bottom: 16px; letter-spacing: -0.01em;
+    }
+    .hero-sub { font-size: 15.5px; color: var(--sage); line-height: 1.7; margin-bottom: 28px; max-width: 580px; }
+    .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 7px; padding: 12px 24px; border-radius: 999px;
+      background: var(--green); color: #07100a; font-size: 13.5px; font-weight: 700;
+      letter-spacing: 0.03em; transition: opacity .15s, transform .12s;
+    }
+    .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 7px; padding: 12px 24px; border-radius: 999px;
+      background: transparent; border: 1px solid var(--border-green); color: var(--muted);
+      font-size: 13.5px; font-weight: 600; transition: border-color .15s, color .15s, background .15s;
+    }
+    .btn-secondary:hover { border-color: var(--green); color: var(--text); background: var(--green-dim); }
+
+    /* ── Section label / divider ── */
+    .section-label {
+      font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 14px; padding-left: 2px;
+    }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 52px 0; }
+
+    .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1);}
+    .reveal.in{opacity:1; transform:translateY(0);}
+    .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;} .reveal.d3{transition-delay:.24s;}
+
+    .story-quote{border-left:2px solid var(--green); padding:4px 0 4px 18px; margin:8px 0 4px; max-width:580px;}
+    .story-quote p{font-family:var(--font-serif); font-style:italic; font-size:16px; color:var(--text); line-height:1.5;}
+    .story-quote cite{display:block; font-style:normal; font-size:11.5px; color:var(--muted); margin-top:8px;}
+
+    /* ── Timeline track ── */
+    .story-track{position:relative;}
+    .track-line{position:absolute; left:25px; top:17px; bottom:17px; width:2px; background:var(--faint); z-index:0;}
+    .track-fill{position:absolute; left:25px; top:17px; width:2px; height:0%; background:var(--green); box-shadow:0 0 8px rgba(46,194,126,.6); z-index:1; transition:height .25s linear;}
+    .story{display:flex; gap:20px; align-items:flex-start; padding:30px 0; border-bottom:1px solid var(--faint); position:relative; z-index:2;}
+    .story:last-of-type{border-bottom:none;}
+    .story-letter{flex-shrink:0; display:inline-flex; align-items:center; justify-content:center; width:52px; height:34px; border-radius:17px; border:1.5px solid var(--border-green); background:var(--bg); color:var(--green); font-family:var(--font-serif); font-size:11px; font-weight:700; letter-spacing:.04em; transition:box-shadow .4s, border-color .4s;}
+    .story-letter.hit{box-shadow:0 0 14px rgba(46,194,126,.55); border-color:var(--green);}
+    .story-body{flex:1; min-width:0;}
+    .story-tag{font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;}
+    .story h2{font-family:var(--font-serif); font-weight:400; font-size:clamp(1.15rem,3vw,1.4rem); line-height:1.3; margin-bottom:8px; max-width:560px;}
+    .story p.story-sub{font-size:13.5px; color:var(--sage); line-height:1.65; max-width:540px; margin-bottom:12px;}
+
+    .pill-row-mini{display:flex; gap:8px; flex-wrap:wrap;}
+    .pill-mini{font-size:11.5px; font-weight:700; color:var(--green); border:1px solid var(--border-green); background:var(--green-dim); padding:6px 13px; border-radius:999px;}
+    .pill-mini.alt{color:var(--sage); border-color:var(--border); background:transparent;}
+
+    /* ── Stats ── */
+    .story-stats{display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;}
+    .story-stat{background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:14px 16px; min-width:130px; opacity:0; transform:translateY(14px); transition:all .5s cubic-bezier(.2,.8,.2,1);}
+    .story-stats.in .story-stat{opacity:1; transform:translateY(0);}
+    .story-stats.in .story-stat:nth-child(2){transition-delay:.12s;}
+    .story-stats.in .story-stat:nth-child(3){transition-delay:.24s;}
+    .story-stat .v{font-family:var(--font-serif); font-size:1.3rem; color:var(--green); font-variant-numeric:tabular-nums;}
+    .story-stat .l{font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-top:3px;}
+
+    /* ── Trust strip ── */
+    .trust-strip{display:flex; flex-wrap:wrap; gap:26px; margin:22px 0 6px;}
+    .trust-item{opacity:0; transform:translateY(10px); transition:all .5s cubic-bezier(.2,.8,.2,1);}
+    .trust-strip.in .trust-item{opacity:1; transform:translateY(0);}
+    .trust-strip.in .trust-item:nth-child(2){transition-delay:.08s;}
+    .trust-strip.in .trust-item:nth-child(3){transition-delay:.16s;}
+    .trust-strip.in .trust-item:nth-child(4){transition-delay:.24s;}
+    .trust-item .v{font-family:var(--font-serif); font-size:1.4rem; color:var(--green); font-variant-numeric:tabular-nums; line-height:1.1;}
+    .trust-item .l{font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-top:3px;}
+
+    /* ── Bar charts ── */
+    .bar-chart{display:flex; flex-direction:column; gap:11px; margin:14px 0 6px;}
+    .bar-row{display:grid; grid-template-columns:132px 1fr 60px; align-items:center; gap:12px;}
+    .bar-row .bar-label{font-size:12px; color:var(--sage); line-height:1.3;}
+    .bar-track{height:9px; background:var(--faint); border-radius:6px; overflow:hidden;}
+    .bar-fill{height:100%; width:0%; background:linear-gradient(90deg, var(--green-dim), var(--green)); border-radius:6px; transition:width 1.1s cubic-bezier(.2,.8,.2,1);}
+    .bar-chart.in .bar-fill{width:var(--pct);}
+    .bar-row .bar-value{font-size:12px; font-weight:700; color:var(--green); text-align:right; font-variant-numeric:tabular-nums;}
+    @media (max-width:480px){ .bar-row{grid-template-columns:96px 1fr 52px; gap:8px;} }
+
+    /* ── Funnel ── */
+    .funnel-wrap{display:flex; flex-direction:column; align-items:center; gap:2px; margin:18px 0 8px;}
+    .funnel-stage{background:var(--surface); border:1px solid var(--border-green); border-radius:10px; padding:13px 24px; text-align:center; opacity:0; transform:scale(.92); transition:all .5s cubic-bezier(.3,1.3,.4,1);}
+    .funnel-wrap.in .funnel-stage{opacity:1; transform:scale(1);}
+    .funnel-wrap.in .funnel-stage.s1{transition-delay:0s;}
+    .funnel-wrap.in .funnel-stage.s2{transition-delay:.18s;}
+    .funnel-stage.s1{width:min(100%,340px);}
+    .funnel-stage.s2{width:min(100%,220px);}
+    .funnel-stage .fv{font-family:var(--font-serif); font-size:1.25rem; color:var(--text);}
+    .funnel-stage .fl{font-size:11px; color:var(--muted); margin-top:2px;}
+    .funnel-arrow{font-size:11px; color:var(--green); font-weight:700; opacity:0; transition:opacity .4s .45s; padding:6px 0;}
+    .funnel-wrap.in .funnel-arrow{opacity:1;}
+    .funnel-callout{margin-top:4px; font-size:12.5px; color:var(--sage); text-align:center; max-width:420px;}
+    .funnel-callout strong{color:var(--green);}
+
+    /* ── Retention cards ── */
+    .retain-row{display:flex; flex-direction:column; gap:10px; margin-top:14px;}
+    .retain-card{background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:15px 18px; opacity:0; transform:translateY(10px); transition:all .5s cubic-bezier(.2,.8,.2,1);}
+    .retain-row.in .retain-card{opacity:1; transform:translateY(0);}
+    .retain-row.in .retain-card:nth-child(2){transition-delay:.1s;}
+    .retain-row.in .retain-card:nth-child(3){transition-delay:.2s;}
+    .retain-card p{font-family:var(--font-serif); font-style:italic; font-size:13.5px; color:var(--sage); line-height:1.55;}
+    .retain-card .ra{font-size:11px; color:var(--muted); margin-top:8px; font-weight:600;}
+    .retain-card .ra span{color:var(--green);}
+
+    /* ── Good / bad cadence cards ── */
+    .accel-row{display:flex; gap:10px; margin-top:8px; flex-wrap:wrap;}
+    .accel-card{flex:1; min-width:220px; border-radius:10px; padding:14px 16px; opacity:0; transform:scale(.95); transition:all .45s cubic-bezier(.3,1.3,.4,1);}
+    .accel-row.in .accel-card{opacity:1; transform:scale(1);}
+    .accel-row.in .accel-card.good{transition-delay:.05s;}
+    .accel-row.in .accel-card.bad{transition-delay:.25s;}
+    .accel-card.good{background:var(--green-dim); border:1px solid var(--border-green);}
+    .accel-card.bad{background:rgba(224,90,58,.08); border:1px solid rgba(220,80,60,.25);}
+    .accel-card b{display:block; font-size:12.5px; margin-bottom:4px;}
+    .accel-card span{font-size:12px; color:var(--muted); line-height:1.5;}
+
+    /* ── Link cards (CTA doors) ── */
+    .link-stack { display: flex; flex-direction: column; gap: 10px; }
+    .link-card {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px 20px;
+      transition: border-color .15s, transform .12s, box-shadow .15s;
+    }
+    .link-card:hover { border-color: var(--border-green); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(46,194,126,.07); }
+    .link-card-icon {
+      width: 44px; height: 44px; flex-shrink: 0; border-radius: 10px; background: var(--green-dim);
+      border: 1px solid var(--border-green); display: flex; align-items: center; justify-content: center; font-size: 1.15rem;
+    }
+    .link-card-body { flex: 1; min-width: 0; }
+    .link-card-title { font-size: 14px; font-weight: 700; line-height: 1.3; margin-bottom: 3px; }
+    .link-card-desc { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+    .arrow { color: var(--muted); font-size: 14px; transition: color .15s, transform .15s; flex-shrink:0; }
+    .link-card:hover .arrow { color: var(--green); transform: translateX(3px); }
+
+    /* ── Testimonial ── */
+    .testimonial-block { background: var(--surface); border: 1px solid var(--border-green); border-radius: 16px; padding: 22px 22px; margin-bottom: 14px; }
+    .testimonial-stars { font-size: 13px; letter-spacing: 2px; color: var(--green); margin-bottom: 10px; }
+    .testimonial-quote { font-family: var(--font-serif); font-size: 14.5px; color: var(--sage); line-height: 1.65; font-style: italic; margin-bottom: 12px; }
+    .testimonial-author { font-size: 12px; color: var(--muted); font-weight: 600; }
+
+    /* ── Disclaimer / help block ── */
+    .help-block { background: var(--surface); border: 1px solid var(--border-green); border-radius: 16px; padding: 26px 24px; }
+    .help-block h3 { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400; margin-bottom: 8px; }
+    .help-block p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ── Footer ── */
+    .footer { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-left { font-size: 12px; color: var(--muted); }
+    .footer-links { display: flex; gap: 16px; }
+    .footer-link { font-size: 12px; color: var(--muted); transition: color .15s; }
+    .footer-link:hover { color: var(--green); }
+
+    @media (max-width: 480px) {
+      .page { padding: 40px 16px 64px; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .story{ gap: 14px; }
+      .story-letter{ width:44px; font-size:9.5px; }
+      .track-line, .track-fill{ left:21px; }
+      .footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="story-progress" id="storyProgress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">✦ JDesigns Strategist</a>
+    <a href="https://jdesigns.fillout.com/areweamatch" class="nav-cta" target="_blank" rel="noopener">Start the match form ↗</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-eyebrow reveal in">6-Month Growth Partnership · August → January</div>
+    <h1 class="reveal in d1">Ready before the rush, not scrambling in November.</h1>
+    <p class="hero-sub reveal in d2">Christmas is the biggest buying window of the year — and it's decided months before December. This is the path from where your Meta ads and content are right now to a system that's already warmed up, tested, and running when the holiday spending starts. One connected engagement, built in stages, not a last-minute rebuild.</p>
+    <div class="hero-ctas reveal in d3">
+      <a href="https://jdesigns.fillout.com/areweamatch" class="btn-primary" target="_blank" rel="noopener">Start with the match form →</a>
+      <a href="#path" class="btn-secondary">See the 6-month path</a>
+    </div>
+    <div class="trust-strip" id="trustStrip">
+      <div class="trust-item"><div class="v" data-count="4.8" data-suffix="★">0★</div><div class="l">Average Rating</div></div>
+      <div class="trust-item"><div class="v" data-count="201" data-suffix="">0</div><div class="l">Client Reviews</div></div>
+      <div class="trust-item"><div class="v" data-count="332" data-suffix="">0</div><div class="l">Completed Orders</div></div>
+      <div class="trust-item"><div class="v" data-count="4" data-suffix=" yrs">0 yrs</div><div class="l">Top Rated · Vetted Pro</div></div>
+    </div>
+  </div>
+
+  <!-- Why now -->
+  <div class="section-label reveal">Why Start In August</div>
+  <p class="reveal d1" style="font-size:14px; color:var(--sage); line-height:1.7; max-width:580px; margin-bottom:10px;">
+    Holiday buyers don't start deciding in November. Pinterest's own 2026 holiday guidance places campaign readiness — offer, tracking, and creative — before peak-season activation, not during it. Meta's current ad guidance points the same direction: stable campaign structure and diversified creative built ahead of time, not assembled under pressure once the season hits.
+  </p>
+  <div class="story-quote reveal d2">
+    <p>If you wait until November to start, you're not planning a holiday campaign — you're reacting to one.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- The 6-Month Path -->
+  <div id="path" class="section-label reveal">The 6-Month Path</div>
+  <p class="reveal d1" style="font-size:13.5px; color:var(--muted); line-height:1.6; margin-bottom:28px; max-width:560px;">
+    Every stage is a real, existing service — nothing here is invented for the season. Where you start depends on where your account already is; some clients skip straight to month two or three.
+  </p>
+
+  <div class="story-track" id="storyTrack">
+    <div class="track-line"></div>
+    <div class="track-fill" id="trackFill"></div>
+
+    <div class="story reveal">
+      <div class="story-letter">AUG</div>
+      <div class="story-body">
+        <div class="story-tag">Month 1 — Foundation</div>
+        <h2>Make sure the account underneath the ads is actually clean.</h2>
+        <p class="story-sub">A quick review of your Meta setup, tracking, and whether you have a proven offer and a working landing or booking path — the three things holiday creative can't rescue if they're missing. If your account's already solid, this step is quick or skipped entirely.</p>
+        <div class="pill-row-mini">
+          <span class="pill-mini">Meta Account &amp; Ads Audit — $195</span>
+          <span class="pill-mini alt">Skip if your account's already clean</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="story reveal">
+      <div class="story-letter">SEP</div>
+      <div class="story-body">
+        <div class="story-tag">Month 2 — Build</div>
+        <h2>Launch the top-of-funnel campaign that everything else builds on.</h2>
+        <p class="story-sub">Campaign structure, targeting, and pixel confirmed, then a top-of-funnel awareness campaign goes live — no lead-gen or hard sell yet. This is what creates the warm audience retargeting needs later; you can't build a MOF or BOF campaign without it.</p>
+        <div class="pill-row-mini">
+          <span class="pill-mini">Phase 1 Meta Ads Strategy &amp; Setup — $395 one-time</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="story reveal">
+      <div class="story-letter">OCT</div>
+      <div class="story-body">
+        <div class="story-tag">Month 3 — Optimize &amp; Test</div>
+        <h2>Let the campaign learn, then start layering in retargeting.</h2>
+        <p class="story-sub">Weekly performance review and optimization on the live campaign — not daily touching, which resets Meta's learning phase. This is also when the audience is big enough to start testing a retargeting layer and gift-led creative variations.</p>
+        <div class="pill-row-mini">
+          <span class="pill-mini">Ads Optimization Retainer — $395/mo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="story reveal">
+      <div class="story-letter">NOV</div>
+      <div class="story-body">
+        <div class="story-tag">Month 4 — Scale Into Peak</div>
+        <h2>Add organic content to feed the audience through Black Friday and Cyber Monday.</h2>
+        <p class="story-sub">Ads optimization continues, plus organic content — written, edited, and scheduled, not just direction — to keep the warm audience engaged going into the biggest sales weekend of the year.</p>
+        <div class="pill-row-mini">
+          <span class="pill-mini">Growth Retainer — starting at $1,495/mo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="story reveal">
+      <div class="story-letter">DEC</div>
+      <div class="story-body">
+        <div class="story-tag">Month 5 — Peak Season</div>
+        <h2>Run through the actual conversion window, still on a weekly rhythm.</h2>
+        <p class="story-sub">Same Growth Retainer, carrying through the highest-spend weeks of the year. Reach gets more expensive during major holidays industry-wide — the advantage isn't dodging that, it's already having a stable structure and tested creative in place when it happens.</p>
+        <div class="pill-row-mini">
+          <span class="pill-mini">Growth Retainer — starting at $1,495/mo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="story reveal">
+      <div class="story-letter">JAN</div>
+      <div class="story-body">
+        <div class="story-tag">Month 6 — Review &amp; Decide</div>
+        <h2>Look at what actually happened, then choose the next step.</h2>
+        <p class="story-sub">A real performance recap — what worked, what didn't, what to carry into next year. From here, most clients either continue the Growth Retainer, step back down to ads-only optimization, or pause for the season.</p>
+        <div class="pill-row-mini">
+          <span class="pill-mini alt">Performance recap — included</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="reveal" style="font-size:12.5px; color:var(--muted); line-height:1.7; margin-top:8px; max-width:560px;">
+    Gift-led, visual, or search-driven brand (decor, fashion, food, beauty, events, travel)? Pinterest is usually added early in this path, not as a late add-on — worth flagging on the match form so it's scoped from month one.
+  </p>
+
+  <hr class="divider">
+
+  <!-- Real results: funnel -->
+  <div class="section-label reveal">The Track Record Behind This Plan</div>
+  <p class="reveal d1" style="font-size:13px; color:var(--muted); margin-bottom:16px; max-width:560px;">Real numbers from live client accounts — the same funnel this path builds, already completed once.</p>
+
+  <p class="reveal d1" style="font-size:12.5px; color:var(--sage); font-weight:700; letter-spacing:.02em; margin-bottom:2px;">Village Acres — one account, TOF build through to a real lead</p>
+  <div class="funnel-wrap" id="funnelWrap">
+    <div class="funnel-stage s1"><div class="fv">421 Landing Page Views</div><div class="fl">Top-of-funnel · $0.38 each</div></div>
+    <div class="funnel-arrow">↓ 38% converted</div>
+    <div class="funnel-stage s2"><div class="fv">161 Real Leads</div><div class="fl">Bottom-of-funnel · $1.90 each</div></div>
+  </div>
+  <p class="funnel-callout reveal d2"><strong>38% of the top-of-funnel audience</strong> converted into a real lead once the bottom-funnel campaign turned on — this is what months 2–3 of the path above are built to reproduce.</p>
+
+  <p class="reveal d2" style="font-size:12.5px; color:var(--sage); font-weight:700; letter-spacing:.02em; margin:26px 0 2px;">Expat Healthcare 360 — same TOF build, 4 unrelated markets, first 6 days</p>
+  <div class="bar-chart" id="marketBars">
+    <div class="bar-row"><div class="bar-label">Malaysia</div><div class="bar-track"><div class="bar-fill" style="--pct:72%;"></div></div><div class="bar-value">$0.36</div></div>
+    <div class="bar-row"><div class="bar-label">Thailand &amp; Philippines</div><div class="bar-track"><div class="bar-fill" style="--pct:74%;"></div></div><div class="bar-value">$0.37</div></div>
+    <div class="bar-row"><div class="bar-label">France, Germany, Portugal, Italy, Turkey</div><div class="bar-track"><div class="bar-fill" style="--pct:70%;"></div></div><div class="bar-value">$0.35</div></div>
+    <div class="bar-row"><div class="bar-label">Hong Kong &amp; UAE</div><div class="bar-track"><div class="bar-fill" style="--pct:72%;"></div></div><div class="bar-value">$0.36</div></div>
+  </div>
+  <p class="reveal d3" style="font-size:12px; color:var(--muted); line-height:1.6; max-width:560px;">Cost per 1,000 reached, one account, four culturally unrelated markets launched at once — within 2¢ of each other. That consistency is what month 2 (the TOF build) is designed to produce, not a one-market fluke.</p>
+
+  <p class="reveal d3" style="font-size:12.5px; color:var(--sage); font-weight:700; letter-spacing:.02em; margin:26px 0 2px;">Jazzy's Lifestyle — one Pinterest pipeline, most recent 31 days vs. its own baseline</p>
+  <div class="bar-chart" id="momentumBars">
+    <div class="bar-row"><div class="bar-label">Impressions</div><div class="bar-track"><div class="bar-fill" style="--pct:68%;"></div></div><div class="bar-value">↑68%</div></div>
+    <div class="bar-row"><div class="bar-label">Total Audience</div><div class="bar-track"><div class="bar-fill" style="--pct:81%;"></div></div><div class="bar-value">↑81%</div></div>
+    <div class="bar-row"><div class="bar-label">Engagements</div><div class="bar-track"><div class="bar-fill" style="--pct:40%;"></div></div><div class="bar-value">↑40%</div></div>
+    <div class="bar-row"><div class="bar-label">Saves</div><div class="bar-track"><div class="bar-fill" style="--pct:53%;"></div></div><div class="bar-value">↑53%</div></div>
+  </div>
+  <p class="reveal" style="font-size:12px; color:var(--muted); line-height:1.6; max-width:560px;">Same pipeline, still accelerating months after launch — this is the compounding effect a single one-off campaign never gets the runway to produce, and the actual argument for six months over one.</p>
+
+  <hr class="divider">
+
+  <!-- Retention proof -->
+  <div class="section-label reveal">Clients Who Start, Stay</div>
+  <p class="reveal d1" style="font-size:13.5px; color:var(--sage); line-height:1.7; max-width:560px;">A 6-month partnership only makes sense if people actually stay for it. Across 332 completed orders, clients coming back for a second, third, or ongoing project is the norm, not the exception.</p>
+  <div class="retain-row" id="retainRow">
+    <div class="retain-card">
+      <p>"This is our 3rd project with Jasmine and her work is quality every time!"</p>
+      <div class="ra">bonnie_coberly · <span>3rd order placed</span></div>
+    </div>
+    <div class="retain-card">
+      <p>"Jasmine exceeded my expectations from day one! She had a complete social media strategy to me within 24 hours."</p>
+      <div class="ra">driveorg · <span>Repeat client, 2nd order</span></div>
+    </div>
+    <div class="retain-card">
+      <p>"Excellent Work Again! Jasmine is such an asset!"</p>
+      <div class="ra">chrisjevas · <span>7th+ order, most repeat business of any client</span></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Cadence -->
+  <div class="section-label reveal">How This Is Actually Managed</div>
+  <p class="reveal d1" style="font-size:13.5px; color:var(--sage); line-height:1.7; max-width:560px; margin-bottom:14px;">
+    More campaign changes don't create better holiday results — Meta's own guidance backs a stable structure and diversified creative over constant edits.
+  </p>
+  <div class="accel-row reveal d2" id="cadenceRow">
+    <div class="accel-card bad">
+      <b>Not this</b>
+      <span>Daily edits, panicked mid-month rebuilds, one red-and-snowflake ad standing in for a whole creative strategy.</span>
+    </div>
+    <div class="accel-card good">
+      <b>This instead</b>
+      <span>Weekly review, a newly launched campaign left untouched for its first month to build a real signal, and creative varied by hook, angle, and format.</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Disclaimer -->
+  <div class="help-block reveal">
+    <h3>What this is — and isn't</h3>
+    <p>This is a staged plan built from real, existing services, sequenced around when holiday shoppers actually start deciding. It is not a guarantee. Meta and Pinterest control ad delivery and platform behavior — I don't guarantee specific sales figures, revenue, ROAS, follower counts, or any business outcome. What's consistent: a documented weekly review, a stable campaign structure, and a clear plan for what happens next each month. Ad spend is separate from any management fee and goes directly to the platform. Exact scope and pricing are confirmed once your account and goals are reviewed — nothing above is charged automatically.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CTA doors -->
+  <div class="section-label reveal">Where Do You Start?</div>
+  <div class="link-stack reveal d1">
+
+    <a href="https://jdesigns.fillout.com/areweamatch" class="link-card" target="_blank" rel="noopener">
+      <div class="link-card-icon">🩺</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Not sure my account or tracking is ready</div>
+        <div class="link-card-desc">Start with the account check — month one of the path.</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="https://jdesigns.fillout.com/areweamatch" class="link-card" target="_blank" rel="noopener">
+      <div class="link-card-icon">🚀</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Account's clean, I need the campaign built</div>
+        <div class="link-card-desc">Go straight to Phase 1 — TOF campaign live before the audience-building window closes.</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="https://jdesigns.fillout.com/areweamatch" class="link-card" target="_blank" rel="noopener">
+      <div class="link-card-icon">📊</div>
+      <div class="link-card-body">
+        <div class="link-card-title">Ads are already running, I just want them kept healthy</div>
+        <div class="link-card-desc">Ads Optimization Retainer — weekly review, no rebuild needed.</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="https://jdesigns.fillout.com/areweamatch" class="link-card" target="_blank" rel="noopener">
+      <div class="link-card-icon">🎄</div>
+      <div class="link-card-body">
+        <div class="link-card-title">I want the full push — ads and content — through Christmas</div>
+        <div class="link-card-desc">Growth Retainer, timed to be fully ramped before Black Friday.</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- Testimonial -->
+  <div class="section-label reveal">From A Client Who Ran This Playbook</div>
+  <div class="testimonial-block reveal">
+    <div class="testimonial-stars">★★★★★</div>
+    <div class="testimonial-quote">"Rather than focusing on short-term sales tactics, Jasmine developed a clear, data-driven strategy centered around building a strong top-of-funnel audience, improving our creative direction, and creating a more effective customer journey. Her recommendations were detailed, practical, and easy to understand, giving us confidence in the direction of our marketing."</div>
+    <div class="testimonial-author">babysonjay · Canada · Fiverr client</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">© 2026 JDesigns Strategist LLC · Made by Jasmine</div>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="footer-link" target="_blank" rel="noopener">Fiverr</a>
+      <a href="privacy-policy.html" class="footer-link">Privacy</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // scroll progress
+  (function(){
+    var bar = document.getElementById('storyProgress');
+    function onScroll(){
+      var h = document.documentElement;
+      var pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      bar.style.width = Math.min(pct,100) + '%';
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+  // reveal-on-scroll
+  (function(){
+    var els = document.querySelectorAll('.reveal:not(.in)');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.2});
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  // count-up stats
+  (function(){
+    function wireCountUp(id){
+      var wrap = document.getElementById(id);
+      if(!wrap) return;
+      var done = false;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting && !done){
+            done = true;
+            wrap.classList.add('in');
+            wrap.querySelectorAll('[data-count]').forEach(function(el){
+              var raw = el.getAttribute('data-count');
+              var target = parseFloat(raw);
+              var suffix = el.getAttribute('data-suffix') || '';
+              var isDecimal = raw.indexOf('.') > -1;
+              var decimals = isDecimal ? (raw.split('.')[1] || '').length : 0;
+              var dur = 1100;
+              var t0 = null;
+              function step(ts){
+                if(!t0) t0 = ts;
+                var p = Math.min((ts - t0) / dur, 1);
+                var val = target * p;
+                var out = isDecimal ? val.toFixed(decimals) : Math.round(val).toLocaleString('en-US');
+                el.textContent = out + suffix;
+                if(p < 1) requestAnimationFrame(step);
+              }
+              setTimeout(function(){ requestAnimationFrame(step); }, 300);
+            });
+          }
+        });
+      },{threshold:.5});
+      io.observe(wrap);
+    }
+    wireCountUp('pathStats');
+    wireCountUp('trustStrip');
+  })();
+
+  // good/bad cadence pop-in + bar charts, funnel, retention proof
+  (function(){
+    function onView(id){
+      var el = document.getElementById(id);
+      if(!el) return;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ el.classList.add('in'); } });
+      },{threshold:.35});
+      io.observe(el);
+    }
+    onView('cadenceRow');
+    onView('funnelWrap');
+    onView('marketBars');
+    onView('momentumBars');
+    onView('retainRow');
+  })();
+
+  // timeline: fill line + light up months as you scroll through the track
+  (function(){
+    var track = document.getElementById('storyTrack');
+    var fill = document.getElementById('trackFill');
+    if(!track || !fill) return;
+    var letters = track.querySelectorAll('.story-letter');
+    function update(){
+      var rect = track.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var total = rect.height;
+      var start = vh * 0.7;
+      var progressed = Math.min(Math.max(start - rect.top, 0), total);
+      var pct = total ? (progressed/total)*100 : 0;
+      fill.style.height = pct + '%';
+      letters.forEach(function(letter){
+        var lr = letter.getBoundingClientRect();
+        if(lr.top < vh*0.72){ letter.classList.add('hit'); }
+      });
+    }
+    window.addEventListener('scroll', update, {passive:true});
+    update();
+  })();
+</script>
+
+</body>
+</html>
