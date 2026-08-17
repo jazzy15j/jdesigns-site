@@ -192,6 +192,7 @@ const CATS = {
   'ai':          { label:'Business Systems',        color:'#a78bfa' },
   'services':    { label:'JDesigns Services',      color:'#fbbf24' },
   'products':    { label:'Self-Serve Products',    color:'#94a3b8' },
+  'help-center': { label:'Meta Help Center',       color:'#f472b6' },
 };
 
 // Zone targets (0–1 of viewport)
@@ -202,6 +203,7 @@ const ZONES = {
   'ai':          { x:.28, y:.74 },
   'services':    { x:.14, y:.44 },
   'products':    { x:.50, y:.50 },
+  'help-center': { x:.86, y:.68 },
 };
 
 // ─────────────────────────────────────────────────────────────────
@@ -252,6 +254,10 @@ const nodes = [
   { id:'retarget',  label:'Retargeting Readiness', cat:'meta-ads', hub:0,
     desc:'Retargeting needs a real warm-audience source. Optimization and a new funnel build are different jobs.',
     url:'', slug:'retargeting-needs-an-audience' },
+
+  { id:'roasmetric', label:'ROAS: What It Really Proves', cat:'meta-ads', hub:0,
+    desc:'Reach, clicks, and leads can be great results without proving profit. What ROAS misses and how to set a realistic budget.',
+    url:'', slug:'meta-ads-roas-budget-client-data' },
 
   // ── META REPAIR ───────────────────────────────────────────────
   { id:'mr-hub',    label:'Meta Access & Repair',  cat:'meta-repair', hub:1,
@@ -421,6 +427,59 @@ const nodes = [
   { id:'workshop',  label:'Systemize Your Business $95', cat:'products', hub:0,
     desc:'GitHub repo + setup guide to build a Claude AI system for your service business.',
     url:'https://jdesignsinfo.gumroad.com', slug:'' },
+
+  // ── META HELP CENTER ──────────────────────────────────────────
+  { id:'help-hub',  label:'Meta Help Center',       cat:'help-center', hub:1,
+    desc:'Quick, symptom-based answers to the Meta Business Suite questions that come up again and again.',
+    url:'https://jdesigns.info/help/', slug:'' },
+
+  { id:'h-pageaccess', label:'Lost Facebook Page Access', cat:'help-center', hub:0,
+    desc:'Start with ownership, not panic — the right first move when you lose access to a Page.',
+    url:'https://jdesigns.info/help/facebook-page-access-lost', slug:'' },
+
+  { id:'h-igconnect', label:'IG Won\'t Connect', cat:'help-center', hub:0,
+    desc:'Why Instagram refuses to connect to Meta Business Suite, and what actually fixes it.',
+    url:'https://jdesigns.info/help/instagram-wont-connect-meta-business-suite', slug:'' },
+
+  { id:'h-disabledvrestrict', label:'Disabled vs. Restricted', cat:'help-center', hub:0,
+    desc:'Two different problems that look the same at first glance — how to tell which one you have.',
+    url:'https://jdesigns.info/help/meta-ad-account-disabled-vs-restricted', slug:'' },
+
+  { id:'h-adrestricted', label:'Ad Account Restricted', cat:'help-center', hub:0,
+    desc:'Your ad account is restricted — what to check and do first.',
+    url:'https://jdesigns.info/help/meta-ad-account-restricted', slug:'' },
+
+  { id:'h-appealrejected', label:'Appeal Rejected in Minutes', cat:'help-center', hub:0,
+    desc:'A rejection that fast usually means an automated review — what to check before appealing again.',
+    url:'https://jdesigns.info/help/meta-appeal-rejected-in-minutes', slug:'' },
+
+  { id:'h-portfolioaccess', label:'Portfolio Access Problems', cat:'help-center', hub:0,
+    desc:'Who actually needs Full Control on a Business Portfolio, and who doesn\'t.',
+    url:'https://jdesigns.info/help/meta-business-portfolio-access-problems', slug:'' },
+
+  { id:'h-suitevsmanager', label:'Suite vs. Manager vs. Portfolio', cat:'help-center', hub:0,
+    desc:'Three different Meta tools with confusingly similar names — what each one actually is.',
+    url:'https://jdesigns.info/help/meta-business-suite-vs-business-manager-vs-business-portfolio', slug:'' },
+
+  { id:'h-verifyrejected', label:'Verification Keeps Getting Rejected', cat:'help-center', hub:0,
+    desc:'Why Meta Business Verification fails on repeat attempts, and what actually gets it approved.',
+    url:'https://jdesigns.info/help/meta-business-verification-rejected', slug:'' },
+
+  { id:'h-verifyrequired', label:'Verification Required — Gather This First', cat:'help-center', hub:0,
+    desc:'What to have ready before you start Meta Business Verification.',
+    url:'https://jdesigns.info/help/meta-business-verification-required', slug:'' },
+
+  { id:'h-pixelnotworking', label:'Pixel Not Working', cat:'help-center', hub:0,
+    desc:'Check these before you spend another dollar on ads with a pixel that might not be firing.',
+    url:'https://jdesigns.info/help/meta-pixel-not-working', slug:'' },
+
+  { id:'h-whogetsaccess', label:'Who Gets What Access', cat:'help-center', hub:0,
+    desc:'A plain guide to Meta Business Suite permission levels and who should have each one.',
+    url:'https://jdesigns.info/help/who-gets-what-access-meta-business-suite', slug:'' },
+
+  { id:'h-whoowns', label:'Who Owns Your Ad Account', cat:'help-center', hub:0,
+    desc:'The real answer isn\'t always who you\'d expect — how to check and why it matters.',
+    url:'https://jdesigns.info/help/who-owns-my-meta-ad-account', slug:'' },
 ];
 
 // ─────────────────────────────────────────────────────────────────
@@ -431,6 +490,7 @@ const links = [
   {s:'ma-hub',t:'adv-plus'},{s:'ma-hub',t:'creative'},{s:'ma-hub',t:'ai-disc'},
   {s:'ma-hub',t:'pixel'},{s:'ma-hub',t:'budget'},{s:'ma-hub',t:'funnel'},
   {s:'ma-hub',t:'pixnotrack'},{s:'ma-hub',t:'protectspend'},{s:'ma-hub',t:'retarget'},
+  {s:'ma-hub',t:'roasmetric'},
   // Meta Repair spokes
   {s:'mr-hub',t:'behav'},{s:'mr-hub',t:'appeal'},{s:'mr-hub',t:'bpsetup'},
   {s:'mr-hub',t:'mverif'},{s:'mr-hub',t:'agency'},{s:'mr-hub',t:'igconn'},
@@ -449,6 +509,11 @@ const links = [
   // Products spokes
   {s:'pr-hub',t:'vault'},{s:'pr-hub',t:'freebie'},{s:'pr-hub',t:'workshop'},
   {s:'pr-hub',t:'cmdpack'},
+  // Help Center spokes
+  {s:'help-hub',t:'h-pageaccess'},{s:'help-hub',t:'h-igconnect'},{s:'help-hub',t:'h-disabledvrestrict'},
+  {s:'help-hub',t:'h-adrestricted'},{s:'help-hub',t:'h-appealrejected'},{s:'help-hub',t:'h-portfolioaccess'},
+  {s:'help-hub',t:'h-suitevsmanager'},{s:'help-hub',t:'h-verifyrejected'},{s:'help-hub',t:'h-verifyrequired'},
+  {s:'help-hub',t:'h-pixelnotworking'},{s:'help-hub',t:'h-whogetsaccess'},{s:'help-hub',t:'h-whoowns'},
   // Cross-connections
   {s:'ma-hub',   t:'mr-hub',   x:1},{s:'budget',  t:'behav',   x:1},
   {s:'pixel',    t:'adssvc',   x:1},{s:'bizver',   t:'ecosys',  x:1},
@@ -466,6 +531,8 @@ const links = [
   {s:'nikescale',  t:'adssvc',  x:1},{s:'hirestrat', t:'strengths', x:1},
   {s:'mktbudget',  t:'nikescale', x:1},
   {s:'bigbrandai', t:'canvai',    x:1},{s:'bigbrandai', t:'ai-disc',  x:1},
+  {s:'help-hub',   t:'mr-hub',    x:1},{s:'h-pixelnotworking', t:'pixel', x:1},
+  {s:'h-whoowns',  t:'agency',    x:1},
 ];
 
 // ─────────────────────────────────────────────────────────────────
