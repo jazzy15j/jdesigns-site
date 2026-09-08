@@ -5,21 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Knowledge Hub — JDesigns Strategist</title>
 <meta name="description" content="Everything JDesigns knows about Meta advertising, Meta Business access, and the systems that keep small business marketing running.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2307100a'/%3E%3Ctext x='50' y='69' font-size='58' text-anchor='middle' fill='%232ec27e'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/site.css">
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <style>
+  /* ── Page-specific: full-viewport knowledge graph app ──
+       This page is a fixed, non-scrolling canvas (body has
+       overflow:hidden / height:100vh) with its own compact <header>
+       used by the D3 script itself: topSafe() in the script below
+       reads document.querySelector('header').offsetHeight to keep
+       graph nodes from spawning underneath it. Because of that this
+       page intentionally keeps its own bespoke <header> instead of the
+       site-wide scrolling <nav> used on other pages — stacking the
+       shared nav on top would shrink the space the script already
+       accounts for and hide/orphan nodes behind it. Colors and type
+       below are restyled to the shared token set; nothing that the
+       graph script measures or queries (ids, classes, the <header>
+       element itself) was renamed or restructured. */
   :root {
-    --bg:     #07100a;
-    --border: #1e3225;
-    --green:  #2ec27e;
-    --muted:  #8aab96;
-    --label:  #c4dccb;
-    --white:  #ffffff;
+    /* --bg, --green, --muted already match the shared tokens from
+       site.css exactly, so they're not redeclared here (redeclaring
+       a custom property in terms of itself is an invalid self-reference
+       in CSS, not a safe fallback). These three are page-specific
+       aliases only. */
+    --border: var(--faint);
+    --label:  var(--sage);
+    --white:  var(--text);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
 
   body {
     background: var(--bg);
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: var(--font-sans);
     overflow: hidden;
     height: 100vh;
   }
@@ -37,40 +54,45 @@
   /* HEADER */
   header {
     position:fixed; top:0; left:0; right:0; z-index:200;
-    padding:12px 22px;
+    padding:14px 22px;
     display:flex; align-items:center; justify-content:space-between;
     border-bottom:1px solid var(--border);
     background:rgba(7,16,10,.92);
-    backdrop-filter:blur(14px);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
   }
   .wordmark {
-    font-family:Georgia,'Times New Roman',serif;
-    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--muted);
+    display:inline-flex; align-items:center; gap:6px;
+    font-family: var(--font-mono);
+    font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--green);
+    border:1px solid var(--border-green); border-radius:999px;
+    padding:7px 14px 7px 12px; background:var(--green-dim);
     text-decoration:none;
-    transition:color .15s;
+    transition:border-color .15s, background .15s;
   }
-  .wordmark:hover { color:var(--label); }
-  .wordmark .star { color:var(--green); }
+  .wordmark:hover { border-color:var(--green); background:rgba(46,194,126,.14); }
+  .wordmark .star { font-family: var(--font-serif); font-size:13px; }
   .header-right { display:flex; align-items:center; gap:18px; }
-  .header-sub { font-size:11px; color:var(--muted); opacity:.5; }
+  .header-sub { font-size:11px; color:var(--muted); opacity:.6; }
   .header-cta {
-    font-size:11px; color:var(--green); text-decoration:none;
-    border:1px solid rgba(46,194,126,.3); padding:5px 13px;
-    border-radius:20px; letter-spacing:.04em; transition:all .18s;
+    font-size:12px; font-weight:700; letter-spacing:.03em; color:#07100a; text-decoration:none;
+    background:var(--green);
+    padding:8px 16px;
+    border-radius:999px; transition:opacity .15s, transform .12s;
   }
-  .header-cta:hover { background:rgba(46,194,126,.12); }
+  .header-cta:hover { opacity:.88; transform:translateY(-1px); }
 
   /* LEGEND */
   .legend {
-    position:fixed; top:62px; right:16px; z-index:200;
-    background:rgba(9,18,11,.96);
-    border:1px solid var(--border); border-radius:11px;
+    position:fixed; top:70px; right:16px; z-index:200;
+    background:var(--surface);
+    border:1px solid var(--border); border-radius:var(--radius);
     padding:13px 15px;
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
     max-width:min(220px, 55vw);
   }
   .legend h3 {
+    font-family: var(--font-mono);
     font-size:9px; text-transform:uppercase;
     letter-spacing:.12em; color:var(--muted); margin-bottom:9px;
     display:flex; align-items:center; justify-content:space-between; gap:8px;
@@ -90,7 +112,7 @@
     .wordmark { font-size:9.5px; letter-spacing:.08em; white-space:nowrap; }
     .header-sub { display:none; }
     .header-cta { font-size:10px; padding:4px 10px; white-space:nowrap; }
-    .legend { top:52px; right:10px; padding:9px 11px; max-width:44vw; }
+    .legend { top:58px; right:10px; padding:9px 11px; max-width:44vw; }
     .legend h3 { margin-bottom:0; }
     .legend.collapsed h3 { margin-bottom:0; }
     .legend .legend-toggle { display:inline; color:var(--green); font-size:11px; }
@@ -103,15 +125,15 @@
   /* TOOLTIP — Obsidian peek style */
   .tt {
     position:fixed; z-index:300;
-    background:rgba(9,19,12,.98);
-    border:1px solid var(--border); border-radius:10px;
+    background:var(--surface2);
+    border:1px solid var(--border-green); border-radius:var(--radius);
     padding:12px 14px; max-width:220px;
     pointer-events:none; opacity:0;
     transition:opacity .1s ease;
     box-shadow:0 8px 28px rgba(0,0,0,.55);
   }
   .tt.show { opacity:1; }
-  .tt-cat  { font-size:9px; text-transform:uppercase; letter-spacing:.1em; margin-bottom:4px; }
+  .tt-cat  { font-family: var(--font-mono); font-size:9px; text-transform:uppercase; letter-spacing:.1em; margin-bottom:4px; }
   .tt-name { font-size:12.5px; font-weight:600; color:var(--white); margin-bottom:4px; line-height:1.3; }
   .tt-desc { font-size:10.5px; color:var(--muted); line-height:1.55; }
   .tt-cta  { margin-top:8px; font-size:9.5px; color:var(--green); text-transform:uppercase; letter-spacing:.09em; }
@@ -122,7 +144,8 @@
 
   .hint {
     position:fixed; bottom:14px; left:50%; transform:translateX(-50%);
-    font-size:10.5px; color:var(--muted); opacity:.35;
+    font-family: var(--font-mono);
+    font-size:10px; letter-spacing:.04em; color:var(--muted); opacity:.4;
     pointer-events:none; z-index:100; white-space:nowrap;
   }
 
@@ -337,6 +360,10 @@ const nodes = [
     desc:'How visual search, saves, catalogs, tracking, and destinations work together from discovery toward purchase.',
     url:'', slug:'pinterest-decision-journey-2026' },
 
+  { id:'holidaysetup', label:'The Real BF Discount', cat:'social', hub:0,
+    desc:'Real 2026 cost data on why building your audience now beats waiting — plus the 5-step setup checklist for Meta and Pinterest.',
+    url:'', slug:'holiday-setup-checklist' },
+
   // ── AI TOOLS ──────────────────────────────────────────────────
   { id:'ai-hub',    label:'Business Systems',       cat:'ai',         hub:1,
     desc:'The same practical organization Jasmine uses to run her own Meta work — pricing, rules, and delivery — turned into files any service business can build once and reuse.',
@@ -498,7 +525,7 @@ const links = [
   // Social spokes
   {s:'soc-hub',t:'igalgo'},{s:'soc-hub',t:'treel'},{s:'soc-hub',t:'caro'},
   {s:'soc-hub',t:'pillars'},{s:'soc-hub',t:'canvavs'},{s:'soc-hub',t:'datapersuade'},
-  {s:'soc-hub',t:'ragebait'},{s:'soc-hub',t:'pindecide'},
+  {s:'soc-hub',t:'ragebait'},{s:'soc-hub',t:'pindecide'},{s:'soc-hub',t:'holidaysetup'},
   // AI spokes
   {s:'ai-hub',t:'brain'},{s:'ai-hub',t:'cmdpack'},{s:'ai-hub',t:'canvai'},
   {s:'ai-hub',t:'ccrepo'},{s:'ai-hub',t:'growthpath'},{s:'ai-hub',t:'bigbrandai'},
@@ -533,6 +560,8 @@ const links = [
   {s:'bigbrandai', t:'canvai',    x:1},{s:'bigbrandai', t:'ai-disc',  x:1},
   {s:'help-hub',   t:'mr-hub',    x:1},{s:'h-pixelnotworking', t:'pixel', x:1},
   {s:'h-whoowns',  t:'agency',    x:1},
+  {s:'holidaysetup', t:'pindecide', x:1},{s:'holidaysetup', t:'growthpath', x:1},
+  {s:'holidaysetup', t:'bpsetup',   x:1},{s:'holidaysetup', t:'pixel',      x:1},
 ];
 
 // ─────────────────────────────────────────────────────────────────

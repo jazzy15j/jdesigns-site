@@ -540,3 +540,45 @@ Read it here: https://jdesigns.info/blog/meta-verified-tiers-small-business
 
 ---
 
+## 20. The Real Black Friday Discount (Holiday Setup Checklist)
+
+Folder: `marketing/social-posts/exports/png/holiday-setup-checklist`
+
+Slides to upload in this order:
+
+- `post-01.png`
+- `post-02.png`
+- `post-03.png`
+- `post-04.png`
+- `post-05.png`
+
+Caption:
+
+```text
+The real Black Friday discount isn't the coupon. It's the audience you build in September.
+
+Cyber Monday ad costs run about 138% above the yearly average on Facebook and Instagram. The same reach costs a fraction of that right now. Building a warm audience while it's cheap is the actual discount — not the coupon code.
+
+5 things to check before the season hits, and where to start if you get stuck.
+
+Read it here: https://jdesigns.info/blog/holiday-setup-checklist
+
+#MetaAds #BlackFriday #SmallBusinessMarketing #JDesignsStrategist
+```
+
+Bonus caption — post-holiday retention (text-only, no dedicated graphic; reuse post-05 or run as a plain-text post):
+
+```text
+The holiday sale isn't over when the order is.
+
+Retention costs an estimated 5 to 25 times less than getting a brand-new customer. Every person who buys from you this season is worth more in January than a cold lead is — if you actually follow up. A real thank-you. A segment for gift-givers vs. the person who'll use it. A loyalty nudge for the ones who already trust you.
+
+Plan the January follow-up in December, not after the rush is already over.
+
+#CustomerRetention #SmallBusinessMarketing #JDesignsStrategist
+```
+
+Routes to: $195 Meta Ads Audit (foundation unclear) → Phase 1 Meta Ads Strategy & Setup (ready to launch) → Pinterest Automation (if the brand fits) → Growth Retainer (January retention push).
+
+---
+

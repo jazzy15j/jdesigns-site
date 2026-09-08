@@ -131,3 +131,29 @@ Full breakdown: https://jdesigns.info/blog/big-brands-ai-ads-2026
 ```
 
 Routes to: Meta Ads Strategy & Setup — natural landing point for anyone who reads this and wants a strategist's read on using AI intentionally in their own ads.
+
+---
+
+## 6. Most Businesses Go Quiet in January
+
+Graphic: `holiday-setup-checklist.png`
+
+```text
+Cyber Monday ad costs run about 138% above the yearly average to reach someone on Facebook or Instagram. January resets to roughly 24% below it.
+
+Most small businesses treat January as a slow month for marketing — the natural pause after the holiday rush. The cost data says the opposite. It's the cheapest window all year to test new creative and build the next audience.
+
+Here's the pattern worth knowing either way: Q4 is expensive because everyone's competing for the same shoppers at once. January is cheap because almost nobody's spending. Same platform, same audience pool, wildly different price.
+
+The businesses that use that window come into spring with an audience already warmed up. The ones that wait start over in March — at March prices.
+
+This isn't a case for spending less. It's a case for spending on purpose, in the months where the same dollar buys more.
+
+What does your own ad spend look like month to month — do you already plan around this, or does it just happen to you?
+
+Full breakdown: https://jdesigns.info/blog/holiday-setup-checklist
+
+#MetaAds #MarketingStrategy #SmallBusinessMarketing #JDesignsStrategist
+```
+
+Routes to: $195 Meta Ads Audit — natural landing point for anyone who wants their account ready to test the moment January's cheaper pricing opens up.
