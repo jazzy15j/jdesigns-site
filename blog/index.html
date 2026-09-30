@@ -6,17 +6,21 @@
   <title>Blog | JDesigns Strategist — Meta Ads Strategy &amp; Business Systems</title>
   <meta name="description" content="Practical guides on Meta ads, account access, and the marketing systems that support them. Written by Jasmine at JDesigns Strategist LLC."/>
   <link rel="stylesheet" href="../assets/blog.css"/>
+  <link rel="stylesheet" href="../assets/site.css"/>
   <style>
+    /* site.css loads second so its grid-based .blog-card/.blog-grid win over blog.css's list layout — the rest of blog.css (wordmark, article-intro, cta-block, section labels) still applies since site.css doesn't define those. */
     .jump-nav { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:2.5rem; }
     .jump-pill {
       display:inline-flex; align-items:center; gap:7px;
       padding:7px 15px; border-radius:999px;
-      border:1px solid var(--border-muted);
-      font-size:12.5px; font-weight:600; color:var(--muted);
+      border:1px solid var(--faint);
+      font-family: var(--font-mono); font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
       transition: border-color .15s, color .15s, background .15s;
     }
-    .jump-pill:hover { border-color:var(--accent); color:var(--text); background:var(--accent-dim); }
+    .jump-pill:hover { border-color:var(--border-green); color:var(--text); background:var(--green-dim); }
     .jump-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+    .blog-section-label { font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:40px 0 20px; padding-bottom:10px; border-bottom:1px solid var(--faint); }
+    .blog-section-label .num { color:var(--green); font-weight:700; }
   </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -37,85 +41,119 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 </head>
 <body>
-<nav class="jdgnav">
-  <style>
-    .jdgnav{position:sticky;top:0;z-index:100;background:rgba(7,16,10,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,50,37,.7);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
-    .jdgnav-inner{max-width:1040px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;}
-    .jdgnav-logo{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#2ec27e;white-space:nowrap;text-decoration:none;}
-    .jdgnav-links{display:flex;align-items:center;gap:6px;}
-    .jdgnav-link{font-size:12.5px;font-weight:500;color:#8aab96;padding:5px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .15s,background .15s;}
-    .jdgnav-link:hover{color:#fff;background:#0d1a10;}
-    .jdgnav-cta{font-size:12px;font-weight:700;letter-spacing:.04em;color:#07100a;background:#2ec27e;padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
-    .jdgnav-cta:hover{opacity:.85;}
-    .jdgnav-toggle{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid rgba(30,50,37,.7);background:transparent;cursor:pointer;flex-shrink:0;}
-    .jdgnav-toggle span{display:block;width:16px;height:1.5px;background:#c4dccb;position:relative;}
-    .jdgnav-toggle span::before,.jdgnav-toggle span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#c4dccb;}
-    .jdgnav-toggle span::before{top:-5px;}
-    .jdgnav-toggle span::after{top:5px;}
-    @media (max-width:900px){
-      .jdgnav-toggle{display:flex;}
-      .jdgnav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:#0d1a10;border-bottom:1px solid rgba(30,50,37,.7);padding:10px 16px 16px;box-shadow:0 16px 32px rgba(0,0,0,.35);}
-      .jdgnav-links.open{display:flex;}
-      .jdgnav-links.open .jdgnav-link,.jdgnav-links.open .jdgnav-cta{width:100%;justify-content:space-between;padding:14px 14px;border-radius:10px;font-size:14px;display:flex;}
-    }
-  </style>
-  <div class="jdgnav-inner">
-    <a href="/" class="jdgnav-logo">✦ JDesigns Strategist</a>
-    <div class="jdgnav-links" id="jdgnavLinks">
-      <a href="/" class="jdgnav-link">Home</a>
-      <a href="/blog/" class="jdgnav-link">Blog</a>
-      <a href="/simplesystems.html" class="jdgnav-link">Simple Systems</a>
-      <a href="/help/" class="jdgnav-link">Help</a>
-      <a href="/work-with-me.html" class="jdgnav-link">Work With Me</a>
-      <a href="https://www.fiverr.com/jazz96designs" class="jdgnav-cta" target="_blank" rel="noopener">Fiverr &#8599;</a>
+
+<div class="story-progress" id="storyProgress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><span class="mark">✦</span> JDesigns Strategist</a>
+    <div class="nav-links" id="navLinks">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/blog/" class="nav-link active">Blog</a>
+      <a href="/simplesystems.html" class="nav-link">Simple Systems</a>
+      <a href="/help/" class="nav-link">Help</a>
+      <a href="/work-with-me.html" class="nav-link">Work With Me</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
     </div>
-    <button class="jdgnav-toggle" id="jdgnavToggle" aria-label="Open menu" aria-expanded="false" aria-controls="jdgnavLinks"><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span>
+    </button>
   </div>
 </nav>
-<script>
-(function(){
-  var btn=document.getElementById('jdgnavToggle');
-  var links=document.getElementById('jdgnavLinks');
-  if(!btn||!links) return;
-  btn.addEventListener('click',function(){
-    var open=links.classList.toggle('open');
-    btn.setAttribute('aria-expanded',open);
-  });
-  links.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){links.classList.remove('open');btn.setAttribute('aria-expanded','false');});
-  });
-})();
-</script>
+
+<header class="band hero-3col">
+
+  <aside class="hero-rail hero-rail-left">
+    <div class="hero-rail-label">Jump to</div>
+    <a href="#latest" class="hero-rail-item"><span class="hero-rail-title">Latest Posts</span></a>
+    <a href="#meta-ads" class="hero-rail-item"><span class="hero-rail-title">Meta Ads</span></a>
+    <a href="#meta-repair" class="hero-rail-item"><span class="hero-rail-title">Meta Access &amp; Repair</span></a>
+    <a href="#content-systems" class="hero-rail-item"><span class="hero-rail-title">Marketing &amp; Content Systems</span></a>
+    <a href="#about-the-approach" class="hero-rail-item"><span class="hero-rail-title">About the Approach</span></a>
+    <a href="/knowledge-hub.html" class="hero-rail-more">See how it all connects →</a>
+  </aside>
+
+  <div class="hero-center">
+    <div class="hero-eyebrow reveal d1">The Blog</div>
+    <h1 class="reveal d1" data-scramble-on-view style="max-width:22ch;">41 guides. One connected system.</h1>
+    <p class="hero-sub reveal d2">Practical guides on Meta ads, account access, and the systems that keep marketing consistent — written for owners who want to understand the platform, not just hand it off.</p>
+    <div class="hero-ctas reveal d3">
+      <a href="/knowledge-hub.html" class="btn-primary">See how it all connects →</a>
+      <a href="/work-with-me.html" class="btn-secondary">Work With Me</a>
+    </div>
+
+    <div class="hero-mobile-latest">
+      <div class="hero-rail-label" style="text-align:left; padding-left:4px;">Jump to</div>
+      <div class="hero-mobile-scroller">
+        <a href="#latest" class="hero-mobile-card"><span class="hero-rail-title">Latest Posts</span></a>
+        <a href="#meta-ads" class="hero-mobile-card"><span class="hero-rail-title">Meta Ads</span></a>
+        <a href="#meta-repair" class="hero-mobile-card"><span class="hero-rail-title">Meta Access &amp; Repair</span></a>
+        <a href="#content-systems" class="hero-mobile-card"><span class="hero-rail-title">Content Systems</span></a>
+      </div>
+      <div class="hero-mobile-counts">
+        <a href="/help/">13 Help Articles</a>
+        <a href="/knowledge-hub.html">Knowledge Hub</a>
+        <a href="/about.html">About Jasmine</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="hero-rail hero-rail-right">
+    <a href="/about.html" class="hero-rail-preview">
+      <span class="hero-rail-date">About</span>
+      <span class="hero-rail-title">Founder, JDesigns Strategist. UNK grad, Advertising &amp; PR. Fiverr Pro since 2024.</span>
+      <span class="hero-rail-more" style="margin-top:2px;">Full bio &amp; resume →</span>
+    </a>
+    <div class="hero-rail-counts">
+      <a href="/blog/" class="hero-rail-count"><span class="n">41</span><span class="l">Blog Posts</span></a>
+      <a href="/help/" class="hero-rail-count"><span class="n">13</span><span class="l">Help Articles</span></a>
+      <a href="/index.html#start-here" class="hero-rail-count"><span class="n">9</span><span class="l">Repair Guides</span></a>
+      <a href="/meta-ads-case-studies.html" class="hero-rail-count"><span class="n">2</span><span class="l">Case Studies</span></a>
+    </div>
+  </aside>
+
+</header>
 
 <div class="page">
 
-  <div class="wordmark">
-    <a href="/">✦ JDesigns Strategist</a>
-    <span>/</span>
-    <span>Blog</span>
-  </div>
-
-  <div class="profile-header">
-    <img src="../assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
-    <div>
-      <div class="profile-name">Jasmine</div>
-      <div class="profile-handle">Meta Ads &amp; Strategy · JDesigns Strategist LLC</div>
-    </div>
-  </div>
-
-  <h1 style="margin-bottom: 0.25rem;">The Blog</h1>
-  <p class="article-intro" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">Practical guides on Meta ads, account access, and the systems that keep marketing consistent. Written for small business owners who want to understand the platform, not just hand it off.</p>
-
-  <div class="jump-nav">
-    <a href="#latest" class="jump-pill"><span class="jump-dot" style="background:#fff;"></span>Latest</a>
-    <a href="#meta-ads" class="jump-pill"><span class="jump-dot" style="background:#2ec27e;"></span>Meta Ads</a>
-    <a href="#meta-repair" class="jump-pill"><span class="jump-dot" style="background:#e8834d;"></span>Meta Access &amp; Repair</a>
-    <a href="#content-systems" class="jump-pill"><span class="jump-dot" style="background:#60c0f0;"></span>Marketing &amp; Content Systems</a>
-    <a href="#about-the-approach" class="jump-pill"><span class="jump-dot" style="background:#fbbf24;"></span>About the Approach</a>
-  </div>
-
   <div class="blog-section-label" id="latest">Latest Posts</div>
   <div class="blog-grid latest-grid">
+
+    <a href="/blog/how-i-automated-my-pinterest-facebook-instagram-posting.html" class="blog-card">
+      <div class="blog-card-tag-row"><span class="blog-card-tag">AI &amp; Tools</span><span class="blog-card-date">Sep 30, 2026</span></div>
+      <div class="blog-card-title">I set up my content to post itself. Here's how it works, and what broke.</div>
+      <div class="blog-card-desc">Pinterest, Facebook, Instagram and Stories on a schedule, with me approving every post. The four things that went wrong, including an analytics report that said every pin had zero views.</div>
+    </a>
+
+    <a href="/blog/real-facebook-ads-beginner-questions.html" class="blog-card">
+      <div class="blog-card-tag-row"><span class="blog-card-tag">Meta Ads</span><span class="blog-card-date">Sep 28, 2026</span></div>
+      <div class="blog-card-title">3 real questions beginners ask about Facebook ads (and the actual answers)</div>
+      <div class="blog-card-desc">Three real, unedited questions pulled from the comments under a beginner Facebook ads tutorial — and the correct answer to each one, verified against Meta's own documentation.</div>
+    </a>
+
+    <a href="/blog/new-account-wont-escape-meta-restriction.html" class="blog-card">
+      <div class="blog-card-tag-row"><span class="blog-card-tag">Meta Access &amp; Repair</span><span class="blog-card-date">Sep 23, 2026</span></div>
+      <div class="blog-card-title">Think a new account will dodge a Meta restriction? Here's why it usually finds you anyway.</div>
+      <div class="blog-card-desc">Deleting an account or starting a "clean" new one feels like the fastest fix. It's usually the move that makes things worse — here's what actually works instead.</div>
+    </a>
+
+    <a href="/blog/consolidate-your-meta-accounts.html" class="blog-card">
+      <div class="blog-card-tag-row"><span class="blog-card-tag">Meta Access &amp; Repair</span><span class="blog-card-date">Sep 21, 2026</span></div>
+      <div class="blog-card-title">How many Meta Business Portfolios do you actually need?</div>
+      <div class="blog-card-desc">One login can run every brand you have — but that doesn't mean one portfolio should. The one question that decides it, and the steps to actually consolidate.</div>
+    </a>
+
+    <a href="/blog/why-cant-remove-yourself-meta-business-portfolio.html" class="blog-card">
+      <div class="blog-card-tag-row"><span class="blog-card-tag">Meta Access &amp; Repair</span><span class="blog-card-date">Sep 15, 2026</span></div>
+      <div class="blog-card-title">Why you can't remove yourself from a Meta Business Portfolio (and what each blocker actually means)</div>
+      <div class="blog-card-desc">Three specific, repeatable reasons Meta won't let you leave a business you no longer work with — and the exact fix for each one, found by cleaning out 88 of my own.</div>
+    </a>
+
+    <a href="/blog/meta-access-invite-guide.html" class="blog-card">
+      <div class="blog-card-tag-row"><span class="blog-card-tag">Meta Access &amp; Repair</span><span class="blog-card-date">Sep 10, 2026</span></div>
+      <div class="blog-card-title">How to add me to your Meta Business Portfolio</div>
+      <div class="blog-card-desc">Step-by-step, with screenshots and arrows — exactly what to click to grant access to your Facebook Page, Instagram, ad account, and Pixel in about two minutes.</div>
+    </a>
 
     <a href="/blog/find-your-real-meta-business-portfolio.html" class="blog-card">
       <div class="blog-card-tag-row"><span class="blog-card-tag">Meta Access &amp; Repair</span><span class="blog-card-date">Sep 9, 2026</span></div>
@@ -253,6 +291,18 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   <div class="blog-section-label" id="meta-repair">Meta Access &amp; Repair</div>
   <div class="blog-grid">
 
+    <a href="/blog/consolidate-your-meta-accounts.html" class="blog-card">
+      <div class="blog-card-tag">Meta Access &amp; Repair</div>
+      <div class="blog-card-title">How many Meta Business Portfolios do you actually need?</div>
+      <div class="blog-card-desc">One login can run every brand you have — but that doesn't mean one portfolio should. The one question that decides it, and the steps to actually consolidate.</div>
+    </a>
+
+    <a href="/blog/meta-access-invite-guide.html" class="blog-card">
+      <div class="blog-card-tag">Meta Access &amp; Repair</div>
+      <div class="blog-card-title">How to add me to your Meta Business Portfolio</div>
+      <div class="blog-card-desc">Step-by-step, with screenshots and arrows — exactly what to click to grant access to your Facebook Page, Instagram, ad account, and Pixel in about two minutes.</div>
+    </a>
+
     <a href="/blog/meta-behavioral-restriction-triggers.html" class="blog-card">
       <div class="blog-card-tag">Meta Access &amp; Repair</div>
       <div class="blog-card-title">Meta flagged your account and you didn't change anything. Here's the real reason.</div>
@@ -269,6 +319,12 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
       <div class="blog-card-tag">Meta Access &amp; Repair</div>
       <div class="blog-card-title">Your Meta appeal got rejected in 10 minutes. Here's the exact reason.</div>
       <div class="blog-card-desc">Why fast appeals get auto-denied, what a strong appeal looks like, and what you can still do after a denial.</div>
+    </a>
+
+    <a href="/blog/why-cant-remove-yourself-meta-business-portfolio.html" class="blog-card">
+      <div class="blog-card-tag">Meta Access &amp; Repair</div>
+      <div class="blog-card-title">Why you can't remove yourself from a Meta Business Portfolio (and what each blocker actually means)</div>
+      <div class="blog-card-desc">Three specific, repeatable reasons Meta won't let you leave a business you no longer work with — and the exact fix for each one, found by cleaning out 88 of my own.</div>
     </a>
 
     <a href="/blog/meta-business-verification-required-2026.html" class="blog-card">
@@ -317,6 +373,12 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 
   <div class="blog-section-label" id="content-systems">Marketing &amp; Content Systems</div>
   <div class="blog-grid">
+
+    <a href="/blog/how-i-automated-my-pinterest-facebook-instagram-posting.html" class="blog-card">
+      <div class="blog-card-tag">AI &amp; Tools</div>
+      <div class="blog-card-title">I set up my content to post itself. Here's how it works, and what broke.</div>
+      <div class="blog-card-desc">Pinterest, Facebook, Instagram and Stories on a schedule, with me approving every post, and the four things that went wrong.</div>
+    </a>
 
     <a href="/blog/holiday-setup-checklist.html" class="blog-card">
       <div class="blog-card-tag">Marketing &amp; Content Systems</div>
@@ -436,11 +498,18 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   </div>
 
   <footer class="footer">
-    <span>© 2026 JDesigns Strategist LLC</span>
-    <a href="/privacy-policy.html">Privacy</a>
-    <a href="/">← Home</a>
+    <span>© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html">Made by Jasmine</a></span>
+    <span style="display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="/about.html">About</a>
+      <a href="/blog/">Blog</a>
+      <a href="/knowledge-hub.html">Knowledge Hub</a>
+      <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener">Fiverr</a>
+      <a href="/privacy-policy.html">Privacy</a>
+    </span>
   </footer>
 
 </div>
+
+<script src="../assets/site.js"></script>
 </body>
 </html>
