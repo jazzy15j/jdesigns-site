@@ -282,6 +282,10 @@ const nodes = [
     desc:'Reach, clicks, and leads can be great results without proving profit. What ROAS misses and how to set a realistic budget.',
     url:'', slug:'meta-ads-roas-budget-client-data' },
 
+  { id:'beginnerfaq', label:'Real Beginner Questions', cat:'meta-ads', hub:0,
+    desc:'Three real, unedited questions from real ad-account beginners — carousel vs. single ad, empty Data Sources, and why a good cost-per-result can still lose money.',
+    url:'', slug:'real-facebook-ads-beginner-questions' },
+
   // ── META REPAIR ───────────────────────────────────────────────
   { id:'mr-hub',    label:'Meta Access & Repair',  cat:'meta-repair', hub:1,
     desc:'Restrictions, disabled accounts, Business Portfolio issues — how to navigate Meta with confidence.',
@@ -299,6 +303,10 @@ const nodes = [
     desc:'Connect assets BEFORE adding any partner or admin — prevents the auto-security-flag on new portfolios.',
     url:'', slug:'meta-business-portfolio-setup-guide' },
 
+  { id:'consolidate', label:'How Many Portfolios Do You Need', cat:'meta-repair', hub:0,
+    desc:'One brand = one portfolio, different brands = separate portfolios — either way, one login runs all of it.',
+    url:'', slug:'consolidate-your-meta-accounts' },
+
   { id:'mverif',    label:'Meta Verified Tiers',   cat:'meta-repair', hub:0,
     desc:'4 tiers ($14–$500/mo). Blocks agency access when active. Never subscribe during a restriction.',
     url:'', slug:'meta-verified-tiers-small-business' },
@@ -310,6 +318,10 @@ const nodes = [
   { id:'multiportfolio', label:'Find Your Real Portfolio', cat:'meta-repair', hub:0,
     desc:'You likely have more than one self-created Business Portfolio. Here\'s the one screen that shows which one actually owns your Page.',
     url:'', slug:'find-your-real-meta-business-portfolio' },
+
+  { id:'cantremove', label:'Why You Can\'t Leave a Portfolio', cat:'meta-repair', hub:0,
+    desc:'Three specific reasons Meta blocks self-removal from a Business Portfolio, and the fix for each.',
+    url:'', slug:'why-cant-remove-yourself-meta-business-portfolio' },
 
   { id:'igconn',    label:'Instagram Won\'t Connect', cat:'meta-repair', hub:0,
     desc:"Instagram links to one Page only. The 'already connected' error means it's tied to an old Page.",
@@ -326,6 +338,10 @@ const nodes = [
   { id:'restlayers', label:'Restriction Layers',    cat:'meta-repair', hub:0,
     desc:'Restrictions can hit 5 separate layers. A "restored" email often only covers one of them.',
     url:'', slug:'meta-restriction-layers-explained' },
+
+  { id:'newacct',   label:'New Account Won\'t Escape It', cat:'meta-repair', hub:0,
+    desc:'Deleting or replacing an account before diagnosing it usually makes things worse, not better.',
+    url:'', slug:'new-account-wont-escape-meta-restriction' },
 
   // ── SOCIAL MEDIA ──────────────────────────────────────────────
   { id:'soc-hub',   label:'Social Media Strategy', cat:'social',      hub:1,
@@ -511,6 +527,22 @@ const nodes = [
   { id:'h-whoowns', label:'Who Owns Your Ad Account', cat:'help-center', hub:0,
     desc:'The real answer isn\'t always who you\'d expect — how to check and why it matters.',
     url:'https://jdesigns.info/help/who-owns-my-meta-ad-account', slug:'' },
+
+  { id:'h-suitenotworking', label:'Business Suite Not Working', cat:'help-center', hub:0,
+    desc:'Missing Page, wrong account, or locked out of Business Suite — six quick checks, in order.',
+    url:'https://jdesigns.info/help/meta-business-suite-not-working', slug:'' },
+
+  { id:'h-addadmin', label:'Add an Admin to a Page', cat:'help-center', hub:0,
+    desc:'Give someone access to your Page from your Business Portfolio in six steps, and which access level to choose.',
+    url:'https://jdesigns.info/help/how-to-add-an-admin-to-a-facebook-page', slug:'' },
+
+  { id:'h-createpage', label:'Create a Facebook Business Page', cat:'help-center', hub:0,
+    desc:'The order that works: personal profile, Page, Business Portfolio, then Instagram.',
+    url:'https://jdesigns.info/help/how-to-create-a-facebook-business-page', slug:'' },
+
+  { id:'h-buyadaccount', label:'Can You Buy an Ad Account?', cat:'help-center', hub:0,
+    desc:'Why buying or renting an ad account backfires, and the safe way to get ads running.',
+    url:'https://jdesigns.info/help/can-you-buy-a-meta-ads-account', slug:'' },
 ];
 
 // ─────────────────────────────────────────────────────────────────
@@ -521,11 +553,12 @@ const links = [
   {s:'ma-hub',t:'adv-plus'},{s:'ma-hub',t:'creative'},{s:'ma-hub',t:'ai-disc'},
   {s:'ma-hub',t:'pixel'},{s:'ma-hub',t:'budget'},{s:'ma-hub',t:'funnel'},
   {s:'ma-hub',t:'pixnotrack'},{s:'ma-hub',t:'protectspend'},{s:'ma-hub',t:'retarget'},
-  {s:'ma-hub',t:'roasmetric'},
+  {s:'ma-hub',t:'roasmetric'},{s:'ma-hub',t:'beginnerfaq'},
   // Meta Repair spokes
   {s:'mr-hub',t:'behav'},{s:'mr-hub',t:'appeal'},{s:'mr-hub',t:'bpsetup'},
   {s:'mr-hub',t:'mverif'},{s:'mr-hub',t:'agency'},{s:'mr-hub',t:'igconn'},
   {s:'mr-hub',t:'bizver'},{s:'mr-hub',t:'igdiscon'},{s:'mr-hub',t:'restlayers'},
+  {s:'mr-hub',t:'newacct'},{s:'newacct',t:'restlayers',x:1},{s:'newacct',t:'bpsetup',x:1},
   {s:'mr-hub',t:'multiportfolio'},{s:'multiportfolio',t:'agency',x:1},{s:'multiportfolio',t:'bpsetup',x:1},
   // Social spokes
   {s:'soc-hub',t:'igalgo'},{s:'soc-hub',t:'treel'},{s:'soc-hub',t:'caro'},
@@ -546,6 +579,7 @@ const links = [
   {s:'help-hub',t:'h-adrestricted'},{s:'help-hub',t:'h-appealrejected'},{s:'help-hub',t:'h-portfolioaccess'},
   {s:'help-hub',t:'h-suitevsmanager'},{s:'help-hub',t:'h-verifyrejected'},{s:'help-hub',t:'h-verifyrequired'},
   {s:'help-hub',t:'h-pixelnotworking'},{s:'help-hub',t:'h-whogetsaccess'},{s:'help-hub',t:'h-whoowns'},
+  {s:'help-hub',t:'h-suitenotworking'},{s:'help-hub',t:'h-addadmin'},{s:'help-hub',t:'h-createpage'},{s:'help-hub',t:'h-buyadaccount'},
   // Cross-connections
   {s:'ma-hub',   t:'mr-hub',   x:1},{s:'budget',  t:'behav',   x:1},
   {s:'pixel',    t:'adssvc',   x:1},{s:'bizver',   t:'ecosys',  x:1},
@@ -559,6 +593,7 @@ const links = [
   {s:'brain',    t:'sv-hub',   x:1},{s:'ai-hub',   t:'pr-hub',  x:1},
   {s:'mverif',   t:'accrev',   x:1},
   {s:'pixnotrack', t:'pixel',   x:1},{s:'protectspend', t:'budget', x:1},
+  {s:'beginnerfaq', t:'pixnotrack', x:1},{s:'beginnerfaq', t:'roasmetric', x:1},
   {s:'restlayers', t:'behav',   x:1},{s:'strengths', t:'ecosys',   x:1},
   {s:'nikescale',  t:'adssvc',  x:1},{s:'hirestrat', t:'strengths', x:1},
   {s:'mktbudget',  t:'nikescale', x:1},

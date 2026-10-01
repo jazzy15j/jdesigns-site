@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Gig thumbnail</title>
+<style>
+:root{--bg:#07100a;--card:#0d1a10;--card2:#122016;--border:#2a4735;--green:#2ec27e;--green-dim:#1a7a4e;--glowc:#113822;--white:#fff;--muted:#8aab96;--label:#e7f3ec;--font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--font-serif:Georgia,'Times New Roman',serif;--mono:'Courier New',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);overflow:hidden}
+.slide{width:1280px;height:769px;position:relative;overflow:hidden;background:var(--bg);color:var(--white);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
+.glow{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 100%,rgba(30,120,70,.34) 0%,transparent 58%),radial-gradient(ellipse 55% 45% at 50% 105%,rgba(10,55,35,.28) 0%,transparent 55%)}
+/* safe zone: 90px sides, 56px top/bottom (Fiverr cards crop edges) */
+.grid{position:relative;z-index:2;height:100%;display:flex;padding:56px 90px;gap:48px;flex-direction:row-reverse}
+.main{flex:1;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.wm{font-family:var(--font-serif);font-size:20px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;display:flex;gap:10px;align-items:center}
+.wm .star{color:var(--green)}
+.eyebrow{font-size:17px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+.headline{font-family:var(--font-serif);font-size:58px;line-height:1.08;letter-spacing:-.01em}
+.headline em{font-style:italic;color:var(--green)}
+.sub{font-size:22px;line-height:1.35;color:var(--label);font-weight:600;margin-top:14px}
+.vis{margin-top:4px}
+.bottom{display:flex;align-items:center;gap:18px}
+.tag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--green-dim);color:var(--green);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 18px 8px 14px;border-radius:999px}
+.tag i{width:6px;height:6px;border-radius:50%;background:var(--green)}
+.domain{font-family:var(--mono);font-size:16px;letter-spacing:.05em;color:var(--muted)}
+.side{width:380px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px}
+.photo-frame{width:360px;background:var(--card);border:2px solid var(--green-dim);border-radius:28px;padding:12px}
+.photo-slot{width:100%;height:380px;border-radius:18px;background:#0b160e;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.photo-slot img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.photo-slot span{color:#4d7a62;font-weight:700;letter-spacing:.14em;font-size:15px;text-transform:uppercase}
+.cred{text-align:center}
+.cred-name{font-family:var(--font-serif);font-size:32px;line-height:1;display:flex;gap:10px;justify-content:center;align-items:center}
+.vi{width:25px;height:25px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center}
+.vi svg{width:14px;height:14px;stroke:var(--bg);fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.cred-title{font-size:16px;color:var(--green);font-weight:800;margin-top:8px}
+/* shared mock-visual bits */
+.panel{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:16px 20px}
+.row{display:flex;align-items:center;gap:14px}
+.chk{width:30px;height:30px;border-radius:50%;background:var(--glowc);border:1px solid var(--green-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green);font-weight:800;font-size:16px}
+.t{font-size:21px;font-weight:700}
+.pill{font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+.ok{background:var(--glowc);color:var(--green);border:1px solid var(--green-dim)}
+.warn{background:#2a2410;color:#e6c35a;border:1px solid #6b5a1c}
+.bad{background:#2a1212;color:#f08a8a;border:1px solid #6b2a2a}
+.bar{height:10px;border-radius:6px;background:#1b2e22;flex:1;overflow:hidden}.bar b{display:block;height:100%;background:var(--green);border-radius:6px}
+
+</style></head><body>
+<div class="slide"><div class="glow"></div>
+ <div class="grid">
+  <div class="main">
+   <div class="wm"><span class="star">&#10022;</span> JDesigns Strategist</div>
+   <div><div class="eyebrow">Claude AI Brain</div><div class="headline">Your business, <em>organized in Claude.</em></div><div class="sub">A working business brain, same day.</div></div>
+   <div class="vis"><div class="panel" style="font-family:var(--mono);font-size:20px;line-height:1.7;color:var(--label)">
+ <div style="color:var(--green)">&#9656; business-brain/</div>
+ <div>&nbsp;&nbsp;identity.md &nbsp;<span style="color:var(--muted)">who you are</span></div>
+ <div>&nbsp;&nbsp;voice.md &nbsp;<span style="color:var(--muted)">how you sound</span></div>
+ <div>&nbsp;&nbsp;workflows/ &nbsp;<span style="color:var(--muted)">repeatable tasks</span></div></div></div>
+   <div class="bottom"><span class="tag"><i></i>320+ orders completed</span><span class="domain">jdesigns.info</span></div>
+  </div>
+  <div class="side">
+   <div class="photo-frame"><div class="photo-slot"><span>Headshot here</span></div></div>
+   <div class="cred"><div class="cred-name">Jasmine<span class="vi"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div><div class="cred-title">Founder, JDesigns Strategist &middot; Vetted Pro</div></div>
+  </div>
+ </div>
+</div></body></html>

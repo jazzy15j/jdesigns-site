@@ -5,197 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How I Actually Run This | JDesigns Strategist</title>
   <meta name="description" content="The honest story behind the AI system that runs JDesigns Strategist — what it actually looks like, how it's just synced text files, and how to build your own version." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2307100a'/%3E%3Ctext x='50' y='69' font-size='58' text-anchor='middle' fill='%232ec27e'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/site.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:           #07100a;
-      --surface:      #0d1a10;
-      --border:       rgba(30,50,37,0.7);
-      --border-green: rgba(46,194,126,.22);
-      --green:        #2ec27e;
-      --green-dim:    rgba(46,194,126,.08);
-      --text:         #ffffff;
-      --sage:         #c4dccb;
-      --muted:        #8aab96;
-      --radius:       14px;
-      --font-serif:   Georgia, 'Times New Roman', serif;
-      --font-sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      --font-mono:    'Courier New', monospace;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-size: 15px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(7,16,10,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      position: relative;
-    }
-
-    .nav-logo {
-      font-family: var(--font-serif);
-      font-size: 13px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green);
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .nav-link {
-      font-size: 12.5px;
-      font-weight: 500;
-      color: var(--muted);
-      padding: 5px 12px;
-      border-radius: 999px;
-      transition: color .15s, background .15s;
-      white-space: nowrap;
-    }
-
-    .nav-link:hover { color: var(--text); background: var(--surface); }
-    .nav-link.active { color: var(--green); }
-
-    .nav-cta {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: #07100a;
-      background: var(--green);
-      padding: 6px 14px;
-      border-radius: 999px;
-      transition: opacity .15s;
-      white-space: nowrap;
-    }
-
-    .nav-toggle {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 34px; height: 34px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: transparent;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 16px; height: 1.5px;
-      background: var(--sage);
-      position: relative;
-    }
-    .nav-toggle span::before, .nav-toggle span::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      width: 16px; height: 1.5px;
-      background: var(--sage);
-    }
-    .nav-toggle span::before { top: -5px; }
-    .nav-toggle span::after { top: 5px; }
-    .nav-toggle:hover { border-color: var(--border-green); }
-
-    @media (max-width: 900px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: calc(100% + 1px);
-        left: 0; right: 0;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 2px;
-        background: var(--surface);
-        border-bottom: 1px solid var(--border);
-        padding: 10px 16px 16px;
-        box-shadow: 0 16px 32px rgba(0,0,0,.35);
-      }
-      .nav-links.open { display: flex; }
-      .nav-links.open .nav-link, .nav-links.open .nav-cta {
-        width: 100%;
-        justify-content: space-between;
-        padding: 14px 14px;
-        border-radius: 10px;
-        font-size: 14px;
-      }
-      .nav-links.open .nav-link::after { content: '→'; opacity: .5; }
-    }
-
-    .nav-cta:hover { opacity: .85; }
-
-    .page { max-width: 760px; margin: 0 auto; padding: 60px 24px 88px; }
-
-    .profile-header { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
-    .profile-avatar { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; border: 2px solid var(--green); flex-shrink: 0; }
-    .profile-name { font-size: 15px; font-weight: 700; line-height: 1.2; }
-    .profile-handle { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
-
-    .hero { margin-bottom: 44px; }
-    .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; }
-    .hero h1 { font-family: var(--font-serif); font-size: clamp(1.7rem, 5vw, 2.3rem); font-weight: 400; line-height: 1.28; margin-bottom: 16px; letter-spacing: 0; }
-    .hero-sub { font-size: 15px; color: var(--sage); line-height: 1.7; margin-bottom: 26px; max-width: 600px; }
-    .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
-
-    .btn-primary, .btn-secondary {
-      display: inline-flex; align-items: center; gap: 7px; padding: 11px 22px; border-radius: 999px;
-      font-size: 13px; font-weight: 700; letter-spacing: 0.03em; cursor: pointer; border: none;
-      transition: opacity .15s, transform .12s, border-color .15s, color .15s, background .15s;
-      font-family: var(--font-sans);
-    }
-    .btn-primary { background: var(--green); color: #07100a; }
-    .btn-primary:hover, .btn-secondary:hover { opacity: .88; transform: translateY(-1px); }
-    .btn-secondary { background: transparent; border: 1px solid var(--border-green); color: var(--muted); }
-    .btn-secondary:hover { border-color: var(--green); color: var(--text); background: var(--green-dim); }
-
-    .section-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; padding-left: 2px; }
-    .section-title { font-family: var(--font-serif); font-size: 22px; font-weight: 400; margin-bottom: 14px; }
-
-    .body-copy { font-size: 14.5px; color: var(--sage); line-height: 1.8; margin-bottom: 44px; max-width: 620px; }
+    /* ── Page-specific: narrative + file-tree + picker tabs (reuse shared tokens) ── */
+    .body-copy { font-size: 14.5px; color: var(--sage); line-height: 1.8; max-width: 640px; }
     .body-copy p { margin-bottom: 14px; }
     .body-copy p:last-child { margin-bottom: 0; }
     .body-copy strong { color: var(--text); }
 
-    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
-
-    .file-mech { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 44px; }
+    .file-mech { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
     @media (max-width: 620px) { .file-mech { grid-template-columns: 1fr; } }
-    .file-tree {
-      background: #050c07; border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 18px 20px; font-family: var(--font-mono); font-size: 12.5px; color: var(--sage); line-height: 1.85;
-    }
+    .file-tree { background: var(--bg-deep); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; font-family: var(--font-mono); font-size: 12.5px; color: var(--sage); line-height: 1.85; }
     .file-tree .dim { color: var(--muted); }
     .file-tree .hl { color: var(--green); }
     .mech-notes { display: flex; flex-direction: column; gap: 14px; justify-content: center; }
@@ -203,19 +24,11 @@
     .mech-note strong { color: var(--text); display: block; font-size: 13px; margin-bottom: 2px; }
 
     .picker-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-    .picker-tab {
-      font-family: var(--font-sans); font-size: 12.5px; font-weight: 600; color: var(--muted);
-      background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
-      padding: 9px 16px; cursor: pointer; transition: all .15s;
-    }
+    .picker-tab { font-family: var(--font-sans); font-size: 12.5px; font-weight: 600; color: var(--muted); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; }
     .picker-tab:hover { border-color: var(--border-green); color: var(--text); }
     .picker-tab.active { background: var(--green-dim); border-color: var(--green); color: var(--green); }
 
-    .picker-panel {
-      display: none;
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 26px 26px 24px; margin-bottom: 44px;
-    }
+    .picker-panel { display: none; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 26px 24px; }
     .picker-panel.active { display: block; }
     .picker-panel .p-title { font-family: var(--font-serif); font-size: 18px; margin-bottom: 4px; }
     .picker-panel .p-sub { font-size: 12.5px; color: var(--muted); margin-bottom: 20px; }
@@ -229,46 +42,37 @@
     .picker-col li { font-size: 13px; color: var(--sage); line-height: 1.55; margin-bottom: 6px; padding-left: 14px; position: relative; }
     .picker-col li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
 
+    .two-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin-top: 24px; }
+    @media (max-width: 700px) { .two-paths { grid-template-columns: 1fr; } }
+    .path-head { font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+
     .note-block { background: rgba(46,194,126,.06); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
     .note-block h3 { font-size: 12px; color: var(--green); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
     .note-block p { font-size: 13px; color: var(--sage); line-height: 1.65; margin-bottom: 10px; }
     .note-block p:last-child { margin-bottom: 0; }
 
-    .link-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-    .link-card {
-      display: flex; align-items: center; gap: 14px; background: var(--surface);
-      border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px;
-      transition: border-color .15s, transform .12s, box-shadow .15s;
-    }
-    .link-card:hover { border-color: var(--border-green); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(46,194,126,.07); }
-    .link-card-icon {
-      width: 44px; height: 44px; flex-shrink: 0; border-radius: 10px; background: var(--green-dim);
-      border: 1px solid var(--border-green); display: flex; align-items: center; justify-content: center; font-size: 1.15rem;
-    }
-    .link-card-body { flex: 1; min-width: 0; }
-    .link-card-title { font-size: 14px; font-weight: 700; line-height: 1.3; margin-bottom: 3px; }
-    .link-card-desc { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
-    .link-card-meta { font-size: 11px; color: var(--green); margin-top: 4px; }
-    .link-card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
-    .price-badge { font-size: 11px; font-weight: 800; letter-spacing: .04em; padding: 3px 9px; border-radius: 999px; background: var(--green); color: #07100a; white-space: nowrap; }
-    .arrow { color: var(--muted); font-size: 14px; }
-    .link-card:hover .arrow { color: var(--green); }
+    .hero-sub { max-width: 620px; }
 
-    .two-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 44px; align-items: start; }
-    @media (max-width: 700px) { .two-paths { grid-template-columns: 1fr; } }
-    .path-head { font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .proof-list { list-style: none; display: grid; gap: 10px; margin: 18px 0; }
+    .proof-list li { font-size: 13.5px; color: var(--sage); line-height: 1.6; padding-left: 20px; position: relative; }
+    .proof-list li::before { content: '✦'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; }
+    .proof-list strong { color: var(--text); }
+    .cost-line { font-size: 13px; color: var(--muted); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-muted); }
+    .cost-line strong { color: var(--green); }
 
-    .footer { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .footer-left, .footer-link { font-size: 12px; color: var(--muted); }
-    .footer-links { display: flex; gap: 16px; }
-    .footer-link:hover { color: var(--green); }
-
-    @media (max-width: 420px) {
-      .page { padding: 40px 16px 64px; }
-      .hero h1 { font-size: 1.5rem; }
-      .hero-ctas { flex-direction: column; }
-      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-      .footer { flex-direction: column; align-items: flex-start; }
+    /* TEMP page-scoped override: hero-right "at a glance" card fills the desktop-only
+       negative space beside the small profile avatar. Trial for this page only — see
+       memory/how-i-run-this-hero-redesign-sep2026.md before promoting to other hero-full pages. */
+    .hero-grid { max-width: 1080px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start; }
+    .hero-right { margin-top: 4px; }
+    .hero-right h3 { font-size: 11px; letter-spacing: .12em; }
+    .hero-right .proof-list { margin: 0 0 16px; gap: 9px; }
+    .hero-right .proof-list li { font-size: 12.5px; }
+    .hero-right-cta { display: inline-block; font-size: 12.5px; font-weight: 600; color: var(--green); text-decoration: none; }
+    .hero-right-cta:hover { text-decoration: underline; }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; max-width: var(--page); }
+      .hero-right { margin-top: 24px; }
     }
   </style>
 <!-- Meta Pixel Code -->
@@ -290,72 +94,100 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 </head>
 <body>
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">✦ JDesigns Strategist</a>
-      <div class="nav-links" id="navLinks">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="/blog/" class="nav-link">Blog</a>
-        <a href="/simplesystems.html" class="nav-link">Simple Systems</a>
-        <a href="/help/" class="nav-link">Help</a>
-        <a href="work-with-me.html" class="nav-link">Work With Me</a>
-        <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
-      </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
-        <span></span>
-      </button>
-    </div>
-  </nav>
-  <script>
-    (function () {
-      var btn = document.getElementById('navToggle');
-      var links = document.getElementById('navLinks');
-      btn.addEventListener('click', function () {
-        var open = links.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open);
-      });
-      links.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () { links.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); });
-      });
-    })();
-  </script>
 
-  <main class="page">
-    <div class="profile-header">
-      <img src="assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
-      <div>
-        <div class="profile-name">Jasmine</div>
-        <div class="profile-handle">JDesigns Strategist · Simple Systems</div>
-      </div>
-    </div>
+<div class="story-progress" id="storyProgress"></div>
 
-    <section class="hero">
-      <div class="hero-eyebrow">Simple Systems</div>
-      <h1>I run a real business through an AI system I built myself. Here's exactly how it works.</h1>
-      <p class="hero-sub">Not a course about AI. Not a "build a second brain" pitch. This is the actual thing that drafts my client replies, writes my proposals, and turns my real work into content — and how you could have your own version of it, however far you want to take it.</p>
-      <div class="hero-ctas">
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="mark">✦</span> JDesigns Strategist</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <a href="/simplesystems.html" class="nav-link">Simple Systems</a>
+      <a href="/help/" class="nav-link">Help</a>
+      <div class="nav-link nav-dropdown" tabindex="0">
+        Results
+        <div class="nav-dropdown-menu">
+          <a href="meta-ads-case-studies.html" class="nav-dropdown-item">Meta Ads</a>
+          <a href="pinterest-case-studies.html" class="nav-dropdown-item">Pinterest</a>
+        </div>
+      </div>
+      <a href="work-with-me.html" class="nav-link">Work With Me</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ══════════ HERO ══════════ -->
+<header class="band">
+  <div class="band-inner hero-full hero-grid">
+    <div class="hero-left">
+      <div class="profile-header reveal" style="margin-bottom:24px;">
+        <img src="assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
+        <div>
+          <div class="profile-name">Jasmine</div>
+          <div class="profile-handle">JDesigns Strategist · Simple Systems</div>
+        </div>
+      </div>
+      <div class="hero-eyebrow reveal d1">Simple Systems</div>
+      <h1 class="reveal d1" data-scramble-on-view style="max-width:17ch;">I run a real business through an AI system I built myself.</h1>
+      <p class="hero-sub reveal d2">Here's exactly how it works — not a course about AI, not a "build a second brain" pitch. This is the actual thing that drafts my client replies, writes my proposals, and turns my real work into content. Whether you're running full-time or starting something on the side, this is how you'd have your own version of it.</p>
+      <div class="hero-ctas reveal d3">
         <a href="#picker" class="btn-primary">See it for your business →</a>
         <a href="#files" class="btn-secondary">How it's actually built</a>
       </div>
-    </section>
-
-    <div class="section-label">What this actually looks like</div>
-    <div class="body-copy">
-      <p>Client work — the part that pays — takes me a couple of hours on a quiet day, more on a delivery day. It's not a huge income by itself. It's enough to run a real, paying, mostly-solo business.</p>
-      <p>The other hours in my day mostly go into the system you're reading about right now. Not because I enjoy admin work — because I'd rather build things once and reuse them than keep trading hours for money forever. <strong>I'm not going to tell you this makes anyone a millionaire.</strong> What I can tell you is what it's actually done: most of the time I used to lose figuring out what AI could even do for a task — testing prompts, reading docs, hitting dead ends — is already solved and sitting in a folder, reusable. That's given me back real pieces of an ordinary work-from-home day. Fifteen minutes to walk the dog between two things instead of pushing through. Laundry done at 2pm instead of piling up until Sunday.</p>
-      <p>Small. Honest. It adds up, and it's the actual reason I built this — not because "AI automation" sounds impressive.</p>
     </div>
+    <aside class="hero-right note-block reveal d2">
+      <h3>At a Glance</h3>
+      <ul class="proof-list">
+        <li><strong>Who:</strong> Founder, JDesigns Strategist — solo, real client work since 2021.</li>
+        <li><strong>What:</strong> Meta ads, account repair, content systems, AI-built business tools.</li>
+        <li><strong>How I help:</strong> Free checklist or paid audit — I point you to the right one first.</li>
+        <li><strong>What's different:</strong> This is what I actually run my own business on, not theory.</li>
+      </ul>
+      <a href="work-with-me.html" class="hero-right-cta">Not sure where to start? →</a>
+    </aside>
+  </div>
+</header>
 
-    <hr class="divider" id="files">
+<!-- ══════════ 01 · WHAT THIS LOOKS LIKE ══════════ -->
+<section class="band">
+  <div class="band-inner wide">
+    <div class="chapter-label"><span><span class="num">01</span> · The Reality</span><span>What this actually looks like</span></div>
+    <div class="body-copy reveal">
+      <p>Client work — the part that pays — takes me a couple of hours on a quiet day, more on a delivery day. It's not a huge income by itself. It's enough to run a real, paying, <strong>solo</strong> business — no employees, no contractors, nobody else in it but me.</p>
+      <p>The other hours in my day mostly go into the system you're reading about right now. Not because I enjoy admin work — because I'd rather build things once and reuse them than keep trading hours for money forever. <strong>I'm not going to tell you this makes anyone a millionaire.</strong> What I can tell you is what it's actually done: most of the time I used to lose figuring out what AI could even do for a task — testing prompts, reading docs, hitting dead ends — is already solved and sitting in a folder, reusable. That's given me back real pieces of an ordinary work-from-home day: a slow walk through my own garden, or coffee outside in the quiet, while the system drafts my client replies and warm-lead replies in the background and keeps track of every order and every dollar without me opening a spreadsheet. Laundry done at 2pm instead of piling up until Sunday.</p>
+      <p>Small. Honest. It adds up, and it's the actual reason I built this — not because "AI automation" sounds impressive.</p>
+      <p>I didn't design this system on a whiteboard first. I brain-dumped exactly how I already ran my business — every decision I kept re-explaining, every reply I kept rewriting from scratch — into files, then built the system around that. Once I could see it laid out, I could see what was actually automatable, and I started cutting paid software I no longer needed because the system already did the job.</p>
+      <p>And this isn't only for people already running a full business. If you're working full-time and want to start something on the side, this is exactly the kind of leverage that makes that realistic — it doesn't take the hours it used to. The reason most side businesses die isn't the idea, it's that there's no time left after a full-time job to also answer every message and chase every lead by hand.</p>
+    </div>
+  </div>
+</section>
 
-    <div class="section-label">The part people don't expect</div>
-    <h2 class="section-title">It's just text files in folders.</h2>
-    <div class="body-copy">
+<!-- ══════════ 02 · JUST FILES ══════════ -->
+<section class="band band-alt" id="files">
+  <div class="band-inner wide">
+    <div class="chapter-label"><span><span class="num">02</span> · The Part People Don't Expect</span><span>No app, no dashboard</span></div>
+    <h2 class="reveal d1" data-scramble-on-view style="font-family:var(--font-serif); font-weight:400; font-size:clamp(1.5rem,3.6vw,2.2rem); line-height:1.25; margin-bottom:16px; max-width:20ch;">It's just text files in folders.</h2>
+    <div class="body-copy reveal d2">
       <p>No app. No dashboard. No monthly software subscription running the show. The entire system is plain markdown files — the same kind of file a to-do list app might export — organized into folders that describe themselves: who I am, what I charge, who my clients are, what I decided last week and why.</p>
       <p>Claude (the AI) reads those files instead of me re-explaining my business every single time I open a chat. The files live on my computer <strong>and</strong> in a private backup that syncs them — which means I can open the exact same system, with the exact same memory, from my phone in a coffee shop or my laptop at home. Nothing gets rebuilt. Nothing gets forgotten between sessions.</p>
+      <p>I never learned to code in school. What Claude Code and Codex actually changed for me isn't "AI writes replies" — it's that I understand the principles behind coding and APIs well enough to direct the build, and the AI handles the syntax I never formally learned. That's the real unlock: it's not outsourcing the thinking, it's removing the one barrier (not knowing how to write it) that used to stop the thinking from becoming a real thing.</p>
+      <p>What that's actually let me build myself, no developer involved:</p>
+      <ul class="proof-list">
+        <li><strong>This entire website</strong> — every page, the design system, the blog</li>
+        <li><strong>A steady blog</strong> that doesn't stall out after three posts</li>
+        <li><strong>A full client and order-tracking system</strong> — status, revenue, follow-ups, all in one place instead of scattered across apps</li>
+        <li><strong>An automated pipeline</strong> that turns a blog post into branded Pinterest pins and schedules them straight through Pinterest's own Developer API — no separate scheduling tool</li>
+      </ul>
+      <p class="cost-line">Total cost to run all of it: <strong>$20/month</strong> for one AI subscription — I actually pay <strong>$40/month</strong> since I run both Claude and ChatGPT/Codex side by side for different projects, but either one alone covers this. What it replaced: separate paid tools for scheduling, client tracking, and content planning that I no longer pay for at all.</p>
     </div>
 
-    <div class="file-mech">
+    <div class="file-mech reveal d3">
       <div class="file-tree">
 <span class="hl">my-business/</span><br>
 &nbsp;&nbsp;├── <span class="dim">brain/</span> <span class="dim">— who I am, pricing, rules</span><br>
@@ -370,21 +202,24 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
         <div class="mech-note"><strong>You own it</strong>Nothing lives in someone else's app that could raise its price or shut down.</div>
       </div>
     </div>
+  </div>
+</section>
 
-    <hr class="divider" id="picker">
+<!-- ══════════ 03 · SEE IT FOR YOUR BUSINESS ══════════ -->
+<section class="band" id="picker">
+  <div class="band-inner wide">
+    <div class="chapter-label"><span><span class="num">03</span> · See It For Your Business</span><span>Same structure, different job</span></div>
+    <h2 class="reveal d1" data-scramble-on-view style="font-family:var(--font-serif); font-weight:400; font-size:clamp(1.5rem,3.6vw,2.2rem); line-height:1.25; margin-bottom:14px; max-width:20ch;">Same structure, different job.</h2>
+    <p class="body-copy reveal d2" style="margin-bottom:24px;">Pick the kind of business closest to yours. This is a sketch, not a sales pitch — the point is showing you what stays a draft the AI writes, and what always stays a decision only you make.</p>
 
-    <div class="section-label">See it for your business</div>
-    <h2 class="section-title">Same structure, different job.</h2>
-    <p class="body-copy" style="margin-bottom:24px;">Pick the kind of business closest to yours. This is a sketch, not a sales pitch — the point is showing you what stays a draft the AI writes, and what always stays a decision only you make.</p>
-
-    <div class="picker-tabs" role="tablist">
+    <div class="picker-tabs reveal d3" role="tablist">
       <button class="picker-tab active" data-panel="panel-service">Service Provider</button>
       <button class="picker-tab" data-panel="panel-creator">Content Creator / Coach</button>
       <button class="picker-tab" data-panel="panel-shop">Online Shop</button>
       <button class="picker-tab" data-panel="panel-local">Local Business</button>
     </div>
 
-    <div class="picker-panel active" id="panel-service">
+    <div class="picker-panel active reveal d4" id="panel-service">
       <div class="p-title">Service Provider / Consultant</div>
       <div class="p-sub">Freelancer, agency-of-one, coach with 1:1 clients — this is the version I run myself.</div>
       <div class="picker-cols">
@@ -403,7 +238,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
       </div>
     </div>
 
-    <div class="picker-panel" id="panel-creator">
+    <div class="picker-panel reveal d4" id="panel-creator">
       <div class="p-title">Content Creator / Coach</div>
       <div class="p-sub">Selling knowledge, courses, or a following — content is the product.</div>
       <div class="picker-cols">
@@ -422,7 +257,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
       </div>
     </div>
 
-    <div class="picker-panel" id="panel-shop">
+    <div class="picker-panel reveal d4" id="panel-shop">
       <div class="p-title">Online Shop / Product Seller</div>
       <div class="p-sub">Etsy, Shopify, a product catalog — orders and customers instead of clients.</div>
       <div class="picker-cols">
@@ -441,7 +276,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
       </div>
     </div>
 
-    <div class="picker-panel" id="panel-local">
+    <div class="picker-panel reveal d4" id="panel-local">
       <div class="p-title">Local Business</div>
       <div class="p-sub">Studio, shop, practice, storefront — mostly local customers, mostly repeat ones.</div>
       <div class="picker-cols">
@@ -459,16 +294,28 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <hr class="divider">
-
-    <div class="section-label">Two ways to get this</div>
-    <h2 class="section-title">Build it yourself, or have me build it with you.</h2>
+<!-- ══════════ 04 · TWO WAYS TO GET THIS ══════════ -->
+<section class="band band-alt">
+  <div class="band-inner wide">
+    <div class="chapter-label"><span><span class="num">04</span> · Two Ways To Get This</span><span>DIY or done-with-you</span></div>
+    <h2 class="reveal d1" data-scramble-on-view style="font-family:var(--font-serif); font-weight:400; font-size:clamp(1.5rem,3.6vw,2.2rem); line-height:1.25; margin-bottom:0; max-width:22ch;">Build it yourself, or have me build it with you.</h2>
 
     <div class="two-paths">
-      <div>
+      <div class="reveal d2">
         <div class="path-head">Build it yourself</div>
         <div class="link-stack">
+          <a href="build-your-first-agent.html" class="link-card">
+            <div class="link-card-icon">🛠️</div>
+            <div class="link-card-body">
+              <div class="link-card-title">Build Your First Agent</div>
+              <div class="link-card-desc">A real, working file your AI reads every time — built in about 10 minutes, right now.</div>
+              <div class="link-card-meta">Works with Claude Code or Codex</div>
+            </div>
+            <div class="link-card-right"><span class="price-badge price-free">Free</span><span class="arrow">→</span></div>
+          </a>
           <a href="systemize-your-business.html" class="link-card">
             <div class="link-card-icon">🧠</div>
             <div class="link-card-body">
@@ -476,7 +323,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
               <div class="link-card-desc">One organized reference file for Claude. Stop re-explaining yourself.</div>
               <div class="link-card-meta">Requires Claude Code (free)</div>
             </div>
-            <div class="link-card-right"><span class="price-badge">$95</span><span class="arrow">→</span></div>
+            <div class="link-card-right"><span class="price-badge price-paid">$95</span><span class="arrow">→</span></div>
           </a>
           <a href="systemized.html" class="link-card">
             <div class="link-card-icon">⚡</div>
@@ -485,7 +332,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
               <div class="link-card-desc">6 ready-made commands for replies, proposals, onboarding.</div>
               <div class="link-card-meta">Best after Systemize Your Business</div>
             </div>
-            <div class="link-card-right"><span class="price-badge">$47</span><span class="arrow">→</span></div>
+            <div class="link-card-right"><span class="price-badge price-paid">$47</span><span class="arrow">→</span></div>
           </a>
           <a href="how-i-systemized-my-business.html" class="link-card">
             <div class="link-card-icon">📖</div>
@@ -493,43 +340,52 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
               <div class="link-card-title">Read the full guide first</div>
               <div class="link-card-desc">Free. The memory loss that almost cost me two months of work, and what I got wrong building this.</div>
             </div>
-            <div class="link-card-right"><span class="price-badge" style="background:var(--sage); color:#07100a;">Free</span><span class="arrow">→</span></div>
+            <div class="link-card-right"><span class="price-badge price-free">Free</span><span class="arrow">→</span></div>
           </a>
         </div>
       </div>
-      <div>
+      <div class="reveal d3">
         <div class="path-head">Have me build it</div>
         <div class="note-block">
           <h3>Done with you, not for you</h3>
-          <p>I'll build your version of this system for your actual business, then teach you how to run and update it yourself. Starts at <strong style="color:var(--text)">$1,500</strong> for one core workflow, scaling up based on how much of your business it needs to run — real scope, quoted after a short written intake, never a call.</p>
+          <p>I'll build your version of this system for your actual business, then teach you how to run and update it yourself. Billed hourly at <strong style="color:var(--text)">$150/hour</strong> — everyone's setup is different, so a fixed price would either overcharge the simple builds or undersell the complex ones. Most builds run 8–25 hours depending on scope, estimated after a short written intake, never a call.</p>
           <p><a href="work-with-me.html" class="btn-primary" style="margin-top:4px;">Tell me about your business →</a></p>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <footer class="footer">
-      <div class="footer-left">✦ JDesigns Strategist LLC</div>
+<!-- ══════════ CLOSING ══════════ -->
+<section class="band">
+  <div class="band-inner">
+    <div class="footer">
+      <div class="footer-left">© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html" class="footer-link">Made by Jasmine</a></div>
       <div class="footer-links">
-        <a href="simplesystems.html" class="footer-link">Simple Systems</a>
-        <a href="index.html" class="footer-link">Resources</a>
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/blog/" class="footer-link">Blog</a>
+        <a href="/knowledge-hub.html" class="footer-link">Knowledge Hub</a>
         <a href="https://www.fiverr.com/jazz96designs" class="footer-link" target="_blank" rel="noopener">Fiverr</a>
+        <a href="/privacy-policy.html" class="footer-link">Privacy</a>
       </div>
-    </footer>
-  </main>
+    </div>
+  </div>
+</section>
 
-  <script>
-  (function () {
-    var tabs = document.querySelectorAll('.picker-tab');
-    var panels = document.querySelectorAll('.picker-panel');
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        tabs.forEach(function (t) { t.classList.remove('active'); });
-        panels.forEach(function (p) { p.classList.remove('active'); });
-        tab.classList.add('active');
-        document.getElementById(tab.getAttribute('data-panel')).classList.add('active');
-      });
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.picker-tab');
+  var panels = document.querySelectorAll('.picker-panel');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('active'); });
+      panels.forEach(function (p) { p.classList.remove('active'); });
+      tab.classList.add('active');
+      document.getElementById(tab.getAttribute('data-panel')).classList.add('active');
     });
-  })();
-  </script>
+  });
+})();
+</script>
 </body>
 </html>

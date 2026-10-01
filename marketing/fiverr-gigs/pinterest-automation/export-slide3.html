@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Slide 3</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #07100a; --card: #0d1a10; --border: #2a4735;
+    --green: #2ec27e; --green-dim: #1a7a4e; --green-glow: #113822;
+    --white: #ffffff; --muted: #bcdac8; --label: #e7f3ec;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: Georgia, 'Times New Roman', serif;
+  }
+  html, body { margin: 0; padding: 0; background: var(--bg); overflow: hidden; }
+  .slide { width: 1280px; height: 769px; position: relative; overflow: hidden; background: var(--bg); color: var(--white); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  .glow { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse 70% 60% at 12% 0%, rgba(30,120,70,0.32) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 45% at 95% 15%, rgba(18,72,110,0.16) 0%, transparent 55%),
+                radial-gradient(ellipse 55% 45% at 45% 100%, rgba(10,55,35,0.26) 0%, transparent 55%); }
+  .inner { position: relative; z-index: 2; padding: 28px 56px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .h2 { font-family: var(--font-serif); font-size: 60px; letter-spacing: -0.01em; }
+  .h2 em { font-style: italic; color: var(--green); }
+  .lede { font-size: 24px; color: var(--label); font-weight: 600; margin-top: 12px; }
+
+  .cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; flex: 1; align-content: center; }
+  .case { background: var(--card); border: 2px solid var(--border); border-radius: 24px; padding: 40px 40px; display: flex; flex-direction: column; }
+  .case-top { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
+  .badge { width: 68px; height: 68px; border-radius: 50%; background: var(--green-glow); border: 1px solid var(--green-dim); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .badge svg { width: 36px; height: 36px; stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .case-name { font-family: var(--font-serif); font-size: 30px; line-height: 1.15; color: var(--white); }
+  .case-problem { font-size: 20px; color: var(--label); font-weight: 600; line-height: 1.42; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+  .stars { color: var(--green); font-size: 21px; letter-spacing: 3px; margin-bottom: 12px; }
+  .case-result { font-family: var(--font-serif); font-style: italic; font-size: 23px; line-height: 1.4; color: var(--white); flex: 1; }
+</style>
+</head>
+<body>
+<div class="slide" id="slide3">
+  <div class="glow"></div>
+  <div class="inner">
+    <div>
+      <div class="h2">A System, <em>Not Just Posts.</em></div>
+      <div class="lede">Real infrastructure I've built and run &mdash; not a one-time content batch.</div>
+    </div>
+
+    <div class="cases">
+      <div class="case">
+        <div class="case-top">
+          <div class="badge"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div class="case-name">The Automation Itself</div>
+        </div>
+        <div class="case-problem">Dropbox photo &rarr; AI-written caption &rarr; auto-published pin, on schedule.</div>
+        <div class="case-result">332 pins published automatically &mdash; 0 errors, still running today.</div>
+      </div>
+      <div class="case">
+        <div class="case-top">
+          <div class="badge"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg></div>
+          <div class="case-name">Real Client Engagement</div>
+        </div>
+        <div class="case-problem">Pinterest Automation delivered inside a 3-phase, $3,685 growth package.</div>
+        <div class="stars">★★★★★</div>
+        <div class="case-result">&ldquo;Working with Jasmine is a great potential to the business.&rdquo;</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

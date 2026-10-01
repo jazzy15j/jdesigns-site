@@ -5,7 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Privacy Policy | JDesigns Strategist LLC</title>
   <meta name="description" content="Privacy Policy for JDesigns Strategist LLC — what data jdesigns.info collects, how it's used, and the third-party services involved."/>
-  <link rel="stylesheet" href="assets/blog.css"/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2307100a'/%3E%3Ctext x='50' y='69' font-size='58' text-anchor='middle' fill='%232ec27e'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    /* ── Page-specific: long-form legal document typography (privacy policy only) ── */
+    .legal-body { max-width: 640px; }
+    .legal-body h2 { font-family: var(--font-serif); font-size: 21px; font-weight: 400; color: var(--text); margin: 40px 0 12px; line-height: 1.3; }
+    .legal-body h2:first-child { margin-top: 0; }
+    .legal-body p { font-size: 15px; color: var(--sage); line-height: 1.75; margin-bottom: 18px; }
+    .legal-body p:last-child { margin-bottom: 0; }
+    .legal-body strong { color: var(--text); font-weight: 600; }
+    .legal-body a { color: var(--green); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+    .legal-body ul { color: var(--sage); font-size: 15px; line-height: 1.8; margin: 0 0 18px 20px; }
+  </style>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -25,123 +37,114 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 </head>
 <body>
-<nav class="jdgnav">
-  <style>
-    .jdgnav{position:sticky;top:0;z-index:100;background:rgba(7,16,10,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,50,37,.7);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
-    .jdgnav-inner{max-width:1040px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;}
-    .jdgnav-logo{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#2ec27e;white-space:nowrap;text-decoration:none;}
-    .jdgnav-links{display:flex;align-items:center;gap:6px;}
-    .jdgnav-link{font-size:12.5px;font-weight:500;color:#8aab96;padding:5px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .15s,background .15s;}
-    .jdgnav-link:hover{color:#fff;background:#0d1a10;}
-    .jdgnav-cta{font-size:12px;font-weight:700;letter-spacing:.04em;color:#07100a;background:#2ec27e;padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
-    .jdgnav-cta:hover{opacity:.85;}
-    .jdgnav-toggle{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid rgba(30,50,37,.7);background:transparent;cursor:pointer;flex-shrink:0;}
-    .jdgnav-toggle span{display:block;width:16px;height:1.5px;background:#c4dccb;position:relative;}
-    .jdgnav-toggle span::before,.jdgnav-toggle span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#c4dccb;}
-    .jdgnav-toggle span::before{top:-5px;}
-    .jdgnav-toggle span::after{top:5px;}
-    @media (max-width:900px){
-      .jdgnav-toggle{display:flex;}
-      .jdgnav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:#0d1a10;border-bottom:1px solid rgba(30,50,37,.7);padding:10px 16px 16px;box-shadow:0 16px 32px rgba(0,0,0,.35);}
-      .jdgnav-links.open{display:flex;}
-      .jdgnav-links.open .jdgnav-link,.jdgnav-links.open .jdgnav-cta{width:100%;justify-content:space-between;padding:14px 14px;border-radius:10px;font-size:14px;display:flex;}
-    }
-  </style>
-  <div class="jdgnav-inner">
-    <a href="/" class="jdgnav-logo">✦ JDesigns Strategist</a>
-    <div class="jdgnav-links" id="jdgnavLinks">
-      <a href="/" class="jdgnav-link">Home</a>
-      <a href="/blog/" class="jdgnav-link">Blog</a>
-      <a href="/simplesystems.html" class="jdgnav-link">Simple Systems</a>
-      <a href="/help/" class="jdgnav-link">Help</a>
-      <a href="/work-with-me.html" class="jdgnav-link">Work With Me</a>
-      <a href="https://www.fiverr.com/jazz96designs" class="jdgnav-cta" target="_blank" rel="noopener">Fiverr &#8599;</a>
+
+<div class="story-progress" id="storyProgress"></div>
+
+<!-- ── Nav ── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="mark">✦</span> JDesigns Strategist</a>
+    <div class="nav-links" id="navLinks">
+      <a href="/blog/" class="nav-link">Blog</a>
+      <a href="/simplesystems.html" class="nav-link">Simple Systems</a>
+      <a href="/help/" class="nav-link">Help</a>
+      <div class="nav-link nav-dropdown" tabindex="0">
+        Results
+        <div class="nav-dropdown-menu">
+          <a href="meta-ads-case-studies.html" class="nav-dropdown-item">Meta Ads</a>
+          <a href="pinterest-case-studies.html" class="nav-dropdown-item">Pinterest</a>
+        </div>
+      </div>
+      <a href="work-with-me.html" class="nav-link">Work With Me</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
     </div>
-    <button class="jdgnav-toggle" id="jdgnavToggle" aria-label="Open menu" aria-expanded="false" aria-controls="jdgnavLinks"><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span>
+    </button>
   </div>
 </nav>
-<script>
-(function(){
-  var btn=document.getElementById('jdgnavToggle');
-  var links=document.getElementById('jdgnavLinks');
-  if(!btn||!links) return;
-  btn.addEventListener('click',function(){
-    var open=links.classList.toggle('open');
-    btn.setAttribute('aria-expanded',open);
-  });
-  links.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){links.classList.remove('open');btn.setAttribute('aria-expanded','false');});
-  });
-})();
-</script>
 
-<div class="page">
-
-  <div class="wordmark">
-    <a href="/">✦ JDesigns Strategist</a>
-    <span>/</span>
-    <span>Privacy Policy</span>
+<!-- ══════════ HEADER ══════════ -->
+<header class="band">
+  <div class="band-inner">
+    <div class="chapter-label"><span>Legal</span><span>Last updated July 30, 2026</span></div>
+    <h1 class="reveal d1" data-scramble-on-view style="font-family:var(--font-serif); font-weight:400; font-size:clamp(1.8rem,5vw,2.8rem); line-height:1.2; margin-bottom:14px;">Privacy Policy</h1>
+    <p class="reveal d2" style="font-size:14px; color:var(--sage); line-height:1.7; max-width:640px;">JDesigns Strategist LLC ("JDesigns," "we," "us," or "our") operates jdesigns.info. This page explains what information we collect from visitors and clients, how it's used, and who it's shared with. Last updated: July 30, 2026.</p>
   </div>
+</header>
 
-  <h1 style="margin-bottom: 0.25rem;">Privacy Policy</h1>
-  <p class="article-intro" style="margin-top: 0.5rem;">JDesigns Strategist LLC ("JDesigns," "we," "us," or "our") operates jdesigns.info. This page explains what information we collect from visitors and clients, how it's used, and who it's shared with. Last updated: July 30, 2026.</p>
+<!-- ══════════ POLICY BODY ══════════ -->
+<section class="band band-alt">
+  <div class="band-inner">
+    <div class="legal-body reveal">
 
-  <div class="article-body">
+      <h2>Who we are</h2>
+      <p>JDesigns Strategist LLC is a Nebraska-based small business providing Meta (Facebook/Instagram) advertising, social media strategy, and business-systems consulting services, operated by Jasmine.</p>
 
-    <h2>Who we are</h2>
-    <p>JDesigns Strategist LLC is a Nebraska-based small business providing Meta (Facebook/Instagram) advertising, social media strategy, and business-systems consulting services, operated by Jasmine.</p>
+      <h2>Information we collect</h2>
+      <p><strong>Information you provide directly.</strong> If you fill out an intake or proposal form (hosted on Fillout), message us on Fiverr, or email us directly, we collect whatever you choose to share — typically your name, email address, business details, and information about the project you're asking about.</p>
+      <p><strong>Information collected automatically.</strong> This site uses the Meta Pixel (Facebook/Instagram) to understand how visitors reach the site and to measure the performance of our own ads. The Meta Pixel may collect your IP address, browser/device information, and the pages you visit on this site, and it may set cookies. Meta's own use of this data is governed by <a href="https://www.facebook.com/policy.php" target="_blank" rel="noopener">Meta's Privacy Policy</a>.</p>
+      <p><strong>Hosting logs.</strong> This site is hosted on Netlify, which may log standard technical information (IP address, request timestamps, browser type) as part of normal web hosting operations.</p>
 
-    <h2>Information we collect</h2>
-    <p><strong>Information you provide directly.</strong> If you fill out an intake or proposal form (hosted on Fillout), message us on Fiverr, or email us directly, we collect whatever you choose to share — typically your name, email address, business details, and information about the project you're asking about.</p>
-    <p><strong>Information collected automatically.</strong> This site uses the Meta Pixel (Facebook/Instagram) to understand how visitors reach the site and to measure the performance of our own ads. The Meta Pixel may collect your IP address, browser/device information, and the pages you visit on this site, and it may set cookies. Meta's own use of this data is governed by <a href="https://www.facebook.com/policy.php" target="_blank" rel="noopener">Meta's Privacy Policy</a>.</p>
-    <p><strong>Hosting logs.</strong> This site is hosted on Netlify, which may log standard technical information (IP address, request timestamps, browser type) as part of normal web hosting operations.</p>
+      <h2>How we use information</h2>
+      <ul>
+        <li>To respond to inquiries and provide the services you've requested</li>
+        <li>To measure and improve the performance of our own Meta advertising</li>
+        <li>To keep basic business records (e.g. project details, past client work) for as long as reasonably needed for those purposes</li>
+      </ul>
+      <p>We do not sell your personal information, and we do not share it with third parties except as described in this policy or as needed to deliver a service you've requested (for example, a project intake form you submit is used only to scope and deliver that project).</p>
 
-    <h2>How we use information</h2>
-    <ul style="color: var(--sage); font-size: 15px; line-height: 1.8; margin: 0 0 18px 20px;">
-      <li>To respond to inquiries and provide the services you've requested</li>
-      <li>To measure and improve the performance of our own Meta advertising</li>
-      <li>To keep basic business records (e.g. project details, past client work) for as long as reasonably needed for those purposes</li>
-    </ul>
-    <p>We do not sell your personal information, and we do not share it with third parties except as described in this policy or as needed to deliver a service you've requested (for example, a project intake form you submit is used only to scope and deliver that project).</p>
+      <h2>Third-party services</h2>
+      <p>Depending on how you engage with JDesigns, your information may pass through the following third-party services, each governed by its own privacy policy:</p>
+      <ul>
+        <li><strong>Fiverr</strong> — order communication and payment for Fiverr-based projects</li>
+        <li><strong>PayPal</strong> — payment collection for direct (off-Fiverr) projects</li>
+        <li><strong>Fillout</strong> — intake and proposal forms</li>
+        <li><strong>Meta (Facebook/Instagram)</strong> — the Meta Pixel described above, and any advertising platforms you interact with</li>
+        <li><strong>Pinterest</strong> — if you interact with our Pinterest content, and the Pinterest API as described below</li>
+        <li><strong>Netlify</strong> — website hosting</li>
+      </ul>
+      <p>We don't control these third parties' own data practices — review their individual privacy policies for details on how they handle your information.</p>
 
-    <h2>Third-party services</h2>
-    <p>Depending on how you engage with JDesigns, your information may pass through the following third-party services, each governed by its own privacy policy:</p>
-    <ul style="color: var(--sage); font-size: 15px; line-height: 1.8; margin: 0 0 18px 20px;">
-      <li><strong>Fiverr</strong> — order communication and payment for Fiverr-based projects</li>
-      <li><strong>PayPal</strong> — payment collection for direct (off-Fiverr) projects</li>
-      <li><strong>Fillout</strong> — intake and proposal forms</li>
-      <li><strong>Meta (Facebook/Instagram)</strong> — the Meta Pixel described above, and any advertising platforms you interact with</li>
-      <li><strong>Pinterest</strong> — if you interact with our Pinterest content, and the Pinterest API as described below</li>
-      <li><strong>Netlify</strong> — website hosting</li>
-    </ul>
-    <p>We don't control these third parties' own data practices — review their individual privacy policies for details on how they handle your information.</p>
+      <h2>Pinterest API</h2>
+      <p>JDesigns Strategist LLC uses the Pinterest API to publish pins to our own Pinterest business account as part of our content workflow. This use of the Pinterest API is solely to operate our own account — it is not used to access, analyze, or act on any other Pinterest user's account or data. JDesigns Strategist LLC and jdesigns.info are not endorsed by, sponsored by, or affiliated with Pinterest in any way.</p>
+      <p>Data we receive through the Pinterest API (such as our own board information and pin publishing status) is used only to operate this integration. We do not sell, resell, or redistribute Pinterest content or Pinterest-derived data to any third party. If we disconnect our Pinterest account from this integration, any Pinterest-derived data we hold for that purpose is deleted at that time.</p>
 
-    <h2>Pinterest API</h2>
-    <p>JDesigns Strategist LLC uses the Pinterest API to publish pins to our own Pinterest business account as part of our content workflow. This use of the Pinterest API is solely to operate our own account — it is not used to access, analyze, or act on any other Pinterest user's account or data. JDesigns Strategist LLC and jdesigns.info are not endorsed by, sponsored by, or affiliated with Pinterest in any way.</p>
-    <p>Data we receive through the Pinterest API (such as our own board information and pin publishing status) is used only to operate this integration. We do not sell, resell, or redistribute Pinterest content or Pinterest-derived data to any third party. If we disconnect our Pinterest account from this integration, any Pinterest-derived data we hold for that purpose is deleted at that time.</p>
+      <h2>Cookies</h2>
+      <p>The Meta Pixel described above sets cookies in your browser to support ad measurement and retargeting. You can control or delete cookies through your browser's own privacy settings, and you can opt out of interest-based Meta advertising through <a href="https://www.facebook.com/adpreferences/ad_settings" target="_blank" rel="noopener">Meta's ad settings</a>.</p>
 
-    <h2>Cookies</h2>
-    <p>The Meta Pixel described above sets cookies in your browser to support ad measurement and retargeting. You can control or delete cookies through your browser's own privacy settings, and you can opt out of interest-based Meta advertising through <a href="https://www.facebook.com/adpreferences/ad_settings" target="_blank" rel="noopener">Meta's ad settings</a>.</p>
+      <h2>Your choices</h2>
+      <p>You can ask us to tell you what information we hold about you, correct it, or delete it, by emailing us at the address below. We'll respond within a reasonable time. If you'd rather not be tracked by the Meta Pixel, you can use a browser extension that blocks tracking pixels, or adjust your Meta ad preferences directly.</p>
 
-    <h2>Your choices</h2>
-    <p>You can ask us to tell you what information we hold about you, correct it, or delete it, by emailing us at the address below. We'll respond within a reasonable time. If you'd rather not be tracked by the Meta Pixel, you can use a browser extension that blocks tracking pixels, or adjust your Meta ad preferences directly.</p>
+      <h2>Children's privacy</h2>
+      <p>This site and our services are directed at business owners and are not intended for children under 13. We do not knowingly collect information from children.</p>
 
-    <h2>Children's privacy</h2>
-    <p>This site and our services are directed at business owners and are not intended for children under 13. We do not knowingly collect information from children.</p>
+      <h2>Changes to this policy</h2>
+      <p>We may update this policy from time to time as our services or the tools we use change. The "last updated" date at the top of this page reflects the most recent revision.</p>
 
-    <h2>Changes to this policy</h2>
-    <p>We may update this policy from time to time as our services or the tools we use change. The "last updated" date at the top of this page reflects the most recent revision.</p>
+      <h2>Contact us</h2>
+      <p>Questions about this policy or your information? Email <a href="mailto:jasmine@jdesigns.info">jasmine@jdesigns.info</a>.</p>
 
-    <h2>Contact us</h2>
-    <p>Questions about this policy or your information? Email <a href="mailto:jasmine@jdesigns.info">jasmine@jdesigns.info</a>.</p>
-
+    </div>
   </div>
+</section>
 
-  <footer class="footer">
-    <span>&copy; 2026 JDesigns Strategist LLC</span>
-    <a href="/">&#8592; Home</a>
-  </footer>
+<!-- ══════════ FOOTER ══════════ -->
+<section class="band">
+  <div class="band-inner">
+    <div class="footer">
+      <div class="footer-left">© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html" class="footer-link">Made by Jasmine</a></div>
+      <div class="footer-links">
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/blog/" class="footer-link">Blog</a>
+        <a href="/knowledge-hub.html" class="footer-link">Knowledge Hub</a>
+        <a href="https://www.fiverr.com/jazz96designs" class="footer-link" target="_blank" rel="noopener">Fiverr</a>
+        <a href="/privacy-policy.html" class="footer-link">Privacy</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
+<script src="assets/site.js"></script>
 </body>
 </html>

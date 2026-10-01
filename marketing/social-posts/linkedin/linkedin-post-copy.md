@@ -157,3 +157,25 @@ Full breakdown: https://jdesigns.info/blog/holiday-setup-checklist
 ```
 
 Routes to: $195 Meta Ads Audit — natural landing point for anyone who wants their account ready to test the moment January's cheaper pricing opens up.
+
+---
+
+## 7. One Login. How Many Portfolios Do You Actually Need?
+
+Graphic: `consolidate-your-meta-accounts.html`
+
+```text
+If logging into your own accounts feels like juggling five different logins, the instinct is to merge everything into one Meta Business Portfolio. That's usually the wrong fix.
+
+The real question isn't how many logins you use — it's how many brands you run. One brand, even if it's spread across a personal profile, a Page, and an Instagram account, belongs in one portfolio. More than one brand — different names, different audiences, different offers — needs one portfolio per brand.
+
+Here's the part that trips people up: you only need one login either way. Your personal Facebook login can sit on top of as many portfolios as you actually need. Merging separate brands into one portfolio to make login "simpler" doesn't save you a step — it tangles billing, ad accounts, and permissions across brands that have nothing to do with each other.
+
+If you're consolidating for real: find every portfolio your login can access, pick the one with the most established history as home base for each brand, connect Pages, Instagram, and ad accounts one at a time, and if a portfolio is brand new, let it sit a few days with a real asset connected before you invite anyone else in as a partner.
+
+Full walkthrough on the blog: https://jdesigns.info/blog/consolidate-your-meta-accounts.html
+
+#MetaBusinessSuite #FacebookAds #SmallBusinessMarketing #JDesignsStrategist
+```
+
+Routes to: $150 Meta Business Portfolio Setup add-on — natural landing point for anyone who wants it verified and connected for them instead of doing it themselves.

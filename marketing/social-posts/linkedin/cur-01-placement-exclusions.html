@@ -1,0 +1,49 @@
+<!-- SUPERSEDED 2026-09-28 — this stat-chip card lineage is not the current standard.
+     For new graphics use marketing/templates/faq-pattern-card-TEMPLATE.html (FAQ/explainer)
+     or reports/content-engine/2026-09-24/orphaned-pixel-post.html (client-proof/CTA).
+     See marketing/templates/README.md. This file is kept only because past real posts used it. -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><title>✦ Meta Update — This Month</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #07100a; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+.frame {
+  width: 1080px; height: 1080px; background: #07100a; color: #fff;
+  position: relative; overflow: hidden; display: flex; flex-direction: column;
+  justify-content: center; gap: 36px;
+  padding: 68px 70px 140px;
+}
+.frame::before {
+  content: ""; position: absolute; inset: 36px;
+  border: 1px solid rgba(46,194,126,.2); pointer-events: none; z-index: 10;
+}
+.foot {
+  position: absolute; bottom: 0; left: 0; right: 0; background: #0d1a10;
+  padding: 28px 70px; display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(46,194,126,.18);
+}
+.foot-left { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 22px; color: #c4dccb; line-height: 1.25; max-width: 700px; }
+.foot-brand { font-family: Georgia, 'Times New Roman', serif; font-size: 22px; color: #2ec27e; white-space: nowrap; }
+.kicker { font-size: 20px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; color: #2ec27e; }
+.top h1 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: 46px; line-height: 1.15; margin-top: 18px; max-width: 900px; }
+.top h1 em { color: #2ec27e; font-style: italic; }
+.stat-row { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 10px; }
+.stat-chip { flex: 1; min-width: 200px; background: #0d1a10; border: 1px solid rgba(46,194,126,.3); border-radius: 10px; padding: 26px 24px; }
+.stat-chip .sv { font-family: Georgia, 'Times New Roman', serif; font-size: 44px; color: #2ec27e; line-height: 1; }
+.stat-chip .sl { font-size: 15px; color: #c4dccb; margin-top: 8px; line-height: 1.35; }
+.tag-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.tag { font-size: 14px; font-weight: 700; color: #2ec27e; border: 1px solid rgba(46,194,126,.35); background: rgba(46,194,126,.07); padding: 8px 16px; border-radius: 999px; }
+</style></head><body>
+<article class="frame">
+  <div class="top">
+    <div class="kicker">✦ Meta Update — This Month</div>
+    <h1>You can no longer tell Meta <em>"never show my ad here."</em></h1>
+  </div>
+  <div class="tag-row"><div class="tag">Placement exclusions removed</div><div class="tag">Value rules only bid down, don't block</div><div class="tag">Staged rollout since Aug 21, 2026</div></div>
+  <div class="foot">
+    <div class="foot-left">That decision is now made once, account-wide — not per campaign, per ad set.</div>
+    <div class="foot-brand">✦ JDesigns Strategist</div>
+  </div>
+</article>
+</body></html>

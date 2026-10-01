@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Build Your First AI Agent — Free, 10 Minutes | JDesigns Strategist</title>
+<meta name="description" content="A free, interactive walkthrough — build a real working AI agent folder in about 10 minutes, using either Claude Code or Codex."/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2307100a'/%3E%3Ctext x='50' y='69' font-size='58' text-anchor='middle' fill='%232ec27e'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --bg:#07100a; --surface:#0d1a10; --surface2:#0f2216;
+    --border:#1a7a4e; --border-muted:#102b18;
+    --accent:#2ec27e; --accent-dim:#0d3320; --accent-glow: rgba(46,194,126,.35);
+    --text:#ffffff; --sage:#c4dccb; --muted:#8aab96;
+    --radius:16px;
+    --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    --font-serif:Georgia,'Times New Roman',serif;
+  }
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--text); font-family:var(--font-sans); line-height:1.6; -webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+
+  section{display:flex; flex-direction:column; align-items:center; padding:56px 24px; position:relative;}
+  section.hero{min-height:70vh; justify-content:center; text-align:center;}
+  .wrap{max-width:600px; width:100%;}
+
+  .eyebrow{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; font-weight:700; text-align:center;}
+  h1{font-family:var(--font-serif); font-size:clamp(30px,5.6vw,52px); line-height:1.14; margin-bottom:18px; text-align:center;}
+  h2{font-family:var(--font-serif); font-size:clamp(22px,3.8vw,32px); line-height:1.2; margin-bottom:14px;}
+  p.lead{color:var(--sage); font-size:clamp(14.5px,1.8vw,17px); line-height:1.65; max-width:520px; margin:0 auto; text-align:center;}
+
+  /* tool picker */
+  .tool-picker{display:flex; gap:12px; justify-content:center; margin-top:26px; flex-wrap:wrap;}
+  .tool-btn{padding:13px 26px; border-radius:999px; border:1.5px solid var(--border-muted); background:var(--surface); color:var(--sage); font-size:14.5px; font-weight:700; cursor:pointer; transition:all .2s;}
+  .tool-btn:hover{border-color:var(--accent);}
+  .tool-btn.active{border-color:var(--accent); color:var(--bg); background:var(--accent); box-shadow:0 0 20px var(--accent-glow);}
+  .tool-note{margin-top:12px; font-size:12.5px; color:var(--muted); text-align:center;}
+
+  /* steps */
+  .step-card{background:var(--surface); border:1px solid var(--border-muted); border-radius:var(--radius); padding:26px 24px; max-width:640px; width:100%; margin:14px auto; transition:border-color .3s;}
+  .step-card.done{border-color:var(--accent);}
+  .step-head{display:flex; align-items:center; gap:14px; margin-bottom:14px;}
+  .step-num{flex-shrink:0; width:36px; height:36px; border-radius:50%; border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; color:var(--accent); background:var(--accent-dim);}
+  .step-card.done .step-num{background:var(--accent); color:var(--bg);}
+  .step-head h3{font-size:17px;}
+  .step-body p{font-size:14px; color:var(--sage); margin-bottom:14px; line-height:1.6;}
+  .step-body p strong{color:var(--text);}
+
+  .code-block{position:relative; background:var(--bg); border:1px solid var(--border-muted); border-radius:10px; padding:16px 50px 16px 16px; font-family:'SF Mono',Monaco,Consolas,monospace; font-size:12.5px; color:var(--sage); white-space:pre-wrap; line-height:1.55; margin-bottom:10px;}
+  .copy-btn{position:absolute; top:10px; right:10px; background:var(--surface2); border:1px solid var(--border-muted); color:var(--muted); font-size:11px; font-weight:700; padding:6px 10px; border-radius:8px; cursor:pointer; transition:all .2s;}
+  .copy-btn:hover{border-color:var(--accent); color:var(--accent);}
+  .copy-btn.copied{border-color:var(--accent); color:var(--accent); background:var(--accent-dim);}
+
+  .mark-done{display:flex; align-items:center; gap:9px; margin-top:12px; cursor:pointer; user-select:none; font-size:13px; color:var(--muted); font-weight:600;}
+  .mark-done input{width:17px; height:17px; accent-color:var(--accent); cursor:pointer;}
+  .mark-done.checked{color:var(--accent);}
+
+  /* progress bar */
+  .progress-wrap{max-width:640px; width:100%; margin:0 auto 8px;}
+  .progress-track{height:6px; background:var(--surface2); border-radius:999px; overflow:hidden; border:1px solid var(--border-muted);}
+  .progress-fill{height:100%; width:0%; background:var(--accent); box-shadow:0 0 10px var(--accent-glow); transition:width .4s ease;}
+  .progress-label{font-size:12px; color:var(--muted); text-align:center; margin-top:8px;}
+
+  .win-box{background:var(--accent-dim); border:1.5px solid var(--accent); border-radius:var(--radius); padding:26px; max-width:640px; margin:20px auto 0; text-align:center; display:none;}
+  .win-box.show{display:block;}
+  .win-box h3{font-size:18px; color:var(--accent); margin-bottom:8px;}
+  .win-box p{font-size:13.5px; color:var(--sage);}
+
+  .price-card{background:var(--surface); border:1px solid var(--border-muted); border-radius:var(--radius); padding:28px 24px; max-width:420px; margin:24px auto 0; text-align:center; transition:border-color .3s;}
+  .price-card:hover{border-color:var(--accent);}
+  .price-card .amt{font-family:var(--font-serif); font-size:34px; color:var(--accent); margin-bottom:6px;}
+  .price-card h3{font-size:16px; margin-bottom:10px;}
+  .price-card p{font-size:13px; color:var(--muted); line-height:1.55; margin-bottom:18px;}
+  .cta-btn{display:inline-block; background:var(--accent); color:#062012; font-weight:700; font-size:14px; padding:12px 28px; border-radius:999px; transition:opacity .2s;}
+  .cta-btn:hover{opacity:.88;}
+
+  footer{padding:50px 24px 80px; text-align:center; color:var(--muted); font-size:12px;}
+  footer a{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="mark">✦</span> JDesigns Strategist</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <a href="/how-i-run-this.html" class="nav-link">How I Run This</a>
+      <a href="work-with-me.html" class="nav-link">Work With Me</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Free · Interactive · ~10 Minutes</div>
+    <h1>Build your first AI agent. Actually build one.</h1>
+    <p class="lead">Not an explainer. Not a video. Four real steps, done in your own AI tool, and by the end you'll have a real file your AI reads every time you open it.</p>
+    <div class="tool-picker">
+      <button class="tool-btn active" data-tool="claude">Claude Code</button>
+      <button class="tool-btn" data-tool="codex">Codex</button>
+    </div>
+    <p class="tool-note">Pick whichever one you've got a $20/mo plan for — the steps below will match it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:640px;">
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0 of 4 done</div>
+    </div>
+
+    <div class="step-card" data-step="1">
+      <div class="step-head"><div class="step-num">1</div><h3>Make a folder</h3></div>
+      <div class="step-body">
+        <p>On your computer, make one new folder. Name it after your business. That's the whole step.</p>
+        <div class="code-block">mkdir my-business
+cd my-business</div>
+        <button class="copy-btn" data-copy="mkdir my-business
+cd my-business">Copy</button>
+      </div>
+      <label class="mark-done"><input type="checkbox" data-check="1"> I made the folder</label>
+    </div>
+
+    <div class="step-card" data-step="2">
+      <div class="step-head"><div class="step-num">2</div><h3>Give it a memory</h3></div>
+      <div class="step-body">
+        <p id="step2-instructions">Open a terminal in that folder and run <strong>claude</strong>. Paste this in:</p>
+        <div class="code-block" id="step2-prompt">Create a file in this folder called CLAUDE.md. Before you write it, ask me 3 questions: what my business does, who my ideal client is, and how I like to talk to people. Then write my answers into the file.</div>
+        <button class="copy-btn" data-copy-target="step2-prompt">Copy</button>
+      </div>
+      <label class="mark-done"><input type="checkbox" data-check="2"> It wrote the file</label>
+    </div>
+
+    <div class="step-card" data-step="3">
+      <div class="step-head"><div class="step-num">3</div><h3>Prove it remembers</h3></div>
+      <div class="step-body">
+        <p id="step3-instructions">Close that chat completely. Open a brand new one in the same folder with <strong>claude</strong> again, and ask:</p>
+        <div class="code-block">What do you already know about my business?</div>
+        <button class="copy-btn" data-copy="What do you already know about my business?">Copy</button>
+        <p style="margin-top:10px;">If it answers correctly without you re-explaining anything — that's the whole trick. It read the file.</p>
+      </div>
+      <label class="mark-done"><input type="checkbox" data-check="3"> It remembered</label>
+    </div>
+
+    <div class="step-card" data-step="4">
+      <div class="step-head"><div class="step-num">4</div><h3>See what you just built</h3></div>
+      <div class="step-body">
+        <p>That folder and that one file are the entire foundation of what people call "agentic AI." Not a smarter chatbot — a system that keeps its own notes and acts on them, so you stop repeating yourself. Everything bigger (routing client messages, running whole workflows, using more than one AI tool on the same files) is just more files added to that same folder.</p>
+      </div>
+      <label class="mark-done"><input type="checkbox" data-check="4"> I get it</label>
+    </div>
+
+    <div class="win-box" id="winBox">
+      <h3>That's it. You just built one.</h3>
+      <p>One folder, one file, zero repeating yourself. Everything past this point is just adding more files to the same idea.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Want it done for you?</div>
+    <div class="price-card">
+      <div class="amt">$95</div>
+      <h3>Systemize Your Business</h3>
+      <p>The guided version of this — your actual pricing, rules, client history, and voice turned into a full working system in about 30 minutes. No coding, no starting from a blank folder.</p>
+      <a class="cta-btn" href="/systemize-your-business.html" target="_blank" rel="noopener">Get it →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+    <span>© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html">Made by Jasmine</a></span>
+    <span style="display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="/about.html">About</a>
+      <a href="/blog/">Blog</a>
+      <a href="/knowledge-hub.html">Knowledge Hub</a>
+      <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener">Fiverr</a>
+      <a href="/privacy-policy.html">Privacy</a>
+    </span>
+  </footer>
+
+<script>
+(function(){
+  var currentTool = 'claude';
+
+  var prompts = {
+    claude: {
+      step2Instructions: 'Open a terminal in that folder and run <strong>claude</strong>. Paste this in:',
+      step2Prompt: 'Create a file in this folder called CLAUDE.md. Before you write it, ask me 3 questions: what my business does, who my ideal client is, and how I like to talk to people. Then write my answers into the file.',
+      step3Instructions: 'Close that chat completely. Open a brand new one in the same folder with <strong>claude</strong> again, and ask:'
+    },
+    codex: {
+      step2Instructions: 'Open a terminal in that folder and run <strong>codex</strong>. Paste this in:',
+      step2Prompt: 'Create a file in this folder called AGENTS.md. Before you write it, ask me 3 questions: what my business does, who my ideal client is, and how I like to talk to people. Then write my answers into the file.',
+      step3Instructions: 'Close that chat completely. Open a brand new one in the same folder with <strong>codex</strong> again, and ask:'
+    }
+  };
+
+  var toolBtns = document.querySelectorAll('.tool-btn');
+  var step2Instr = document.getElementById('step2-instructions');
+  var step2Prompt = document.getElementById('step2-prompt');
+  var step3Instr = document.getElementById('step3-instructions');
+
+  function applyTool(tool){
+    currentTool = tool;
+    toolBtns.forEach(function(b){ b.classList.toggle('active', b.dataset.tool === tool); });
+    step2Instr.innerHTML = prompts[tool].step2Instructions;
+    step2Prompt.textContent = prompts[tool].step2Prompt;
+    step3Instr.innerHTML = prompts[tool].step3Instructions;
+  }
+
+  toolBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){ applyTool(btn.dataset.tool); });
+  });
+
+  // copy buttons
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.dataset.copy;
+      if (btn.dataset.copyTarget) {
+        text = document.getElementById(btn.dataset.copyTarget).textContent;
+      }
+      navigator.clipboard.writeText(text).then(function(){
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1600);
+      });
+    });
+  });
+
+  // progress tracking, saved locally so it survives a refresh
+  var STORAGE_KEY = 'jd-build-first-agent-progress';
+  var checks = document.querySelectorAll('[data-check]');
+  var progressFill = document.getElementById('progressFill');
+  var progressLabel = document.getElementById('progressLabel');
+  var winBox = document.getElementById('winBox');
+
+  function loadProgress(){
+    try {
+      var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      checks.forEach(function(c){
+        if (saved[c.dataset.check]) {
+          c.checked = true;
+          c.closest('.step-card').classList.add('done');
+          c.closest('.mark-done').classList.add('checked');
+        }
+      });
+    } catch(e) {}
+    updateProgress();
+  }
+
+  function saveProgress(){
+    var state = {};
+    checks.forEach(function(c){ state[c.dataset.check] = c.checked; });
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+  }
+
+  function updateProgress(){
+    var done = 0;
+    checks.forEach(function(c){ if (c.checked) done++; });
+    var pct = (done / checks.length) * 100;
+    progressFill.style.width = pct + '%';
+    progressLabel.textContent = done + ' of ' + checks.length + ' done';
+    winBox.classList.toggle('show', done === checks.length);
+  }
+
+  checks.forEach(function(c){
+    c.addEventListener('change', function(){
+      c.closest('.step-card').classList.toggle('done', c.checked);
+      c.closest('.mark-done').classList.toggle('checked', c.checked);
+      saveProgress();
+      updateProgress();
+    });
+  });
+
+  loadProgress();
+
+  // shared nav toggle
+  var navBtn = document.getElementById('navToggle');
+  var navLinksEl = document.getElementById('navLinks');
+  if (navBtn && navLinksEl) {
+    navBtn.addEventListener('click', function () {
+      var open = navLinksEl.classList.toggle('open');
+      navBtn.setAttribute('aria-expanded', open);
+    });
+    navLinksEl.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { navLinksEl.classList.remove('open'); navBtn.setAttribute('aria-expanded', 'false'); });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

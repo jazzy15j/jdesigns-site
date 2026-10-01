@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Meta's Account Structure Actually Works | JDesigns Strategist</title>
+  <meta name="description" content="Personal profile, Business Portfolio, Assets, People — how they actually connect, and why 'Add a Page' can fail even when you technically have access." />
+  <meta property="og:title" content="How Meta's Account Structure Actually Works" />
+  <meta property="og:description" content="Personal profile, Business Portfolio, Assets, People — how they actually connect, and why 'Add a Page' can fail even when you technically have access." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://jdesigns.info/help/how-meta-account-structure-works" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://jdesigns.info/help/how-meta-account-structure-works" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How Meta's Account Structure Actually Works","description":"Personal profile, Business Portfolio, Assets, People — how they actually connect, and why 'Add a Page' can fail even when you technically have access.","url":"https://jdesigns.info/help/how-meta-account-structure-works","dateModified":"2026-09-10","author":{"@type":"Person","name":"Jasmine Stock"},"publisher":{"@type":"Organization","name":"JDesigns Strategist LLC","url":"https://jdesigns.info"}}</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       #1a7a4e;
+      --border-muted: #102b18;
+      --accent:       #2ec27e;
+      --accent-dim:   #0d3320;
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --warn:         #e05a3a;
+      --radius:       14px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    body { font-family: var(--font-sans); background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .page { max-width: 680px; margin: 0 auto; padding: 52px 24px 88px; }
+
+    .wordmark { font-family: var(--font-serif); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 40px; display: flex; align-items: center; gap: 6px; }
+    .wordmark span { color: var(--muted); }
+    .wordmark a:hover { color: var(--text); }
+
+    .profile-header { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+    .profile-avatar { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); flex-shrink: 0; }
+    .profile-name { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.2; }
+    .profile-handle { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+    .article-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+    .meta-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--border-muted); padding: 3px 9px; border-radius: 999px; }
+    .meta-date { font-size: 12px; color: var(--muted); }
+    h1 { font-family: var(--font-serif); font-size: 30px; font-weight: 400; color: var(--text); letter-spacing: 0.01em; line-height: 1.25; margin-bottom: 16px; }
+    .article-intro { font-size: 15.5px; color: var(--sage); line-height: 1.7; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border-muted); }
+
+    .article-body h2 { font-family: var(--font-serif); font-size: 21px; font-weight: 400; color: var(--text); margin: 40px 0 12px; line-height: 1.3; }
+    .article-body h3 { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin: 32px 0 10px; }
+    .article-body p { font-size: 15px; color: var(--sage); line-height: 1.75; margin-bottom: 18px; }
+    .article-body strong { color: var(--text); font-weight: 600; }
+    .article-body code { font-family: var(--font-mono); font-size: 0.85em; color: var(--accent); background: var(--accent-dim); padding: 0.1em 0.4em; border-radius: 4px; }
+
+    .callout { background: var(--surface); border: 1px solid var(--border-muted); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 18px 20px; margin: 24px 0; font-size: 14px; color: var(--sage); line-height: 1.65; }
+    .callout strong { color: var(--text); }
+
+    .warning { background: rgba(180,50,30,.08); border: 1px solid rgba(220,80,60,.25); border-left: 3px solid var(--warn); border-radius: var(--radius); padding: 18px 20px; margin: 24px 0; font-size: 14px; color: var(--sage); line-height: 1.65; }
+    .warning strong { color: var(--text); }
+    .error-quote { font-family: var(--font-mono); font-size: 13px; color: var(--sage); background: rgba(180,50,30,.08); border: 1px solid rgba(220,80,60,.25); border-left: 3px solid var(--warn); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 20px 0; line-height: 1.55; }
+
+    figure { margin: 28px 0 8px; }
+    figure svg { display: block; width: 100%; height: auto; max-width: 100%; }
+    figcaption { font-size: 13px; color: var(--muted); margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border-muted); line-height: 1.6; }
+
+    .card-grid { display: grid; gap: 1px; background: var(--border-muted); border: 1px solid var(--border-muted); border-radius: 10px; overflow: hidden; margin: 20px 0; }
+    .trip-card { background: var(--surface); padding: 18px 20px; }
+    .trip-card .num { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; }
+    .trip-card h3 { margin: 6px 0 6px; }
+    .trip-card p { font-size: 14px; margin-bottom: 0; }
+
+    .glossary { display: flex; flex-direction: column; gap: 0; margin: 20px 0; }
+    .gterm { display: grid; grid-template-columns: 9.5rem 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border-muted); }
+    .gterm dt { font-family: var(--font-mono); font-size: 13px; color: var(--accent); align-self: start; }
+    .gterm dd { font-size: 14px; color: var(--sage); line-height: 1.55; }
+
+    .cta-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 28px; text-align: center; margin: 48px 0; }
+    .cta-block h3 { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+    .cta-block p { font-size: 13.5px; color: var(--muted); margin-bottom: 22px; line-height: 1.6; }
+    .cta-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 999px; background: var(--text); color: var(--bg); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background 0.15s, transform 0.12s; cursor: pointer; border: none; }
+    .cta-btn:hover { background: var(--accent); transform: translateY(-1px); }
+    .cta-btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 999px; background: transparent; color: var(--accent); border: 1px solid var(--border); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background 0.15s, border-color 0.15s, transform 0.12s; }
+    .cta-btn-outline:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+    .disclaimer { font-size: 11.5px; color: var(--muted); margin-top: 14px; line-height: 1.55; }
+
+    .related-section { margin-top: 56px; }
+    .related-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .related-list { display: flex; flex-direction: column; gap: 8px; }
+    .related-card { background: var(--surface); border: 1px solid var(--border-muted); border-radius: 10px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; transition: border-color 0.15s; }
+    .related-card:hover { border-color: var(--border); }
+    .related-title { font-size: 14px; color: var(--sage); line-height: 1.4; }
+    .related-arrow { color: var(--muted); flex-shrink: 0; }
+    .related-card:hover .related-arrow { color: var(--accent); }
+
+    .footer { border-top: 1px solid var(--border-muted); padding-top: 28px; margin-top: 52px; font-size: 12.5px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer a { color: var(--accent); }
+    .footer a:hover { color: var(--text); }
+
+    @media (max-width: 640px) { .gterm { grid-template-columns: 7rem 1fr; } }
+  </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1748369839650273');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<nav class="jdgnav">
+  <style>
+    .jdgnav{position:sticky;top:0;z-index:100;background:rgba(7,16,10,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,50,37,.7);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
+    .jdgnav-inner{max-width:1040px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;}
+    .jdgnav-logo{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#2ec27e;white-space:nowrap;text-decoration:none;}
+    .jdgnav-links{display:flex;align-items:center;gap:6px;}
+    .jdgnav-link{font-size:12.5px;font-weight:500;color:#8aab96;padding:5px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .15s,background .15s;}
+    .jdgnav-link:hover{color:#fff;background:#0d1a10;}
+    .jdgnav-cta{font-size:12px;font-weight:700;letter-spacing:.04em;color:#07100a;background:#2ec27e;padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
+    .jdgnav-cta:hover{opacity:.85;}
+    .jdgnav-toggle{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid rgba(30,50,37,.7);background:transparent;cursor:pointer;flex-shrink:0;}
+    .jdgnav-toggle span{display:block;width:16px;height:1.5px;background:#c4dccb;position:relative;}
+    .jdgnav-toggle span::before,.jdgnav-toggle span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#c4dccb;}
+    .jdgnav-toggle span::before{top:-5px;}
+    .jdgnav-toggle span::after{top:5px;}
+    @media (max-width:900px){
+      .jdgnav-toggle{display:flex;}
+      .jdgnav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:#0d1a10;border-bottom:1px solid rgba(30,50,37,.7);padding:10px 16px 16px;box-shadow:0 16px 32px rgba(0,0,0,.35);}
+      .jdgnav-links.open{display:flex;}
+      .jdgnav-links.open .jdgnav-link,.jdgnav-links.open .jdgnav-cta{width:100%;justify-content:space-between;padding:14px 14px;border-radius:10px;font-size:14px;display:flex;}
+    }
+  </style>
+  <div class="jdgnav-inner">
+    <a href="/" class="jdgnav-logo">✦ JDesigns Strategist</a>
+    <div class="jdgnav-links" id="jdgnavLinks">
+      <a href="/" class="jdgnav-link">Home</a>
+      <a href="/blog/" class="jdgnav-link">Blog</a>
+      <a href="/simplesystems.html" class="jdgnav-link">Simple Systems</a>
+      <a href="/help/" class="jdgnav-link">Help</a>
+      <a href="/work-with-me.html" class="jdgnav-link">Work With Me</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="jdgnav-cta" target="_blank" rel="noopener">Fiverr &#8599;</a>
+    </div>
+    <button class="jdgnav-toggle" id="jdgnavToggle" aria-label="Open menu" aria-expanded="false" aria-controls="jdgnavLinks"><span></span></button>
+  </div>
+</nav>
+<script>
+(function(){
+  var btn=document.getElementById('jdgnavToggle');
+  var links=document.getElementById('jdgnavLinks');
+  if(!btn||!links) return;
+  btn.addEventListener('click',function(){
+    var open=links.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){links.classList.remove('open');btn.setAttribute('aria-expanded','false');});
+  });
+})();
+</script>
+
+<div class="page">
+
+  <div class="wordmark">
+    <a href="/">✦ JDesigns Strategist</a>
+    <span>/</span>
+    <a href="/help/index.html">Meta Help</a>
+    <span>/ Account Structure</span>
+  </div>
+
+  <div class="profile-header">
+    <img src="../assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
+    <div>
+      <div class="profile-name">Jasmine</div>
+      <div class="profile-handle">Meta Ads &amp; Strategy · JDesigns Strategist LLC</div>
+    </div>
+  </div>
+
+  <div class="article-meta">
+    <span class="meta-tag">Meta Access</span>
+    <span class="meta-date">Updated September 2026</span>
+  </div>
+
+  <h1>How Meta's Account Structure Actually Works</h1>
+
+  <p class="article-intro">One login. A container that may or may not hold anything. And two separate permission checks that look like one. This is the part almost every client gets tangled in — here's the actual mechanism, in two pictures.</p>
+
+  <div class="article-body">
+
+    <h2>The container: a Business Portfolio is a box, and it can be empty</h2>
+
+    <p>You never log into "the business." You log into your own personal Facebook profile, and from there you open whichever Business Portfolio you have access to. The Portfolio is just a container — it holds Assets (Pages, Instagram, ad accounts, pixels) and People (who can touch them). Neither is required for the container to exist.</p>
+
+    <figure role="img" aria-label="Diagram: a personal Facebook profile logs in and opens a Business Portfolio container, which holds Assets and People as two separate groups; a Page can also exist entirely outside any Portfolio, tied only to a personal profile.">
+      <svg viewBox="0 0 860 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <rect x="330" y="18" width="200" height="52" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="430" y="40" text-anchor="middle" font-size="12.5" font-weight="600" fill="currentColor">Personal Profile</text>
+        <text x="430" y="58" text-anchor="middle" font-size="10.5" fill="var(--muted)">the only thing you log in as</text>
+
+        <line x1="430" y1="70" x2="430" y2="102" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <text x="446" y="90" font-size="10" fill="var(--muted)">opens</text>
+
+        <rect x="70" y="108" width="580" height="230" rx="10" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="2 5"/>
+        <text x="90" y="132" font-size="11.5" font-weight="700" fill="var(--accent)" letter-spacing="0.5">BUSINESS PORTFOLIO</text>
+        <text x="90" y="149" font-family="var(--font-mono)" font-size="10.5" fill="var(--muted)">has its own name + ID, e.g. "Sunset Studio" &middot; ID 10293847561</text>
+
+        <rect x="94" y="168" width="250" height="150" rx="6" fill="var(--surface)" stroke="var(--border-muted)" stroke-width="1"/>
+        <text x="112" y="190" font-size="10.5" font-weight="700" fill="currentColor" letter-spacing="0.5">ASSETS</text>
+        <g font-size="10.5" fill="var(--sage)">
+          <rect x="112" y="200" width="100" height="22" rx="4" fill="var(--accent-dim)" stroke="var(--border)"/>
+          <text x="162" y="215" text-anchor="middle">Page</text>
+          <rect x="222" y="200" width="100" height="22" rx="4" fill="var(--accent-dim)" stroke="var(--border)"/>
+          <text x="272" y="215" text-anchor="middle">Instagram</text>
+          <rect x="112" y="230" width="100" height="22" rx="4" fill="var(--accent-dim)" stroke="var(--border)"/>
+          <text x="162" y="245" text-anchor="middle">Ad account</text>
+          <rect x="222" y="230" width="100" height="22" rx="4" fill="var(--accent-dim)" stroke="var(--border)"/>
+          <text x="272" y="245" text-anchor="middle">Pixel</text>
+        </g>
+        <text x="112" y="300" font-size="9.5" fill="var(--muted)">can sit here with none of these &mdash;</text>
+        <text x="112" y="312" font-size="9.5" fill="var(--muted)">an empty Portfolio is a normal state</text>
+
+        <rect x="376" y="168" width="250" height="150" rx="6" fill="var(--surface)" stroke="var(--border-muted)" stroke-width="1"/>
+        <text x="394" y="190" font-size="10.5" font-weight="700" fill="currentColor" letter-spacing="0.5">PEOPLE</text>
+        <g font-size="10.5" fill="var(--sage)">
+          <rect x="394" y="200" width="160" height="22" rx="4" fill="var(--border-muted)" stroke="var(--border-muted)"/>
+          <text x="474" y="215" text-anchor="middle">Full access</text>
+          <rect x="394" y="230" width="160" height="22" rx="4" fill="var(--border-muted)" stroke="var(--border-muted)"/>
+          <text x="474" y="245" text-anchor="middle">Partial access</text>
+        </g>
+        <text x="394" y="300" font-size="9.5" fill="var(--muted)">access to the Portfolio &ne;</text>
+        <text x="394" y="312" font-size="9.5" fill="var(--muted)">control of any one Asset &rarr; see below</text>
+
+        <rect x="700" y="200" width="130" height="70" rx="6" fill="none" stroke="var(--muted)" stroke-width="1.25" stroke-dasharray="3 4"/>
+        <text x="765" y="222" text-anchor="middle" font-size="10" fill="var(--sage)">Old Page</text>
+        <text x="765" y="236" text-anchor="middle" font-size="9" fill="var(--muted)">tied only to</text>
+        <text x="765" y="248" text-anchor="middle" font-size="9" fill="var(--muted)">someone's profile</text>
+        <text x="700" y="288" font-size="9.5" fill="var(--muted)">no Portfolio required</text>
+        <text x="700" y="300" font-size="9.5" fill="var(--muted)">to exist at all</text>
+      </svg>
+      <figcaption>A Portfolio holds Assets and People, but doesn't have to hold either — and plenty of Pages and Instagram accounts float outside any Portfolio, tied straight to whoever's personal profile created them. Both are normal. Neither is broken.</figcaption>
+    </figure>
+
+    <h2>The part that actually breaks: two checks, not one</h2>
+
+    <p>Being on the Portfolio's People list tells Meta you can manage <strong>the business</strong>. It says nothing about whether you personally admin <strong>that specific Page</strong>. "Add a Page" checks the second thing, not the first — which is why Portfolio access alone throws this exact error:</p>
+
+    <p class="error-quote">"Only people with full control access of the Page can add it into this business portfolio."</p>
+
+    <figure role="img" aria-label="Diagram: adding a Page to a Portfolio requires two independent checks to both pass — Portfolio People access, and full-control access on that specific Page. Having only Portfolio access blocks the action; having both lets it succeed.">
+      <svg viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <rect x="24" y="118" width="150" height="52" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="99" y="140" text-anchor="middle" font-size="11.5" font-weight="600" fill="currentColor">Your Profile</text>
+        <text x="99" y="157" text-anchor="middle" font-size="9.5" fill="var(--muted)">one login, two checks</text>
+
+        <line x1="174" y1="140" x2="252" y2="90" stroke="currentColor" stroke-width="1.25" marker-end="url(#arrow2)"/>
+        <rect x="256" y="52" width="220" height="60" rx="8" fill="var(--surface)" stroke="var(--border-muted)" stroke-width="1.25"/>
+        <text x="366" y="76" text-anchor="middle" font-size="10.5" font-weight="600" fill="currentColor">On the Portfolio's</text>
+        <text x="366" y="92" text-anchor="middle" font-size="10.5" font-weight="600" fill="currentColor">People list?</text>
+        <text x="366" y="106" text-anchor="middle" font-size="9" fill="var(--muted)">business-level check</text>
+
+        <line x1="174" y1="150" x2="252" y2="200" stroke="currentColor" stroke-width="1.25" marker-end="url(#arrow2)"/>
+        <rect x="256" y="180" width="220" height="60" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+        <text x="366" y="204" text-anchor="middle" font-size="10.5" font-weight="600" fill="currentColor">Full control access</text>
+        <text x="366" y="220" text-anchor="middle" font-size="10.5" font-weight="600" fill="currentColor">on THIS Page?</text>
+        <text x="366" y="234" text-anchor="middle" font-size="9" fill="var(--accent)">asset-level check &mdash; the one that trips people up</text>
+
+        <line x1="476" y1="82" x2="540" y2="150" stroke="currentColor" stroke-width="1.25"/>
+        <line x1="476" y1="210" x2="540" y2="150" stroke="currentColor" stroke-width="1.25"/>
+        <polygon points="540,118 592,150 540,182 488,150" fill="var(--surface)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="540" y="146" text-anchor="middle" font-size="9.5" font-weight="600" fill="currentColor">both</text>
+        <text x="540" y="159" text-anchor="middle" font-size="9.5" font-weight="600" fill="currentColor">true?</text>
+
+        <line x1="592" y1="150" x2="592" y2="90" stroke="var(--warn)" stroke-width="1.5"/>
+        <line x1="592" y1="90" x2="700" y2="90" stroke="var(--warn)" stroke-width="1.5" marker-end="url(#arrow2)"/>
+        <text x="596" y="82" font-size="9.5" fill="var(--warn)">no &mdash; missing B</text>
+        <rect x="704" y="64" width="132" height="52" rx="8" fill="rgba(180,50,30,.12)" stroke="var(--warn)" stroke-width="1.25"/>
+        <text x="770" y="86" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--text)">Blocked</text>
+        <text x="770" y="101" text-anchor="middle" font-size="9" fill="var(--sage)">error shown above</text>
+
+        <line x1="592" y1="150" x2="592" y2="210" stroke="var(--accent)" stroke-width="1.5"/>
+        <line x1="592" y1="210" x2="700" y2="210" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow2)"/>
+        <text x="596" y="203" font-size="9.5" fill="var(--accent)">yes &mdash; both pass</text>
+        <rect x="704" y="184" width="132" height="52" rx="8" fill="var(--accent-dim)" stroke="var(--accent)" stroke-width="1.25"/>
+        <text x="770" y="206" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--text)">Page added</text>
+        <text x="770" y="221" text-anchor="middle" font-size="9" fill="var(--sage)">now an Asset</text>
+      </svg>
+      <figcaption>Portfolio access and Page-level "full control" are checked independently. Having the first without the second is the single most common reason "Add a Page" fails — it isn't a permissions bug, it's two separate gates that happen to look like one button.</figcaption>
+    </figure>
+
+    <div class="warning"><strong>What this means in practice:</strong> whoever clicks "Add a Page" has to be logged into the exact personal profile that Facebook already recognizes as an Admin of that Page — not just someone the Portfolio trusts in general. If that's not you, the Page's actual admin has to click it themselves.</div>
+
+    <h2>Three more things that trip people up</h2>
+
+    <div class="card-grid">
+      <div class="trip-card">
+        <span class="num">1</span>
+        <h3>One person, one profile</h3>
+        <p>Meta ties everything to a single personal login. Running several personal profiles (an old one, a "just for business" one, a backup) multiplies which login has to be checked for every single Asset — keep it to one wherever possible.</p>
+      </div>
+      <div class="trip-card">
+        <span class="num">2</span>
+        <h3>Public face vs. backend log</h3>
+        <p>A post or comment shows the Page or Instagram name by default — never the admin's real name, unless that admin chooses "comment as yourself." The Portfolio's own activity log (who created it, who last changed something) is admin-only. It's bookkeeping, not a public record.</p>
+      </div>
+      <div class="trip-card">
+        <span class="num">3</span>
+        <h3>New Portfolio, added partner — too soon</h3>
+        <p>Meta confirms recent admin or ownership changes can temporarily restrict a Portfolio. The specific fix of "connect one Asset before adding anyone" is an in-house precaution from repeated client cases, not a published Meta rule — treat it as a strong habit, not a guarantee.</p>
+      </div>
+    </div>
+
+    <h2>Quick glossary</h2>
+
+    <dl class="glossary">
+      <div class="gterm"><dt>Personal Profile</dt><dd>Your one real login. Everything else — Portfolios, Pages, ad accounts — is accessed through it, never logged into separately.</dd></div>
+      <div class="gterm"><dt>Business Portfolio</dt><dd>Formerly called "Business Manager." A container for Assets and People. Can be empty. Has its own name and ID, separate from any Page's public name.</dd></div>
+      <div class="gterm"><dt>Asset</dt><dd>A Page, Instagram account, ad account, pixel, catalog, or domain. Can live inside a Portfolio or entirely outside one.</dd></div>
+      <div class="gterm"><dt>Full control access</dt><dd>The highest access level, checked at the Asset level. Required to move that Asset into a Portfolio — Portfolio-level "Full access" does not substitute for this.</dd></div>
+      <div class="gterm"><dt>Partial access</dt><dd>A lower Portfolio-level role — can work inside the business without full control of every Asset in it.</dd></div>
+      <div class="gterm"><dt>Partner</dt><dd>Another business's Portfolio, given access to one of your Assets without becoming a person on your People list.</dd></div>
+    </dl>
+
+    <div class="callout"><strong>Rule of thumb for any access conversation:</strong> if someone says "I have access to the account," ask access to <em>what, exactly</em> — the Portfolio, or the specific Page. They're rarely the same answer.</div>
+
+  </div><!-- /.article-body -->
+
+  <div class="cta-block">
+    <h3>Untangling this on your own account?</h3>
+    <p>I'll review your full Business Portfolio structure — who has what role, which Pages and Assets are actually connected, and exactly what to change and in what order.</p>
+    <div class="cta-row">
+      <a href="https://www.fiverr.com/jazz96designs/review-and-guide-your-meta-business-access-setup-issues" class="cta-btn" target="_blank" rel="noopener">Get a Meta Access Review →</a>
+      <a href="/help/index.html" class="cta-btn-outline">← More Free Guides</a>
+    </div>
+    <p class="disclaimer">Meta Access Review starts at $345. I review your setup and give you a written action plan — I don't log in to your account or contact Meta on your behalf.</p>
+  </div>
+
+  <div class="related-section">
+    <div class="related-label">Related Guides</div>
+    <div class="related-list">
+      <a href="/help/meta-business-portfolio-access-problems.html" class="related-card">
+        <span class="related-title">Meta Business Portfolio Access Problems: Who Needs Full Control?</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help/who-gets-what-access-meta-business-suite.html" class="related-card">
+        <span class="related-title">Who Gets What Access in Meta Business Suite</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help/meta-business-suite-vs-business-manager-vs-business-portfolio.html" class="related-card">
+        <span class="related-title">Meta Business Suite vs. Business Manager vs. Business Portfolio</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help/index.html" class="related-card">
+        <span class="related-title">View All Meta Help Guides →</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html">Made by Jasmine</a></span>
+    <span style="display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="/about.html">About</a>
+      <a href="/blog/">Blog</a>
+      <a href="/knowledge-hub.html">Knowledge Hub</a>
+      <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener">Fiverr</a>
+      <a href="/privacy-policy.html">Privacy</a>
+    </span>
+  </footer>
+
+</div>
+</body>
+</html>

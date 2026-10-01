@@ -7,7 +7,21 @@
   <meta name="description" content="Free answers to the most common Meta Business Suite, Business Manager, and Facebook ad account questions. No fluff — just clear steps from a Meta strategist." />
   <meta property="og:title" content="Meta Business Help — Free Guides & Answers" />
   <meta property="og:description" content="Free answers to the most common Meta Business Suite and ad account questions." />
+  <link rel="stylesheet" href="../assets/site.css" />
   <style>
+    /* Quiz widget — 2 short questions, routes to the right topic section + a CTA */
+    .quiz-box { background: var(--surface); border: 1px solid var(--border-green); border-radius: 18px; padding: 28px 26px; margin: 0 0 48px; max-width: 680px; }
+    .quiz-step { display: none; }
+    .quiz-step.active { display: block; }
+    .quiz-q { font-family: var(--font-serif); font-size: 18px; font-weight: 400; margin-bottom: 16px; }
+    .quiz-opts { display: flex; flex-direction: column; gap: 8px; }
+    .quiz-opt { text-align: left; background: var(--bg); border: 1px solid var(--faint); border-radius: 10px; padding: 12px 16px; font-size: 13.5px; color: var(--sage); cursor: pointer; transition: border-color .15s, background .15s; font-family: inherit; }
+    .quiz-opt:hover { border-color: var(--border-green); background: var(--green-dim); color: var(--text); }
+    .quiz-result-title { font-family: var(--font-serif); font-size: 20px; margin-bottom: 8px; }
+    .quiz-result-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; margin-bottom: 18px; }
+    .quiz-result-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+    .quiz-restart { font-size: 12px; color: var(--muted); margin-top: 16px; cursor: pointer; background: none; border: none; font-family: inherit; }
+    .quiz-restart:hover { color: var(--green); }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -291,82 +305,173 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 </head>
 <body>
-<nav class="jdgnav">
-  <style>
-    .jdgnav{position:sticky;top:0;z-index:100;background:rgba(7,16,10,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,50,37,.7);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
-    .jdgnav-inner{max-width:1040px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;}
-    .jdgnav-logo{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#2ec27e;white-space:nowrap;text-decoration:none;}
-    .jdgnav-links{display:flex;align-items:center;gap:6px;}
-    .jdgnav-link{font-size:12.5px;font-weight:500;color:#8aab96;padding:5px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .15s,background .15s;}
-    .jdgnav-link:hover{color:#fff;background:#0d1a10;}
-    .jdgnav-cta{font-size:12px;font-weight:700;letter-spacing:.04em;color:#07100a;background:#2ec27e;padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
-    .jdgnav-cta:hover{opacity:.85;}
-    .jdgnav-toggle{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid rgba(30,50,37,.7);background:transparent;cursor:pointer;flex-shrink:0;}
-    .jdgnav-toggle span{display:block;width:16px;height:1.5px;background:#c4dccb;position:relative;}
-    .jdgnav-toggle span::before,.jdgnav-toggle span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#c4dccb;}
-    .jdgnav-toggle span::before{top:-5px;}
-    .jdgnav-toggle span::after{top:5px;}
-    @media (max-width:900px){
-      .jdgnav-toggle{display:flex;}
-      .jdgnav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:#0d1a10;border-bottom:1px solid rgba(30,50,37,.7);padding:10px 16px 16px;box-shadow:0 16px 32px rgba(0,0,0,.35);}
-      .jdgnav-links.open{display:flex;}
-      .jdgnav-links.open .jdgnav-link,.jdgnav-links.open .jdgnav-cta{width:100%;justify-content:space-between;padding:14px 14px;border-radius:10px;font-size:14px;display:flex;}
-    }
-  </style>
-  <div class="jdgnav-inner">
-    <a href="/" class="jdgnav-logo">✦ JDesigns Strategist</a>
-    <div class="jdgnav-links" id="jdgnavLinks">
-      <a href="/" class="jdgnav-link">Home</a>
-      <a href="/blog/" class="jdgnav-link">Blog</a>
-      <a href="/simplesystems.html" class="jdgnav-link">Simple Systems</a>
-      <a href="/help/" class="jdgnav-link">Help</a>
-      <a href="/work-with-me.html" class="jdgnav-link">Work With Me</a>
-      <a href="https://www.fiverr.com/jazz96designs" class="jdgnav-cta" target="_blank" rel="noopener">Fiverr &#8599;</a>
+
+<div class="story-progress" id="storyProgress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><span class="mark">✦</span> JDesigns Strategist</a>
+    <div class="nav-links" id="navLinks">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <a href="/simplesystems.html" class="nav-link">Simple Systems</a>
+      <a href="/help/" class="nav-link active">Help</a>
+      <a href="/work-with-me.html" class="nav-link">Work With Me</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
     </div>
-    <button class="jdgnav-toggle" id="jdgnavToggle" aria-label="Open menu" aria-expanded="false" aria-controls="jdgnavLinks"><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span>
+    </button>
   </div>
 </nav>
-<script>
-(function(){
-  var btn=document.getElementById('jdgnavToggle');
-  var links=document.getElementById('jdgnavLinks');
-  if(!btn||!links) return;
-  btn.addEventListener('click',function(){
-    var open=links.classList.toggle('open');
-    btn.setAttribute('aria-expanded',open);
-  });
-  links.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){links.classList.remove('open');btn.setAttribute('aria-expanded','false');});
-  });
-})();
-</script>
 
 <div class="page">
-
-  <div class="wordmark">
-    <a href="/">✦ JDesigns Strategist</a>
-    <span>/ Meta Help</span>
-  </div>
-
-  <div class="profile-header">
-    <img src="../assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
-    <div>
-      <div class="profile-name">Jasmine</div>
-      <div class="profile-handle">Meta Ads & Strategy · JDesigns Strategist LLC</div>
-    </div>
-  </div>
 
   <div class="page-header">
     <div class="page-label">Free Resources</div>
     <h1 class="page-title">Meta Business Help &amp; Answers</h1>
-    <p class="page-subtitle">Plain-English answers to the most common Meta Business Suite, Business Manager, ad account, and Instagram questions. Written by a Meta strategist — not a chatbot.</p>
+    <p class="page-subtitle">Plain-English answers to the most common Meta Business Suite, Business Manager, ad account, and Instagram questions. Written by a Meta strategist — not a chatbot. Answer two quick questions and I'll point you to the right one.</p>
   </div>
 
+  <!-- ══════════ QUIZ — 2 questions, routes to the right section or CTA ══════════ -->
+  <div class="quiz-box" id="helpQuiz">
+
+    <div class="quiz-step active" data-step="1">
+      <div class="quiz-q">What's going on?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" data-cat="access">I can't get into my account or a Page</button>
+        <button class="quiz-opt" data-cat="restricted">Something got restricted, flagged, or hacked</button>
+        <button class="quiz-opt" data-cat="ads">My ads aren't performing</button>
+        <button class="quiz-opt" data-cat="setup">I'm just setting things up</button>
+      </div>
+    </div>
+
+    <div class="quiz-step" data-step="2">
+      <div class="quiz-q">How urgent is it?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" data-urgency="now">I need it fixed now</button>
+        <button class="quiz-opt" data-urgency="later">I want to understand it first</button>
+      </div>
+    </div>
+
+    <div class="quiz-step" data-step="result">
+      <div class="quiz-result-title" id="quizResultTitle"></div>
+      <div class="quiz-result-desc" id="quizResultDesc"></div>
+      <div class="quiz-result-ctas" id="quizResultCtas"></div>
+      <button class="quiz-restart" id="quizRestart">← Start over</button>
+    </div>
+
+  </div>
+  <script>
+  (function(){
+    var quiz = document.getElementById('helpQuiz');
+    if (!quiz) return;
+    var steps = quiz.querySelectorAll('.quiz-step');
+    var chosenCat = null;
+
+    var RESULTS = {
+      'access-now':      { title: 'Meta Access Review — $345', desc: 'A documented review of exactly why you\'re locked out, plus the scripts to get back in.', ctas: [['Work With Me →', '/work-with-me.html'], ['Read the checklist first', '/meta-checklist.html']] },
+      'access-later':    { title: 'Account Access & Connections', desc: 'Start with the free articles below — Business Portfolio structure, Page ownership, and access levels.', ctas: [['Jump to these articles ↓', '#access']] },
+      'restricted-now':  { title: 'Meta Ecosystem Review — $595', desc: 'The floor for any restriction, hack, or failed appeal — a full documented review and action plan.', ctas: [['Work With Me →', '/work-with-me.html'], ['Free health check first', '/meta-health-checker.html']] },
+      'restricted-later':{ title: 'Restrictions & Verification', desc: 'The free articles below cover the most common restriction and verification issues.', ctas: [['Jump to these articles ↓', '#restrictions']] },
+      'ads-now':         { title: 'Meta Ads Audit', desc: 'A full review of what\'s actually happening in your account — and a written plan to fix it.', ctas: [['See real results →', '/meta-ads-case-studies.html'], ['Work With Me →', '/work-with-me.html']] },
+      'ads-later':       { title: 'See What\'s Actually Working', desc: 'Real, verified campaign numbers from client accounts — see what good results actually look like before you diagnose your own.', ctas: [['See the results →', '/meta-ads-case-studies.html']] },
+      'setup-now':       { title: 'Full Meta Setup', desc: 'A complete setup built to scale — ads, strategy, structure, and a roadmap that actually works long-term.', ctas: [['Work With Me →', '/work-with-me.html']] },
+      'setup-later':     { title: 'Setup & Structure', desc: 'Start with the free articles below on how Meta\'s tools actually fit together.', ctas: [['Jump to these articles ↓', '#setup']] }
+    };
+
+    function showStep(name) {
+      steps.forEach(function(s){ s.classList.toggle('active', s.getAttribute('data-step') === name); });
+    }
+
+    quiz.querySelectorAll('[data-cat]').forEach(function(btn){
+      btn.addEventListener('click', function(){ chosenCat = btn.getAttribute('data-cat'); showStep('2'); });
+    });
+
+    quiz.querySelectorAll('[data-urgency]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var key = chosenCat + '-' + (btn.getAttribute('data-urgency') === 'now' ? 'now' : 'later');
+        var r = RESULTS[key];
+        if (!r) return;
+        document.getElementById('quizResultTitle').textContent = r.title;
+        document.getElementById('quizResultDesc').textContent = r.desc;
+        var ctaWrap = document.getElementById('quizResultCtas');
+        ctaWrap.innerHTML = '';
+        r.ctas.forEach(function(c, i){
+          var a = document.createElement('a');
+          a.href = c[1]; a.textContent = c[0];
+          a.className = i === 0 ? 'btn-primary' : 'btn-secondary';
+          ctaWrap.appendChild(a);
+        });
+        showStep('result');
+      });
+    });
+
+    var restart = document.getElementById('quizRestart');
+    if (restart) restart.addEventListener('click', function(){ chosenCat = null; showStep('1'); });
+  })();
+  </script>
+
   <!-- SECTION 1: Account Access & Connections -->
-  <div class="topic-section">
+  <div class="topic-section" id="access">
     <div class="topic-label">Account Access &amp; Connections</div>
     <h2 class="topic-title">Getting into your accounts and connecting them correctly</h2>
     <div class="article-list">
+
+      <a href="/help/meta-business-suite-not-working.html" class="article-card">
+        <div class="article-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-title">Meta Business Suite Not Working? Check These 6 Things First</div>
+          <div class="article-desc">Missing Page, wrong account, or locked out of Business Suite — six quick checks, in order.</div>
+        </div>
+        <svg class="article-arrow" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+
+      <a href="/help/how-to-add-an-admin-to-a-facebook-page.html" class="article-card">
+        <div class="article-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-title">How to Add an Admin to Your Facebook Page</div>
+          <div class="article-desc">Give someone access to your Page from your Business Portfolio in six steps, and which access level to choose.</div>
+        </div>
+        <svg class="article-arrow" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+
+      <a href="/help/how-to-create-a-facebook-business-page.html" class="article-card">
+        <div class="article-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-title">How to Create a Facebook Business Page (and Connect Instagram)</div>
+          <div class="article-desc">The order that works: personal profile, Page, Business Portfolio, then Instagram.</div>
+        </div>
+        <svg class="article-arrow" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+
+      <a href="/help/can-you-buy-a-meta-ads-account.html" class="article-card">
+        <div class="article-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-title">Can You Buy a Meta Ads Account? What to Do Instead</div>
+          <div class="article-desc">Why buying or renting an ad account backfires, and the safe way to get ads running.</div>
+        </div>
+        <svg class="article-arrow" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+
+      <a href="/help/how-meta-account-structure-works.html" class="article-card">
+        <div class="article-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-title">How Meta's Account Structure Actually Works</div>
+          <div class="article-desc">Personal profile, Business Portfolio, Assets, People — how they connect, in two diagrams, and why "Add a Page" can fail.</div>
+        </div>
+        <svg class="article-arrow" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
 
       <a href="/help/instagram-wont-connect-meta-business-suite.html" class="article-card">
         <div class="article-icon">
@@ -396,7 +501,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
         </div>
         <div class="article-body">
           <div class="article-title">Who Gets What Access in Meta Business Suite</div>
-          <div class="article-desc">Employee vs. Admin vs. Partner — what each role can do and who should get which one.</div>
+          <div class="article-desc">Full access vs. Partial access vs. Partner — what each level can do and who should get which one.</div>
         </div>
         <svg class="article-arrow" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
       </a>
@@ -427,7 +532,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   </div>
 
   <!-- SECTION 2: Restrictions & Verification -->
-  <div class="topic-section">
+  <div class="topic-section" id="restrictions">
     <div class="topic-label">Restrictions &amp; Verification</div>
     <h2 class="topic-title">When Meta restricts, disables, or requires verification</h2>
     <div class="article-list">
@@ -491,7 +596,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   </div>
 
   <!-- SECTION 3: Setup & Structure -->
-  <div class="topic-section">
+  <div class="topic-section" id="setup">
     <div class="topic-label">Setup &amp; Structure</div>
     <h2 class="topic-title">Setting things up correctly from the start</h2>
     <div class="article-list">
@@ -522,17 +627,25 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   </div>
 
   <!-- CTA -->
-  <div class="cta-block">
+  <div class="help-block">
     <h3>Still stuck after reading?</h3>
     <p>Some Meta issues need a second set of eyes. I review your account, identify exactly what's wrong, and give you a written action plan — no fluff, no runaround.</p>
-    <a href="https://www.fiverr.com/jazz96designs" class="cta-btn" target="_blank" rel="noopener">See How I Can Help →</a>
+    <a href="/work-with-me.html" class="btn-primary">Work With Me →</a>
   </div>
 
-  <footer class="footer">
-    <span>© 2026 JDesigns Strategist LLC</span>
-    <a href="/">← Back to main site</a>
-  </footer>
+  <div class="footer">
+      <div class="footer-left">© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html" class="footer-link">Made by Jasmine</a></div>
+      <div class="footer-links">
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/blog/" class="footer-link">Blog</a>
+        <a href="/knowledge-hub.html" class="footer-link">Knowledge Hub</a>
+        <a href="https://www.fiverr.com/jazz96designs" class="footer-link" target="_blank" rel="noopener">Fiverr</a>
+        <a href="/privacy-policy.html" class="footer-link">Privacy</a>
+      </div>
+    </div>
 
 </div>
+
+<script src="../assets/site.js"></script>
 </body>
 </html>

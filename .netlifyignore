@@ -1,2 +1,4 @@
 marketing/
 scripts/
+# Retired private approval queue — never include client drafts in public deploys.
+q-c1cc99dee7e5939b/

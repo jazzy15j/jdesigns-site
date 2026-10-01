@@ -8,140 +8,44 @@
        The full URL to enter in PayPal will be: https://[your-domain]/vault-thank-you.html
        Replace [your-domain] with your actual deployed domain (e.g. jdesigns.info or your Netlify URL).
        In PayPal: go to your payment link settings → Return URL / Confirmation page → paste the full URL. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2307100a'/%3E%3Ctext x='50' y='69' font-size='58' text-anchor='middle' fill='%232ec27e'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/site.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:           #07100a;
-      --surface:      #0d1a10;
-      --border:       #1a7a4e;
-      --border-muted: #102b18;
-      --accent:       #2ec27e;
-      --accent-dim:   #0d3320;
-      --text:         #ffffff;
-      --muted:        #8aab96;
-      --radius:       14px;
-      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      --font-serif: Georgia, 'Times New Roman', serif;
-    }
-
-    body {
-      font-family: var(--font-sans);
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .page {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 64px 24px 88px;
-    }
-
-    .wordmark {
-      font-family: var(--font-serif);
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 52px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .wordmark span { color: var(--muted); }
-
+    /* ── Page-specific: confirmation card + vault button (unique to this thank-you page) ── */
     .card {
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-green);
       border-radius: var(--radius);
       padding: 40px 36px;
       text-align: center;
     }
-
     .check-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--accent-dim);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--green-dim); border: 1px solid var(--border-green);
+      display: flex; align-items: center; justify-content: center;
       margin: 0 auto 24px;
     }
-
     .card h1 {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--text);
-      letter-spacing: 0.01em;
-      line-height: 1.35;
-      margin-bottom: 12px;
+      font-family: var(--font-serif); font-size: 22px; font-weight: 400;
+      color: var(--text); letter-spacing: 0.01em; line-height: 1.35; margin-bottom: 12px;
     }
-
     .card p {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 28px;
+      font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 28px;
     }
-
     .vault-btn {
-      display: inline-flex;
-      align-items: center;
-      padding: 13px 28px;
-      border-radius: 999px;
-      background: var(--text);
-      color: var(--bg);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      display: inline-flex; align-items: center; padding: 13px 28px; border-radius: 999px;
+      background: var(--text); color: var(--bg); font-size: 14px; font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 28px;
       transition: background 0.15s, transform 0.12s;
-      cursor: pointer;
-      margin-bottom: 28px;
     }
-    .vault-btn:hover {
-      background: var(--accent);
-      transform: translateY(-1px);
-    }
-
+    .vault-btn:hover { background: var(--green); transform: translateY(-1px); }
     .disclaimer {
-      font-size: 11.5px;
-      color: var(--muted);
-      line-height: 1.55;
-      padding: 14px 18px;
-      border: 1px solid var(--border-muted);
-      border-radius: 8px;
-      background: rgba(13,51,32,0.3);
-      text-align: left;
+      font-size: 11.5px; color: var(--muted); line-height: 1.55; padding: 14px 18px;
+      border: 1px solid var(--faint); border-radius: 8px; background: var(--green-dim); text-align: left;
     }
-
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border-muted);
-      margin: 32px 0;
-    }
-
-    .footer-note {
-      text-align: center;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .footer-note a {
-      color: var(--accent);
-    }
-
-    @media (max-width: 480px) {
-      .page { padding: 40px 16px 64px; }
-      .card { padding: 28px 20px; }
-    }
+    .divider { border: none; border-top: 1px solid var(--faint); margin: 32px 0; }
+    .footer-note { text-align: center; font-size: 12px; color: var(--muted); }
+    .footer-note a { color: var(--green); }
   </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -162,19 +66,46 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 </head>
 <body>
-  <div class="page">
 
-    <div class="wordmark">✦ <span>JDesigns Strategist</span></div>
+<div class="story-progress" id="storyProgress"></div>
 
-    <div class="card">
+<!-- ── Nav ── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="mark">✦</span> JDesigns Strategist</a>
+    <div class="nav-links" id="navLinks">
+      <a href="/blog/" class="nav-link">Blog</a>
+      <a href="/simplesystems.html" class="nav-link">Simple Systems</a>
+      <a href="/help/" class="nav-link">Help</a>
+      <div class="nav-link nav-dropdown" tabindex="0">
+        Results
+        <div class="nav-dropdown-menu">
+          <a href="meta-ads-case-studies.html" class="nav-dropdown-item">Meta Ads</a>
+          <a href="pinterest-case-studies.html" class="nav-dropdown-item">Pinterest</a>
+        </div>
+      </div>
+      <a href="work-with-me.html" class="nav-link">Work With Me</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span>
+    </button>
+  </div>
+</nav>
 
+<!-- ══════════ CONFIRMATION ══════════ -->
+<header class="band">
+  <div class="band-inner">
+    <div class="chapter-label"><span>Order Confirmed</span><span>Meta Business Fix-It Vault</span></div>
+
+    <div class="card reveal d1">
       <div class="check-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="#2ec27e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
           <polyline points="20 6 9 17 4 12"/>
         </svg>
       </div>
 
-      <h1>Thank you for purchasing the Meta Business Fix-It Vault.</h1>
+      <h1 data-scramble-on-view>Thank you for purchasing the Meta Business Fix-It Vault.</h1>
       <p>Your Vault access is ready below. Please save this link for your records.</p>
 
       <!-- Private Vault access link — only shown on this post-purchase page, not on the main sales page -->
@@ -191,9 +122,26 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
       <p class="footer-note">
         Questions? Reach out on <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener noreferrer">Fiverr</a> or through Instagram <a href="https://instagram.com/jdesigns.info" target="_blank" rel="noopener noreferrer">@jdesigns.info</a>.
       </p>
-
     </div>
-
   </div>
+</header>
+
+<!-- ══════════ FOOTER ══════════ -->
+<section class="band band-alt">
+  <div class="band-inner">
+    <div class="footer">
+      <div class="footer-left">© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html" class="footer-link">Made by Jasmine</a></div>
+      <div class="footer-links">
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/blog/" class="footer-link">Blog</a>
+        <a href="/knowledge-hub.html" class="footer-link">Knowledge Hub</a>
+        <a href="https://www.fiverr.com/jazz96designs" class="footer-link" target="_blank" rel="noopener">Fiverr</a>
+        <a href="/privacy-policy.html" class="footer-link">Privacy</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/site.js"></script>
 </body>
 </html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>LinkedIn Cover Banner</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #07100a; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+
+  .banner {
+    width: 1584px;
+    height: 396px;
+    background: #07100a;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .banner::before {
+    content: "";
+    position: absolute;
+    right: -180px;
+    top: -180px;
+    width: 560px;
+    height: 560px;
+    border-radius: 50%;
+    border: 1px solid rgba(46,194,126,.16);
+  }
+  .banner::after {
+    content: "";
+    position: absolute;
+    right: -60px;
+    bottom: -220px;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    border: 1px solid rgba(46,194,126,.14);
+  }
+
+  /* Left ~520px stays visually quiet -- the profile photo circle overlaps this zone */
+  .quiet-zone {
+    width: 520px;
+    flex-shrink: 0;
+    height: 100%;
+  }
+
+  .content {
+    flex: 1;
+    padding: 0 64px 0 0;
+    z-index: 2;
+  }
+
+  .kicker {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #2ec27e;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 40px;
+    color: #fff;
+    line-height: 1.15;
+  }
+  h1 em { color: #2ec27e; font-style: italic; }
+
+  .role {
+    font-size: 17px;
+    color: #c4dccb;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  .stats {
+    display: flex;
+    gap: 34px;
+    margin-top: 24px;
+  }
+  .stat .n {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 26px;
+    color: #fff;
+    line-height: 1;
+  }
+  .stat .l {
+    font-size: 11.5px;
+    color: #8aab96;
+    margin-top: 5px;
+    letter-spacing: .01em;
+  }
+  .stat + .stat { border-left: 1px solid rgba(46,194,126,.2); padding-left: 34px; }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="quiet-zone"></div>
+  <div class="content">
+    <div class="kicker">✦ JDesigns Strategist LLC</div>
+    <h1>Ready before the rush, <em>not scrambling in November.</em></h1>
+    <div class="role">6-Month Growth Partnerships now open — Meta Ads · Content · Systems</div>
+    <div class="stats">
+      <div class="stat"><div class="n">4.8★</div><div class="l">Average Rating</div></div>
+      <div class="stat"><div class="n">201</div><div class="l">Client Reviews</div></div>
+      <div class="stat"><div class="n">332</div><div class="l">Completed Orders</div></div>
+      <div class="stat"><div class="n">Top Rated</div><div class="l">Vetted Fiverr Pro</div></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

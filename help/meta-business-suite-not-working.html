@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meta Business Suite Not Working? Check These 6 Things First | JDesigns Strategist</title>
+  <meta name="description" content="Meta Business Suite not working, missing a Page, or won&#x27;t let you in? Six quick checks that fix most access problems." />
+  <meta property="og:title" content="Meta Business Suite Not Working? Check These 6 Things First" />
+  <meta property="og:description" content="Meta Business Suite not working, missing a Page, or won&#x27;t let you in? Six quick checks that fix most access problems." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #07100a;
+      --surface:      #0d1a10;
+      --border:       #1a7a4e;
+      --border-muted: #102b18;
+      --accent:       #2ec27e;
+      --accent-dim:   #0d3320;
+      --text:         #ffffff;
+      --sage:         #c4dccb;
+      --muted:        #8aab96;
+      --radius:       14px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 52px 24px 88px;
+    }
+
+    /* ── Nav ── */
+    .wordmark {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wordmark span { color: var(--muted); }
+    .wordmark a:hover { color: var(--text); }
+
+    /* ── Article Header ── */
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .meta-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border-muted);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+    .meta-date {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .article-intro {
+      font-size: 15.5px;
+      color: var(--sage);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border-muted);
+    }
+
+    /* ── Article Body ── */
+    .article-body h2 {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--text);
+      margin: 40px 0 12px;
+      line-height: 1.3;
+    }
+    .article-body h3 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 32px 0 10px;
+    }
+    .article-body p {
+      font-size: 15px;
+      color: var(--sage);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    .article-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── Callout Box ── */
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      color: var(--sage);
+      line-height: 1.65;
+    }
+    .callout strong { color: var(--text); }
+
+    /* ── Step List ── */
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-body { flex: 1; }
+    .step-body strong {
+      display: block;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .step-body p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* ── Decision Box ── */
+    .decision-box {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin: 28px 0;
+    }
+    .decision-box .decision-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .decision-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+      align-items: flex-start;
+    }
+    .decision-row:last-child { margin-bottom: 0; }
+    .decision-if {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      min-width: 110px;
+      flex-shrink: 0;
+    }
+    .decision-then {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── CTA Block ── */
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .cta-block h3 {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .cta-block p {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, transform 0.12s;
+      cursor: pointer;
+      border: none;
+    }
+    .cta-btn:hover { background: var(--accent); transform: translateY(-1px); }
+    .cta-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, border-color 0.15s, transform 0.12s;
+      cursor: pointer;
+    }
+    .cta-btn-outline:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+    .disclaimer {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+
+    /* ── Related Articles ── */
+    .related-section { margin-top: 56px; }
+    .related-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .related-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .related-card {
+      background: var(--surface);
+      border: 1px solid var(--border-muted);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: border-color 0.15s;
+    }
+    .related-card:hover { border-color: var(--border); }
+    .related-title {
+      font-size: 14px;
+      color: var(--sage);
+      line-height: 1.4;
+    }
+    .related-arrow { color: var(--muted); flex-shrink: 0; }
+    .related-card:hover .related-arrow { color: var(--accent); }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid var(--border-muted);
+      padding-top: 28px;
+      margin-top: 52px;
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer a { color: var(--accent); }
+    .footer a:hover { color: var(--text); }
+
+    .profile-header { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+    .profile-avatar { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); flex-shrink: 0; }
+    .profile-name { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.2; }
+    .profile-handle { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1748369839650273');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<nav class="jdgnav">
+  <style>
+    .jdgnav{position:sticky;top:0;z-index:100;background:rgba(7,16,10,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,50,37,.7);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
+    .jdgnav-inner{max-width:1040px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;}
+    .jdgnav-logo{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#2ec27e;white-space:nowrap;text-decoration:none;}
+    .jdgnav-links{display:flex;align-items:center;gap:6px;}
+    .jdgnav-link{font-size:12.5px;font-weight:500;color:#8aab96;padding:5px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .15s,background .15s;}
+    .jdgnav-link:hover{color:#fff;background:#0d1a10;}
+    .jdgnav-cta{font-size:12px;font-weight:700;letter-spacing:.04em;color:#07100a;background:#2ec27e;padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
+    .jdgnav-cta:hover{opacity:.85;}
+    .jdgnav-toggle{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid rgba(30,50,37,.7);background:transparent;cursor:pointer;flex-shrink:0;}
+    .jdgnav-toggle span{display:block;width:16px;height:1.5px;background:#c4dccb;position:relative;}
+    .jdgnav-toggle span::before,.jdgnav-toggle span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#c4dccb;}
+    .jdgnav-toggle span::before{top:-5px;}
+    .jdgnav-toggle span::after{top:5px;}
+    @media (max-width:900px){
+      .jdgnav-toggle{display:flex;}
+      .jdgnav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:#0d1a10;border-bottom:1px solid rgba(30,50,37,.7);padding:10px 16px 16px;box-shadow:0 16px 32px rgba(0,0,0,.35);}
+      .jdgnav-links.open{display:flex;}
+      .jdgnav-links.open .jdgnav-link,.jdgnav-links.open .jdgnav-cta{width:100%;justify-content:space-between;padding:14px 14px;border-radius:10px;font-size:14px;display:flex;}
+    }
+  </style>
+  <div class="jdgnav-inner">
+    <a href="/" class="jdgnav-logo">✦ JDesigns Strategist</a>
+    <div class="jdgnav-links" id="jdgnavLinks">
+      <a href="/" class="jdgnav-link">Home</a>
+      <a href="/blog/" class="jdgnav-link">Blog</a>
+      <a href="/simplesystems.html" class="jdgnav-link">Simple Systems</a>
+      <a href="/help/" class="jdgnav-link">Help</a>
+      <a href="/work-with-me.html" class="jdgnav-link">Work With Me</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="jdgnav-cta" target="_blank" rel="noopener">Fiverr &#8599;</a>
+    </div>
+    <button class="jdgnav-toggle" id="jdgnavToggle" aria-label="Open menu" aria-expanded="false" aria-controls="jdgnavLinks"><span></span></button>
+  </div>
+</nav>
+<script>
+(function(){
+  var btn=document.getElementById('jdgnavToggle');
+  var links=document.getElementById('jdgnavLinks');
+  if(!btn||!links) return;
+  btn.addEventListener('click',function(){
+    var open=links.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){links.classList.remove('open');btn.setAttribute('aria-expanded','false');});
+  });
+})();
+</script>
+
+<div class="page">
+
+  <div class="wordmark">
+    <a href="/">✦ JDesigns Strategist</a>
+    <span>/</span>
+    <a href="/help/index.html">Meta Help</a>
+    <span>/ Business Suite Problems</span>
+  </div>
+
+  <div class="profile-header">
+    <img src="../assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
+    <div>
+      <div class="profile-name">Jasmine</div>
+      <div class="profile-handle">Meta Ads & Strategy · JDesigns Strategist LLC</div>
+    </div>
+  </div>
+
+  <!-- Article Header -->
+  <div class="article-meta">
+    <span class="meta-tag">Account Access</span>
+    <span class="meta-date">Updated October 2026</span>
+  </div>
+
+  <h1>Meta Business Suite Not Working? Check These 6 Things First</h1>
+
+  <p class="article-intro">Business Suite won't load your Page, shows the wrong account, or says you don't have access? Check these in order before you try anything bigger.</p>
+
+  <div class="article-body">
+<h2>The 6 checks</h2>
+<div class="step-list">
+  <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Use a computer, not the phone app</strong><p>The mobile app doesn't show the full settings menu. Go to <strong>business.facebook.com</strong> in a desktop browser.</p></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Log in with your personal Facebook account</strong><p>Facebook is always the primary login. Use "Continue with Instagram" only as a last resort, and only with your business Instagram.</p></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Check you're in the right Business Portfolio</strong><p>Most accounts have several. Click your name top-left, then compare asset counts: "0 business assets" is empty, and the right one shows your real Page.</p></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Check your access level</strong><p>Partial access only shows the specific Pages or ad accounts someone assigned to you. If a Page is missing, you may not have been assigned it.</p></div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Check Instagram is linked to the right Page</strong><p>An Instagram account can be linked to one Facebook Page at a time, and it must be a Business or Creator account.</p></div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Check for a restriction</strong><p>If your Page, ad account or portfolio shows a restriction or "disabled" notice, use Meta's own troubleshooting page for disabled or restricted accounts.</p></div></div>
+</div>
+<div class="decision-box"><div class="decision-label">Which one is it?</div>
+  <div class="decision-row"><div class="decision-if">Page missing</div><div class="decision-then">Checks 3 and 4: wrong portfolio, or the Page was never assigned to you.</div></div>
+  <div class="decision-row"><div class="decision-if">Instagram won't connect</div><div class="decision-then">Check 5, then <a href="/help/instagram-wont-connect-meta-business-suite.html" style="color:#2ec27e">the Instagram connection guide</a>.</div></div>
+  <div class="decision-row"><div class="decision-if">Locked out</div><div class="decision-then">Check 2, then the <a href="/help/facebook-page-access-lost.html" style="color:#2ec27e">lost Page access guide</a>.</div></div>
+  <div class="decision-row"><div class="decision-if">Restricted / disabled</div><div class="decision-then">Check 6, then <a href="/help/meta-ad-account-disabled-vs-restricted.html" style="color:#2ec27e">disabled vs restricted</a>.</div></div>
+</div>
+<div class="callout"><strong>Don't:</strong> create a new portfolio or new account to "start fresh." It usually makes the access problem worse. See <a href="/blog/new-account-wont-escape-meta-restriction.html" style="color:#2ec27e">why a new account usually gets linked back</a>.</div>
+
+  </div><!-- /.article-body -->
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Still stuck after all six?</h3>
+    <p>When it's a wrong portfolio, a missing role, or a restriction, I review your setup and write the exact steps to fix it.</p>
+    <div class="cta-row">
+      <a href="https://www.fiverr.com/jazz96designs/review-and-guide-your-meta-business-access-setup-issues" class="cta-btn" target="_blank" rel="noopener">Get a Meta Access Review →</a>
+      <a href="/help/index.html"class="cta-btn-outline">← More Free Guides</a>
+    </div>
+    <p class="disclaimer">Meta Access Review starts at $345. I review your setup and give you a written action plan — I don't log in to your account or contact Meta on your behalf.</p>
+  </div>
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <div class="related-label">Related Guides</div>
+    <div class="related-list">
+      <a href="/help/instagram-wont-connect-meta-business-suite.html" class="related-card">
+        <span class="related-title">Why Your Instagram Won&#x27;t Connect to Meta Business Suite</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help/who-owns-my-meta-ad-account.html" class="related-card">
+        <span class="related-title">Who Actually Owns Your Meta Ad Account?</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="/help/index.html" class="related-card">
+        <span class="related-title">View All Meta Help Guides →</span>
+        <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html">Made by Jasmine</a></span>
+    <span style="display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="/about.html">About</a>
+      <a href="/blog/">Blog</a>
+      <a href="/knowledge-hub.html">Knowledge Hub</a>
+      <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener">Fiverr</a>
+      <a href="/privacy-policy.html">Privacy</a>
+    </span>
+  </footer>
+
+</div>
+</body>
+</html>

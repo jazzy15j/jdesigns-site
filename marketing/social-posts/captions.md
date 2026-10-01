@@ -582,3 +582,33 @@ Routes to: $195 Meta Ads Audit (foundation unclear) → Phase 1 Meta Ads Strateg
 
 ---
 
+## 21. How Many Meta Business Portfolios Do You Actually Need?
+
+Folder: `marketing/social-posts/exports/png/consolidate-your-meta-accounts`
+
+Slides to upload in this order:
+
+- `post-01.png`
+- `post-02.png`
+- `post-03.png`
+- `post-04.png`
+- `post-05.png`
+
+Caption:
+
+```text
+One login can run every brand you own. That's not a reason to put them all in one portfolio.
+
+One brand — even spread across a personal profile, a Page, and an Instagram account — needs one Business Portfolio. More than one brand needs one portfolio per brand. Either way, you only need one login: your personal Facebook login. More portfolios doesn't mean more logins — that mix-up is what causes most unnecessary account sprawl.
+
+4 steps to actually consolidate, and how to tell if what you're dealing with is a diagnosis case instead.
+
+Read it here: https://jdesigns.info/blog/consolidate-your-meta-accounts
+
+#MetaBusinessSuite #FacebookAds #SmallBusinessMarketing #JDesignsStrategist
+```
+
+Routes to: $150 Meta Business Portfolio Setup add-on (straightforward consolidation) → Meta Access Review $345 (restriction or limited access) → Meta Ecosystem Review $595 (ownership dispute or deeper mess).
+
+---
+

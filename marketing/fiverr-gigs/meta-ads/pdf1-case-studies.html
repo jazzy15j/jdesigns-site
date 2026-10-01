@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Case Studies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #07100a; --card: #0d1a10; --border: #2a4735;
+    --green: #2ec27e; --green-dim: #1a7a4e; --green-glow: #113822;
+    --white: #ffffff; --muted: #bcdac8; --label: #e7f3ec;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: Georgia, 'Times New Roman', serif;
+  }
+  html, body { margin: 0; padding: 0; background: var(--bg); }
+  @page { size: 1280px 769px; margin: 0; }
+  .page { width: 1280px; height: 769px; position: relative; overflow: hidden; background: var(--bg); color: var(--white); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .glow { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse 70% 60% at 12% 0%, rgba(30,120,70,0.32) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 45% at 95% 15%, rgba(18,72,110,0.16) 0%, transparent 55%),
+                radial-gradient(ellipse 55% 45% at 45% 100%, rgba(10,55,35,0.26) 0%, transparent 55%); }
+  .inner { position: relative; z-index: 2; height: 100%; padding: 30px 52px 24px; display: flex; flex-direction: column; }
+
+  .wordmark { font-family: var(--font-serif); font-size: 16px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--label); display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .wordmark .star { color: var(--green); }
+  h1 { font-family: var(--font-serif); font-size: 44px; line-height: 1.1; margin-bottom: 10px; }
+  h1 em { font-style: italic; color: var(--green); }
+  .lede { font-size: 17px; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
+
+  .grid3 { height: 440px; display: flex; gap: 24px; margin-top: 16px; }
+  .grid2 { height: 420px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 16px; }
+
+  .card { flex: 1; background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 36px 30px; display: flex; flex-direction: column; justify-content: center; }
+  .card.big { padding: 46px 44px; }
+
+  .card-top { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
+  .badge { width: 60px; height: 60px; border-radius: 50%; background: var(--green-glow); border: 1px solid var(--green-dim); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .badge svg { width: 32px; height: 32px; stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .card.big .badge { width: 70px; height: 70px; }
+  .card.big .badge svg { width: 36px; height: 36px; }
+  .card-name { font-family: var(--font-serif); font-size: 28px; color: var(--white); line-height: 1.15; }
+  .card.big .card-name { font-size: 34px; }
+
+  .row { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 26px; }
+  .mini-icon { width: 34px; height: 34px; border-radius: 9px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .mini-icon svg { width: 19px; height: 19px; stroke: var(--muted); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .row-text { font-size: 21px; color: var(--label); font-weight: 600; line-height: 1.4; }
+  .card.big .row-text { font-size: 24px; }
+
+  .result-row { display: flex; align-items: flex-start; gap: 16px; }
+  .check-icon { width: 34px; height: 34px; border-radius: 9px; background: var(--green-glow); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .check-icon svg { width: 19px; height: 19px; stroke: var(--green); fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+  .result-text { font-family: var(--font-sans); font-weight: 800; font-size: 22px; color: var(--white); line-height: 1.35; }
+  .card.big .result-text { font-size: 25px; }
+
+  .foot { text-align: center; font-size: 15px; color: var(--label); font-weight: 700; margin-top: 20px; }
+  .pagenum { position: absolute; bottom: 24px; right: 40px; font-size: 15px; color: var(--muted); font-weight: 700; z-index: 3; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="glow"></div>
+  <div class="inner">
+    <div class="wordmark"><span class="star">&#10022;</span> JDESIGNS STRATEGIST</div>
+    <h1>Real Meta Ads Results, <em>Not Promises.</em></h1>
+    <div class="lede">Verified Meta Ads Manager data for real JDesigns clients.</div>
+
+    <div class="grid3">
+      <div class="card">
+        <div class="card-top">
+          <div class="badge"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="card-name">Real Estate, Twin Cities</div>
+        </div>
+        <div class="row"><div class="mini-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div class="row-text">Local awareness campaign, real estate market.</div></div>
+        <div class="result-row"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="result-text">121,976 people reached for $517.58 &mdash; a $2.59 CPM.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="badge"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="card-name">More Than Lash</div>
+        </div>
+        <div class="row"><div class="mini-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div class="row-text">Booking-destination traffic campaign, 30-day window.</div></div>
+        <div class="result-row"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="result-text">737 landing page views at just $0.19 each.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <div class="card-name">DRIVE Career</div>
+        </div>
+        <div class="row"><div class="mini-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div class="row-text">Lead-gen campaign, full account lifetime.</div></div>
+        <div class="result-row"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="result-text">146 Meta-verified leads at $4.60 per lead.</div></div>
+      </div>
+    </div>
+    <div class="pagenum">1 / 2</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="glow"></div>
+  <div class="inner">
+    <div class="wordmark"><span class="star">&#10022;</span> JDESIGNS STRATEGIST</div>
+    <h1>Two More <em>Real Results.</em></h1>
+    <div class="lede">Same platform depth behind every campaign I build.</div>
+
+    <div class="grid2">
+      <div class="card big">
+        <div class="card-top">
+          <div class="badge"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+          <div class="card-name">Ecenci Skincare</div>
+        </div>
+        <div class="row"><div class="mini-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div><div class="row-text">Brand-awareness campaign, estimated ad-recall lift.</div></div>
+        <div class="result-row"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="result-text">$0.04 per ad-recall lift across 104,486 impressions.</div></div>
+      </div>
+
+      <div class="card big">
+        <div class="card-top">
+          <div class="badge"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="card-name">Kings &amp; Wealth</div>
+        </div>
+        <div class="row"><div class="mini-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="row-text">Video views + club-awareness campaigns.</div></div>
+        <div class="result-row"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="result-text">9,149 video views at $0.013 each; 145,257 people reached.</div></div>
+      </div>
+    </div>
+
+    <div class="foot">Every account, budget, and result is different &mdash; shown as proof of experience, not a forecast.</div>
+    <div class="pagenum">2 / 2</div>
+  </div>
+</div>
+
+</body>
+</html>

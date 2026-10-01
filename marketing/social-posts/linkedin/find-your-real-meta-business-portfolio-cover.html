@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>LinkedIn Article Cover — Meta Business Portfolio</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #07100a; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+
+  .frame {
+    width: 1280px;
+    height: 720px;
+    background: #07100a;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 90px;
+  }
+  .frame::before {
+    content: "";
+    position: absolute;
+    inset: 30px;
+    border: 1px solid rgba(46,194,126,.2);
+    pointer-events: none;
+    z-index: 10;
+  }
+  .frame::after {
+    content: "";
+    position: absolute;
+    right: -140px;
+    top: -140px;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    border: 1px solid rgba(46,194,126,.18);
+  }
+
+  .kicker {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #2ec27e;
+    margin-bottom: 26px;
+  }
+
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 1.18;
+    max-width: 880px;
+    color: #fff;
+  }
+  h1 em { color: #2ec27e; font-style: italic; }
+
+  .foot {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: #0d1a10;
+    padding: 24px 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(46,194,126,.18);
+  }
+  .foot-left {
+    font-size: 18px;
+    color: #8aab96;
+  }
+  .foot-brand {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 20px;
+    color: #2ec27e;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<article class="frame">
+  <div class="kicker">✦ Meta Access &amp; Repair</div>
+  <h1>You have more than one Meta Business Portfolio. Here's how to find the one that <em>actually owns your stuff.</em></h1>
+
+  <div class="foot">
+    <div class="foot-left">The #1 reason a Meta project stalls before it starts</div>
+    <div class="foot-brand">✦ JDesigns Strategist</div>
+  </div>
+</article>
+
+</body>
+</html>
