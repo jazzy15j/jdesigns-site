@@ -1,121 +1,197 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Think your Instagram is shadowbanned? - Social Post 1</title>
-  <style>
-    :root {
-      --bg:         #07100a;
-      --card:       #0d1a10;
-      --border:     #1e3225;
-      --green:      #2ec27e;
-      --green-dim:  #1a7a4e;
-      --green-glow: #0d3320;
-      --white:      #ffffff;
-      --muted:      #8aab96;
-      --label:      #c4dccb;
-      --font-sans:  -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --font-serif: Georgia, 'Times New Roman', serif;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { min-height:100vh; display:grid; place-items:center; background:#dfe8df; font-family: var(--font-sans); }
-    .frame {
-      width: 1080px; height: 1080px;
-      background: var(--bg); color: var(--white);
-      position: relative; overflow: hidden;
-      display: flex; flex-direction: column;
-      padding: 64px 76px 56px;
-    }
-    .frame::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 80% 40% at 50% -5%, rgba(46,194,126,0.16) 0%, transparent 60%),
-        radial-gradient(ellipse 70% 40% at 50% 108%, rgba(13,51,32,0.55) 0%, transparent 65%);
-    }
-    .frame::after {
-      content: ''; position: absolute; inset: 34px; border: 1px solid rgba(46,194,126,.2); pointer-events: none;
-    }
-    .inner { position: relative; z-index: 1; display: flex; flex-direction: column; height: 100%; }
+<meta charset="utf-8">
+<title>JDesigns — FAQ / Pattern Card Template</title>
+<style>
+  :root {
+    --bg:         #07100a;
+    --card:       #0d1a10;
+    --border:     #1e3225;
+    --green:      #2ec27e;
+    --green-dim:  #1a7a4e;
+    --green-glow: #0d3320;
+    --white:      #ffffff;
+    --muted:      #8aab96;
+    --label:      #c4dccb;
+    --font-sans:  -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: Georgia, 'Times New Roman', serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    width: 1080px;
+    height: 1000px;
+    color: var(--white);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    overflow: hidden;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 36% at 15% -4%, rgba(46,194,126,0.14) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 34% at 85% 106%, rgba(13,51,32,0.5) 0%, transparent 65%);
+  }
+  .canvas {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 72px 76px 56px;
+  }
+  /* Left-aligned wordmark — NOT centered, NOT bottom-right. This is the top-left mark version. */
+  .wm-left {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 56px;
+  }
+  .wm-left .star { color: var(--green); font-size: 22px; }
+  /* Plain uppercase eyebrow — NO pill border, NO background, NO dot. Just letter-spaced label text. */
+  .eyebrow-plain {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 20px;
+  }
+  .headline {
+    font-family: var(--font-serif);
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.16;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    max-width: 920px;
+    margin-bottom: 28px;
+  }
+  .headline em { font-style: italic; color: var(--green); }
+  .intro {
+    font-size: 24px;
+    line-height: 1.55;
+    color: var(--label);
+    max-width: 800px;
+    margin-bottom: 32px;
+  }
+  /* No flex:1 / centering — the panel sizes to its own content only, so it
+     never stretches into leftover canvas space and leaves dead air top/bottom. */
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 32px 44px;
+    display: flex;
+    flex-direction: column;
+  }
+  .panel-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+  .panel-label .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 20px 0;
+  }
+  .item + .item { border-top: 1px solid rgba(30,50,37,0.6); }
+  .num {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--green-dim);
+    color: var(--green);
+    font-size: 20px;
+    font-weight: 700;
+    font-family: var(--font-sans);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .item-text {
+    font-size: 25px;
+    color: var(--label);
+    line-height: 1.48;
+    padding-top: 4px;
+  }
+  .item-text strong { color: var(--white); font-weight: 700; }
+  /* Bottom bar: divider line, then a small outlined pill tag on the left and a plain muted domain on the right. NO big white CTA button here. */
+  .bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 32px;
+    margin-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--green-dim);
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 18px 8px 14px;
+    border-radius: 999px;
+  }
+  .tag-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+  .domain-plain {
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+</style>
 
-    .wm {
-      font-family: var(--font-serif); font-size: 20px; font-weight: 700;
-      letter-spacing: 0.26em; text-transform: uppercase; color: var(--muted);
-      display: flex; align-items: center; justify-content: center; gap: 9px;
-      margin-bottom: 34px;
-    }
-    .wm .star { color: var(--green); }
-
-    .eyebrow {
-      align-self: center; display: inline-flex; align-items: center; gap: 10px;
-      border: 1px solid var(--green-dim); background: var(--green-glow); color: var(--green);
-      font-size: 18px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 11px 26px 11px 18px; border-radius: 999px; margin-bottom: 30px; white-space: nowrap;
-    }
-    .eyebrow .dot { width: 9px; height: 9px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
-
-    h1 {
-      font-family: var(--font-serif); font-weight: 400; font-size: 62px; line-height: 1.1;
-      color: var(--white); text-align: center; margin-bottom: 22px;
-    }
-    h1 em { font-style: italic; color: var(--green); }
-
-    .sub {
-      text-align: center; font-size: 26px; color: var(--label); line-height: 1.5;
-      max-width: 84%; margin: 0 auto 40px;
-    }
-
-    .panel {
-      flex: 1; background: var(--card); border: 1px solid var(--border); border-radius: 24px;
-      padding: 8px 46px; display: flex; flex-direction: column; justify-content: space-evenly;
-      position: relative; overflow: hidden;
-    }
-    .panel::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent 0%, var(--green-dim) 40%, var(--green-dim) 60%, transparent 100%);
-    }
-    .item { display: flex; align-items: flex-start; gap: 24px; padding: 16px 0; }
-    .item + .item { border-top: 1px solid rgba(30,50,37,0.6); }
-    .num {
-      flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
-      background: var(--green-glow); border: 1px solid var(--green-dim); color: var(--green);
-      font-size: 20px; font-weight: 700; font-family: var(--font-sans);
-      display: flex; align-items: center; justify-content: center; margin-top: 2px;
-    }
-    .item-text { font-size: 23px; color: var(--label); line-height: 1.42; padding-top: 4px; }
-    .item-text strong { color: var(--white); font-weight: 700; }
-
-    .bottom { display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 38px; }
-    .cta {
-      display: inline-flex; align-items: center; gap: 10px; background: var(--white); color: var(--bg);
-      font-size: 21px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
-      padding: 16px 34px; border-radius: 999px; white-space: nowrap;
-    }
-    .cta::after { content: '→'; }
-    .domain {
-      font-family: var(--font-serif); font-size: 18px; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase; color: var(--green);
-    }
-  </style>
-</head>
-<body>
-  <article class="frame">
-    <div class="inner">
-      <div class="wm"><span class="star">✦</span> JDesigns Strategist</div>
-      <div class="eyebrow"><span class="dot"></span>Instagram Reach · Account Status</div>
-      <h1>Think You're <em>Shadowbanned?</em></h1>
-      <p class="sub">Posts still go up. Fewer people see them. Nobody says why.</p>
-      <div class="panel">
-        <div class="item"><span class="num">1</span><span class="item-text">Views and likes <strong>dropped suddenly</strong></span></div>
-        <div class="item"><span class="num">2</span><span class="item-text">No warning, <strong>no notification</strong></span></div>
-        <div class="item"><span class="num">3</span><span class="item-text">Followers can still see your posts</span></div>
-        <div class="item"><span class="num">4</span><span class="item-text">There's a page that shows <strong>what's really going on</strong></span></div>
-      </div>
-      <div class="bottom">
-        <span class="cta">Find out for sure</span>
-        <span class="domain">jdesigns.info</span>
-      </div>
+<div class="canvas">
+  <div class="wm-left"><span class="star">&#10022;</span> JDesigns Strategist</div>
+  <div class="eyebrow-plain">Instagram Reach</div>
+  <h2 class="headline">Think you're <em>shadowbanned?</em></h2>
+  <p class="intro">Your posts still go up. Fewer people see them. Nobody tells you why.</p>
+  <div class="panel">
+    <div class="panel-label"><span class="dot"></span>Sound familiar?</div>
+    <div class="item">
+      <span class="num">1</span>
+      <span class="item-text"><strong>Views and likes dropped suddenly.</strong></span>
     </div>
-  </article>
-</body>
-</html>
+    <div class="item">
+      <span class="num">2</span>
+      <span class="item-text"><strong>No warning, no notification.</strong></span>
+    </div>
+    <div class="item">
+      <span class="num">3</span>
+      <span class="item-text"><strong>Your followers can still see your posts.</strong></span>
+    </div>
+    <div class="item">
+      <span class="num">4</span>
+      <span class="item-text"><strong>There's a page that shows what's going on.</strong></span>
+    </div>
+  </div>
+  <div class="bottom-bar">
+    <span class="tag-pill"><span class="dot"></span>Real Question</span>
+    <span class="domain-plain">jdesigns.info</span>
+  </div>
+</div>

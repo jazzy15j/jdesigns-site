@@ -1,95 +1,197 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><title>Think your Instagram is shadowbanned? - LinkedIn</title>
+<meta charset="utf-8">
+<title>JDesigns — FAQ / Pattern Card Template</title>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: #07100a; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
-.frame {
-  width: 1080px; height: 1350px; background: #07100a; color: #fff;
-  position: relative; overflow: hidden; display: flex; flex-direction: column;
-  padding: 72px 76px 0;
-}
-.frame::before {
-  content: ""; position: absolute; inset: 34px;
-  border: 1px solid rgba(46,194,126,.22); pointer-events: none; z-index: 10;
-}
-.logo {
-  display: flex; align-items: center; gap: 14px;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 34px; letter-spacing: .12em; text-transform: uppercase;
-  color: #2ec27e; font-weight: 700;
-}
-.logo .star { font-size: 32px; }
-.divider { height: 1px; background: rgba(46,194,126,.25); margin: 40px 0 48px; }
-.eyebrow {
-  display: inline-flex; align-items: center; gap: 10px; width: fit-content;
-  font-size: 22px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
-  color: #e0785a; background: rgba(224,90,58,.1); border: 1px solid rgba(224,90,58,.35);
-  border-radius: 999px; padding: 10px 22px 10px 18px; margin-bottom: 36px;
-}
-.eyebrow .dot { width: 8px; height: 8px; background: #e0785a; border-radius: 50%; }
-h1 {
-  font-family: Georgia, 'Times New Roman', serif; font-weight: 400;
-  font-size: 74px; line-height: 1.12; max-width: 920px; margin-bottom: 28px;
-}
-h1 em { color: #2ec27e; font-style: italic; }
-.sub {
-  font-size: 28px; line-height: 1.5; color: #c4dccb; max-width: 850px; margin-bottom: 56px;
-}
-.panels { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
-.panel { border-radius: 6px; padding: 40px 38px; display: flex; flex-direction: column; gap: 22px; }
-.panel-bad { background: rgba(224,90,58,.09); border: 1.5px solid rgba(220,80,60,.35); }
-.panel-good { background: #0a1a10; border: 1.5px solid rgba(46,194,126,.4); }
-.panel-head { font-size: 24px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,.12); }
-.panel-bad .panel-head { color: #e0785a; }
-.panel-good .panel-head { color: #2ec27e; }
-.panel-body { font-size: 27px; line-height: 1.48; color: #e4ede7; }
-.cta {
-  margin-top: 56px; background: rgba(46,194,126,.1); border: 2px solid #2ec27e;
-  border-radius: 8px; padding: 36px 42px; display: flex; align-items: center;
-  justify-content: space-between; gap: 24px;
-}
-.cta-label { font-size: 32px; font-weight: 700; color: #fff; }
-.cta-arrow { font-size: 36px; color: #2ec27e; font-weight: 700; flex-shrink: 0; }
-.spacer { flex: 1; min-height: 56px; }
-.foot {
-  background: #0d1a10; padding: 48px 76px; margin: 0 -76px;
-  border-top: 1px solid rgba(46,194,126,.25);
-}
-.foot-text {
-  font-size: 30px; font-weight: 500; line-height: 1.5; color: #e4ede7; max-width: 900px;
-}
-.foot-text strong { color: #2ec27e; }
-</style></head><body>
-<article class="frame">
-  <div class="logo"><span class="star">✦</span>JDesigns Strategist</div>
-  <div class="divider"></div>
+  :root {
+    --bg:         #07100a;
+    --card:       #0d1a10;
+    --border:     #1e3225;
+    --green:      #2ec27e;
+    --green-dim:  #1a7a4e;
+    --green-glow: #0d3320;
+    --white:      #ffffff;
+    --muted:      #8aab96;
+    --label:      #c4dccb;
+    --font-sans:  -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: Georgia, 'Times New Roman', serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    width: 1080px;
+    height: 1000px;
+    color: var(--white);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    overflow: hidden;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 36% at 15% -4%, rgba(46,194,126,0.14) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 34% at 85% 106%, rgba(13,51,32,0.5) 0%, transparent 65%);
+  }
+  .canvas {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 72px 76px 56px;
+  }
+  /* Left-aligned wordmark — NOT centered, NOT bottom-right. This is the top-left mark version. */
+  .wm-left {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 56px;
+  }
+  .wm-left .star { color: var(--green); font-size: 22px; }
+  /* Plain uppercase eyebrow — NO pill border, NO background, NO dot. Just letter-spaced label text. */
+  .eyebrow-plain {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 20px;
+  }
+  .headline {
+    font-family: var(--font-serif);
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.16;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    max-width: 920px;
+    margin-bottom: 28px;
+  }
+  .headline em { font-style: italic; color: var(--green); }
+  .intro {
+    font-size: 24px;
+    line-height: 1.55;
+    color: var(--label);
+    max-width: 800px;
+    margin-bottom: 32px;
+  }
+  /* No flex:1 / centering — the panel sizes to its own content only, so it
+     never stretches into leftover canvas space and leaves dead air top/bottom. */
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 32px 44px;
+    display: flex;
+    flex-direction: column;
+  }
+  .panel-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+  .panel-label .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 20px 0;
+  }
+  .item + .item { border-top: 1px solid rgba(30,50,37,0.6); }
+  .num {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--green-dim);
+    color: var(--green);
+    font-size: 20px;
+    font-weight: 700;
+    font-family: var(--font-sans);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .item-text {
+    font-size: 25px;
+    color: var(--label);
+    line-height: 1.48;
+    padding-top: 4px;
+  }
+  .item-text strong { color: var(--white); font-weight: 700; }
+  /* Bottom bar: divider line, then a small outlined pill tag on the left and a plain muted domain on the right. NO big white CTA button here. */
+  .bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 32px;
+    margin-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--green-dim);
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 18px 8px 14px;
+    border-radius: 999px;
+  }
+  .tag-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+  .domain-plain {
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+</style>
 
-  <div class="eyebrow"><span class="dot"></span>Before You Panic</div>
-
-  <h1>Think your Instagram is <em>shadowbanned?</em></h1>
-  <div class="sub">Instagram has a page that shows whether your posts can reach new people. Most people never open it.</div>
-
-  <div class="panels">
-    <div class="panel panel-bad">
-      <div class="panel-head">Not This</div>
-      <div class="panel-body">Delete posts. Buy followers. Start a new account and hope reach comes back.</div>
+<div class="canvas">
+  <div class="wm-left"><span class="star">&#10022;</span> JDesigns Strategist</div>
+  <div class="eyebrow-plain">Instagram Reach</div>
+  <h2 class="headline">Shadowbanned? <em>Check this first.</em></h2>
+  <p class="intro">Instagram doesn't hide your posts from followers. It can stop showing them to new people, and it tells you when it does.</p>
+  <div class="panel">
+    <div class="panel-label"><span class="dot"></span>Check before you panic</div>
+    <div class="item">
+      <span class="num">1</span>
+      <span class="item-text"><strong>Open Settings and search "Account status."</strong></span>
     </div>
-    <div class="panel panel-good">
-      <div class="panel-head">This Instead</div>
-      <div class="panel-body">Open Account Status. See if your content can be recommended. Fix the real cause.</div>
+    <div class="item">
+      <span class="num">2</span>
+      <span class="item-text"><strong>See if your content can be recommended.</strong></span>
+    </div>
+    <div class="item">
+      <span class="num">3</span>
+      <span class="item-text"><strong>Stop posting the same thing on every account.</strong></span>
+    </div>
+    <div class="item">
+      <span class="num">4</span>
+      <span class="item-text"><strong>All green? It's a content fix, not a ban.</strong></span>
     </div>
   </div>
-
-  <div class="cta">
-    <div class="cta-label">Read the full breakdown on the blog</div>
-    <div class="cta-arrow">→</div>
+  <div class="bottom-bar">
+    <span class="tag-pill"><span class="dot"></span>Real Question</span>
+    <span class="domain-plain">jdesigns.info</span>
   </div>
-
-  <div class="spacer"></div>
-
-  <div class="foot">
-    <div class="foot-text"><strong>Instagram's own Account Status page</strong> shows if your content can be recommended to non-followers.</div>
-  </div>
-</article>
-</body></html>
+</div>
