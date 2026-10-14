@@ -1,0 +1,9 @@
+#!/bin/sh
+# Any commit that adds or changes a blog post refreshes every "Latest" widget,
+# the blog page sections, and the post counts, and adds those pages to the
+# same commit. Installed with: git config core.hooksPath scripts/git-hooks
+if git diff --cached --name-only --diff-filter=AMR | grep -E '^blog/[^/]+\.html$' | grep -qv '^blog/index\.html$'; then
+  node scripts/update-latest-carousel.js > /dev/null || exit 1
+  git add index.html meta-checklist.html meta-vault.html systemized.html systemize-your-business.html blog/index.html
+  echo "pre-commit: Latest sections, blog sections and post counts refreshed."
+fi
