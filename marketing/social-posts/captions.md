@@ -621,6 +621,7 @@ Slides to upload in this order:
 - `post-01.png`
 - `post-02.png`
 - `post-03.png`
+- `post-06.png` (real all-green Account Status screenshot, added Oct 14)
 - `post-04.png`
 - `post-05.png`
 
