@@ -179,3 +179,27 @@ Full walkthrough on the blog: https://jdesigns.info/blog/consolidate-your-meta-a
 ```
 
 Routes to: $150 Meta Business Portfolio Setup add-on — natural landing point for anyone who wants it verified and connected for them instead of doing it themselves.
+
+---
+
+## 8. Think Your Instagram Is Shadowbanned?
+
+Graphic: `instagram-shadowban-account-status.html`
+
+```text
+A business owner messaged me this week sure their Instagram was shadowbanned. Engagement had dropped, and they couldn't message their followers.
+
+Here's what "shadowban" usually means: your posts still go up, fewer people see them, and nobody tells you why. Instagram does have a real version of this. It doesn't hide your posts from followers. It can stop recommending them to people who don't follow you yet, and for most accounts that's where new reach comes from.
+
+You can check it yourself. Settings, search "Account status." It shows whether your content can be recommended, and whether anything was removed or limited.
+
+One thing I noticed in that case: they were posting nearly identical content across several accounts. Instagram's originality rules can treat those copies like reposts.
+
+Have you ever opened your Account Status page?
+
+Full breakdown: https://jdesigns.info/blog/instagram-shadowban-account-status
+
+#InstagramMarketing #SocialMediaStrategy #SmallBusinessMarketing #JDesignsStrategist
+```
+
+Routes to: no hard offer in the post. The blog's own CTA carries the Meta Access Review pitch.

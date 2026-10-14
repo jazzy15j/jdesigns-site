@@ -612,3 +612,30 @@ Routes to: $150 Meta Business Portfolio Setup add-on (straightforward consolidat
 
 ---
 
+## 22. Think Your Instagram Is Shadowbanned? Check Account Status First.
+
+Folder: `marketing/social-posts/exports/png/instagram-shadowban-account-status`
+
+Slides to upload in this order:
+
+- `post-01.png`
+- `post-02.png`
+- `post-03.png`
+- `post-04.png`
+- `post-05.png`
+
+Caption:
+
+```text
+Think your Instagram is shadowbanned? Check this before you do anything else.
+
+Instagram doesn't hide your posts from your followers. What it can do is stop recommending them to people who don't follow you, which is where most new reach comes from. Since 2022 there's been a page that shows you if that's happening: Account Status.
+
+Two minutes to check, the three usual causes of a reach drop, and what not to do while you figure it out.
+
+Read it here: https://jdesigns.info/blog/instagram-shadowban-account-status
+
+#InstagramTips #InstagramForBusiness #SmallBusinessMarketing #JDesignsStrategist
+```
+
+Routes to: no hard offer in the post. The blog's own CTA carries the Meta Access Review pitch.
