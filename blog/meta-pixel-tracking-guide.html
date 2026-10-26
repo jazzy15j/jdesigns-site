@@ -23,6 +23,7 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/soft.css">
 </head>
 <body>
 <nav class="jdgnav">
@@ -52,9 +53,10 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     <div class="jdgnav-links" id="jdgnavLinks">
       <a href="/" class="jdgnav-link">Home</a>
       <a href="/blog/" class="jdgnav-link">Blog</a>
-      <a href="/simplesystems.html" class="jdgnav-link">Simple Systems</a>
+      <a class='jdgnav-link' href='/simplesystems'>Simple Systems</a>
       <a href="/help/" class="jdgnav-link">Help</a>
-      <a href="/work-with-me.html" class="jdgnav-link">Work With Me</a>
+      <a class='jdgnav-link' href='/meta-ads-fix'>Meta Ads Fix</a>
+      <a class='jdgnav-link' href='/work-with-me'>Work With Me</a>
       <a href="https://www.fiverr.com/jazz96designs" class="jdgnav-cta" target="_blank" rel="noopener">Fiverr &#8599;</a>
     </div>
     <button class="jdgnav-toggle" id="jdgnavToggle" aria-label="Open menu" aria-expanded="false" aria-controls="jdgnavLinks"><span></span></button>
@@ -85,7 +87,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   </div>
 
   <div class="profile-header">
-    <img src="../assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
+    <img src="../assets/photos/jasmine-02.jpg" alt="Jasmine" class="profile-avatar">
     <div>
       <div class="profile-name">Jasmine</div>
       <div class="profile-handle">Meta Ads &amp; Strategy · JDesigns Strategist LLC</div>
@@ -171,6 +173,18 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
       <strong>Before your campaign goes live:</strong> Visit your landing page the way a new visitor would. Check it on mobile. Make sure it loads fast, the message matches your ad, and there's nothing on the page that could trigger a policy flag.
     </div>
 
+    <h2>When Meta's numbers don't match your store</h2>
+
+    <p>A common worry: Meta reports a few hundred Add to Cart or checkout events, but your store (Shopify, for example) shows far fewer abandoned carts or checkouts. It's natural to wonder whether Meta's numbers are fake. Usually they aren't, and there are two ordinary explanations to rule out first.</p>
+
+    <p><strong>1. You're comparing different funnel stages.</strong> Add to Cart, Initiate Checkout, and Purchase are separate events with separate counts. Meta's Initiate Checkout number can be mistaken for Add to Cart, and your store's "abandoned checkouts" is yet another measure. Line up the same stage on both sides before drawing a conclusion.</p>
+
+    <p><strong>2. The tracking setup is partial.</strong> In Events Manager, look at where each event is coming from: the browser Pixel, the server (Conversions API), or both. If an event only arrives from one source, the counts can drift from your store's records.</p>
+
+    <div class="callout">
+      <strong>Check this before you rebuild anything.</strong> Verify the stage you're comparing and the event sources in Events Manager first. Rebuilding tracking that already works costs time and can reset what Meta has learned.
+    </div>
+
     <h2>What counts as a "significant" pixel event</h2>
 
     <p>Not all pixel events are equal for optimization. Meta's algorithm optimizes best against purchase, lead, and initiate checkout events because these represent real buying intent. Page views and content views are too broad — Meta can't optimize toward them as meaningfully because almost anyone might view a page.</p>
@@ -189,18 +203,19 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     <p class="disclaimer">Phase 1 Meta Ads Strategy starts at $395 on Fiverr.</p>
   </div>
 
+  <div class="author-card"><img src="../assets/photos/jasmine-05.jpg" alt="Jasmine" loading="lazy"><div><div class="author-eyebrow">Hi, I'm Jasmine</div><p>I run JDesigns Strategist from Nebraska: no agency, no team behind the logo, just me. Real client work, plain-language answers. <a href='/about'>More about me →</a></p></div></div>
   <div class="related-section">
     <div class="related-label">Related Posts</div>
     <div class="related-list">
-      <a href="/blog/advantage-plus-campaigns-2026.html" class="related-card">
+      <a class='related-card' href='/blog/advantage-plus-campaigns-2026'>
         <span class="related-title">Meta stopped recommending manual campaign setup. Here's the new default.</span>
         <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
-      <a href="/blog/meta-ads-funnel-strategy.html" class="related-card">
+      <a class='related-card' href='/blog/meta-ads-funnel-strategy'>
         <span class="related-title">You can't run conversion ads to cold traffic on Day 1</span>
         <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
-      <a href="/blog/meta-pixel-installed-but-not-tracking.html" class="related-card">
+      <a class='related-card' href='/blog/meta-pixel-installed-but-not-tracking'>
         <span class="related-title">"The pixel is installed" doesn't mean it's tracking anything. Here's the test.</span>
         <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
@@ -208,13 +223,13 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   </div>
 
   <footer class="footer">
-    <span>© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html">Made by Jasmine</a></span>
+    <span>© 2026 JDesigns Strategist LLC · <a href='/how-i-run-this'>Made by Jasmine</a></span>
     <span style="display:flex;gap:16px;flex-wrap:wrap;">
-      <a href="/about.html">About</a>
+      <a href='/about'>About</a>
       <a href="/blog/">Blog</a>
-      <a href="/knowledge-hub.html">Knowledge Hub</a>
+      <a href='/knowledge-hub'>Knowledge Hub</a>
       <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener">Fiverr</a>
-      <a href="/privacy-policy.html">Privacy</a>
+      <a href='/privacy-policy'>Privacy</a>
     </span>
   </footer>
 
