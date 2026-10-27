@@ -7,7 +7,7 @@
   <meta name="description" content="If Meta says another admin has to approve access, the issue is usually ownership, full control, or asset assignment."/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg:#07100a; --surface:#0d1a10; --surface-2:#102516; --border:#1a7a4e; --border-muted:#102b18; --accent:#2ec27e; --accent-dim:#0d3320; --text:#fff; --sage:#c4dccb; --muted:#8aab96; --warn:#f0a090; --radius:14px; --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; --font-serif:Georgia,'Times New Roman',serif; }
+    :root { --bg:#1f1510; --surface:#2a1d15; --surface-2:#2b2218; --border:#7f8f55; --border-muted:#3a2a1c; --accent:#9baa6b; --accent-dim:#2b3320; --text:#f5ebdd; --sage:#c9b29a; --muted:#a8957f; --warn:#f0a090; --radius:14px; --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; --font-serif:Georgia,'Times New Roman',serif; }
     body { font-family:var(--font-sans); background:var(--bg); color:var(--text); min-height:100vh; line-height:1.6; }
     a { color:inherit; text-decoration:none; }
     .page { max-width:760px; margin:0 auto; padding:52px 24px 88px; }
@@ -32,7 +32,7 @@
     .cta p { color:var(--muted); margin-bottom:20px; }
     .btns { display:flex; gap:10px; flex-wrap:wrap; }
     .btn { display:inline-flex; align-items:center; justify-content:center; min-height:42px; padding:10px 18px; border-radius:999px; font-weight:800; font-size:13px; }
-    .btn.primary { background:var(--accent); color:#07100a; }
+    .btn.primary { background:var(--accent); color:#1f1510; }
     .btn.secondary { border:1px solid var(--border); color:var(--sage); }
     .related { display:grid; gap:10px; margin-top:18px; }
     .related-card { display:flex; justify-content:space-between; gap:12px; border:1px solid var(--border-muted); border-radius:12px; padding:14px 16px; color:var(--sage); background:rgba(255,255,255,.02); }
@@ -62,26 +62,28 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/soft.css">
+<link rel="stylesheet" href="../assets/theme.css">
 </head>
-<body>
+<body data-topic="repair">
 <nav class="jdgnav">
   <style>
-    .jdgnav{position:sticky;top:0;z-index:100;background:rgba(7,16,10,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,50,37,.7);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
+    .jdgnav{position:sticky;top:0;z-index:100;background:rgba(31,21,16,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(74,52,38,.7);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
     .jdgnav-inner{max-width:1040px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;}
-    .jdgnav-logo{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#2ec27e;white-space:nowrap;text-decoration:none;}
+    .jdgnav-logo{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9baa6b;white-space:nowrap;text-decoration:none;}
     .jdgnav-links{display:flex;align-items:center;gap:6px;}
-    .jdgnav-link{font-size:12.5px;font-weight:500;color:#8aab96;padding:5px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .15s,background .15s;}
-    .jdgnav-link:hover{color:#fff;background:#0d1a10;}
-    .jdgnav-cta{font-size:12px;font-weight:700;letter-spacing:.04em;color:#07100a;background:#2ec27e;padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
+    .jdgnav-link{font-size:12.5px;font-weight:500;color:#a8957f;padding:5px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .15s,background .15s;}
+    .jdgnav-link:hover{color:#f5ebdd;background:#2a1d15;}
+    .jdgnav-cta{font-size:12px;font-weight:700;letter-spacing:.04em;color:#1f1510;background:#9baa6b;padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
     .jdgnav-cta:hover{opacity:.85;}
-    .jdgnav-toggle{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid rgba(30,50,37,.7);background:transparent;cursor:pointer;flex-shrink:0;}
-    .jdgnav-toggle span{display:block;width:16px;height:1.5px;background:#c4dccb;position:relative;}
-    .jdgnav-toggle span::before,.jdgnav-toggle span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#c4dccb;}
+    .jdgnav-toggle{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid rgba(74,52,38,.7);background:transparent;cursor:pointer;flex-shrink:0;}
+    .jdgnav-toggle span{display:block;width:16px;height:1.5px;background:#c9b29a;position:relative;}
+    .jdgnav-toggle span::before,.jdgnav-toggle span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#c9b29a;}
     .jdgnav-toggle span::before{top:-5px;}
     .jdgnav-toggle span::after{top:5px;}
     @media (max-width:900px){
       .jdgnav-toggle{display:flex;}
-      .jdgnav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:#0d1a10;border-bottom:1px solid rgba(30,50,37,.7);padding:10px 16px 16px;box-shadow:0 16px 32px rgba(0,0,0,.35);}
+      .jdgnav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:#2a1d15;border-bottom:1px solid rgba(74,52,38,.7);padding:10px 16px 16px;box-shadow:0 16px 32px rgba(0,0,0,.35);}
       .jdgnav-links.open{display:flex;}
       .jdgnav-links.open .jdgnav-link,.jdgnav-links.open .jdgnav-cta{width:100%;justify-content:space-between;padding:14px 14px;border-radius:10px;font-size:14px;display:flex;}
     }
@@ -91,9 +93,10 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     <div class="jdgnav-links" id="jdgnavLinks">
       <a href="/" class="jdgnav-link">Home</a>
       <a href="/blog/" class="jdgnav-link">Blog</a>
-      <a href="/simplesystems.html" class="jdgnav-link">Simple Systems</a>
+      <a class='jdgnav-link' href='/simplesystems'>Simple Systems</a>
       <a href="/help/" class="jdgnav-link">Help</a>
-      <a href="/work-with-me.html" class="jdgnav-link">Work With Me</a>
+      <a class='jdgnav-link' href='/meta-ads-fix'>Meta Ads Fix</a>
+      <a class='jdgnav-link' href='/work-with-me'>Work With Me</a>
       <a href="https://www.fiverr.com/jazz96designs" class="jdgnav-cta" target="_blank" rel="noopener">Fiverr &#8599;</a>
     </div>
     <button class="jdgnav-toggle" id="jdgnavToggle" aria-label="Open menu" aria-expanded="false" aria-controls="jdgnavLinks"><span></span></button>
@@ -162,22 +165,23 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     <section class="section">
       <h2>Related guides</h2>
       <div class="related">
-        <a href="/help/how-meta-account-structure-works.html" class="related-card"><span>how meta's account structure actually works (see the diagrams)</span><span>Read</span></a>
+        <a class='related-card' href='/help/how-meta-account-structure-works'><span>how meta's account structure actually works (see the diagrams)</span><span>Read</span></a>
         <a href="/help/who-gets-what-access-meta-business-suite" class="related-card"><span>who gets what access meta business suite</span><span>Read</span></a>
         <a href="/blog/meta-business-portfolio-setup-guide" class="related-card"><span>meta business portfolio setup guide</span><span>Read</span></a>
       </div>
     </section>
 
     <footer class="footer">
-    <span>© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html">Made by Jasmine</a></span>
+    <span>© 2026 JDesigns Strategist LLC · <a href='/how-i-run-this'>Made by Jasmine</a></span>
     <span style="display:flex;gap:16px;flex-wrap:wrap;">
-      <a href="/about.html">About</a>
+      <a href='/about'>About</a>
       <a href="/blog/">Blog</a>
-      <a href="/knowledge-hub.html">Knowledge Hub</a>
+      <a href='/knowledge-hub'>Knowledge Hub</a>
       <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener">Fiverr</a>
-      <a href="/privacy-policy.html">Privacy</a>
+      <a href='/privacy-policy'>Privacy</a>
     </span>
   </footer>
   </main>
+<script src="../assets/theme.js"></script>
 </body>
 </html>

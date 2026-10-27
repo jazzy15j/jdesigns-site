@@ -8,17 +8,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --green: #2ec27e;
-      --green-dim: rgba(46,194,126,.15);
-      --green-faint: rgba(46,194,126,.07);
-      --green-glow: #0d3320;
-      --bg: #07100a;
-      --card: #0d1a10;
-      --border: rgba(30,50,37,0.6);
-      --border-green: rgba(46,194,126,.2);
-      --text: #ffffff;
-      --muted: #8aab96;
-      --faint: #1e3225;
+      --green: #9baa6b;
+      --green-dim: rgba(155,170,107,.15);
+      --green-faint: rgba(155,170,107,.07);
+      --green-glow: #2b3320;
+      --bg: #1f1510;
+      --card: #2a1d15;
+      --border: rgba(74,52,38,0.6);
+      --border-green: rgba(155,170,107,.2);
+      --text: #f5ebdd;
+      --muted: #a8957f;
+      --faint: #4a3426;
     }
 
     html { scroll-behavior: smooth; }
@@ -54,7 +54,7 @@
       height: 64px;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2rem;
-      background: rgba(7,16,10,.92);
+      background: rgba(31,21,16,.92);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
@@ -63,7 +63,7 @@
       width: 34px; height: 34px; border-radius: 9px;
       background: var(--green);
       display: flex; align-items: center; justify-content: center;
-      font-size: .88rem; font-weight: 900; color: #07100a;
+      font-size: .88rem; font-weight: 900; color: #1f1510;
       letter-spacing: -.02em; flex-shrink: 0;
     }
     .nav-wordmark { font-size: .88rem; font-weight: 700; color: var(--text); }
@@ -72,7 +72,7 @@
     .nav-links a { color: var(--muted); text-decoration: none; font-size: .82rem; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--text); }
     .nav-cta {
-      background: var(--green) !important; color: #07100a !important;
+      background: var(--green) !important; color: #1f1510 !important;
       padding: .4rem 1rem; border-radius: 7px; font-weight: 700 !important;
       transition: opacity .2s !important;
     }
@@ -90,13 +90,13 @@
       position: absolute; top: -15%; left: 50%;
       transform: translateX(-50%);
       width: 950px; height: 600px;
-      background: radial-gradient(ellipse, rgba(46,194,126,.13) 0%, transparent 65%);
+      background: radial-gradient(ellipse, rgba(155,170,107,.13) 0%, transparent 65%);
       pointer-events: none;
     }
     .orb-2 {
       position: absolute; bottom: -5%; right: 5%;
       width: 400px; height: 300px;
-      background: radial-gradient(ellipse, rgba(46,194,126,.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(155,170,107,.07) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-badge {
@@ -118,7 +118,7 @@
       max-width: 860px; margin-bottom: 1.5rem;
     }
     .text-green {
-      background: linear-gradient(135deg, #2ec27e 0%, #6edba8 45%, #2ec27e 100%);
+      background: linear-gradient(135deg, #9baa6b 0%, #6edba8 45%, #9baa6b 100%);
       background-size: 200% auto;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text; animation: shimmer 4s linear infinite;
@@ -135,16 +135,16 @@
       padding: .85rem 1.9rem; transition: all .2s;
       letter-spacing: -.01em;
     }
-    .btn-green { background: var(--green); color: #07100a; }
+    .btn-green { background: var(--green); color: #1f1510; }
     .btn-green:hover {
       opacity: .9; transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(46,194,126,.3);
+      box-shadow: 0 8px 32px rgba(155,170,107,.3);
     }
     .btn-ghost {
       background: transparent; color: var(--muted);
       border: 1px solid var(--border);
     }
-    .btn-ghost:hover { color: var(--text); border-color: rgba(46,194,126,.35); }
+    .btn-ghost:hover { color: var(--text); border-color: rgba(155,170,107,.35); }
     .hero-ctas { display: flex; gap: .9rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.5rem; }
     .hero-note { font-size: .8rem; color: var(--muted); }
 
@@ -190,7 +190,7 @@
       border-radius: 16px; overflow: hidden; margin-top: 2rem;
     }
     .checklist-bar {
-      background: rgba(46,194,126,.06);
+      background: rgba(155,170,107,.06);
       border-bottom: 1px solid var(--border-green);
       padding: .75rem 1.25rem;
       display: flex; align-items: center; gap: .75rem;
@@ -210,7 +210,7 @@
     }
     .cl-box {
       width: 16px; height: 16px; flex-shrink: 0;
-      border: 2px solid rgba(46,194,126,.35); border-radius: 4px;
+      border: 2px solid rgba(155,170,107,.35); border-radius: 4px;
       margin-top: 2px;
     }
     .cl-more {
@@ -252,7 +252,7 @@
     .cta-section p { color: var(--muted); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto; }
     .free-badge {
       display: inline-block;
-      background: rgba(46,194,126,.12); border: 1px solid var(--border-green);
+      background: rgba(155,170,107,.12); border: 1px solid var(--border-green);
       border-radius: 100px; padding: .3rem 1rem;
       font-size: .78rem; font-weight: 700; color: var(--green);
       letter-spacing: .08em; text-transform: uppercase;
@@ -285,7 +285,7 @@
       width: 30px; height: 30px; border-radius: 8px;
       background: var(--green);
       display: flex; align-items: center; justify-content: center;
-      font-size: .78rem; font-weight: 900; color: #07100a;
+      font-size: .78rem; font-weight: 900; color: #1f1510;
     }
     .footer-name { font-weight: 700; font-size: .88rem; color: var(--text); }
     .footer-tagline { font-size: .8rem; color: var(--muted); font-style: italic; margin-bottom: .45rem; }
@@ -319,18 +319,20 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/soft.css">
+<link rel="stylesheet" href="../assets/theme.css">
 </head>
-<body>
+<body data-topic="repair">
 
 <nav>
-  <a href="index.html" class="nav-brand">
+  <a class='nav-brand' href='/business-brain-command-pack/'>
     <div class="nav-mark">JD</div>
     <div class="nav-wordmark">JDesigns <span>Strategist</span></div>
   </a>
   <ul class="nav-links">
     <li><a href="#whats-inside">What's Inside</a></li>
     <li><a href="#get-it">Get Free Access</a></li>
-    <li><a href="meta-vault.html">Fix-It Vault — $97</a></li>
+    <li><a href='/business-brain-command-pack/meta-vault'>Fix-It Vault — $97</a></li>
     <li><a href="#get-it" class="nav-cta">Get It Free →</a></li>
   </ul>
 </nav>
@@ -475,37 +477,37 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 
   <div class="inside-grid" style="margin-top: 2rem;">
     <a href="https://meta911.lovable.app" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(46,194,126,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(30,50,37,0.6)';this.style.transform='none'">
+      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(155,170,107,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(74,52,38,0.6)';this.style.transform='none'">
         <div class="inside-num">Meta911 Home</div>
-        <h3 style="color:#fff;">meta911.lovable.app</h3>
+        <h3 style="color:#f5ebdd;">meta911.lovable.app</h3>
         <p>The main hub — start here if you're not sure which tool you need.</p>
       </div>
     </a>
     <a href="https://meta911.lovable.app/meta-error" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(46,194,126,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(30,50,37,0.6)';this.style.transform='none'">
+      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(155,170,107,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(74,52,38,0.6)';this.style.transform='none'">
         <div class="inside-num">Meta Error Help</div>
-        <h3 style="color:#fff;">meta911.lovable.app/meta-error</h3>
+        <h3 style="color:#f5ebdd;">meta911.lovable.app/meta-error</h3>
         <p>Paste the exact error you're seeing and get plain-English context on what it means.</p>
       </div>
     </a>
     <a href="https://meta911.lovable.app/decoder" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(46,194,126,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(30,50,37,0.6)';this.style.transform='none'">
+      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(155,170,107,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(74,52,38,0.6)';this.style.transform='none'">
         <div class="inside-num">Meta Decoder</div>
-        <h3 style="color:#fff;">meta911.lovable.app/decoder</h3>
+        <h3 style="color:#f5ebdd;">meta911.lovable.app/decoder</h3>
         <p>Decode confusing Meta messages, restriction notices, and support replies.</p>
       </div>
     </a>
     <a href="https://meta911.lovable.app/diagnose" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(46,194,126,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(30,50,37,0.6)';this.style.transform='none'">
+      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(155,170,107,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(74,52,38,0.6)';this.style.transform='none'">
         <div class="inside-num">Diagnose Your Issue</div>
-        <h3 style="color:#fff;">meta911.lovable.app/diagnose</h3>
+        <h3 style="color:#f5ebdd;">meta911.lovable.app/diagnose</h3>
         <p>Answer a few questions and get a clear picture of what's actually wrong with your setup.</p>
       </div>
     </a>
     <a href="https://meta911.lovable.app/setup" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(46,194,126,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(30,50,37,0.6)';this.style.transform='none'">
+      <div class="inside-card" style="transition: border-color .2s, transform .15s; cursor:pointer;" onmouseover="this.style.borderColor='rgba(155,170,107,.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(74,52,38,0.6)';this.style.transform='none'">
         <div class="inside-num">Meta Setup Help</div>
-        <h3 style="color:#fff;">meta911.lovable.app/setup</h3>
+        <h3 style="color:#f5ebdd;">meta911.lovable.app/setup</h3>
         <p>Step-by-step guidance for setting up Business Manager, Pages, Instagram, and ad accounts correctly.</p>
       </div>
     </a>
@@ -539,7 +541,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     </div>
     <div class="upsell-cta">
       <div class="upsell-price">$97</div>
-      <a href="meta-vault.html" class="btn btn-green">See the Vault →</a>
+      <a class='btn btn-green' href='/business-brain-command-pack/meta-vault'>See the Vault →</a>
       <p style="font-size: .78rem; color: var(--muted);">One-time. Instant access.</p>
     </div>
   </div>
@@ -566,11 +568,12 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   <div class="footer-links">
     <a href="https://jdesigns.info/" target="_blank">jdesigns.info</a>
     <a href="https://fiverr.com/jazz96designs" target="_blank">fiverr.com/jazz96designs</a>
-    <a href="meta-vault.html">Meta Business Fix-It Vault</a>
-    <a href="index.html">Business Brain Command Pack</a>
-    <a href="brain-guide.html">Build Your Business Brain</a>
+    <a href='/business-brain-command-pack/meta-vault'>Meta Business Fix-It Vault</a>
+    <a href='/business-brain-command-pack/'>Business Brain Command Pack</a>
+    <a href='/business-brain-command-pack/brain-guide'>Build Your Business Brain</a>
   </div>
 </footer>
 
+<script src="../assets/theme.js"></script>
 </body>
 </html>

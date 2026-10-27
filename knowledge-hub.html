@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Knowledge Hub — JDesigns Strategist</title>
 <meta name="description" content="Everything JDesigns knows about Meta advertising, Meta Business access, and the systems that keep small business marketing running.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2307100a'/%3E%3Ctext x='50' y='69' font-size='58' text-anchor='middle' fill='%232ec27e'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%231f1510'/%3E%3Ctext x='50' y='69' font-size='58' text-anchor='middle' fill='%239baa6b'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/site.css">
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <style>
@@ -57,7 +57,7 @@
     padding:14px 22px;
     display:flex; align-items:center; justify-content:space-between;
     border-bottom:1px solid var(--border);
-    background:rgba(7,16,10,.92);
+    background:rgba(31,21,16,.92);
     backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
   }
   .wordmark {
@@ -70,12 +70,12 @@
     text-decoration:none;
     transition:border-color .15s, background .15s;
   }
-  .wordmark:hover { border-color:var(--green); background:rgba(46,194,126,.14); }
+  .wordmark:hover { border-color:var(--green); background:rgba(155,170,107,.14); }
   .wordmark .star { font-family: var(--font-serif); font-size:13px; }
   .header-right { display:flex; align-items:center; gap:18px; }
   .header-sub { font-size:11px; color:var(--muted); opacity:.6; }
   .header-cta {
-    font-size:12px; font-weight:700; letter-spacing:.03em; color:#07100a; text-decoration:none;
+    font-size:12px; font-weight:700; letter-spacing:.03em; color:#1f1510; text-decoration:none;
     background:var(--green);
     padding:8px 16px;
     border-radius:999px; transition:opacity .15s, transform .12s;
@@ -176,8 +176,10 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/soft.css">
+<link rel="stylesheet" href="assets/theme.css">
 </head>
-<body>
+<body data-topic="systems">
 <h2 class="sr-only">JDesigns Strategist Knowledge Hub — interactive knowledge graph for Meta advertising, Meta Business access, marketing systems, services and products</h2>
 
 <header>
@@ -209,7 +211,7 @@ const BLOG_BASE = 'https://jdesigns.info/blog'; // ← UPDATE THIS
 //  CATEGORIES
 // ─────────────────────────────────────────────────────────────────
 const CATS = {
-  'meta-ads':    { label:'Meta Advertising',      color:'#2ec27e' },
+  'meta-ads':    { label:'Meta Advertising',      color:'#9baa6b' },
   'meta-repair': { label:'Meta Access & Repair',   color:'#e8834d' },
   'social':      { label:'Social Media Strategy',  color:'#60c0f0' },
   'ai':          { label:'Business Systems',        color:'#a78bfa' },
@@ -277,6 +279,10 @@ const nodes = [
   { id:'retarget',  label:'Retargeting Readiness', cat:'meta-ads', hub:0,
     desc:'Retargeting needs a real warm-audience source. Optimization and a new funnel build are different jobs.',
     url:'', slug:'retargeting-needs-an-audience' },
+
+  { id:'fundtest', label:'Fund the Test or Wait', cat:'meta-ads', hub:0,
+    desc:'Meta needs about 50 purchases a week to learn. The break-even math for whether ads are worth running yet.',
+    url:'', slug:'fund-the-test-before-you-run-it' },
 
   { id:'roasmetric', label:'ROAS: What It Really Proves', cat:'meta-ads', hub:0,
     desc:'Reach, clicks, and leads can be great results without proving profit. What ROAS misses and how to set a realistic budget.',
@@ -553,7 +559,7 @@ const links = [
   {s:'ma-hub',t:'adv-plus'},{s:'ma-hub',t:'creative'},{s:'ma-hub',t:'ai-disc'},
   {s:'ma-hub',t:'pixel'},{s:'ma-hub',t:'budget'},{s:'ma-hub',t:'funnel'},
   {s:'ma-hub',t:'pixnotrack'},{s:'ma-hub',t:'protectspend'},{s:'ma-hub',t:'retarget'},
-  {s:'ma-hub',t:'roasmetric'},{s:'ma-hub',t:'beginnerfaq'},
+  {s:'ma-hub',t:'roasmetric'},{s:'ma-hub',t:'fundtest'},{s:'ma-hub',t:'beginnerfaq'},
   // Meta Repair spokes
   {s:'mr-hub',t:'behav'},{s:'mr-hub',t:'appeal'},{s:'mr-hub',t:'bpsetup'},
   {s:'mr-hub',t:'mverif'},{s:'mr-hub',t:'agency'},{s:'mr-hub',t:'igconn'},
@@ -593,7 +599,7 @@ const links = [
   {s:'brain',    t:'sv-hub',   x:1},{s:'ai-hub',   t:'pr-hub',  x:1},
   {s:'mverif',   t:'accrev',   x:1},
   {s:'pixnotrack', t:'pixel',   x:1},{s:'protectspend', t:'budget', x:1},
-  {s:'beginnerfaq', t:'pixnotrack', x:1},{s:'beginnerfaq', t:'roasmetric', x:1},
+  {s:'beginnerfaq', t:'pixnotrack', x:1},{s:'beginnerfaq', t:'roasmetric', x:1},{s:'fundtest', t:'roasmetric', x:1},
   {s:'restlayers', t:'behav',   x:1},{s:'strengths', t:'ecosys',   x:1},
   {s:'nikescale',  t:'adssvc',  x:1},{s:'hirestrat', t:'strengths', x:1},
   {s:'mktbudget',  t:'nikescale', x:1},
@@ -688,7 +694,7 @@ const sim = d3.forceSimulation(nodes)
 const link = container.append('g').selectAll('line').data(linkData).join('line')
   .attr('stroke', d => {
     const s = nodeById[d.source.id || d.source];
-    return s ? CATS[s.cat].color : '#1e3225';
+    return s ? CATS[s.cat].color : '#4a3426';
   })
   .attr('stroke-opacity', d => d.cross ? 0.32 : 0.55)
   .attr('stroke-width', d => d.cross ? 1 : 1.4)
@@ -762,7 +768,7 @@ node.append('text')
     if (d.hub) return CATS[d.cat].color;
     return hasLink ? 'rgba(196,220,203,0.85)' : 'rgba(138,171,150,0.4)';
   })
-  .attr('stroke', 'rgba(7,16,10,0.7)')
+  .attr('stroke', 'rgba(31,21,16,0.7)')
   .attr('stroke-width', 2.5)
   .text(d => d.label);
 
@@ -867,5 +873,6 @@ window.addEventListener('resize', () => {
   setTimeout(() => sim.alphaTarget(0), 2000);
 });
 </script>
+<script src="assets/theme.js"></script>
 </body>
 </html>

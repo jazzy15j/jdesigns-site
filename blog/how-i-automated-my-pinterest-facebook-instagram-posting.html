@@ -23,26 +23,28 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/soft.css">
+<link rel="stylesheet" href="../assets/theme.css">
 </head>
-<body>
+<body data-topic="content">
 <nav class="jdgnav">
   <style>
-    .jdgnav{position:sticky;top:0;z-index:100;background:rgba(7,16,10,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,50,37,.7);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
+    .jdgnav{position:sticky;top:0;z-index:100;background:rgba(31,21,16,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(74,52,38,.7);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
     .jdgnav-inner{max-width:1040px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;}
-    .jdgnav-logo{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#2ec27e;white-space:nowrap;text-decoration:none;}
+    .jdgnav-logo{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9baa6b;white-space:nowrap;text-decoration:none;}
     .jdgnav-links{display:flex;align-items:center;gap:6px;}
-    .jdgnav-link{font-size:12.5px;font-weight:500;color:#8aab96;padding:5px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .15s,background .15s;}
-    .jdgnav-link:hover{color:#fff;background:#0d1a10;}
-    .jdgnav-cta{font-size:12px;font-weight:700;letter-spacing:.04em;color:#07100a;background:#2ec27e;padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
+    .jdgnav-link{font-size:12.5px;font-weight:500;color:#a8957f;padding:5px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .15s,background .15s;}
+    .jdgnav-link:hover{color:#f5ebdd;background:#2a1d15;}
+    .jdgnav-cta{font-size:12px;font-weight:700;letter-spacing:.04em;color:#1f1510;background:#9baa6b;padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
     .jdgnav-cta:hover{opacity:.85;}
-    .jdgnav-toggle{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid rgba(30,50,37,.7);background:transparent;cursor:pointer;flex-shrink:0;}
-    .jdgnav-toggle span{display:block;width:16px;height:1.5px;background:#c4dccb;position:relative;}
-    .jdgnav-toggle span::before,.jdgnav-toggle span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#c4dccb;}
+    .jdgnav-toggle{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid rgba(74,52,38,.7);background:transparent;cursor:pointer;flex-shrink:0;}
+    .jdgnav-toggle span{display:block;width:16px;height:1.5px;background:#c9b29a;position:relative;}
+    .jdgnav-toggle span::before,.jdgnav-toggle span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#c9b29a;}
     .jdgnav-toggle span::before{top:-5px;}
     .jdgnav-toggle span::after{top:5px;}
     @media (max-width:900px){
       .jdgnav-toggle{display:flex;}
-      .jdgnav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:#0d1a10;border-bottom:1px solid rgba(30,50,37,.7);padding:10px 16px 16px;box-shadow:0 16px 32px rgba(0,0,0,.35);}
+      .jdgnav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:#2a1d15;border-bottom:1px solid rgba(74,52,38,.7);padding:10px 16px 16px;box-shadow:0 16px 32px rgba(0,0,0,.35);}
       .jdgnav-links.open{display:flex;}
       .jdgnav-links.open .jdgnav-link,.jdgnav-links.open .jdgnav-cta{width:100%;justify-content:space-between;padding:14px 14px;border-radius:10px;font-size:14px;display:flex;}
     }
@@ -52,9 +54,10 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     <div class="jdgnav-links" id="jdgnavLinks">
       <a href="/" class="jdgnav-link">Home</a>
       <a href="/blog/" class="jdgnav-link">Blog</a>
-      <a href="/simplesystems.html" class="jdgnav-link">Simple Systems</a>
+      <a class='jdgnav-link' href='/simplesystems'>Simple Systems</a>
       <a href="/help/" class="jdgnav-link">Help</a>
-      <a href="/work-with-me.html" class="jdgnav-link">Work With Me</a>
+      <a class='jdgnav-link' href='/meta-ads-fix'>Meta Ads Fix</a>
+      <a class='jdgnav-link' href='/work-with-me'>Work With Me</a>
       <a href="https://www.fiverr.com/jazz96designs" class="jdgnav-cta" target="_blank" rel="noopener">Fiverr &#8599;</a>
     </div>
     <button class="jdgnav-toggle" id="jdgnavToggle" aria-label="Open menu" aria-expanded="false" aria-controls="jdgnavLinks"><span></span></button>
@@ -85,7 +88,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   </div>
 
   <div class="profile-header">
-    <img src="../assets/jasmineheadshot.png" alt="Jasmine" class="profile-avatar">
+    <img src="../assets/photos/jasmine-05.jpg" alt="Jasmine" class="profile-avatar">
     <div>
       <div class="profile-name">Jasmine</div>
       <div class="profile-handle">Meta Ads &amp; Strategy · JDesigns Strategist LLC</div>
@@ -111,70 +114,70 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 <title id="t">How my content posts itself</title>
 <desc id="d">Five steps: I approve the content, it gets a date, a small program checks every hour, it publishes to Pinterest, Facebook, Instagram and Stories, and it keeps a record so nothing posts twice.</desc>
 <defs>
-<radialGradient id="g1" cx="88%" cy="-8%" r="55%"><stop offset="0" stop-color="#2ec27e" stop-opacity=".16"/><stop offset="1" stop-color="#2ec27e" stop-opacity="0"/></radialGradient>
-<marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2ec27e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<radialGradient id="g1" cx="88%" cy="-8%" r="55%"><stop offset="0" stop-color="#9baa6b" stop-opacity=".16"/><stop offset="1" stop-color="#9baa6b" stop-opacity="0"/></radialGradient>
+<marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#9baa6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
 </defs>
-<rect width="1200" height="627" fill="#07100a"/>
+<rect width="1200" height="627" fill="#1f1510"/>
 <rect width="1200" height="627" fill="url(#g1)"/>
-<text x="60" y="70" fill="#8aab96" font-family="Georgia,'Times New Roman',serif" font-size="20" font-weight="700" letter-spacing="5">&#10022; JDESIGNS STRATEGIST</text>
-<text x="60" y="150" fill="#ffffff" font-family="Georgia,'Times New Roman',serif" font-size="52" letter-spacing="-0.5">How my content</text>
-<text x="60" y="210" fill="#2ec27e" font-family="Georgia,'Times New Roman',serif" font-size="52" font-style="italic" letter-spacing="-0.5">posts itself.</text>
-<text x="640" y="128" fill="#c4dccb" font-size="22">I decide what goes out.</text>
-<text x="640" y="160" fill="#c4dccb" font-size="22">The computer only handles the timing.</text>
+<text x="60" y="70" fill="#a8957f" font-family="Georgia,'Times New Roman',serif" font-size="20" font-weight="700" letter-spacing="5">&#10022; JDESIGNS STRATEGIST</text>
+<text x="60" y="150" fill="#f5ebdd" font-family="Georgia,'Times New Roman',serif" font-size="52" letter-spacing="-0.5">How my content</text>
+<text x="60" y="210" fill="#9baa6b" font-family="Georgia,'Times New Roman',serif" font-size="52" font-style="italic" letter-spacing="-0.5">posts itself.</text>
+<text x="640" y="128" fill="#c9b29a" font-size="22">I decide what goes out.</text>
+<text x="640" y="160" fill="#c9b29a" font-size="22">The computer only handles the timing.</text>
 <g>
-<rect x="60" y="270" width="192" height="250" rx="20" fill="#0d1a10" stroke="#1e3225" stroke-width="1.5"/>
-<rect x="96" y="270" width="120" height="2" fill="#1a7a4e"/>
-<circle cx="98" cy="320" r="22" fill="#0d3320" stroke="#1a7a4e" stroke-width="1.5"/>
-<text x="98" y="327" text-anchor="middle" fill="#2ec27e" font-size="21" font-weight="700">1</text>
-<text x="78" y="388" fill="#ffffff" font-size="22" font-weight="700">I approve</text>
-<text x="78" y="428" fill="#c4dccb" font-size="17">Claude drafts.</text>
-<text x="78" y="454" fill="#c4dccb" font-size="17">I say yes or no.</text>
+<rect x="60" y="270" width="192" height="250" rx="20" fill="#2a1d15" stroke="#4a3426" stroke-width="1.5"/>
+<rect x="96" y="270" width="120" height="2" fill="#7f8f55"/>
+<circle cx="98" cy="320" r="22" fill="#2b3320" stroke="#7f8f55" stroke-width="1.5"/>
+<text x="98" y="327" text-anchor="middle" fill="#9baa6b" font-size="21" font-weight="700">1</text>
+<text x="78" y="388" fill="#f5ebdd" font-size="22" font-weight="700">I approve</text>
+<text x="78" y="428" fill="#c9b29a" font-size="17">Claude drafts.</text>
+<text x="78" y="454" fill="#c9b29a" font-size="17">I say yes or no.</text>
 </g>
-<line x1="255" y1="395" x2="278" y2="395" stroke="#2ec27e" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="255" y1="395" x2="278" y2="395" stroke="#9baa6b" stroke-width="2" marker-end="url(#ar)"/>
 <g>
-<rect x="282" y="270" width="192" height="250" rx="20" fill="#0d1a10" stroke="#1e3225" stroke-width="1.5"/>
-<rect x="318" y="270" width="120" height="2" fill="#1a7a4e"/>
-<circle cx="320" cy="320" r="22" fill="#0d3320" stroke="#1a7a4e" stroke-width="1.5"/>
-<text x="320" y="327" text-anchor="middle" fill="#2ec27e" font-size="21" font-weight="700">2</text>
-<text x="300" y="388" fill="#ffffff" font-size="22" font-weight="700">It gets a date</text>
-<text x="300" y="428" fill="#c4dccb" font-size="17">Images, captions</text>
-<text x="300" y="454" fill="#c4dccb" font-size="17">and links in a folder.</text>
+<rect x="282" y="270" width="192" height="250" rx="20" fill="#2a1d15" stroke="#4a3426" stroke-width="1.5"/>
+<rect x="318" y="270" width="120" height="2" fill="#7f8f55"/>
+<circle cx="320" cy="320" r="22" fill="#2b3320" stroke="#7f8f55" stroke-width="1.5"/>
+<text x="320" y="327" text-anchor="middle" fill="#9baa6b" font-size="21" font-weight="700">2</text>
+<text x="300" y="388" fill="#f5ebdd" font-size="22" font-weight="700">It gets a date</text>
+<text x="300" y="428" fill="#c9b29a" font-size="17">Images, captions</text>
+<text x="300" y="454" fill="#c9b29a" font-size="17">and links in a folder.</text>
 </g>
-<line x1="477" y1="395" x2="500" y2="395" stroke="#2ec27e" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="477" y1="395" x2="500" y2="395" stroke="#9baa6b" stroke-width="2" marker-end="url(#ar)"/>
 <g>
-<rect x="504" y="270" width="192" height="250" rx="20" fill="#0d1a10" stroke="#1e3225" stroke-width="1.5"/>
-<rect x="540" y="270" width="120" height="2" fill="#1a7a4e"/>
-<circle cx="542" cy="320" r="22" fill="#0d3320" stroke="#1a7a4e" stroke-width="1.5"/>
-<text x="542" y="327" text-anchor="middle" fill="#2ec27e" font-size="21" font-weight="700">3</text>
-<text x="522" y="388" fill="#ffffff" font-size="22" font-weight="700">Hourly check</text>
-<text x="522" y="428" fill="#c4dccb" font-size="17">A small program looks</text>
-<text x="522" y="454" fill="#c4dccb" font-size="17">for anything due.</text>
+<rect x="504" y="270" width="192" height="250" rx="20" fill="#2a1d15" stroke="#4a3426" stroke-width="1.5"/>
+<rect x="540" y="270" width="120" height="2" fill="#7f8f55"/>
+<circle cx="542" cy="320" r="22" fill="#2b3320" stroke="#7f8f55" stroke-width="1.5"/>
+<text x="542" y="327" text-anchor="middle" fill="#9baa6b" font-size="21" font-weight="700">3</text>
+<text x="522" y="388" fill="#f5ebdd" font-size="22" font-weight="700">Hourly check</text>
+<text x="522" y="428" fill="#c9b29a" font-size="17">A small program looks</text>
+<text x="522" y="454" fill="#c9b29a" font-size="17">for anything due.</text>
 </g>
-<line x1="699" y1="395" x2="722" y2="395" stroke="#2ec27e" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="699" y1="395" x2="722" y2="395" stroke="#9baa6b" stroke-width="2" marker-end="url(#ar)"/>
 <g>
-<rect x="726" y="270" width="192" height="250" rx="20" fill="#0d1a10" stroke="#1e3225" stroke-width="1.5"/>
-<rect x="762" y="270" width="120" height="2" fill="#1a7a4e"/>
-<circle cx="764" cy="320" r="22" fill="#0d3320" stroke="#1a7a4e" stroke-width="1.5"/>
-<text x="764" y="327" text-anchor="middle" fill="#2ec27e" font-size="21" font-weight="700">4</text>
-<text x="744" y="388" fill="#ffffff" font-size="22" font-weight="700">It publishes</text>
-<text x="744" y="428" fill="#c4dccb" font-size="17">Pinterest, Facebook,</text>
-<text x="744" y="454" fill="#c4dccb" font-size="17">Instagram, Stories.</text>
+<rect x="726" y="270" width="192" height="250" rx="20" fill="#2a1d15" stroke="#4a3426" stroke-width="1.5"/>
+<rect x="762" y="270" width="120" height="2" fill="#7f8f55"/>
+<circle cx="764" cy="320" r="22" fill="#2b3320" stroke="#7f8f55" stroke-width="1.5"/>
+<text x="764" y="327" text-anchor="middle" fill="#9baa6b" font-size="21" font-weight="700">4</text>
+<text x="744" y="388" fill="#f5ebdd" font-size="22" font-weight="700">It publishes</text>
+<text x="744" y="428" fill="#c9b29a" font-size="17">Pinterest, Facebook,</text>
+<text x="744" y="454" fill="#c9b29a" font-size="17">Instagram, Stories.</text>
 </g>
-<line x1="921" y1="395" x2="944" y2="395" stroke="#2ec27e" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="921" y1="395" x2="944" y2="395" stroke="#9baa6b" stroke-width="2" marker-end="url(#ar)"/>
 <g>
-<rect x="948" y="270" width="192" height="250" rx="20" fill="#0d1a10" stroke="#1e3225" stroke-width="1.5"/>
-<rect x="984" y="270" width="120" height="2" fill="#1a7a4e"/>
-<circle cx="986" cy="320" r="22" fill="#0d3320" stroke="#1a7a4e" stroke-width="1.5"/>
-<text x="986" y="327" text-anchor="middle" fill="#2ec27e" font-size="21" font-weight="700">5</text>
-<text x="966" y="388" fill="#ffffff" font-size="22" font-weight="700">It keeps a record</text>
-<text x="966" y="428" fill="#c4dccb" font-size="17">Each post is marked</text>
-<text x="966" y="454" fill="#c4dccb" font-size="17">posted. No repeats.</text>
+<rect x="948" y="270" width="192" height="250" rx="20" fill="#2a1d15" stroke="#4a3426" stroke-width="1.5"/>
+<rect x="984" y="270" width="120" height="2" fill="#7f8f55"/>
+<circle cx="986" cy="320" r="22" fill="#2b3320" stroke="#7f8f55" stroke-width="1.5"/>
+<text x="986" y="327" text-anchor="middle" fill="#9baa6b" font-size="21" font-weight="700">5</text>
+<text x="966" y="388" fill="#f5ebdd" font-size="22" font-weight="700">It keeps a record</text>
+<text x="966" y="428" fill="#c9b29a" font-size="17">Each post is marked</text>
+<text x="966" y="454" fill="#c9b29a" font-size="17">posted. No repeats.</text>
 </g>
-<line x1="60" y1="560" x2="1140" y2="560" stroke="#1e3225" stroke-width="1"/>
-<text x="60" y="596" fill="#8aab96" font-size="20">Nothing is scheduled without my approval.</text>
-<text x="1140" y="596" text-anchor="end" fill="#8aab96" font-family="'Courier New',monospace" font-size="20">jdesigns.info</text>
+<line x1="60" y1="560" x2="1140" y2="560" stroke="#4a3426" stroke-width="1"/>
+<text x="60" y="596" fill="#a8957f" font-size="20">Nothing is scheduled without my approval.</text>
+<text x="1140" y="596" text-anchor="end" fill="#a8957f" font-family="'Courier New',monospace" font-size="20">jdesigns.info</text>
 </svg>
-      <figcaption style="font-size:13px;color:#8aab96;margin-top:10px">The whole flow, in five steps. Nothing is scheduled without my approval.</figcaption>
+      <figcaption style="font-size:13px;color:#a8957f;margin-top:10px">The whole flow, in five steps. Nothing is scheduled without my approval.</figcaption>
     </figure>
 
     <p><strong>1. I approve the content.</strong> Claude, the AI assistant I work with, drafts the posts. I read them and say yes or no.</p>
@@ -227,8 +230,8 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     <h3>Want to see how I actually built mine?</h3>
     <p>The full guide: the memory loss that almost cost me two months of work, how a 60+ skill library stays usable, and the mistake worth learning from before you make it yourself. Free.</p>
     <div class="cta-row">
-      <a href="/how-i-systemized-my-business.html" class="cta-btn" target="_blank" rel="noopener">Read the full guide →</a>
-      <a href="/simplesystems.html" class="cta-btn-outline">Simple Systems →</a>
+      <a class='cta-btn' href='/how-i-systemized-my-business' rel='noopener' target='_blank'>Read the full guide →</a>
+      <a class='cta-btn-outline' href='/simplesystems'>Simple Systems →</a>
     </div>
   </div>
 
@@ -236,20 +239,21 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     <h3>Want your own business running on this?</h3>
     <p>Systemize Your Business is the guided workshop that turns your pricing, rules, client history and voice into files Claude reads automatically. About 30 minutes, no coding. Systemized adds 6 ready-made commands on top, so you're not typing the same prompts from scratch every day.</p>
     <div class="cta-row">
-      <a href="/systemize-your-business.html" class="cta-btn" target="_blank" rel="noopener">Get Systemize Your Business →</a>
-      <a href="/systemized.html" class="cta-btn-outline" target="_blank" rel="noopener">Get Systemized →</a>
+      <a class='cta-btn' href='/systemize-your-business' rel='noopener' target='_blank'>Get Systemize Your Business →</a>
+      <a class='cta-btn-outline' href='/systemized' rel='noopener' target='_blank'>Get Systemized →</a>
     </div>
     <p class="disclaimer">Systemize Your Business: $95 · Systemized (6 commands): $47 · Bundled together: $127.</p>
   </div>
 
+  <div class="author-card"><img src="../assets/photos/jasmine-02.jpg" alt="Jasmine" loading="lazy"><div><div class="author-eyebrow">Hi, I'm Jasmine</div><p>I run JDesigns Strategist from Nebraska: no agency, no team behind the logo, just me. Real client work, plain-language answers. <a href='/about'>More about me →</a></p></div></div>
   <div class="related-section">
     <div class="related-label">Related Posts</div>
     <div class="related-list">
-      <a href="/blog/its-just-files-and-folders.html" class="related-card">
+      <a class='related-card' href='/blog/its-just-files-and-folders'>
         <span class="related-title">You don't need a smarter AI tool. You need a folder.</span>
         <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
-      <a href="/blog/pinterest-decision-journey-2026.html" class="related-card">
+      <a class='related-card' href='/blog/pinterest-decision-journey-2026'>
         <span class="related-title">Pinterest is a planning tool, not a feed</span>
         <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
@@ -257,16 +261,17 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   </div>
 
   <footer class="footer">
-    <span>© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html">Made by Jasmine</a></span>
+    <span>© 2026 JDesigns Strategist LLC · <a href='/how-i-run-this'>Made by Jasmine</a></span>
     <span style="display:flex;gap:16px;flex-wrap:wrap;">
-      <a href="/about.html">About</a>
+      <a href='/about'>About</a>
       <a href="/blog/">Blog</a>
-      <a href="/knowledge-hub.html">Knowledge Hub</a>
+      <a href='/knowledge-hub'>Knowledge Hub</a>
       <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener">Fiverr</a>
-      <a href="/privacy-policy.html">Privacy</a>
+      <a href='/privacy-policy'>Privacy</a>
     </span>
   </footer>
 
 </div>
+<script src="../assets/theme.js"></script>
 </body>
 </html>

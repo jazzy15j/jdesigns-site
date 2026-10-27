@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Systemized — JDesigns Strategist LLC</title>
   <meta name="description" content="6 slash commands that turn repeatable business tasks into one-line routines — built on top of the Business System Jasmine uses to run her own Meta and client work. $47 one-time.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2307100a'/%3E%3Ctext x='50' y='69' font-size='58' text-anchor='middle' fill='%232ec27e'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%231f1510'/%3E%3Ctext x='50' y='69' font-size='58' text-anchor='middle' fill='%239baa6b'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/site.css">
   <style>
     /* ── Page-specific: Systemized (cmd pills, for-grid, commands grid, sample tabs, timeline, compare grid, faq) ── */
@@ -37,12 +37,12 @@
     .chat-window { background: var(--bg-deep); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
     .chat-bar { display: flex; align-items: center; gap: 8px; padding: 12px 18px; background: var(--surface); border-bottom: 1px solid var(--border); }
     .c-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .c-dot.r { background: #e05a3a; } .c-dot.y { background: #d9a441; } .c-dot.g { background: var(--green); }
+    .c-dot.r { background: #e05a3a; } .c-dot.y { background: #d9a066; } .c-dot.g { background: var(--green); }
     .chat-title { margin-left: auto; font-size: 11px; font-family: var(--font-mono); color: var(--muted); }
     .chat-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
     .chat-msg { display: flex; gap: 12px; align-items: flex-start; }
     .chat-avatar { width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; }
-    .chat-avatar.you { background: var(--green); color: #07100a; }
+    .chat-avatar.you { background: var(--green); color: #1f1510; }
     .chat-avatar.ai { background: var(--surface2); color: var(--green); border: 1px solid var(--border-green); }
     .chat-bubble { flex: 1; }
     .chat-sender { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
@@ -79,7 +79,7 @@
     @media (max-width: 700px) { .compare-grid { grid-template-columns: 1fr; } }
 
     .quote-sig { display: flex; align-items: center; gap: 14px; margin-top: 20px; }
-    .quote-mark { width: 42px; height: 42px; border-radius: 10px; background: var(--green); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; font-weight: 900; color: #07100a; flex-shrink: 0; }
+    .quote-mark { width: 42px; height: 42px; border-radius: 10px; background: var(--green); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; font-weight: 900; color: #1f1510; flex-shrink: 0; }
     .quote-name { font-weight: 700; font-size: 14px; color: var(--text); }
     .quote-title { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
@@ -114,21 +114,22 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 <link rel="stylesheet" href="/assets/soft.css">
+<link rel="stylesheet" href="assets/theme.css">
 </head>
-<body>
+<body data-topic="systems">
 
 <div class="story-progress" id="storyProgress"></div>
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><span class="mark">✦</span> JDesigns Strategist</a>
+    <a class='nav-logo' href='/'><span class="mark">✦</span> JDesigns Strategist</a>
     <div class="nav-links" id="navLinks">
-      <a href="index.html" class="nav-link">Home</a>
+      <a class='nav-link' href='/'>Home</a>
       <a href="/blog/" class="nav-link">Blog</a>
-      <a href="/simplesystems.html" class="nav-link">Simple Systems</a>
+      <a class='nav-link' href='/simplesystems'>Simple Systems</a>
       <a href="/help/" class="nav-link">Help</a>
-      <a href="meta-ads-fix.html" class="nav-link">Meta Ads Fix</a>
-      <a href="work-with-me.html" class="nav-link">Work With Me</a>
+      <a class='nav-link' href='/meta-ads-fix'>Meta Ads Fix</a>
+      <a class='nav-link' href='/work-with-me'>Work With Me</a>
       <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -145,6 +146,10 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     <div class="hero-rail-label">Latest</div>
     <!-- Written by scripts/update-latest-carousel.js. Do not hand-edit. -->
     <!-- HERO-RAIL-START -->
+    <a href="/blog/fund-the-test-before-you-run-it.html" class="hero-rail-item">
+      <span class="hero-rail-date">Oct 27</span>
+      <span class="hero-rail-title">If You Can't Fund the Test, Don't Run the Test</span>
+    </a>
     <a href="/blog/user-cannot-be-added-to-business.html" class="hero-rail-item">
       <span class="hero-rail-date">Oct 26</span>
       <span class="hero-rail-title">"User Cannot Be Added to Business"? The Error Has Two Different Causes.</span>
@@ -153,17 +158,13 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
       <span class="hero-rail-date">Oct 14</span>
       <span class="hero-rail-title">Think Your Instagram Is Shadowbanned? Check Account Status First.</span>
     </a>
-    <a href="/blog/fund-the-test-before-you-run-it.html" class="hero-rail-item">
-      <span class="hero-rail-date">Oct 12</span>
-      <span class="hero-rail-title">If You Can't Fund the Test, Don't Run the Test</span>
-    </a>
-    <a href="/blog/new-account-wont-escape-meta-restriction.html" class="hero-rail-item">
+    <a href="/blog/why-cant-remove-yourself-meta-business-portfolio.html" class="hero-rail-item">
       <span class="hero-rail-date">Oct 1</span>
-      <span class="hero-rail-title">Think a New Account Will Dodge a Meta Restriction? Here's Why It Usually Finds You Anyway</span>
+      <span class="hero-rail-title">Why You Can't Remove Yourself From a Meta Business Portfolio (And What Each Blocker Actually Means)</span>
     </a>
-    <a href="/blog/how-my-posting-runs-without-a-paid-scheduler.html" class="hero-rail-item">
-      <span class="hero-rail-date">Sep 30</span>
-      <span class="hero-rail-title">How My Posting Runs Without a Paid Scheduler</span>
+    <a href="/blog/real-facebook-ads-beginner-questions.html" class="hero-rail-item">
+      <span class="hero-rail-date">Oct 1</span>
+      <span class="hero-rail-title">3 Real Questions Beginners Ask About Facebook Ads (And the Actual Answers)</span>
     </a>
 <!-- HERO-RAIL-END -->
     <a href="/blog/" class="hero-rail-more">Read all posts →</a>
@@ -199,6 +200,10 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
       <div class="hero-mobile-scroller">
         <!-- Written by scripts/update-latest-carousel.js. Do not hand-edit. -->
         <!-- HERO-MOBILE-START -->
+      <a href="/blog/fund-the-test-before-you-run-it.html" class="hero-mobile-card">
+        <span class="hero-rail-date">Oct 27</span>
+        <span class="hero-rail-title">If You Can't Fund the Test, Don't Run the Test</span>
+      </a>
       <a href="/blog/user-cannot-be-added-to-business.html" class="hero-mobile-card">
         <span class="hero-rail-date">Oct 26</span>
         <span class="hero-rail-title">"User Cannot Be Added to Business"? The Error Has Two Different Causes.</span>
@@ -207,30 +212,26 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
         <span class="hero-rail-date">Oct 14</span>
         <span class="hero-rail-title">Think Your Instagram Is Shadowbanned? Check Account Status First.</span>
       </a>
-      <a href="/blog/fund-the-test-before-you-run-it.html" class="hero-mobile-card">
-        <span class="hero-rail-date">Oct 12</span>
-        <span class="hero-rail-title">If You Can't Fund the Test, Don't Run the Test</span>
-      </a>
-      <a href="/blog/new-account-wont-escape-meta-restriction.html" class="hero-mobile-card">
+      <a href="/blog/why-cant-remove-yourself-meta-business-portfolio.html" class="hero-mobile-card">
         <span class="hero-rail-date">Oct 1</span>
-        <span class="hero-rail-title">Think a New Account Will Dodge a Meta Restriction? Here's Why It Usually Finds You Anyway</span>
+        <span class="hero-rail-title">Why You Can't Remove Yourself From a Meta Business Portfolio (And What Each Blocker Actually Means)</span>
       </a>
-      <a href="/blog/how-my-posting-runs-without-a-paid-scheduler.html" class="hero-mobile-card">
-        <span class="hero-rail-date">Sep 30</span>
-        <span class="hero-rail-title">How My Posting Runs Without a Paid Scheduler</span>
+      <a href="/blog/real-facebook-ads-beginner-questions.html" class="hero-mobile-card">
+        <span class="hero-rail-date">Oct 1</span>
+        <span class="hero-rail-title">3 Real Questions Beginners Ask About Facebook Ads (And the Actual Answers)</span>
       </a>
 <!-- HERO-MOBILE-END -->
       </div>
       <div class="hero-mobile-counts">
         <a href="/blog/">48 Blog Posts</a>
         <a href="/help/">13 Help Articles</a>
-        <a href="about.html">About Jasmine</a>
+        <a href='/about'>About Jasmine</a>
       </div>
     </div>
   </div>
 
   <aside class="hero-rail hero-rail-right">
-    <a href="about.html" class="hero-rail-preview">
+    <a class='hero-rail-preview' href='/about'>
       <span class="hero-rail-date">About</span>
       <span class="hero-rail-title">Founder, JDesigns Strategist. UNK grad, Advertising &amp; PR. Fiverr Pro since 2024.</span>
       <span class="hero-rail-more" style="margin-top:2px;">Full bio &amp; resume →</span>
@@ -238,8 +239,8 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     <div class="hero-rail-counts">
       <a href="/blog/" class="hero-rail-count"><span class="n">48</span><span class="l">Blog Posts</span></a>
       <a href="/help/" class="hero-rail-count"><span class="n">13</span><span class="l">Help Articles</span></a>
-      <a href="index.html#start-here" class="hero-rail-count"><span class="n">9</span><span class="l">Repair Guides</span></a>
-      <a href="meta-ads-case-studies.html" class="hero-rail-count"><span class="n">2</span><span class="l">Case Studies</span></a>
+      <a class='hero-rail-count' href='/#start-here'><span class="n">9</span><span class="l">Repair Guides</span></a>
+      <a class='hero-rail-count' href='/meta-ads-case-studies'><span class="n">2</span><span class="l">Case Studies</span></a>
     </div>
   </aside>
 
@@ -262,9 +263,9 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
       </div>
       <div class="for-col no">
         <div class="for-col-label">✗ Not right for you if…</div>
-        <div class="for-item"><div class="for-icon">✗</div>You haven't built your Business System yet — <a href="systemize-your-business.html" style="color:var(--green);">start there first</a>, then come back</div>
+        <div class="for-item"><div class="for-icon">✗</div>You haven't built your Business System yet — <a href='/systemize-your-business' style='color:var(--green);'>start there first</a>, then come back</div>
         <div class="for-item"><div class="for-icon">✗</div>You don't use Claude Code — these are slash commands that run inside Claude Code specifically</div>
-        <div class="for-item"><div class="for-icon">✗</div>You want hands-on Meta ads or account help — that's Jasmine's <a href="work-with-me.html" style="color:var(--green);">direct service work</a>, not this self-install product</div>
+        <div class="for-item"><div class="for-icon">✗</div>You want hands-on Meta ads or account help — that's Jasmine's <a href='/work-with-me' style='color:var(--green);'>direct service work</a>, not this self-install product</div>
         <div class="for-item"><div class="for-icon">✗</div>You want someone to customize these commands for your specific business — this is a self-install product</div>
       </div>
     </div>
@@ -615,7 +616,7 @@ function switchSample(name) {
       <div class="process-card reveal">
         <div class="num">🧠</div>
         <h3>Your Business System Files</h3>
-        <p>You need your CLAUDE.md, my-business-brain.md, and my-prompts.md already set up. These are what teach Claude about you. No system files = no context. <a href="systemize-your-business.html" style="color:var(--green);">Build your Business System first →</a></p>
+        <p>You need your CLAUDE.md, my-business-brain.md, and my-prompts.md already set up. These are what teach Claude about you. No system files = no context. <a href='/systemize-your-business' style='color:var(--green);'>Build your Business System first →</a></p>
       </div>
       <div class="process-card reveal d1">
         <div class="num">⚡</div>
@@ -644,7 +645,7 @@ function switchSample(name) {
       <a href="https://www.paypal.com/ncp/payment/SGPW3VUW4DAG2" class="btn-primary" target="_blank" rel="noopener">Get Systemized — $47 →</a>
     </div>
 
-    <p class="chapter-copy reveal d4" style="margin-top:18px; text-align:center;">Need your Business System files first? <a href="systemize-your-business.html" style="color:var(--green);">Build them here →</a></p>
+    <p class="chapter-copy reveal d4" style="margin-top:18px; text-align:center;">Need your Business System files first? <a href='/systemize-your-business' style='color:var(--green);'>Build them here →</a></p>
   </div>
 </section>
 
@@ -664,7 +665,7 @@ function switchSample(name) {
       </div>
       <div class="for-col no">
         <div class="for-col-label">✗ What's Not Included</div>
-        <div class="for-item"><div class="for-icon">✗</div>The Business System files — those are a separate product (<a href="systemize-your-business.html" style="color:var(--green);">$95, build them first</a>)</div>
+        <div class="for-item"><div class="for-icon">✗</div>The Business System files — those are a separate product (<a href='/systemize-your-business' style='color:var(--green);'>$95, build them first</a>)</div>
         <div class="for-item"><div class="for-icon">✗</div>1:1 setup help or custom command builds</div>
         <div class="for-item"><div class="for-icon">✗</div>Access to Jasmine or any live support</div>
         <div class="for-item"><div class="for-icon">✗</div>A Claude subscription — Claude Code is free but you need a Claude account</div>
@@ -693,7 +694,7 @@ function switchSample(name) {
     <div class="faq-list">
       <div class="faq-item reveal">
         <div class="faq-q">Do I need the Business System first?</div>
-        <div class="faq-a">Yes. Systemized is designed to read your Business System files — without them, the commands have no business context to work from and will produce generic output. <a href="systemize-your-business.html">Build your Business System first →</a></div>
+        <div class="faq-a">Yes. Systemized is designed to read your Business System files — without them, the commands have no business context to work from and will produce generic output. <a href='/systemize-your-business'>Build your Business System first →</a></div>
       </div>
       <div class="faq-item reveal d1">
         <div class="faq-q">Do I need to know how to code to install this?</div>
@@ -724,7 +725,7 @@ function switchSample(name) {
       <p class="chapter-copy" style="margin:0 auto 26px; text-align:center;">$47 one-time. Runs in 60 seconds. Built for service-based business owners — not developers. If you haven't built your Business System yet, start there first. Then come back and these 6 commands are ready to go.</p>
       <div class="hero-ctas" style="justify-content:center; margin-bottom:0;">
         <a href="#get-it" class="btn-primary">Get Systemized — $47</a>
-        <a href="systemize-your-business.html" class="btn-secondary">Systemize Your Business First →</a>
+        <a class='btn-secondary' href='/systemize-your-business'>Systemize Your Business First →</a>
       </div>
     </div>
   </div>
@@ -734,18 +735,19 @@ function switchSample(name) {
 <section class="band band-alt">
   <div class="band-inner">
     <div class="footer">
-      <div class="footer-left">© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html" class="footer-link">Made by Jasmine</a></div>
+      <div class="footer-left">© 2026 JDesigns Strategist LLC · <a class='footer-link' href='/how-i-run-this'>Made by Jasmine</a></div>
       <div class="footer-links">
-        <a href="/about.html" class="footer-link">About</a>
+        <a class='footer-link' href='/about'>About</a>
         <a href="/blog/" class="footer-link">Blog</a>
-        <a href="/knowledge-hub.html" class="footer-link">Knowledge Hub</a>
+        <a class='footer-link' href='/knowledge-hub'>Knowledge Hub</a>
         <a href="https://www.fiverr.com/jazz96designs" class="footer-link" target="_blank" rel="noopener">Fiverr</a>
-        <a href="/privacy-policy.html" class="footer-link">Privacy</a>
+        <a class='footer-link' href='/privacy-policy'>Privacy</a>
       </div>
     </div>
   </div>
 </section>
 
 <script src="assets/site.js"></script>
+<script src="assets/theme.js"></script>
 </body>
 </html>

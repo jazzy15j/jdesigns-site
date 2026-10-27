@@ -8,7 +8,7 @@
        The full URL to enter in PayPal will be: https://[your-domain]/vault-thank-you.html
        Replace [your-domain] with your actual deployed domain (e.g. jdesigns.info or your Netlify URL).
        In PayPal: go to your payment link settings → Return URL / Confirmation page → paste the full URL. -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2307100a'/%3E%3Ctext x='50' y='69' font-size='58' text-anchor='middle' fill='%232ec27e'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%231f1510'/%3E%3Ctext x='50' y='69' font-size='58' text-anchor='middle' fill='%239baa6b'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/site.css">
   <style>
     /* ── Page-specific: confirmation card + vault button (unique to this thank-you page) ── */
@@ -64,27 +64,30 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/soft.css">
+<link rel="stylesheet" href="assets/theme.css">
 </head>
-<body>
+<body data-topic="repair">
 
 <div class="story-progress" id="storyProgress"></div>
 
 <!-- ── Nav ── -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><span class="mark">✦</span> JDesigns Strategist</a>
+    <a class='nav-logo' href='/'><span class="mark">✦</span> JDesigns Strategist</a>
     <div class="nav-links" id="navLinks">
       <a href="/blog/" class="nav-link">Blog</a>
-      <a href="/simplesystems.html" class="nav-link">Simple Systems</a>
+      <a class='nav-link' href='/simplesystems'>Simple Systems</a>
       <a href="/help/" class="nav-link">Help</a>
       <div class="nav-link nav-dropdown" tabindex="0">
         Results
         <div class="nav-dropdown-menu">
-          <a href="meta-ads-case-studies.html" class="nav-dropdown-item">Meta Ads</a>
-          <a href="pinterest-case-studies.html" class="nav-dropdown-item">Pinterest</a>
+          <a class='nav-dropdown-item' href='/meta-ads-case-studies'>Meta Ads</a>
+          <a class='nav-dropdown-item' href='/pinterest-case-studies'>Pinterest</a>
         </div>
       </div>
-      <a href="work-with-me.html" class="nav-link">Work With Me</a>
+      <a class='nav-link' href='/meta-ads-fix'>Meta Ads Fix</a>
+      <a class='nav-link' href='/work-with-me'>Work With Me</a>
       <a href="https://www.fiverr.com/jazz96designs" class="nav-cta" target="_blank" rel="noopener">Fiverr ↗</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -100,7 +103,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 
     <div class="card reveal d1">
       <div class="check-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#2ec27e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#9baa6b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
           <polyline points="20 6 9 17 4 12"/>
         </svg>
       </div>
@@ -130,18 +133,19 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 <section class="band band-alt">
   <div class="band-inner">
     <div class="footer">
-      <div class="footer-left">© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html" class="footer-link">Made by Jasmine</a></div>
+      <div class="footer-left">© 2026 JDesigns Strategist LLC · <a class='footer-link' href='/how-i-run-this'>Made by Jasmine</a></div>
       <div class="footer-links">
-        <a href="/about.html" class="footer-link">About</a>
+        <a class='footer-link' href='/about'>About</a>
         <a href="/blog/" class="footer-link">Blog</a>
-        <a href="/knowledge-hub.html" class="footer-link">Knowledge Hub</a>
+        <a class='footer-link' href='/knowledge-hub'>Knowledge Hub</a>
         <a href="https://www.fiverr.com/jazz96designs" class="footer-link" target="_blank" rel="noopener">Fiverr</a>
-        <a href="/privacy-policy.html" class="footer-link">Privacy</a>
+        <a class='footer-link' href='/privacy-policy'>Privacy</a>
       </div>
     </div>
   </div>
 </section>
 
 <script src="assets/site.js"></script>
+<script src="assets/theme.js"></script>
 </body>
 </html>

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sample Meta Ads Audit: Online Store</title>
+<style>
+:root{--bg:#1f1510;--card:#2a1d15;--border:#4a3426;--green:#9baa6b;--label:#c9b29a;--muted:#a8957f;--white:#f5ebdd;--warn:#e0b44c;--bad:#e5645a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--label);font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:860px;margin:0 auto;padding:32px 16px 64px}
+h1{color:var(--white);font-size:30px;line-height:1.2;margin:8px 0 6px}
+h2{color:var(--white);font-size:22px;margin:40px 0 12px;padding-top:8px;border-top:1px solid var(--border)}
+h3{color:var(--green);font-size:16px;margin:22px 0 6px;text-transform:uppercase;letter-spacing:.06em}
+p{margin:0 0 12px}
+.eyebrow{color:var(--green);font-family:'Courier New',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.meta{color:var(--muted);font-size:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:14px 0}
+.verdict{border-color:var(--green);background:#2b3320}
+.verdict b{color:var(--white)}
+table{width:100%;border-collapse:collapse;margin:10px 0 16px;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border-bottom:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+th{color:var(--white);font-weight:600;white-space:nowrap}
+.good{color:var(--green)}.mid{color:var(--warn)}.bad{color:var(--bad)}
+ul,ol{margin:0 0 12px;padding-left:22px}li{margin:4px 0}
+.tag{display:inline-block;font-family:'Courier New',monospace;font-size:12px;border:1px solid var(--border);border-radius:4px;padding:1px 7px;margin-right:6px;color:var(--green)}
+.rec{border-left:3px solid var(--green);padding-left:14px;margin:16px 0}
+.rec.next{border-color:var(--warn)}.rec.later{border-color:var(--muted)}
+.rec p{margin:0 0 6px}.rec .k{color:var(--white);font-weight:600}
+.small{font-size:13.5px;color:var(--muted)}
+</style>
+<link rel="stylesheet" href="assets/theme.css">
+</head>
+<body data-topic="ads">
+<div class="wrap">
+
+<div class="card" style="border-color:#e0b44c"><b style="color:#f5ebdd">Sample report.</b> This is a real audit with the business name, product details and account IDs removed. It shows the format and depth you receive. It is not a promise of results for your account.</div>
+<div class="eyebrow">JDesigns Strategist &middot; Meta Ads Audit &amp; Optimization Plan</div>
+<h1>Online store: What happened to your ads, and what to do next</h1>
+<div class="meta">Sample report &middot; Real audit of a small online accessories store &middot; Business name, product details and account IDs removed &middot; Data window Sep 2023 to Oct 2026</div>
+
+<div class="card verdict">
+<p><b>Verdict: NEEDS OPTIMIZATION.</b></p>
+<p>Your account is healthy and your tracking works. What changed is how much each ad impression turns into a sale. Your four main ads are about three years old, and the cost of getting a purchase went from under $4 to over $10 while the cost of reaching people moved far less. That points to the ads and the offer people land on, not to your account setup.</p>
+<p class="small">Everything below comes from your Meta account data and the numbers you sent me. Profit is covered in Section 7, using the product cost, postage, and order numbers you sent. Nothing here guarantees a result; Meta results depend on your product, price, creative, and budget.</p>
+</div>
+
+<h2>1. The short version</h2>
+<ol>
+<li><b>Your ads worked very well for a long time.</b> From Sep 2023 to mid-2024, a purchase cost about $2.70 to $4.40 and Meta-reported return was 3 to 4.8x.</li>
+<li><b>They did not stop working overnight.</b> Cost per purchase stepped up three times: Jul-Aug 2024, again through 2025, and again from Aug 2026. By Sep 2026 it was $13.69, and $19.24 on Oct 1-3.</li>
+<li><b>Reaching people did not get nearly as expensive as buying got.</b> Cost per 1,000 views rose about 13% ($4.12 in your best period to $4.65 in 2026), but cost per purchase rose about 2.8x ($3.70 to $10.51). In plain terms: about 60% fewer purchases per 1,000 views than in your best period (1.11 vs 0.44).</li>
+<li><b>Tracking is not the problem.</b> Purchase tracking is strong, with one small cleanup (Section 5).</li>
+<li><b>The biggest levers are creative and the offer.</b> Four ads carried about 99% of $191k in spend, all static white-background catalog images with a discount-led message.</li>
+<li><b>Your break-even cost per purchase is about $12, and your ads ran at about $14-15.</b> With ads off, orders fell from about 22 a day to about 10, so the ads were driving roughly half your sales, at a small loss per order. That gap is closable with new creative and bigger orders (Section 7).</li>
+</ol>
+
+<h2>2. What I reviewed</h2>
+<table>
+<tr><th>Area</th><th>What I looked at</th></tr>
+<tr><td>Account health</td><td>Business portfolio, ad account status, payment method, domain verification, ad access</td></tr>
+<tr><td>Performance</td><td>Daily campaign, ad set, and ad-level data for 3 years ($191,135 spend, 27,702 Meta-reported purchases)</td></tr>
+<tr><td>Audience &amp; placements</td><td>Age, gender, and placement splits for your best period vs 2026; current ad-set targeting</td></tr>
+<tr><td>Creative &amp; copy</td><td>The live ad previews for your main ads and the sale ads</td></tr>
+<tr><td>Tracking</td><td>Events Manager: pixel, Conversions API, Purchase quality, duplicate checks, Meta's recommendations</td></tr>
+<tr><td>Your numbers</td><td>AOV ($14.01), 627 Shopify orders (Sep 7 - Oct 4), daily orders Oct 3-5 after ads paused, product cost (about $1 per item), postage (about $5.50), repeat rate (7-8%), Etsy volume (about $1,500/mo), price history, shipping change</td></tr>
+<tr><td>Site context</td><td>Public pricing and offer pages only, to understand what people see after clicking</td></tr>
+</table>
+<p class="small">Not available to me: click-through rate by ad (not in the exports), and the settings of ad sets you deleted years ago. Where this affects a conclusion I say so.</p>
+
+<h2>3. How the results changed</h2>
+<table>
+<tr><th>Period</th><th>Spend</th><th>Purchases</th><th>Cost / purchase</th><th>Meta ROAS</th></tr>
+<tr><td>Sep 2023 (launch)</td><td>$2,591</td><td>970</td><td class="good">$2.67</td><td class="good">4.84</td></tr>
+<tr><td>Oct-Dec 2023</td><td>$15,475</td><td>3,581</td><td class="good">$4.32</td><td class="good">2.90</td></tr>
+<tr><td>Q1 2024</td><td>$9,101</td><td>2,574</td><td class="good">$3.54</td><td class="good">3.50</td></tr>
+<tr><td>Q2 2024</td><td>$11,379</td><td>3,139</td><td class="good">$3.63</td><td class="good">3.81</td></tr>
+<tr><td>Q3 2024</td><td>$14,813</td><td>2,336</td><td class="mid">$6.34</td><td>3.12</td></tr>
+<tr><td>Q4 2024</td><td>$22,412</td><td>3,641</td><td class="mid">$6.16</td><td>2.88</td></tr>
+<tr><td>2025 (avg)</td><td>$64.0k</td><td>6,577</td><td class="mid">~$9.73</td><td>~2.2</td></tr>
+<tr><td>Q1-Q2 2026</td><td>$31.1k</td><td>3,187</td><td class="mid">~$9.76</td><td>~2.1</td></tr>
+<tr><td>Q3 2026</td><td>$19,790</td><td>1,675</td><td class="bad">$11.82</td><td class="bad">1.80</td></tr>
+<tr><td>Sep 2026</td><td>$6,162</td><td>450</td><td class="bad">$13.69</td><td class="bad">1.50</td></tr>
+<tr><td>Oct 1-3, 2026</td><td>$423</td><td>22</td><td class="bad">$19.24</td><td class="bad">1.13</td></tr>
+</table>
+<p class="small">ROAS and purchases are Meta-reported with 7-day click, 1-day view, and 1-day engaged-view attribution, which is generous. The value Meta records per purchase (about $21 recently) is higher than your $14.01 AOV, most likely because shipping and tax are included. On merchandise value alone, the same ads return less than the Meta ROAS suggests.</p>
+
+<h3>What changed along the way</h3>
+<ul>
+<li><b>Jul-Aug 2024:</b> cost per purchase jumped in your original ad set, and the value per purchase Meta records rose about 40% in the same quarter. That points to a business or tracking change around then, so please tell me if you remember one.</li>
+<li><b>Aug 2024:</b> a $9 cost cap ad set became your main spender. It was not the cause: the ad set with no cap that replaced it in 2026 cost about the same per purchase.</li>
+<li><b>Aug 25, 2026:</b> a value-optimized test ran beside the main ad set and did worse than it (ROAS 1.47).</li>
+<li><b>Aug-Oct 2026:</b> calculated shipping started "a couple months ago", so new buyers now see a shipping cost at checkout instead of a flat $5. The timing lines up with the last decline, but several things changed at once, so I can't isolate it.</li>
+<li><b>Sep 20-22, 2026:</b> four new ad sets launched while the long-running one was shut down. New ad sets restart Meta's learning, and Sep 20 - Oct 2 was the weakest stretch in three years.</li>
+</ul>
+
+<h2>4. What the account looks like</h2>
+<h3>Account health</h3>
+<ul>
+<li><span class="tag">OK</span>Both store domains are verified.</li>
+<li><span class="tag">OK</span>Payment method active, recent charges paid, no failed payments, no restrictions or disapprovals showing. An unbilled balance of $190.73 will charge automatically.</li>
+<li><span class="tag">FIX</span>No URL parameters (UTM tags) on the ads I checked, so Shopify or any analytics tool can't tell which campaign a visit came from.</li>
+</ul>
+<h3>Structure</h3>
+<ul>
+<li>Everything runs as an Advantage+ catalog sales campaign with Advantage+ audience and automatic placements. That is a reasonable setup, but it leaves almost nothing but creative and offer for you to control.</li>
+<li>26 ads are listed. Only four ever carried meaningful spend: the original product ad (3 years old), the auto-created Mini Shop ad (about 3 years), Holiday Ad (about 2 years), and Holiday Ad 2025.</li>
+<li>Typical "restart" pattern: several new ad sets at once in Aug-Sep 2026. Frequent resets make it hard to learn what is working.</li>
+</ul>
+<h3>Audience and placements</h3>
+<ul>
+<li>Every placement (Facebook feed, Instagram feed, Reels, Stories) got more expensive together. It is not a bad-placement problem, and turning placements off would save very little.</li>
+<li>The audience got older over time: 18-34 was about 87% of spend early on, and ages 45+ were under 1%. In 2026, 45+ received about 20% of spend at weaker returns (ROAS 1.4-2.0). This is a modest drag, not the main cause.</li>
+<li>Your best 2026 segment was women 18-34 (cost per purchase about $9.20-$9.60, ROAS 2.17) on only about 17% of spend. That is a lead worth testing, not proof.</li>
+<li>Current targeting is broad (US, 18-65+, Advantage+) with suggestions for lookalikes of past buyers, brand interests, and a 180-day purchaser exclusion.</li>
+</ul>
+<h3>Creative and copy</h3>
+<ul>
+<li>Every ad is a catalog collection ad with white-background product images. No video, no lifestyle shots, no product in hand or in use, no customer content.</li>
+<li>Meta itself shows a recommendation in your account: allowing product video could lower cost per result (Meta estimates 17%). That is Meta's estimate, not a promise.</li>
+<li>Copy leans on discounts: a standing 15% code, plus 20% off 2 or 30% off 3+ in the sale ads. The sale ads were your weakest: $13.58 to $36.72 per purchase. Discounts cut the amount you keep per order without raising order size.</li>
+<li>No hook, no proof (reviews), no product-style callout, and no mention of shipping.</li>
+<li>In 2024 you ran ads for four specific product styles. They performed as well as or better than the generic ads, then were never scaled. Your messages also show customers asking for specific styles.</li>
+</ul>
+
+<h2>5. Tracking: good, with one cleanup</h2>
+<table>
+<tr><th>Check</th><th>Result</th><th>Status</th></tr>
+<tr><td>Pixel + Conversions API</td><td>Both connected to one dataset</td><td class="good">Healthy</td></tr>
+<tr><td>Purchase event quality</td><td>9.1 out of 10 (Meta's match quality score)</td><td class="good">Excellent</td></tr>
+<tr><td>Purchase value sent</td><td>Value, item count, and other details present</td><td class="good">OK</td></tr>
+<tr><td>Purchases vs your orders</td><td>706 Purchase events vs 627 Shopify orders (Sep 7 - Oct 4)</td><td class="mid">About 12% over</td></tr>
+<tr><td>Server-side AddToCart</td><td>Meta flags low Conversions API coverage</td><td class="mid">Worth fixing</td></tr>
+<tr><td>Campaign tagging (UTMs)</td><td>Empty on the ad checked</td><td class="mid">Fix</td></tr>
+</table>
+<p>Your Shopify Facebook &amp; Instagram channel and a second pixel app are both sending events on the same pixel. The most likely reason for the extra 12% is both firing a purchase. If that is so, your true cost per purchase is about 12% higher than Ads Manager shows ($13.69 would be about $15.40). I could not confirm this directly, so treat it as likely rather than proven.</p>
+
+<h2>6. Priority recommendations</h2>
+
+<div class="rec">
+<p><span class="tag">IMMEDIATE 1</span><span class="k">Set your break-even number before any new spend</span></p>
+<p><b>What's wrong:</b> At your $14.01 average order, a $13.69 cost per purchase (about $15.40 if duplicate Purchase events are inflating it) is above what each order earns you. Cost per purchase took about 98% of merchandise revenue in Sep 2026.</p>
+<p><b>What to do:</b> Work out contribution per order = average order value minus product cost minus payment fees minus any postage you pay beyond what you charge. That number is your maximum cost per purchase. Use it as the line for deciding whether a campaign stays or goes.</p>
+<p><b>Your number:</b> about $12 per purchase, using your numbers (Section 7). Any campaign that stays above that is losing money on first orders. A target of $9-10 leaves about $2-3 per order.</p>
+<p><b>Why it matters:</b> It gives you one line to judge every campaign against, instead of guessing.</p>
+</div>
+
+<div class="rec">
+<p><span class="tag">IMMEDIATE 2</span><span class="k">Replace the four-ad creative set with a test system</span></p>
+<p><b>What's wrong:</b> About 99% of $191k went through four static, discount-led catalog ads, up to three years old.</p>
+<p><b>What to do:</b> Build a small batch of new creative, one idea per ad: (a) a short vertical video of the product in real use, (b) style-specific ads for your top 4-5 product styles, revisiting your 2024 winners, (c) a reviews or customer-photo ad, (d) a clear "ships in X days, flat shipping over $30" line in the copy. Drop the blanket percent-off headlines.</p>
+<p><b>Expected effect:</b> Gives Meta new things to learn from and tells you which angle earns purchases. It doesn't guarantee a result.</p>
+</div>
+
+<div class="rec">
+<p><span class="tag">IMMEDIATE 3</span><span class="k">Raise order size, so each sale is worth more</span></p>
+<p><b>What's wrong:</b> Most orders are one item at $12.99, so there is little room to pay for ads. The 20-30% off ads lowered the realized order value and performed worst.</p>
+<p><b>What to do:</b> Test bundles or multi-packs (for example a 2-pack or 3-pack at a set price) and a free-shipping threshold set a little above your usual single-item order. Put those offers in the ads. This is a change to the offer, not a site redesign.</p>
+<p><b>Why it matters:</b> A higher average order is the main way to widen the gap between what an ad costs and what you keep. Because an item costs you about $1, a second item in the same order adds roughly $11 of contribution. At two items per order your break-even cost per purchase is about $22 instead of $12 (before any bundle discount).</p>
+</div>
+
+<div class="rec next">
+<p><span class="tag">NEXT 30 DAYS 1</span><span class="k">Clean up tracking</span></p>
+<p>Keep one pixel app (Shopify's Facebook &amp; Instagram channel, which sends server events) and remove or turn off the second app. Then place one real test order and confirm in Events Manager > Test events that a single Purchase fires. Add UTM parameters to every ad, for example <i>utm_source=facebook&amp;utm_medium=paid&amp;utm_campaign={{campaign.name}}&amp;utm_content={{ad.name}}</i>. Improve server-side AddToCart coverage with the Shopify channel's data-sharing setting set to Maximum.</p>
+</div>
+<div class="rec next">
+<p><span class="tag">NEXT 30 DAYS 2</span><span class="k">Rebuild with fewer moving parts</span></p>
+<p>When you decide to run ads again: one campaign, two ad sets at most, and leave each test alone for 2-3 weeks. Do not launch five ad sets at once or edit a winner. Test with and without a cost cap once new creative is in, since the $9 cap was not the cause of the decline.</p>
+</div>
+<div class="rec next">
+<p><span class="tag">NEXT 30 DAYS 3</span><span class="k">Test your best-looking audience</span></p>
+<p>Give women 18-34 and related interests their own ad set so you can see whether the 2026 results hold. Keep a lookalike of past purchasers as a second test.</p>
+</div>
+
+<div class="rec later">
+<p><span class="tag">WHEN READY 1</span><span class="k">Plan the Q4 push early</span></p>
+<p>In Q4 2024 and 2025 you spent $22k and $27k at near-normal returns, so seasonal volume exists. Have the new creative approved and the break-even number set before the holiday window, and plan any holiday offer around bundles.</p>
+</div>
+<div class="rec later">
+<p><span class="tag">WHEN READY 2</span><span class="k">Retargeting and Etsy</span></p>
+<p>A small retargeting ad set for visitors and cart abandoners, and a way to tell how much of your Etsy volume follows Meta traffic. Etsy doesn't send purchase data to Meta, so those sales won't appear in Ads Manager.</p>
+</div>
+
+<h2>7. Are the ads profitable?</h2>
+<p>Short answer: the ads were driving real sales, but at a small loss per order. They were not ineffective. Here is the math from the numbers you sent.</p>
+<h3>Your break-even number</h3>
+<table>
+<tr><th>Per average order</th><th>Amount</th></tr>
+<tr><td>Average order value (excludes shipping and tax)</td><td>$14.01</td></tr>
+<tr><td>Product cost (about $1 per item, about 1.1 items)</td><td>-$1.10</td></tr>
+<tr><td>Payment fees (about)</td><td>-$0.71</td></tr>
+<tr><td>Shipping (you charge about $6.20-6.90 per order; postage is about $5.50 with $7-9 outliers)</td><td>about even</td></tr>
+<tr><td><b>Contribution per order</b></td><td><b>about $12.20</b></td></tr>
+</table>
+<p class="small">That makes your <b>break-even cost per purchase about $12</b>. It does not include packaging, your time, or app subscriptions, so your true line is a little lower. Your 7-8% repeat rate adds roughly $0.90 per first order over time.</p>
+<table>
+<tr><th>Cost per purchase</th><th>Profit per first order after ads</th></tr>
+<tr><td>$9.90 (2025 to mid-2026 average)</td><td>+$2.30</td></tr>
+<tr><td>$11.82 (Q3 2026)</td><td>+$0.40</td></tr>
+<tr><td>$13.69 (Sep 2026, as Meta reports it)</td><td>-$1.49</td></tr>
+<tr><td>$15.40 (Sep 2026 if the extra 12% of Purchase events are duplicates)</td><td>-$3.20</td></tr>
+</table>
+<h3>What happened when you turned ads off</h3>
+<table>
+<tr><th>Period</th><th>Shopify orders per day</th></tr>
+<tr><td>Sep 7 - Oct 4 (ads on, 627 orders)</td><td>about 22</td></tr>
+<tr><td>Oct 3 (ads paused part of the day)</td><td>14</td></tr>
+<tr><td>Oct 4</td><td>10</td></tr>
+<tr><td>Oct 5</td><td>10</td></tr>
+</table>
+<p>Orders fell about 55% once ads went off, close to the 58% Meta credited the ads with. So the ads were bringing in about 12 orders a day. Over the four weeks you spent about $5,200 for about 347 extra orders, or about $15 per extra order. At roughly $12.20 earned per order, that works out to a loss of about $1,000 across the month, before repeat purchases. Take this as a good estimate, not exact: it is two full days, one on a weekend, and Shop app ads and Collective sales were still coming in.</p>
+<h3>What this means</h3>
+<ul>
+<li>The gap is about $2-3 per order. That is closable: a cost per purchase near $9-10 would leave about $2-3 per order, which is roughly a third below September.</li>
+<li>Your margin on the product is high (about $1 cost on a $12.99 item), so the offer, not the product, is what limits ad spend. Bigger orders move break-even more than any other change (Section 6, Immediate 3).</li>
+<li>You mentioned Shop app ads at about $9-10 per sale. That is below break-even, so those orders earn money.</li>
+<li>Etsy (about $1,500/mo) is separate. Etsy does not send purchase data to Meta, so I could not tell how much of it follows your ads, and none of it is in the math above.</li>
+</ul>
+<p class="small">Based on your Shopify numbers, Meta account data, and the costs you gave me. Nothing here guarantees a result; results depend on your product, price, creative, audience, and budget.</p>
+
+<h2>8. What I could not verify</h2>
+<ul>
+<li>Click-through rate and cost per click by ad. They weren't in the data exports, so I judged creative on cost per purchase and spend patterns.</li>
+<li>Settings for your two oldest ad sets ("New Traffic Ad Set", "Cost Per Result: 9"). They no longer exist in Ads Manager, so 2023-24 targeting is inferred from age and gender results.</li>
+<li>Whether duplicate Purchase events come from the second pixel app plus the Shopify channel (likely, not tested). If they do, your true cost per purchase is about 12% higher than Ads Manager shows.</li>
+<li>The ads-off result covers only two full days (Oct 4-5), so treat it as an estimate. Packaging, labor, and app costs were not given, so break-even is an upper limit.</li>
+<li>Meta's full Account Quality page did not open; I saw no restrictions or disapprovals in Ads Manager.</li>
+<li>What changed in Jul-Aug 2024. If you remember any theme, app, pixel, or shipping change then, tell me.</li>
+</ul>
+
+<h2>9. Next step</h2>
+<p>Pick your top 3 priorities from Section 6 and tell me which one to start on. If you'd like help executing the creative and a restart plan, that is a separate project from this audit. Your account is unchanged; nothing was edited, published, or turned on during this review.</p>
+<p class="small">This audit is an independent review. Results from any change depend on your product, price, creative, audience, and budget, and Meta makes the final decisions on delivery.</p>
+
+</div>
+<script src="assets/theme.js"></script>
+</body>
+</html>

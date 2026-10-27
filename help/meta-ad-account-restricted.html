@@ -11,15 +11,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:           #07100a;
-      --surface:      #0d1a10;
-      --border:       #1a7a4e;
-      --border-muted: #102b18;
-      --accent:       #2ec27e;
-      --accent-dim:   #0d3320;
-      --text:         #ffffff;
-      --sage:         #c4dccb;
-      --muted:        #8aab96;
+      --bg:           #1f1510;
+      --surface:      #2a1d15;
+      --border:       #7f8f55;
+      --border-muted: #3a2a1c;
+      --accent:       #9baa6b;
+      --accent-dim:   #2b3320;
+      --text:         #f5ebdd;
+      --sage:         #c9b29a;
+      --muted:        #a8957f;
       --radius:       14px;
       --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
       --font-serif: Georgia, 'Times New Roman', serif;
@@ -221,7 +221,7 @@
       max-width: 180px;
       line-height: 1.4;
     }
-    .decision-action.caution { color: #f0c070; }
+    .decision-action.caution { color: #d9a066; }
     .decision-action.stop { color: #f0a090; }
 
     .trigger-list {
@@ -375,26 +375,28 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/soft.css">
+<link rel="stylesheet" href="../assets/theme.css">
 </head>
-<body>
+<body data-topic="repair">
 <nav class="jdgnav">
   <style>
-    .jdgnav{position:sticky;top:0;z-index:100;background:rgba(7,16,10,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,50,37,.7);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
+    .jdgnav{position:sticky;top:0;z-index:100;background:rgba(31,21,16,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(74,52,38,.7);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
     .jdgnav-inner{max-width:1040px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;}
-    .jdgnav-logo{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#2ec27e;white-space:nowrap;text-decoration:none;}
+    .jdgnav-logo{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9baa6b;white-space:nowrap;text-decoration:none;}
     .jdgnav-links{display:flex;align-items:center;gap:6px;}
-    .jdgnav-link{font-size:12.5px;font-weight:500;color:#8aab96;padding:5px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .15s,background .15s;}
-    .jdgnav-link:hover{color:#fff;background:#0d1a10;}
-    .jdgnav-cta{font-size:12px;font-weight:700;letter-spacing:.04em;color:#07100a;background:#2ec27e;padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
+    .jdgnav-link{font-size:12.5px;font-weight:500;color:#a8957f;padding:5px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .15s,background .15s;}
+    .jdgnav-link:hover{color:#f5ebdd;background:#2a1d15;}
+    .jdgnav-cta{font-size:12px;font-weight:700;letter-spacing:.04em;color:#1f1510;background:#9baa6b;padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
     .jdgnav-cta:hover{opacity:.85;}
-    .jdgnav-toggle{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid rgba(30,50,37,.7);background:transparent;cursor:pointer;flex-shrink:0;}
-    .jdgnav-toggle span{display:block;width:16px;height:1.5px;background:#c4dccb;position:relative;}
-    .jdgnav-toggle span::before,.jdgnav-toggle span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#c4dccb;}
+    .jdgnav-toggle{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid rgba(74,52,38,.7);background:transparent;cursor:pointer;flex-shrink:0;}
+    .jdgnav-toggle span{display:block;width:16px;height:1.5px;background:#c9b29a;position:relative;}
+    .jdgnav-toggle span::before,.jdgnav-toggle span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#c9b29a;}
     .jdgnav-toggle span::before{top:-5px;}
     .jdgnav-toggle span::after{top:5px;}
     @media (max-width:900px){
       .jdgnav-toggle{display:flex;}
-      .jdgnav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:#0d1a10;border-bottom:1px solid rgba(30,50,37,.7);padding:10px 16px 16px;box-shadow:0 16px 32px rgba(0,0,0,.35);}
+      .jdgnav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:#2a1d15;border-bottom:1px solid rgba(74,52,38,.7);padding:10px 16px 16px;box-shadow:0 16px 32px rgba(0,0,0,.35);}
       .jdgnav-links.open{display:flex;}
       .jdgnav-links.open .jdgnav-link,.jdgnav-links.open .jdgnav-cta{width:100%;justify-content:space-between;padding:14px 14px;border-radius:10px;font-size:14px;display:flex;}
     }
@@ -404,9 +406,10 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     <div class="jdgnav-links" id="jdgnavLinks">
       <a href="/" class="jdgnav-link">Home</a>
       <a href="/blog/" class="jdgnav-link">Blog</a>
-      <a href="/simplesystems.html" class="jdgnav-link">Simple Systems</a>
+      <a class='jdgnav-link' href='/simplesystems'>Simple Systems</a>
       <a href="/help/" class="jdgnav-link">Help</a>
-      <a href="/work-with-me.html" class="jdgnav-link">Work With Me</a>
+      <a class='jdgnav-link' href='/meta-ads-fix'>Meta Ads Fix</a>
+      <a class='jdgnav-link' href='/work-with-me'>Work With Me</a>
       <a href="https://www.fiverr.com/jazz96designs" class="jdgnav-cta" target="_blank" rel="noopener">Fiverr &#8599;</a>
     </div>
     <button class="jdgnav-toggle" id="jdgnavToggle" aria-label="Open menu" aria-expanded="false" aria-controls="jdgnavLinks"><span></span></button>
@@ -613,7 +616,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     <p>I do a full Meta Ecosystem Review where I go through your account structure, the notice Meta issued, your ad history, and your landing pages to give you a written analysis and action plan. You get a clear picture of what likely happened and a script for your appeal — if one is worth filing.</p>
     <div class="cta-row">
       <a href="https://www.fiverr.com/jazz96designs/review-and-guide-your-meta-business-access-setup-issues" class="cta-btn" target="_blank" rel="noopener">Get a Meta Ecosystem Review →</a>
-      <a href="/help/index.html"class="cta-btn-outline">← More Free Guides</a>
+      <a class='cta-btn-outline' href='/help/'>← More Free Guides</a>
     </div>
     <p class="disclaimer">Meta Ecosystem Review starts at $595. I review your account and provide a written action plan — I don't log in to your accounts or contact Meta on your behalf. Whether Meta restores access is their decision; I give you the clearest possible path to making your case.</p>
   </div>
@@ -621,19 +624,19 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   <div class="related-section">
     <div class="related-label">Related Guides</div>
     <div class="related-list">
-      <a href="/help/who-owns-my-meta-ad-account.html" class="related-card">
+      <a class='related-card' href='/help/who-owns-my-meta-ad-account'>
         <span class="related-title">Who Actually Owns Your Meta Ad Account?</span>
         <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
       </a>
-      <a href="/help/who-gets-what-access-meta-business-suite.html" class="related-card">
+      <a class='related-card' href='/help/who-gets-what-access-meta-business-suite'>
         <span class="related-title">Who Gets What Access in Meta Business Suite?</span>
         <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
       </a>
-      <a href="/help/instagram-wont-connect-meta-business-suite.html" class="related-card">
+      <a class='related-card' href='/help/instagram-wont-connect-meta-business-suite'>
         <span class="related-title">Why Your Instagram Won't Connect to Meta Business Suite</span>
         <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
       </a>
-      <a href="/help/index.html"class="related-card">
+      <a class='related-card' href='/help/'>
         <span class="related-title">View All Meta Help Guides →</span>
         <svg class="related-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
       </a>
@@ -641,16 +644,17 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   </div>
 
   <footer class="footer">
-    <span>© 2026 JDesigns Strategist LLC · <a href="/how-i-run-this.html">Made by Jasmine</a></span>
+    <span>© 2026 JDesigns Strategist LLC · <a href='/how-i-run-this'>Made by Jasmine</a></span>
     <span style="display:flex;gap:16px;flex-wrap:wrap;">
-      <a href="/about.html">About</a>
+      <a href='/about'>About</a>
       <a href="/blog/">Blog</a>
-      <a href="/knowledge-hub.html">Knowledge Hub</a>
+      <a href='/knowledge-hub'>Knowledge Hub</a>
       <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener">Fiverr</a>
-      <a href="/privacy-policy.html">Privacy</a>
+      <a href='/privacy-policy'>Privacy</a>
     </span>
   </footer>
 
 </div>
+<script src="../assets/theme.js"></script>
 </body>
 </html>

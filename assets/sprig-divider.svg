@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="36" viewBox="0 0 320 36">
+<g stroke="#c4dccb" stroke-width="1.2" fill="#c4dccb" fill-opacity=".35" stroke-linecap="round" opacity=".8">
+<path d="M10 18 H140 M180 18 H310" fill="none" stroke-opacity=".5"/>
+<path id="l" d="M0 0 C6 -9 6 -18 0 -26 C-6 -18 -6 -9 0 0Z" transform="translate(118 18) rotate(-70) scale(.7)"/>
+<path d="M0 0 C6 -9 6 -18 0 -26 C-6 -18 -6 -9 0 0Z" transform="translate(130 18) rotate(-110) scale(.6)"/>
+<path d="M0 0 C6 -9 6 -18 0 -26 C-6 -18 -6 -9 0 0Z" transform="translate(202 18) rotate(70) scale(.7)"/>
+<path d="M0 0 C6 -9 6 -18 0 -26 C-6 -18 -6 -9 0 0Z" transform="translate(190 18) rotate(110) scale(.6)"/></g>
+<g transform="translate(160 18)"><g fill="#e8b4b8"><ellipse cy="-7" rx="4" ry="7"/><ellipse cy="-7" rx="4" ry="7" transform="rotate(72)"/><ellipse cy="-7" rx="4" ry="7" transform="rotate(144)"/><ellipse cy="-7" rx="4" ry="7" transform="rotate(216)"/><ellipse cy="-7" rx="4" ry="7" transform="rotate(288)"/></g><circle r="2.6" fill="#f3e6c8"/></g>
+</svg>

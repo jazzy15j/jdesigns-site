@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sample Meta Ads Audit: Real Estate Agent</title>
+<style>
+:root{
+  --bg:#1f1510; --surface:#2a1d15; --accent:#9baa6b; --dim:#7f8f55; --glow:#2b3320;
+  --text:#f5ebdd; --label:#c9b29a; --muted:#a8957f;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s6:24px; --s8:32px; --s12:48px; --s16:64px;
+  --t-sm:13px; --t-md:15px; --t-lg:17px; --t-xl:22px; --t-2xl:34px;
+  --display:Georgia,"Times New Roman",serif;
+  --body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--label);font-family:var(--body);font-size:var(--t-md);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 var(--s6)}
+h1,h2,h3,h4{color:var(--text);text-wrap:balance}
+p{max-width:65ch}
+
+/* top bar */
+.bar{border-bottom:1px solid var(--glow);position:sticky;top:0;background:rgba(31,21,16,.94);backdrop-filter:blur(6px);z-index:10}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.mark{font-family:var(--display);font-size:var(--t-lg);color:var(--text);letter-spacing:.01em}
+.mark b{color:var(--accent);font-weight:400}
+.bar nav{display:flex;gap:var(--s6)}
+.bar nav a{color:var(--muted);text-decoration:none;font-size:var(--t-sm);font-weight:600}
+.bar nav a:hover{color:var(--text)}
+
+/* hero */
+.hero{padding:var(--s16) 0 var(--s12);border-bottom:1px solid var(--glow)}
+.hero .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:var(--s12);align-items:end}
+.status{display:inline-block;font-size:var(--t-sm);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--dim);padding:var(--s1) var(--s3);border-radius:3px;margin-bottom:var(--s6)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,56px);line-height:1.08;margin-bottom:var(--s4)}
+.hero .sub{color:var(--muted);font-size:var(--t-sm);margin-bottom:var(--s6)}
+.hero .lede{font-size:var(--t-lg);color:var(--label);margin-bottom:var(--s8)}
+.btns{display:flex;gap:var(--s3);flex-wrap:wrap}
+.btn{display:inline-block;padding:var(--s3) var(--s6);font-weight:700;font-size:var(--t-md);text-decoration:none;border-radius:4px}
+.btn.primary{background:var(--text);color:var(--bg)}
+.btn.ghost{border:1px solid var(--dim);color:var(--text)}
+.btn:hover{outline:2px solid var(--accent);outline-offset:2px}
+.stats{background:var(--surface);border:1px solid var(--dim);border-radius:8px;padding:var(--s6);box-shadow:0 0 0 4px var(--glow)}
+.stats h2{font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;margin-bottom:var(--s4)}
+.stat{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s4);padding:var(--s3) 0;border-top:1px solid var(--glow)}
+.stat:first-of-type{border-top:0}
+.stat strong{font-family:var(--display);font-weight:400;font-size:var(--t-2xl);color:var(--text);line-height:1}
+.stat span{font-size:var(--t-sm);color:var(--muted);text-align:right}
+.stat.gap strong{color:var(--accent)}
+
+/* sections */
+section{padding:var(--s12) 0;border-bottom:1px solid var(--glow)}
+.eyebrow{font-size:var(--t-sm);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--s2)}
+h2.title{font-size:var(--t-2xl);line-height:1.15;font-weight:800;margin-bottom:var(--s4)}
+.intro{color:var(--label);font-size:var(--t-lg);margin-bottom:var(--s8)}
+h3{font-size:var(--t-lg);font-weight:700;margin-bottom:var(--s2)}
+.sec-head{margin-bottom:var(--s8)}
+
+/* cards: flat by default, elevated only where noted */
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s6)}
+.cols2{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s6)}
+.flat{border-top:2px solid var(--dim);padding-top:var(--s4)}
+.flat p{color:var(--muted);font-size:var(--t-md)}
+.flat ul{margin:var(--s2) 0 0 var(--s4);color:var(--muted)}
+.flat li{margin-bottom:var(--s1)}
+.lift{background:var(--surface);border:1px solid var(--dim);border-radius:8px;padding:var(--s6)}
+
+/* journey strip */
+.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:var(--s6) 0 var(--s2)}
+.step{padding:var(--s4) var(--s4) var(--s4) 0;border-top:3px solid var(--dim);position:relative}
+.step .n{font-family:var(--display);font-size:var(--t-2xl);color:var(--text);line-height:1.1}
+.step .l{font-size:var(--t-sm);color:var(--muted)}
+.step .r{font-size:var(--t-sm);color:var(--accent);font-weight:700;margin-top:var(--s2)}
+.step.gap{border-top:3px dashed var(--accent);background:var(--glow);padding-left:var(--s4);border-radius:0 0 6px 0}
+.step.gap .n{color:var(--accent)}
+.caption{font-size:var(--t-sm);color:var(--muted)}
+
+/* table */
+.tablewrap{overflow-x:auto;margin:var(--s6) 0}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:var(--t-md)}
+th{text-align:left;font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;padding:var(--s3) var(--s4);border-bottom:1px solid var(--dim)}
+td{padding:var(--s3) var(--s4);border-bottom:1px solid var(--glow);vertical-align:top;color:var(--label)}
+td:first-child{color:var(--text);font-weight:600}
+td.good{color:var(--accent);font-weight:700}
+td.watch{color:var(--text);font-weight:700}
+tr:last-child td{border-bottom:0}
+
+/* age bars */
+.bars{margin:var(--s4) 0}
+.row{display:grid;grid-template-columns:72px 1fr 48px;gap:var(--s3);align-items:center;margin-bottom:var(--s2);font-size:var(--t-sm)}
+.row .track{background:var(--glow);height:20px;border-radius:2px}
+.row .fill{height:20px;border-radius:2px;background:var(--accent)}
+.row .fill.old{background:var(--dim)}
+.row b{color:var(--text);text-align:right}
+.legend{display:flex;gap:var(--s6);font-size:var(--t-sm);color:var(--muted);margin-top:var(--s3)}
+.legend i{display:inline-block;width:12px;height:12px;margin-right:var(--s2);vertical-align:-1px;border-radius:2px}
+
+/* page map */
+.mapgrid{display:grid;grid-template-columns:240px 1fr;gap:var(--s12);align-items:start}
+.pagemap{position:relative;height:292px;background:var(--surface);border:1px solid var(--dim);border-radius:4px}
+.zone{position:absolute;left:0;right:0;font-size:var(--t-sm);padding:var(--s1) var(--s3);color:var(--muted);border-top:1px dashed var(--glow)}
+.zone.first{top:0;height:66px;background:var(--glow);color:var(--label);border-top:0}
+.zone.story{top:66px;height:154px}
+.zone.form{top:220px;height:36px;background:var(--accent);color:var(--bg);font-weight:700;border-top:0;display:flex;align-items:center}
+.zone.foot{top:256px;height:36px}
+.ticks{display:flex;justify-content:space-between;font-size:var(--t-sm);color:var(--muted);margin-top:var(--s2)}
+
+/* path / checklist */
+.path{list-style:none;counter-reset:p}
+.path li{display:grid;grid-template-columns:40px 1fr;gap:var(--s4);padding:var(--s4) 0;border-top:1px solid var(--glow)}
+.path li:last-child{border-bottom:1px solid var(--glow)}
+.path li::before{counter-increment:p;content:counter(p);font-family:var(--display);font-size:var(--t-xl);color:var(--accent);line-height:1.2}
+.path b{color:var(--text)}
+.path span{display:block;color:var(--muted);font-size:var(--t-md)}
+
+.prio{display:grid;gap:var(--s6)}
+.prio .lift h3{display:flex;gap:var(--s3);align-items:baseline}
+.tag{font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:var(--s2) var(--s4);margin-top:var(--s3);font-size:var(--t-md)}
+.kv dt{color:var(--muted);font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.06em;font-weight:700;padding-top:2px}
+.kv dd{color:var(--label)}
+
+.verdict{border-left:4px solid var(--accent);padding:var(--s4) var(--s6);background:var(--surface);margin:var(--s6) 0}
+.verdict strong{display:block;color:var(--text);font-size:var(--t-xl);margin-bottom:var(--s2)}
+.fine{font-size:var(--t-sm);color:var(--muted);margin-top:var(--s6);max-width:75ch}
+footer{padding:var(--s8) 0 var(--s16);color:var(--muted);font-size:var(--t-sm)}
+footer .mark{font-size:var(--t-md);display:block;margin-bottom:var(--s2)}
+
+@media (max-width:820px){
+  .hero .grid,.cols3,.cols2,.mapgrid{grid-template-columns:1fr}
+  .journey{grid-template-columns:1fr 1fr}
+  .bar nav{display:none}
+  .kv{grid-template-columns:1fr}
+  .pagemap{max-width:240px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<link rel="stylesheet" href="assets/theme.css">
+</head>
+<body data-topic="ads"><div style="max-width:860px;margin:16px auto;padding:14px 18px;border:1px solid #e0b44c;border-radius:10px;font-family:Inter,-apple-system,sans-serif;font-size:15px;background:#fffbe9;color:#222"><b>Sample report.</b> This is a real audit with the client name, brokerage, websites and ad wording removed. It shows the format and depth you receive. It is not a promise of results for your account.</div>
+
+<div class="bar"><div class="wrap">
+  <span class="mark"><b>&#10022;</b> JDesigns Strategist</span>
+  <nav aria-label="Sections">
+    <a href="#included">Included</a><a href="#read">Your read</a><a href="#audit">Audit</a><a href="#page">Contact page</a><a href="#plan">Plan</a><a href="#next">Next steps</a>
+  </nav>
+</div></div>
+
+<header class="hero" id="top"><div class="wrap grid">
+  <div>
+    <span class="status">Audit complete</span>
+    <h1>Sample Meta Ads Audit: Real Estate Agent</h1>
+    <p class="sub">Sample report, real estate agent &middot; the agent's website &middot; Ad data Oct 1 to Oct 8, 2026 &middot; Account reviewed Oct 9, 2026</p>
+    <p class="lede">Your audit and optimization plan is complete. Your ads are bringing the right people to your website for pennies. The next step is making your contact page easy to act on, and making your lead count something you can trust.</p>
+    <div class="btns">
+      <a class="btn primary" href="#audit">Review your audit</a>
+      <a class="btn ghost" href="#next">See your next steps</a>
+    </div>
+  </div>
+  <aside class="stats" aria-label="Your numbers at a glance">
+    <h2>Your first 8 days</h2>
+    <div class="stat"><strong>107</strong><span>people reached your contact page</span></div>
+    <div class="stat"><strong>$0.33</strong><span>cost of each visit</span></div>
+    <div class="stat gap"><strong>0</strong><span>real messages so far (tests only)</span></div>
+  </aside>
+</div></header>
+
+<section id="included"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Included in this delivery</p>
+    <h2 class="title">What you received</h2>
+  </div>
+  <div class="cols3">
+    <div class="flat"><h3>Account and results review</h3><p>Your ad account, both live ads, your audiences, billing, tracking, and what your numbers say so far, including cost per landing page view and what your form tracking is and is not showing.</p></div>
+    <div class="flat"><h3>Optimization plan</h3><p>A plan for your top-of-funnel and middle-of-funnel campaigns, a budget plan for $200 to $400 a month, and the one result to measure: real form submissions.</p></div>
+    <div class="flat"><h3>Contact page review</h3><p>What may be slowing people down on the contact page, with a short, ordered list of changes.</p></div>
+  </div>
+</div></section>
+
+<section id="read"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Your business, read closely</p>
+    <h2 class="title">What stands out for your business</h2>
+    <p class="intro">Four things matter most. Each one shapes the plan.</p>
+  </div>
+  <div class="cols2">
+    <div class="flat"><h3>Your message already works</h3><p>Your main ad message speaks to a real trap families feel: they can't buy until they sell, and they don't want to sell until they know where they're going. Almost 5 in 100 people who saw your ads clicked, which is in the top range for this kind of ad.</p></div>
+    <div class="flat"><h3>The obstacle is after the click</h3><p>Your ads promise a conversation. Your page opens with a banner and a title, and the form is about three screens down on a laptop and three and a half on a phone. A visitor has to go looking for the way to talk to you.</p></div>
+    <div class="flat"><h3>Your warm audience is nearly used up</h3><p>Your warm pool is about 2,000 to 3,000 people, and your two ads reached about 2,400 of them in 8 days. To keep growing, the pool needs to grow, which means turning your top-of-funnel campaign back on and adding people who have visited your website.</p></div>
+    <div class="flat"><h3>Your lead count cannot be trusted yet</h3><p>Meta has recorded 4 Leads, all tests. Your thank-you page counts a lead every time it is opened, even by someone who did not fill out the form, and it is currently set to appear in search results and in your sitemap. Until that is fixed, your email inbox is the true count.</p></div>
+  </div>
+</div></section>
+
+<section id="audit"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Your audit</p>
+    <h2 class="title">Account read and scorecard</h2>
+    <p class="intro">Here is what happened between the time someone saw your ad and the time they could have written to you.</p>
+  </div>
+
+  <div class="journey" role="list" aria-label="The visitor journey">
+    <div class="step" role="listitem"><div class="n">2,891</div><div class="l">times your ads were shown</div></div>
+    <div class="step" role="listitem"><div class="n">132</div><div class="l">clicked the link</div><div class="r">4.57% click rate</div></div>
+    <div class="step" role="listitem"><div class="n">107</div><div class="l">page finished loading</div><div class="r">81% of clicks</div></div>
+    <div class="step gap" role="listitem"><div class="n">0</div><div class="l">real form submissions</div><div class="r">The gap to close</div></div>
+  </div>
+  <p class="caption">Oct 1 to Oct 8, both live ads, $35.42 spent. Step widths are not to scale.</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>What we measured</th><th>Your number</th><th>Healthy range</th><th>Our read</th></tr></thead>
+    <tbody>
+      <tr><td>Cost to show your ad 1,000 times</td><td>$12.25</td><td>$8 to $15 is strong</td><td class="good">Strong</td></tr>
+      <tr><td>Link click rate</td><td>4.57% (Reel 5.16%, Static 2.49%)</td><td>3% or more is elite</td><td class="good">Elite</td></tr>
+      <tr><td>Cost per click</td><td>$0.27</td><td>n/a</td><td class="good">Cheap</td></tr>
+      <tr><td>Times each person saw your ad</td><td>about 1.2</td><td>Under 2 is best</td><td class="good">Strong, no ad fatigue</td></tr>
+      <tr><td>Cost per landing page view</td><td>$0.33</td><td>Similar advertisers: $0.26</td><td class="watch">27% above peers, still low</td></tr>
+      <tr><td>Clicks that became a page view</td><td>107 of 132 (81%)</td><td>n/a</td><td class="watch">About 1 in 5 clicks never loads the page</td></tr>
+      <tr><td>Real form submissions</td><td>0 of 107 visits</td><td>Real estate cost per lead: $50 to $150 average, over $250 is a concern</td><td class="watch">Cannot be scored yet</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">Healthy ranges are industry guidelines, not Meta-published numbers and not promises. A "landing page view" is someone who clicked your ad and whose page finished loading. Meta's peer figure covers similar advertisers between Sep 8 and Oct 9, 2026.</p>
+
+  <div class="cols2" style="margin-top:48px">
+    <div class="lift">
+      <h3>Who responded</h3>
+      <p style="color:var(--muted);font-size:15px">Landing page views by age. Your stated customer is 25 to 60.</p>
+      <div class="bars" role="img" aria-label="Landing page views by age: 25 to 34, 10; 35 to 44, 12; 45 to 54, 16; 55 to 64, 21; 65 and older, 45">
+        <div class="row"><span>25-34</span><div class="track"><div class="fill" style="width:22%"></div></div><b>10</b></div>
+        <div class="row"><span>35-44</span><div class="track"><div class="fill" style="width:27%"></div></div><b>12</b></div>
+        <div class="row"><span>45-54</span><div class="track"><div class="fill" style="width:36%"></div></div><b>16</b></div>
+        <div class="row"><span>55-64</span><div class="track"><div class="fill old" style="width:47%"></div></div><b>21</b></div>
+        <div class="row"><span>65+</span><div class="track"><div class="fill old" style="width:100%"></div></div><b>45</b></div>
+      </div>
+      <div class="legend"><span><i style="background:var(--accent)"></i>Under 55</span><span><i style="background:var(--dim)"></i>55 and older</span></div>
+      <p style="color:var(--muted);font-size:15px;margin-top:16px">63% of views came from people 55 and older, and 43% from people 65 and older. Older visitors can be real sellers who are moving or downsizing, so this is not automatically a problem. It is a choice to make on purpose. Women were 57% of responses. Facebook produced about three quarters of visits and Instagram about a quarter.</p>
+    </div>
+    <div class="lift">
+      <h3>Account health</h3>
+      <ul style="margin:12px 0 0 16px;color:var(--muted)">
+        <li style="margin-bottom:8px">Both live ads are approved and running, and the access needed for this review is in place.</li>
+        <li style="margin-bottom:8px">Your tracking code fires on every visit, and your Lead event works when someone reaches the thank-you page.</li>
+        <li style="margin-bottom:8px">Your account has a <b style="color:#f5ebdd">$155 a month spending limit</b>. Your planned budget is $200 to $400, so delivery would stop at $155.</li>
+        <li style="margin-bottom:8px">A $20 charge to your backup Discover card failed on Oct 4. Your main card paid the same day, so nothing was missed.</li>
+        <li style="margin-bottom:8px">Your tracking code is shared with your listing site, a second site the agent owns (4 events in 28 days), and Meta flagged it on Oct 9 because it is a second website. It is yours, so confirm it in Events Manager (Diagnostics). It also means both sites' visits land in one set of numbers, so I will keep website-visitor audiences limited to the agent's website pages.</li>
+        <li style="margin-bottom:8px">No website domain is verified in your Meta business account.</li>
+        <li style="margin-bottom:8px">Meta's Security Center shows no restrictions. Its routine suggestions are to verify your website domain and to require two-factor sign-in for the people with access.</li>
+        <li>URL parameters, the small tags that show which ad sent a visitor, were not added when the ads launched. I am adding them with the campaign updates so every message going forward shows which ad sent it.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cols2" style="margin-top:24px">
+    <div class="flat"><h3>How your campaign is set up</h3><p>Your live setup is your middle-of-funnel campaign (MOF): one audience group, two ads, $3.50 a day. Your top-of-funnel campaign (TOF) has been off since June. It is set to bring the most landing page views, not form submissions. That is how a retargeting step is built, and lead tracking only went live on Oct 5, so nothing is aimed at it yet. The audience is set to "Advantage+," so your video viewers and page engagers are suggestions to Meta, not a fence. I am tightening that setup as part of these updates.</p></div>
+    <div class="flat"><h3>Your two ads</h3><p>Both are clear and speak to a real problem. The Reel brought 92 visits on $29.86, and the Static brought 15 on $5.56, so the Static has barely had a chance. Both buttons say "Learn more," which does not match the ask of a conversation, so I am updating the button text. The promise "talk through your timeline" is also not repeated at the form, which the page changes below fix.</p></div>
+  </div>
+
+  <h2 class="title" style="margin-top:64px;font-size:22px">Why you have no submissions yet</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>What we see</th><th>Most likely cause</th><th>How you will know</th></tr></thead>
+    <tbody>
+      <tr><td>0 submissions from 107 visits</td><td>Two things together: the sample is small, and the form is hard to find. At a 2% form rate, zero from 107 visits happens about 1 time in 9.</td><td>After the page change, read about 150 more visits. If there is still nothing, the offer or message needs a look, not just the layout.</td></tr>
+      <tr><td>1 in 5 clicks never loads the page</td><td>A slow page (about 3.4 seconds on our laptop test, with 250 file requests) or accidental clicks.</td><td>Ask your web person to compress images and remove unused plugins, then compare clicks to page views again.</td></tr>
+      <tr><td>Most views come from people 55 and older</td><td>Your warm audience is built from video viewers, and Meta's automatic audience is free to show the ads to anyone it thinks will respond.</td><td>Decide who you want. We can then set your age suggestion on purpose.</td></tr>
+      <tr><td>Cost per view is 27% above peers</td><td>A small audience pool, so Meta reaches the same people again and again.</td><td>I am adding website visitors as a warm audience, which grows the pool.</td></tr>
+      <tr><td>Lead count unreliable</td><td>The thank-you page counts a lead every time it opens, and a second website feeds the same tracking code.</td><td>Compare Leads in Events Manager with real emails every Friday. If Meta shows more, something else is triggering it.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div></section>
+
+<section id="page"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Contact page review</p>
+    <h2 class="title">Where the form sits today</h2>
+    <p class="intro">Tested on a laptop screen and a phone-sized screen. We did not submit a form. On a phone the page is about 5,000 pixels tall and the form starts about three and a half screens down.</p>
+  </div>
+  <div class="mapgrid">
+    <div>
+      <div class="pagemap" role="img" aria-label="Map of your contact page: the first screen shows a banner and title, the form begins about three quarters of the way down">
+        <div class="zone first">First screen: banner and title. No form.</div>
+        <div class="zone story">Long story text and three links to PDFs</div>
+        <div class="zone form">Your form</div>
+        <div class="zone foot">Areas served</div>
+      </div>
+      <div class="ticks"><span>Top</span><span>about 2,200 px</span><span>2,900 px</span></div>
+    </div>
+    <div>
+      <h3>What to change, in order</h3>
+      <ol class="path" style="margin-top:12px">
+        <li><div><b>Put one form near the top.</b><span>Right under your headline, titled with the promise from your ad: "Let's talk through your timeline."</span></div></li>
+        <li><div><b>Delete the other two forms.</b><span>The "Enquire here" form is a side panel that opens from the edge of the page, asks for a required home address, and has a label that reads "Phone Email *." The third form is hidden. Keep one.</span></div></li>
+        <li><div><b>Make Email required.</b><span>Phone can stay optional. Today nothing is required, so a blank or junk entry can go through.</span></div></li>
+        <li><div><b>Change the button</b><span>from "Submit Form" to "Request my free conversation."</span></div></li>
+        <li><div><b>Move the three PDF links below the form.</b><span>Label them "Not ready to talk? Start here." Right now they let a visitor take a guide and leave without contacting you.</span></div></li>
+        <li><div><b>Make the thank-you page reachable only through the form.</b><span>Today it is set to appear in search results and is listed in your sitemap. In Yoast SEO, open the thank-you page, go to Advanced, and set "Allow search engines to show this Page in search results" to No. Then confirm only the form sends people there.</span></div></li>
+        <li><div><b>Say what happens next.</b><span>Add a line on the thank-you page with when you will reply.</span></div></li>
+      </ol>
+    </div>
+  </div>
+</div></section>
+
+<section id="plan"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Optimization roadmap</p>
+    <h2 class="title">Your priorities, in order</h2>
+  </div>
+
+  <div class="prio">
+    <div class="lift">
+      <h3><span class="tag">Do first</span> Make the form easy to find and use</h3>
+      <dl class="kv">
+        <dt>Why</dt><dd>Your visits are cheap, but the page makes it hard to act.</dd>
+        <dt>What to do</dt><dd>The seven changes in the contact page review above.</dd>
+        <dt>Effort</dt><dd>Low to medium. You edit your own site.</dd>
+      </dl>
+    </div>
+    <div class="lift">
+      <h3><span class="tag">Do first</span> Make your lead count trustworthy</h3>
+      <dl class="kv">
+        <dt>Why</dt><dd>A stray visit to the thank-you page can look like a lead, and a second site is feeding your tracking code.</dd>
+        <dt>What to do</dt><dd>Hide the thank-you page from search (in Yoast SEO, Advanced, set "Allow search engines to show this Page" to No), confirm only one form leads there, confirm a second site the agent owns in Events Manager (Diagnostics), since it is your live listing site and shares your tracking code (consider giving it its own tracking code so its visits stay out of your lead numbers), and every Friday compare "Lead" in Events Manager with real emails. Your email is the true count.</dd>
+        <dt>Effort</dt><dd>Low.</dd>
+      </dl>
+    </div>
+    <div class="lift">
+      <h3><span class="tag">Do first</span> Raise the $155 limit and fix the backup card</h3>
+      <dl class="kv">
+        <dt>Why</dt><dd>The limit stops delivery below your own budget.</dd>
+        <dt>What to do</dt><dd>In Billing, raise the monthly spending limit above your plan (for about $270 a month, set it to $350) and update or remove the Discover card.</dd>
+        <dt>Effort</dt><dd>Low.</dd>
+      </dl>
+    </div>
+  </div>
+
+  <h2 class="title" style="margin-top:64px;font-size:22px">The plan for your two campaigns</h2>
+  <p class="intro" style="font-size:17px">Your top-of-funnel campaign (TOF) introduces you to new families. Your middle-of-funnel campaign (MOF) follows up with people who watched your videos, engaged with you, or visited your site. Together they should bring more of the right people to a form that is easy to use.</p>
+  <div class="cols2">
+    <div class="lift">
+      <h3>TOF: turn it back on, rebuilt to feed MOF</h3>
+      <dl class="kv">
+        <dt>Why</dt><dd>MOF is close to using up its small warm pool. Your earlier TOF built about 22 new video viewers a day, which is too slow to keep MOF supplied. That is because it was set to buy unique reach, not video views.</dd>
+        <dt>Goal</dt><dd>New metro area families watching your videos, so your warm audience grows.</dd>
+        <dt>Setup</dt><dd>Objective Video Views instead of Reach. The move-up family videos and images from MOF at the top of the funnel. Audience aimed at families outgrowing their home, with age set on purpose (see the decisions below). The older seller-themed ads stay off.</dd>
+        <dt>Budget</dt><dd>About $5 a day.</dd>
+      </dl>
+    </div>
+    <div class="lift">
+      <h3>MOF: keep it, widen the pool, make the ask easier</h3>
+      <dl class="kv">
+        <dt>Audience</dt><dd>Keep video viewers and page engagers. Add website visitors from the last 30 to 60 days. Leave out anyone who has already reached the thank-you page, so people who wrote to you are not followed around.</dd>
+        <dt>Ads</dt><dd>Add URL parameters, make the button match the ask, and, once you put your move-up guide behind an email form, offer the guide as an easier first step than a conversation.</dd>
+        <dt>Budget</dt><dd>About $4 a day.</dd>
+      </dl>
+    </div>
+  </div>
+  <p class="fine">These are updates to the two campaigns I set up for you, made so everything is correct going forward. I will make them in one batch once your page is live, and note the date so your before and after stays clear.</p>
+
+  <h2 class="title" style="margin-top:64px;font-size:22px">Budget and the one result to measure</h2>
+  <div class="cols2">
+    <div class="lift">
+      <h3>The result to measure</h3>
+      <p style="color:var(--muted)"><b style="color:#f5ebdd">Real form submissions.</b> Count the Lead event in Events Manager and check it against the messages that reached your email. The number to watch is cost per submission: ad spend divided by real submissions. Visits, clicks and click rate are there to help diagnose, not to judge success.</p>
+      <p style="color:var(--muted);margin-top:12px">Real estate averages $50 to $150 per lead. Under $50 is strong. Over $250 is a concern.</p>
+    </div>
+    <div class="lift">
+      <h3>What this plan can and cannot do</h3>
+      <p style="color:var(--muted)">TOF at about $5 a day plus MOF at about $4 a day is about $270 a month. That fits your $200 to $400 range. Today you spend about $105.</p>
+      <p style="color:var(--muted);margin-top:12px">TOF and MOF grow your audience and bring warm people to your page, so more of them see a form that works. They are not set up to find the people most likely to fill out a form. Only a Leads campaign aims at that, and at this budget a Leads campaign will be bumpy, because Meta's system needs about 50 of those events a week to learn well. So treat a Leads campaign as the later step, once your Lead count has proven itself.</p>
+    </div>
+  </div>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>When</th><th>What happens</th><th>Budget</th></tr></thead>
+    <tbody>
+      <tr><td>Now to your page update</td><td>You update the page, tracking and billing. Your current campaign keeps running. The "before" is fixed: 0 submissions from 107 visits (Oct 1 to Oct 8).</td><td>$3.50 a day (about $105 a month)</td></tr>
+      <tr><td>When your page is live</td><td>I make the TOF and MOF updates above in one dated batch. TOF turns back on.</td><td>About $9 a day (about $270 a month)</td></tr>
+      <tr><td>The next 4 to 6 weeks</td><td>We read about 150 visits on the new page and run the Friday check. If you reach about $250 of spend after the page fix with no real submissions, pause and review the offer and page message before spending more. If submissions arrive at a cost you are comfortable with, raise spend in small steps, not all at once.</td><td>Reviewed weekly</td></tr>
+      <tr><td>After that</td><td>If your Lead count has proven itself, the next step is a separate Leads campaign that aims straight at form submissions.</td><td>Decided together</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div></section>
+
+<section id="next"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Recommended approval path</p>
+    <h2 class="title">Your next steps</h2>
+    <p class="intro">A clear order, so nothing has to be decided all at once.</p>
+  </div>
+  <ol class="path">
+    <li><div><b>This week: update your contact page.</b><span>The seven changes above. If you are open to it, also put your move-up guide behind an email form. It is an easier first step for a family than a conversation, and it counts as a form submission.</span></div></li>
+    <li><div><b>This week: fix tracking and billing.</b><span>Hide the thank-you page from search, confirm a second site the agent owns in Events Manager (Diagnostics) and decide whether it keeps sharing your tracking code, raise the $155 limit, and update the backup card. While you are in Business Settings, verify your website domain and turn on two-factor sign-in.</span></div></li>
+    <li><div><b>Answer three questions.</b><span><b style="color:#f5ebdd">1. Who is the main customer?</b> Families outgrowing their home (say 30 to 50), or also older sellers who are moving or downsizing? Your order form said 25 to 60 buyers and sellers, and your site speaks to move-up families. <b style="color:#f5ebdd">2. Will you put the guide behind an email form?</b> <b style="color:#f5ebdd">3. Does your brokerage require Meta's Housing category?</b> Meta asks advertisers to choose it for ads about housing opportunities such as listings and mortgages. Ads for a specific listing, like the one on a second site the agent owns, clearly fall under it. Your ads promoting your services as an agent are the gray area, and they are approved and running. This is not legal advice, so it is worth asking the brokerage's compliance team. It matters here because declaring Housing removes age targeting, which changes how I can aim at younger families.</span></div></li>
+    <li><div><b>Tell me the day your page is live.</b><span>I will make the TOF and MOF updates in one batch and note the date.</span></div></li>
+    <li><div><b>Every Friday: run the check.</b><span>Count real messages in your inbox. Compare to Leads in Events Manager. Divide spend by real messages. Watch for click rate dropping under 1.5% or people seeing the ad more than 3.5 times.</span></div></li>
+    <li><div><b>After about 150 visits on the new page: decide.</b><span>If your Lead count has proven itself, the next step is a separate Leads campaign. A Leads campaign, new creative production and website changes are outside this audit and can be scoped as a separate project.</span></div></li>
+  </ol>
+</div></section>
+
+<section id="summary" style="border-bottom:0"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Final delivery summary</p>
+    <h2 class="title">Where your account stands</h2>
+  </div>
+  <div class="verdict">
+    <strong>Needs optimization</strong>
+    Your ads are cheap, your audience is real, and your tracking works. The weak spot is the page after the click, plus a lead count that cannot be trusted yet. Fix the three first priorities. Then your two campaigns are updated to feed each other, with a Leads campaign as the later step.
+  </div>
+  <p class="fine">Ad performance depends on your budget, offer, landing page, creative quality, and audience response. No number of leads is promised, and Meta decides how ads are delivered and approved. This audit covers your account, your two campaigns and their ads, your results so far, an optimization plan, a review of your contact page, and the setup updates to those two campaigns described above. It does not include building a new Leads campaign, new creative production, or website changes.</p>
+</div></section>
+
+<footer><div class="wrap">
+  <span class="mark"><b>&#10022;</b> JDesigns Strategist</span>
+  Prepared by JDesigns Strategist LLC for the agent, the brokerage. October 2026.
+</div></footer>
+
+<script src="assets/theme.js"></script>
+</body>
+</html>

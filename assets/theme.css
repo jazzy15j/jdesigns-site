@@ -1,0 +1,62 @@
+/* JDesigns theme layer — Oct 27 2026 preview. Palette B. Typography untouched (Georgia + system sans).
+   Spectrum (earthy rainbow, approved palette only): terracotta > honey > golden olive > olive > leaf.
+   Topic colours: Meta Ads = terracotta, Account Repair = honey, Content & Pinterest = olive, AI Systems = leaf. */
+:root {
+  --t-ads: #c97b5a; --t-repair: #d9a066; --t-content: #9baa6b; --t-systems: #6f9a68;
+  --scroll-acc: #c97b5a;
+  --espresso: #1f1510; --roasted: #2a1d15; --warm-border: #4a3426; --cream: #f5ebdd; --latte: #c9b29a;
+}
+
+/* ── Solid header: nothing shows through ─────────────────────── */
+nav, .nav, .jdgnav {
+  background: #1f1510 !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+  z-index: 1000 !important; border-bottom: 2px solid var(--scroll-acc) !important; transition: border-color .25s linear;
+}
+.hero-rail, .hero-rail-left, .hero-rail-right, .hero-3col aside { z-index: 1 !important; }
+.nav-dropdown-menu, .nav-links { z-index: 1001; }
+
+/* ── Scroll progress: fills left-to-right in rainbow order ───── */
+#jd-progress { position: fixed; top: 0; left: 0; height: 4px; width: 0; z-index: 2000; pointer-events: none;
+  background: linear-gradient(90deg, #c97b5a, #d9a066, #bcb06a, #9baa6b, #6f9a68); background-size: 100vw 100%; background-repeat: no-repeat; }
+.story-progress { display: none !important; }
+
+/* ── Topic colour on each page ───────────────────────────────── */
+body[data-topic="ads"]     { --green: var(--t-ads);     --accent: var(--t-ads);     --topic: var(--t-ads); }
+body[data-topic="repair"]  { --green: var(--t-repair);  --accent: var(--t-repair);  --topic: var(--t-repair); }
+body[data-topic="content"] { --green: var(--t-content); --accent: var(--t-content); --topic: var(--t-content); }
+body[data-topic="systems"] { --green: var(--t-systems); --accent: var(--t-systems); --topic: var(--t-systems); }
+body[data-topic="general"] { --topic: #9baa6b; }
+
+/* Section marks pick up the spectrum colour for where they sit on the page */
+h2::after { content: ""; display: block; width: 38px; height: 3px; border-radius: 2px; background: var(--acc, var(--topic, #9baa6b)); margin-top: .55rem; }
+.sec-h::after, .nav h2::after, .jdgnav h2::after, .help-block h2::after { display: none; }
+
+/* ── Topic ribbon (under the header on every inner page) ─────── */
+#jd-ribbon { background: #241811; border-bottom: 1px solid var(--warm-border); position: relative; z-index: 5; }
+#jd-ribbon .in { max-width: 1040px; margin: 0 auto; padding: 10px 20px; display: flex; gap: 8px; align-items: center; overflow-x: auto; white-space: nowrap; }
+#jd-ribbon .lbl { font: 600 10px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing: .2em; text-transform: uppercase; color: #a8957f; margin-right: 6px; }
+#jd-ribbon a { font: 600 11px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--cream);
+  padding: 8px 14px; border-radius: 999px; border: 1px solid var(--c); display: inline-flex; gap: 8px; align-items: center; }
+#jd-ribbon a::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+#jd-ribbon a:hover { background: color-mix(in srgb, var(--c) 18%, transparent); }
+#jd-ribbon a.on { background: var(--c); color: #1f1510; }
+#jd-ribbon a.on::before { background: #1f1510; }
+
+/* ── Where to next? (before the footer on every inner page) ──── */
+#jd-next { background: #241811; border-top: 1px solid var(--warm-border); padding: 46px 20px 54px; position: relative; z-index: 2; }
+#jd-next .in { max-width: 1040px; margin: 0 auto; }
+#jd-next .eb { font: 600 10px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--topic, #9baa6b); display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+#jd-next .eb::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--warm-border), transparent); }
+#jd-next h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.1; margin: 0 0 22px; color: var(--cream); }
+#jd-next h2 em { color: var(--topic, #9baa6b); font-style: italic; }
+#jd-next h2::after { display: none; }
+#jd-next .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+#jd-next a { display: block; text-decoration: none; color: var(--cream); background: var(--roasted); border: 1px solid var(--warm-border); border-top: 3px solid var(--c, #9baa6b); border-radius: 14px; padding: 20px 20px 18px; transition: transform .15s, border-color .15s; }
+#jd-next a:hover { transform: translateY(-3px); border-color: var(--c); }
+#jd-next a b { display: block; font: 400 1.2rem/1.25 Georgia, 'Times New Roman', serif; margin-bottom: 10px; }
+#jd-next a span { font: 700 11px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--c, #9baa6b); }
+
+/* ── Handwriting font retired: eyebrows use brand sans, small, tracked (as on the brand board) ── */
+.hero-eyebrow, .author-eyebrow, .chapter-label span, .eyebrow, .hand, .profile-handle-hand {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important; font-size: .625rem !important;
+  font-weight: 600 !important; letter-spacing: .2em !important; text-transform: uppercase !important; font-style: normal !important; }

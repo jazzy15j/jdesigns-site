@@ -8,17 +8,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --green: #2ec27e;
-      --green-dim: rgba(46,194,126,.15);
-      --green-faint: rgba(46,194,126,.07);
-      --green-glow: #0d3320;
-      --bg: #07100a;
-      --card: #0d1a10;
-      --border: rgba(30,50,37,0.6);
-      --border-green: rgba(46,194,126,.2);
-      --text: #ffffff;
-      --muted: #8aab96;
-      --faint: #1e3225;
+      --green: #9baa6b;
+      --green-dim: rgba(155,170,107,.15);
+      --green-faint: rgba(155,170,107,.07);
+      --green-glow: #2b3320;
+      --bg: #1f1510;
+      --card: #2a1d15;
+      --border: rgba(74,52,38,0.6);
+      --border-green: rgba(155,170,107,.2);
+      --text: #f5ebdd;
+      --muted: #a8957f;
+      --faint: #4a3426;
     }
 
     html { scroll-behavior: smooth; }
@@ -54,7 +54,7 @@
       height: 64px;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2rem;
-      background: rgba(7,16,10,.92);
+      background: rgba(31,21,16,.92);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
@@ -63,7 +63,7 @@
       width: 34px; height: 34px; border-radius: 9px;
       background: var(--green);
       display: flex; align-items: center; justify-content: center;
-      font-size: .88rem; font-weight: 900; color: #07100a;
+      font-size: .88rem; font-weight: 900; color: #1f1510;
       letter-spacing: -.02em; flex-shrink: 0;
     }
     .nav-wordmark { font-size: .88rem; font-weight: 700; color: var(--text); }
@@ -72,7 +72,7 @@
     .nav-links a { color: var(--muted); text-decoration: none; font-size: .82rem; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--text); }
     .nav-cta {
-      background: var(--green) !important; color: #07100a !important;
+      background: var(--green) !important; color: #1f1510 !important;
       padding: .4rem 1rem; border-radius: 7px; font-weight: 700 !important;
       transition: opacity .2s !important;
     }
@@ -90,13 +90,13 @@
       position: absolute; top: -15%; left: 50%;
       transform: translateX(-50%);
       width: 950px; height: 600px;
-      background: radial-gradient(ellipse, rgba(46,194,126,.13) 0%, transparent 65%);
+      background: radial-gradient(ellipse, rgba(155,170,107,.13) 0%, transparent 65%);
       pointer-events: none;
     }
     .orb-2 {
       position: absolute; bottom: -5%; right: 5%;
       width: 400px; height: 300px;
-      background: radial-gradient(ellipse, rgba(46,194,126,.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(155,170,107,.07) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-badge {
@@ -118,7 +118,7 @@
       max-width: 900px; margin-bottom: 1.5rem;
     }
     .text-green {
-      background: linear-gradient(135deg, #2ec27e 0%, #6edba8 45%, #2ec27e 100%);
+      background: linear-gradient(135deg, #9baa6b 0%, #6edba8 45%, #9baa6b 100%);
       background-size: 200% auto;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text; animation: shimmer 4s linear infinite;
@@ -135,16 +135,16 @@
       padding: .85rem 1.9rem; transition: all .2s;
       letter-spacing: -.01em;
     }
-    .btn-green { background: var(--green); color: #07100a; }
+    .btn-green { background: var(--green); color: #1f1510; }
     .btn-green:hover {
       opacity: .9; transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(46,194,126,.3);
+      box-shadow: 0 8px 32px rgba(155,170,107,.3);
     }
     .btn-ghost {
       background: transparent; color: var(--muted);
       border: 1px solid var(--border);
     }
-    .btn-ghost:hover { color: var(--text); border-color: rgba(46,194,126,.35); }
+    .btn-ghost:hover { color: var(--text); border-color: rgba(155,170,107,.35); }
     .hero-ctas { display: flex; gap: .9rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.5rem; }
     .hero-note { font-size: .8rem; color: var(--muted); }
 
@@ -180,7 +180,7 @@
       background: var(--card); border: 1px solid var(--border);
       border-radius: 14px; padding: 1.5rem;
     }
-    .for-col.yes { border-color: rgba(46,194,126,.2); }
+    .for-col.yes { border-color: rgba(155,170,107,.2); }
     .for-col.no  { border-color: rgba(239,68,68,.15); }
     .for-col-label {
       font-size: .72rem; font-weight: 800; letter-spacing: .12em;
@@ -251,7 +251,7 @@
       width: 30px; height: 30px; border-radius: 8px;
       background: var(--green);
       display: flex; align-items: center; justify-content: center;
-      font-size: .78rem; font-weight: 900; color: #07100a;
+      font-size: .78rem; font-weight: 900; color: #1f1510;
     }
     .footer-name { font-weight: 700; font-size: .88rem; color: var(--text); }
     .footer-tagline { font-size: .8rem; color: var(--muted); font-style: italic; margin-bottom: .45rem; }
@@ -286,11 +286,13 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/soft.css">
+<link rel="stylesheet" href="../assets/theme.css">
 </head>
-<body>
+<body data-topic="systems">
 
 <nav>
-  <a href="index.html" class="nav-brand">
+  <a class='nav-brand' href='/business-brain-command-pack/'>
     <div class="nav-mark">JD</div>
     <div class="nav-wordmark">JDesigns <span>Strategist</span></div>
   </a>
@@ -298,7 +300,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     <li><a href="#whats-inside">What's Inside</a></li>
     <li><a href="#who-its-for">Who It's For</a></li>
     <li><a href="#get-it">Get the Vault</a></li>
-    <li><a href="meta-checklist.html">Free Checklist First</a></li>
+    <li><a href='/business-brain-command-pack/meta-checklist'>Free Checklist First</a></li>
     <li><a href="#get-it" class="nav-cta">Get the Vault — $97 →</a></li>
   </ul>
 </nav>
@@ -453,7 +455,7 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
     </div>
     <div class="upsell-cta">
       <div class="upsell-price" style="color: var(--green);">Free</div>
-      <a href="meta-checklist.html" class="btn btn-ghost">Get the Checklist →</a>
+      <a class='btn btn-ghost' href='/business-brain-command-pack/meta-checklist'>Get the Checklist →</a>
     </div>
   </div>
 
@@ -479,11 +481,12 @@ src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1"
   <div class="footer-links">
     <a href="https://jdesigns.info/" target="_blank">jdesigns.info</a>
     <a href="https://fiverr.com/jazz96designs" target="_blank">fiverr.com/jazz96designs</a>
-    <a href="meta-checklist.html">Free Meta Checklist</a>
-    <a href="index.html">Business Brain Command Pack</a>
-    <a href="brain-guide.html">Build Your Business Brain</a>
+    <a href='/business-brain-command-pack/meta-checklist'>Free Meta Checklist</a>
+    <a href='/business-brain-command-pack/'>Business Brain Command Pack</a>
+    <a href='/business-brain-command-pack/brain-guide'>Build Your Business Brain</a>
   </div>
 </footer>
 
+<script src="../assets/theme.js"></script>
 </body>
 </html>

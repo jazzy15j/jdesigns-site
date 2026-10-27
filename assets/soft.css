@@ -1,0 +1,33 @@
+/* Soft, playful layer shared by every page (Oct 2026): fonts, blush accent, botanical texture */
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap");
+:root {
+  --blush: #d9a066; --blush-soft: rgba(217,160,102,.14); --cream: #f5ebdd;
+  --font-serif: Georgia, 'Times New Roman', serif;
+  --font-hand: 'Caveat', 'Segoe Script', cursive;
+}
+::selection { background: var(--blush); color: #1f1510; }
+body { position: relative; }
+body::before { z-index: -1 !important; content: ""; position: fixed; inset: 0; pointer-events: none; background: url("pattern-botanical.svg") repeat; background-size: 360px; opacity: .13; }
+
+/* Serif everywhere it was Georgia */
+h1, h2, h3, .jdgnav-logo, .nav-logo, .wordmark, .profile-name, .article-intro { font-family: var(--font-serif) !important; }
+h1 em, h2 em { color: var(--blush); font-style: italic; }
+
+/* Handwritten accents */
+.hero-eyebrow, .author-eyebrow, .chapter-label span:first-child, .eyebrow, .hand { font-family: var(--font-hand) !important; font-size: 1.45em; letter-spacing: .01em !important; text-transform: none !important; color: var(--blush) !important; font-weight: 600; }
+.meta-tag { color: var(--blush) !important; border-color: rgba(217,160,102,.45) !important; background: var(--blush-soft) !important; }
+
+/* Blush details */
+.jdgnav, .nav { border-bottom-color: rgba(217,160,102,.22) !important; }
+.wordmark a:hover, .article-body a:hover, .footer a:hover, footer a:hover { color: var(--blush); }
+.related-card:hover, .card:hover { border-color: var(--blush) !important; }
+.cta-btn-outline, .btn-secondary { border-color: rgba(217,160,102,.6) !important; color: var(--blush) !important; }
+.cta-btn-outline:hover, .btn-secondary:hover { background: var(--blush-soft) !important; }
+.callout, .intent { border-left-color: var(--blush) !important; }
+hr { border-color: rgba(217,160,102,.25); }
+.article-meta .meta-date { color: var(--sage, #c9b29a); }
+
+/* Pattern on every section (Oct 27 2026 preview) */
+body::before { display: none !important; }
+.band, footer, .footer, .jdgfooter { background-image: url("pattern-botanical.svg"); background-size: 360px; background-repeat: repeat; }
+.band-alt { background-image: linear-gradient(180deg, rgba(217,160,102,.05), transparent 60%), url("pattern-botanical.svg"); background-size: auto, 360px; background-position: 0 0, 180px 120px; }

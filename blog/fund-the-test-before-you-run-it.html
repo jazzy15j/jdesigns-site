@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>If You Can't Fund the Test, Don't Run the Test | JDesigns Strategist</title>
+  <meta name="description" content="Meta's learning phase needs about 50 purchases in a week. Here is the budget math that tells you whether Meta Ads are worth running yet, and what to do first if they are not."/>
+  <link rel="stylesheet" href="../assets/blog.css"/>
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1748369839650273');fbq('track','PageView');</script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1748369839650273&ev=PageView&noscript=1" alt=""/></noscript>
+<link rel="stylesheet" href="/assets/soft.css">
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body data-topic="ads">
+<nav class="jdgnav">
+  <style>
+    .jdgnav{position:sticky;top:0;z-index:100;background:rgba(31,21,16,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(74,52,38,.7);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
+    .jdgnav-inner{max-width:1040px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;}
+    .jdgnav-logo{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9baa6b;white-space:nowrap;text-decoration:none;}
+    .jdgnav-links{display:flex;align-items:center;gap:6px;}
+    .jdgnav-link{font-size:12.5px;font-weight:500;color:#a8957f;padding:5px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .15s,background .15s;}
+    .jdgnav-link:hover{color:#f5ebdd;background:#2a1d15;}
+    .jdgnav-cta{font-size:12px;font-weight:700;letter-spacing:.04em;color:#1f1510;background:#9baa6b;padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
+    .jdgnav-cta:hover{opacity:.85;}
+    .jdgnav-toggle{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid rgba(74,52,38,.7);background:transparent;cursor:pointer;flex-shrink:0;}
+    .jdgnav-toggle span{display:block;width:16px;height:1.5px;background:#c9b29a;position:relative;}
+    .jdgnav-toggle span::before,.jdgnav-toggle span::after{content:'';position:absolute;left:0;width:16px;height:1.5px;background:#c9b29a;}
+    .jdgnav-toggle span::before{top:-5px;}
+    .jdgnav-toggle span::after{top:5px;}
+    @media (max-width:900px){
+      .jdgnav-toggle{display:flex;}
+      .jdgnav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:#2a1d15;border-bottom:1px solid rgba(74,52,38,.7);padding:10px 16px 16px;box-shadow:0 16px 32px rgba(0,0,0,.35);}
+      .jdgnav-links.open{display:flex;}
+      .jdgnav-links.open .jdgnav-link,.jdgnav-links.open .jdgnav-cta{width:100%;justify-content:space-between;padding:14px 14px;border-radius:10px;font-size:14px;display:flex;}
+    }
+  </style>
+  <div class="jdgnav-inner">
+    <a href="/" class="jdgnav-logo">✦ JDesigns Strategist</a>
+    <div class="jdgnav-links" id="jdgnavLinks">
+      <a href="/" class="jdgnav-link">Home</a>
+      <a href="/blog/" class="jdgnav-link">Blog</a>
+      <a class='jdgnav-link' href='/simplesystems'>Simple Systems</a>
+      <a href="/help/" class="jdgnav-link">Help</a>
+      <a class='jdgnav-link' href='/meta-ads-fix'>Meta Ads Fix</a>
+      <a class='jdgnav-link' href='/work-with-me'>Work With Me</a>
+      <a href="https://www.fiverr.com/jazz96designs" class="jdgnav-cta" target="_blank" rel="noopener">Fiverr &#8599;</a>
+    </div>
+    <button class="jdgnav-toggle" id="jdgnavToggle" aria-label="Open menu" aria-expanded="false" aria-controls="jdgnavLinks"><span></span></button>
+  </div>
+</nav>
+<script>
+(function(){
+  var btn=document.getElementById('jdgnavToggle');
+  var links=document.getElementById('jdgnavLinks');
+  if(!btn||!links) return;
+  btn.addEventListener('click',function(){
+    var open=links.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){links.classList.remove('open');btn.setAttribute('aria-expanded','false');});
+  });
+})();
+</script>
+
+<div class="page">
+  <div class="wordmark"><a href="/">✦ JDesigns Strategist</a><span>/</span><a href="/blog/">Blog</a><span>/ Ad Budget</span></div>
+  <div class="profile-header"><img src="../assets/photos/jasmine-05.jpg" alt="Jasmine" class="profile-avatar"><div><div class="profile-name">Jasmine</div><div class="profile-handle">Meta Ads &amp; Strategy · JDesigns Strategist LLC</div></div></div>
+  <div class="article-meta"><span class="meta-tag">Meta Ads</span><span class="meta-date">October 2026</span></div>
+  <h1>If you can't fund the test, don't run the test</h1>
+  <p class="article-intro">I recently worked with a brand that sells a product around $100. Smart owner, real product, a checkout that finally worked. The ads still did not produce sales before the plug was pulled. The ad work was not the main problem. The budget was.</p>
+  <div class="article-body">
+    <h2>The math nobody does at the start</h2>
+    <p>Meta's learning-phase guidance points to about 50 optimization events, like purchases, in the week after a significant edit before delivery settles. That is guidance for getting stable results, not a guarantee.</p>
+    <p>Put your own numbers in:</p>
+    <div class="step-list">
+      <div class="step"><span class="step-num">1</span><div class="step-body"><strong>What can you afford to pay for one sale?</strong> That is your break-even cost per sale.</div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-body"><strong>Multiply it by 50.</strong> That is roughly what one week of a fair test costs.</div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-body"><strong>Multiply by about 4.3</strong> for a month.</div></div>
+    </div>
+    <p>If your product can only afford $40 for a sale, that is about $2,000 a week, or $9,000 a month. At $90 it is about $4,500 a week.</p>
+    <div class="callout"><strong>If your monthly budget is $1,500 to $2,000, you are not funding a test. You are paying Meta to guess.</strong></div>
+
+    <h2>What that looks like in real life</h2>
+    <p>A small budget spread across a small warm audience gives you very few clicks and very few purchases. A couple of weeks in, the report says cheap traffic, healthy add-to-carts, leads coming in. None of that pays the bills. The owner, who wanted sales, quits right before the data would have meant anything.</p>
+
+    <h2>What to do when the budget is too small for the test</h2>
+    <div class="step-list">
+      <div class="step"><span class="step-num">1</span><div class="step-body"><strong>Fix the offer and checkout first.</strong> A checkout that leaks eats any budget. It is the cheapest improvement.</div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-body"><strong>Build the email list and the follow-up</strong> before paying to send people to a list you cannot use yet.</div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-body"><strong>Retarget the people who already visit</strong> instead of buying cold traffic you cannot afford to learn on.</div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-body"><strong>Run a small, clearly labeled traffic or engagement test</strong> if you want creative data, and agree up front that it is not a sales test.</div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-body"><strong>Wait until you can fund the real test</strong> for at least four weeks, untouched.</div></div>
+    </div>
+
+    <h2>Before you hire anyone for ads, ask for these in writing</h2>
+    <p>Your average order value and what you can afford to pay per sale. Your real monthly ad budget. What event the campaign is optimizing for, such as a purchase or a lead. A minimum run time with no pausing or edits during it. And who owns your website, pixel, and tracking.</p>
+    <p>If your ad person will not talk about these before building, that is your answer.</p>
+    <p>Ads can work. They just cannot rescue an offer, a checkout, or a budget that is not ready. I would rather tell you that before you spend than after. Results depend on your offer, audience, budget, creative, and landing page, and no one can guarantee them.</p>
+  </div>
+  <div class="cta-block"><h3>Not sure if your budget can support a real test?</h3><p>A Meta Ads Audit checks your offer, checkout, tracking, and budget math before you spend on a campaign.</p><div class="cta-row"><a class='cta-btn' href='/meta-ads-fix'>See Meta Ads Fix →</a><a href="/blog/" class="cta-btn-outline">← More Posts</a></div></div>
+  <div class="author-card"><img src="../assets/photos/jasmine-02.jpg" alt="Jasmine" loading="lazy"><div><div class="author-eyebrow">Hi, I'm Jasmine</div><p>I run JDesigns Strategist from Nebraska: no agency, no team behind the logo, just me. Real client work, plain-language answers. <a href='/about'>More about me →</a></p></div></div>
+  <div class="related-section"><div class="related-label">Sources &amp; Related Reading</div><div class="related-list">
+    <a href="https://www.facebook.com/business/help/112167992830700/" class="related-card" target="_blank" rel="noopener"><span class="related-title">Meta: About the Learning Phase</span><span>↗</span></a>
+    <a href="https://www.facebook.com/business/help/942374239243867" class="related-card" target="_blank" rel="noopener"><span class="related-title">Meta: Last Significant Edit</span><span>↗</span></a>
+    <a class='related-card' href='/blog/meta-ads-roas-budget-client-data'><span class="related-title">Your Meta results look great. But did they make money?</span><span>→</span></a>
+    <a class='related-card' href='/blog/retargeting-needs-an-audience'><span class="related-title">Retargeting is not a switch you turn on</span><span>→</span></a>
+  </div></div>
+  <footer class="footer">
+    <span>© 2026 JDesigns Strategist LLC · <a href='/how-i-run-this'>Made by Jasmine</a></span>
+    <span style="display:flex;gap:16px;flex-wrap:wrap;">
+      <a href='/about'>About</a>
+      <a href="/blog/">Blog</a>
+      <a href='/knowledge-hub'>Knowledge Hub</a>
+      <a href="https://www.fiverr.com/jazz96designs" target="_blank" rel="noopener">Fiverr</a>
+      <a href='/privacy-policy'>Privacy</a>
+    </span>
+  </footer>
+</div>
+<script src="../assets/theme.js"></script>
+</body>
+</html>
