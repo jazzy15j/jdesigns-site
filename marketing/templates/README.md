@@ -28,7 +28,7 @@ There are **three** legitimate card systems in this repo. They are not interchan
 
 ## Before building anything new
 1. Identify the content type (FAQ/explainer vs. client-proof vs. something neither covers).
-2. Copy the matching file above exactly — same CSS classes, same brand color tokens (`--bg #07100a`, `--card #0d1a10`, `--green #2ec27e`, etc. — see `JDesigns-Brain-System/brand/jdesigns-brand-identity-board.html` for the full palette), same wordmark markup.
+2. Copy the matching file above exactly — same CSS classes, same brand color tokens (UPDATED 2026-11-02 to the espresso/olive palette: `--bg #1f1510`, `--card #2a1d15`, `--green` = olive `#9baa6b`, etc. — see `JDesigns-Brain-System/brand/jdesigns-brand-identity-board.html` for the full palette), same wordmark markup.
 3. Only change the text content (headline, eyebrow, item text, tag, domain). Don't change font sizes, spacing, colors, or structure without a specific reason — and if changing any of those, treat it as a template update (edit the canonical file itself), not a one-off.
 4. Render at the exact canvas size listed above (`chrome --headless --screenshot=... --window-size=W,H`), then look at the actual PNG before sending it — check for dead space, cut-off text, or wrong template family before it goes to Jasmine.
 5. If the content genuinely doesn't fit either system, say so and ask which one to adapt — don't silently invent a fourth system.
